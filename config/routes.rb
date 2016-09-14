@@ -1,67 +1,8 @@
 Rails.application.routes.draw do
-  get 'payments/new'
 
-  get 'payments/create'
+  devise_for :users, controllers: { sessions: 'users/sessions', :registrations => "users/registrations",:passwords => "users/passwords" }
 
-  get 'payments/show'
-
-  get 'payments/edit'
-
-  get 'payments/index'
-
-  get 'reviews/new'
-
-  get 'reviews/create'
-
-  get 'reviews/show'
-
-  get 'reviews/edit'
-
-  get 'reviews/index'
-
-  get 'videos/new'
-
-  get 'videos/create'
-
-  get 'videos/show'
-
-  get 'videos/edit'
-
-  get 'videos/index'
-
-  get 'orders/new'
-
-  get 'orders/create'
-
-  get 'orders/show'
-
-  get 'orders/edit'
-
-  get 'orders/index'
-
-  get 'prices/new'
-
-  get 'prices/create'
-
-  get 'prices/show'
-
-  get 'prices/edit'
-
-  get 'prices/index'
-
-  get 'users/new'
-
-  get 'users/create'
-
-  get 'users/show'
-
-  get 'users/edit'
-
-  get 'users/index'
-
-  devise_for :users, controllers: {
-    sessions: 'users/sessions'
-  }
+  root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
