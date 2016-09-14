@@ -5,7 +5,7 @@ class Video < ActiveRecord::Base
   #paperclip
   has_attached_file :video_url,
                     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-                    :url => "/system/:attachment/:id/:style/:filename",
+                    :url => "/system/:attachment/:id/:style/:filename"
                     #:default_url => "missing_user.png",
                     #:styles => { :medium => "300x300>", :thumb => "100x100>" }
 
