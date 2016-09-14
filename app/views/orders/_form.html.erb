@@ -1,0 +1,44 @@
+<%= nested_form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <%= f.fields_for :videos do |video| %>
+
+    <div class="field">
+      <%= video.label :video_url %>
+      <%= video.file_field :video_url %>
+    </div>
+
+    <!-- <div class="field">
+      <%#= video.label :description %><br>
+      <%#= video.text_area :description %>
+    </div> -->
+    <%= video.link_to_remove "Remove this video" %>
+
+  <% end %>
+  <p><%= f.link_to_add "Add a video", :videos %></p>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
