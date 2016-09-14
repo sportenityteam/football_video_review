@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   #Enum
   USER_TYPES =  { "admin" => 1, "reviewer" => 2, "user" => 3}
 
+  # User GENDER = {"male" => 1, "female" => 2}
+
   #associations
   has_many :orders
 

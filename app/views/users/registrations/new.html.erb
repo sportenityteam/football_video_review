@@ -19,6 +19,20 @@
   </div>
 
   <div class="field">
+    <lable>Gender : </label>
+      <div>
+        <%= f.radio_button :gender, 1 , :checked => true , class: "styled" %>
+        <label>Male</label>
+      </div>
+
+      <div>
+        <%= f.radio_button :gender, 2 , class: "styled" %>
+        <label>Female</label>
+      </div>
+    </label>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email %>
   </div>
