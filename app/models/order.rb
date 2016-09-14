@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   #Enum
-  STATUS = { "New" => 1 , "Admin Approved/Waiting for review" => 2, "Admin rejected" => 3, 
+  STATUS = { "New" => 1 , "Admin Approved/Waiting for review" => 2, "Admin rejected" => 3,
 	"Reviewed" => 4, "Review approved" => 5, "Review rejected" => 6 }
 
   #associations
@@ -11,4 +11,8 @@ class Order < ActiveRecord::Base
 
   #validations
   validates :title, :presence => true
+
+  #Nested attributes
+  accepts_nested_attributes_for :videos, allow_destroy: true
+
 end

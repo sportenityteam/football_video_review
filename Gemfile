@@ -16,9 +16,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # User devise for authentication
 gem 'devise'
 # Use paperclip for image/video upload
-gem "paperclip"
+gem 'paperclip'
 # Use pg as the database for Active Record
-gem "pg"
+gem 'pg'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -50,4 +50,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+#for accepting nested attributes
+gem 'nested_form'
 
+gem 'streamio-ffmpeg'

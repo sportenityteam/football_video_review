@@ -1,16 +1,16 @@
 class ReviewsController < ApplicationController
-  def new
-  end
-
-  def create
+  def index
   end
 
   def show
   end
 
+  def new
+  end
+
   def edit
   end
 
-  def index
+  def create
   end
 end
