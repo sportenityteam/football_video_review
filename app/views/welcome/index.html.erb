@@ -1,5 +1,1 @@
-<% if user_signed_in? %>
-  <%= link_to "Log out", destroy_user_session_path , method: "delete" %>
-  <h4>Welcome</h4>
-  <p>You are Successfully Logged in.</p>
-<% end %>
+<p> Welcome <%= current_user.fullname %> to football video review app!!!!!!!!!!!! </p>

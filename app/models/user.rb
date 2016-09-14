@@ -33,4 +33,17 @@ class User < ActiveRecord::Base
       "#{first_name.capitalize}"
     end
   end
+
+  #Methods to check user types
+  def is_user?
+    self.user_type == 3
+  end
+
+  def is_reviewer?
+    self.user_type == 2
+  end
+
+  def is_admin?
+    self.user_type == 1
+  end
 end

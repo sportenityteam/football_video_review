@@ -4,6 +4,21 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  layout :set_layout
+
+  #Setting different layout for different user
+  private
+    def set_layout
+      if user_signed_in?
+        if current_user.is_admin?
+          "admin"
+        elsif current_user.is_user?
+          "user"
+        elsif current_user.is_reviewer?
+          "reviewer"
+        end
+      end
+    end
 
   protected
     # configuring registration parameters
