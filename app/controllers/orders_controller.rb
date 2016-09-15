@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
       if @order.save
         if @order.videos.present?
           @order.videos.each do |video|
-            video.generate_mp4(video,video.video_url)
+            video.generate_mp4(video)
             @total_duration = @total_duration + video.duration.to_i
           end
         end
