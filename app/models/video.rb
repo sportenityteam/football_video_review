@@ -1,7 +1,6 @@
 class Video < ActiveRecord::Base
   #associations
   belongs_to :order
-  #after_save :generate_mp4
 
   #paperclip
   has_attached_file :video_url,
@@ -22,7 +21,7 @@ class Video < ActiveRecord::Base
           movie = FFMPEG::Movie.new("#{video.video_url.path}")
           movie.transcode("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
           f = File.open("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
-          video.update_column(:duration, movie.duration)
+          video.duration = movie.duration
           video.video_url = f
           video.save
           f.close

@@ -15,11 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # User devise for authentication
 gem 'devise'
-# Use paperclip for image/video upload
-gem 'paperclip'
 # Use pg as the database for Active Record
 gem 'pg'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -52,5 +49,8 @@ group :development do
 end
 #for accepting nested attributes
 gem 'nested_form'
-
 gem 'streamio-ffmpeg'
+# Use paperclip for image/video upload
+gem "paperclip", "~> 4.1"
+# Use to upload video/image to amazon server
+gem 'aws-sdk', '< 2.0'
