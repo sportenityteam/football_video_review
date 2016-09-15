@@ -38,6 +38,13 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  ActiveMerchant::Billing::Base.mode = :test
+  ::GATEWAY = ActiveMerchant::Billing::PayflowGateway.new(
+    :login => "FootballVideo",
+    :password => "mittal123",
+    :partner => "PayPal"
+  )
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

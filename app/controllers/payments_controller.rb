@@ -12,6 +12,5 @@ class PaymentsController < ApplicationController
   end
 
   def create
-  end
-
+  end 
 end
