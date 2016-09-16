@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+    get "/pending_orders" => "order#index", as: :pending_orders
+    get "/review_order/:id" => "order#show", as: :review_order
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -36,6 +36,8 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  config.action_mailer.delivery_method = :letter_opener
+
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   ActiveMerchant::Billing::Base.mode = :test
@@ -47,4 +49,13 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  # config.paperclip_defaults = {
+  #   storage: :s3,
+  #   s3_credentials: {
+  #     bucket: 'thingealogy-developmenet',
+  #     access_key_id: "AKIAJOI7K3LGWFM7SNGQ",
+  #     secret_access_key: "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",
+  #     s3_origin: "us-west-2"
+  #   }
+  # }
 end
