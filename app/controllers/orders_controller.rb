@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
       amount = 1000
       #setting response of place_order if resonse is sucess then order will be saved
       response = place_order(amount)
-      puts "====response==========#{@response.inspect}========"
+      puts "====response==========#{response.inspect}========"
       if response.success?
         puts "=======inside success========="
         puts "Successfully charged $#{sprintf("%.2f", amount / 100)} to the credit card #{@credit_card.number}"
@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
 
   #Placing order through Payflow gateway on PayPal
   def place_order(amount)
-    @credit_card = Payment.validate_credit_card("Krupali","Makwana","4111111111111111","9","2017","123","visa")
+    @credit_card = Payment.validate_credit_card(current_user.try(:first_name),current_user.try(:last_name),params[:card_number],params[:expiration_month],params[:expiration_year],params[:cvv])
     if @credit_card.valid?
       response = GATEWAY.purchase(amount, @credit_card)
       puts "=========amount=====#{amount}=====creditcard=====#{@credit_card.inspect}======="
@@ -79,6 +79,6 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:title, :description, videos_attributes: [:duration, :description, :video_url])
+      params.require(:order).permit(:title, :description, videos_attributes: [:duration, :description, :video_url,:id,:_destroy])
     end
 end
