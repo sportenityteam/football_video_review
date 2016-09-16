@@ -1,17 +1,1 @@
 <h1>New Payment</h1>
-
-<%= form_tag "#" , method: :post do %>
-	<%= label_tag :card_number %><br/>
-	<%= text_field_tag :card_number %><br/><br/>
-
-	<%= label_tag :expiration_month %><br/>
-	<%= text_field_tag :expiration_month %><br/><br/>
-
-	<%= label_tag :expiration_year %><br/>
-	<%= text_field_tag :expiration_year %><br/><br/>
-
-	<%= label_tag :cvv %><br/>
-	<%= text_field_tag :cvv %><br/><br/>
-
-	<%= submit_tag "Payment Details" %>
-<% end %>
