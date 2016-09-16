@@ -1,0 +1,25 @@
+<h1>Order</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Video</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @order.title %></td>
+      <td><%= @order.description %></td>
+      <% if @order.videos.present? %>
+        <% @order.videos.each do |video| %>
+          <td><%= video_tag video.video_url.url, controls: true, autobuffer: true %> </td>
+        <% end %>
+      <% end %>
+      <!-- form for sumbit notes and enter data to review table -->
+    </tr>
+  </tbody>
+</table>
