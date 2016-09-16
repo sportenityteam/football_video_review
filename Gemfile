@@ -57,3 +57,4 @@ gem 'streamio-ffmpeg'
 gem "paperclip", "~> 4.1"
 # Use to upload video/image to amazon server
 gem 'aws-sdk', '< 2.0'
+gem "letter_opener", :group => :development

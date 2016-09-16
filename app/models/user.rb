@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
 
   # User GENDER = {"male" => 1, "female" => 2}
 
+
+  #callback
+  before_validation :check_for_password
+
   #associations
   has_many :orders
 
@@ -24,6 +28,11 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: ['image/png', 'image/jpg','image/gif','image/jpeg']
   validates :first_name, :presence => true
   validates :date_of_birth, :presence => true
+
+  #scope
+  scope :is_reviewer, -> {where("user_type =? ", 2)}
+  scope :is_user, -> {where("user_type =? ", 3)}
+
 
   #instance methods
   def fullname
@@ -55,4 +64,11 @@ class User < ActiveRecord::Base
     amount = Price.calculate_amount(age)
     return amount
   end
+
+  def check_for_password
+    if self.password.nil?
+      self.password = "12345678"
+    end
+  end
+
 end
