@@ -46,4 +46,13 @@ class User < ActiveRecord::Base
   def is_admin?
     self.user_type == 1
   end
+
+  #calculating registered user's age
+  def self.calculate_amount_from_age(dob)
+    dob = DateTime.strptime(dob, '%m/%d/%Y')
+    now = Time.zone.now.to_date
+    age = now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+    amount = Price.calculate_amount(age)
+    return amount
+  end
 end

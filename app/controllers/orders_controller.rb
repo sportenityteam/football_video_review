@@ -21,13 +21,13 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @total_duration = 0
     respond_to do |format|
-      amount = 1000
+      #fetching amount for placing order from calculate_amount_from _age method
+      @amount = User.calculate_amount_from_age(current_user.date_of_birth.strftime("%m/%d/%Y"))
       #setting response of place_order if resonse is sucess then order will be saved
-      response = place_order(amount)
-      puts "====response==========#{response.inspect}========"
-      if response.success?
-        puts "=======inside success========="
-        puts "Successfully charged $#{sprintf("%.2f", amount / 100)} to the credit card #{@credit_card.number}"
+      response = place_order(@amount)
+      
+      if response.success?  
+        puts "Successfully charged $#{@amount} to the credit card #{@credit_card.number}"
         if @order.save
           if @order.videos.present?
             @order.videos.each do |video|
@@ -35,7 +35,12 @@ class OrdersController < ApplicationController
               @total_duration = @total_duration + video.duration.to_i
             end
           end
-          @order.update_attributes(:total_video_duration => @total_duration)
+          @order.update_attributes(:total_video_duration => @total_duration,:user_id => current_user.id)
+          
+          #creating record of payment for placed order
+          @payment = Payment.new(:order_id => @order.id,:amount => @amount,:date_of_payment => DateTime.now, :other_data => response ,:status => "success",:transcation_id => response.params["pn_ref"])
+          @payment.save
+          
           format.html { redirect_to @order, notice: 'Order was successfully created.' }
           format.json { render :show, status: :created, location: @order }
         else
@@ -43,7 +48,8 @@ class OrdersController < ApplicationController
           format.json { render json: @order.errors, status: :unprocessable_entity }
         end
       else
-         raise StandardError, response.message
+        flash[:notice] = response.message
+        format.html { render :new }
       end
     end
   end
@@ -62,14 +68,8 @@ class OrdersController < ApplicationController
   #Placing order through Payflow gateway on PayPal
   def place_order(amount)
     @credit_card = Payment.validate_credit_card(current_user.try(:first_name),current_user.try(:last_name),params[:card_number],params[:expiration_month],params[:expiration_year],params[:cvv])
-    if @credit_card.valid?
-      response = GATEWAY.purchase(amount, @credit_card)
-      puts "=========amount=====#{amount}=====creditcard=====#{@credit_card.inspect}======="
-      return response
-    else
-      puts "====errors========#{@credit_card.errors.full_messages}"
-    end
-    
+    response = GATEWAY.purchase(amount, @credit_card)
+    return response
   end
 
   private

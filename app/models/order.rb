@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
   has_many :videos, dependent: :destroy
   has_many :reviews
-  has_one :payment
+  has_one :payment, dependent: :destroy
 
   #validations
   validates :title, :presence => true
