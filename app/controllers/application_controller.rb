@@ -26,4 +26,14 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :gender, :date_of_birth, :position, :zipcode])
       #devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :gender, :date_of_birth, :position, :zipcode])
     end
+
+    def restrict_user
+      if user_signed_in?
+        if current_user.is_admin?
+          redirect_to root_url
+        elsif current_user.is_reviewer?
+          redirect_to root_url
+        end
+      end
+    end
 end

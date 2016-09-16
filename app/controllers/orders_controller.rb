@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, :only => [:edit,:destroy]
+  before_action :restrict_user
 
   def index
     @orders = Order.all
