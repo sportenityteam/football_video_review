@@ -54,3 +54,46 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  var fieldsCount,
+  maxFieldsCount = 1,
+  $addLink = $('a.add_nested_fields');
+
+  var mfieldsCount,
+  minFieldsCount = 0, // placed at 0 because first object is auto built from controller
+  $removeLink = $('a.remove_nested_fields');
+
+  function toggleAddLink() {
+    $addLink.toggle(fieldsCount <= maxFieldsCount)
+  }
+
+  function toggleRemoveLink() {
+    $removeLink.toggle(mfieldsCount <= minFieldsCount)
+  }
+
+  $(document).on('nested:fieldAdded', function() {
+    fieldsCount += 1;
+    toggleAddLink();
+  });
+
+  $(document).on('nested:fieldRemoved', function() {
+    fieldsCount -= 1;
+    toggleAddLink();
+  });
+
+  $(document).on('nested:fieldRemoved', function() {
+    mfieldsCount -= 0;
+    toggleRemoveLink();
+  });  
+
+  // count existing nested fields after page was loaded
+  fieldsCount = $('form .fields').length;
+  toggleAddLink();
+
+  mfieldsCount = $('form .fields').length;
+  toggleRemoveLink();
+}); 
+
+</script>

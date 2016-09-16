@@ -25,30 +25,34 @@ class OrdersController < ApplicationController
       @amount = User.calculate_amount_from_age(current_user.date_of_birth.strftime("%m/%d/%Y"))
       #setting response of place_order if resonse is sucess then order will be saved
       response = place_order(@amount)
-      
-      if response.success?  
-        puts "Successfully charged $#{@amount} to the credit card #{@credit_card.number}"
-        if @order.save
-          if @order.videos.present?
-            @order.videos.each do |video|
-              video.generate_mp4(video)
-              @total_duration = @total_duration + video.duration.to_i
+      if response != false
+        if response.success?  
+          puts "Successfully charged $#{@amount} to the credit card #{@credit_card.number}"
+          if @order.save
+            if @order.videos.present?
+              @order.videos.each do |video|
+                video.generate_mp4(video)
+                @total_duration = @total_duration + video.duration.to_i
+              end
             end
+            @order.update_attributes(:total_video_duration => @total_duration,:user_id => current_user.id)
+            
+            #creating record of payment for placed order
+            @payment = Payment.new(:order_id => @order.id,:amount => @amount,:date_of_payment => DateTime.now, :other_data => response ,:status => "success",:transcation_id => response.params["pn_ref"])
+            @payment.save
+            
+            format.html { redirect_to @order, notice: 'Order was successfully created.' }
+            format.json { render :show, status: :created, location: @order }
+          else
+            format.html { render :new }
+            format.json { render json: @order.errors, status: :unprocessable_entity }
           end
-          @order.update_attributes(:total_video_duration => @total_duration,:user_id => current_user.id)
-          
-          #creating record of payment for placed order
-          @payment = Payment.new(:order_id => @order.id,:amount => @amount,:date_of_payment => DateTime.now, :other_data => response ,:status => "success",:transcation_id => response.params["pn_ref"])
-          @payment.save
-          
-          format.html { redirect_to @order, notice: 'Order was successfully created.' }
-          format.json { render :show, status: :created, location: @order }
         else
+          flash[:notice] = response.message
           format.html { render :new }
-          format.json { render json: @order.errors, status: :unprocessable_entity }
         end
       else
-        flash[:notice] = response.message
+        flash[:notice] = "Please fill the card details"
         format.html { render :new }
       end
     end
@@ -67,9 +71,13 @@ class OrdersController < ApplicationController
 
   #Placing order through Payflow gateway on PayPal
   def place_order(amount)
-    @credit_card = Payment.validate_credit_card(current_user.try(:first_name),current_user.try(:last_name),params[:card_number],params[:expiration_month],params[:expiration_year],params[:cvv])
-    response = GATEWAY.purchase(amount, @credit_card)
-    return response
+    if params[:card_number].present? && params[:expiration_month].present? && params[:expiration_year].present? && params[:cvv].present?
+      @credit_card = Payment.validate_credit_card(current_user.try(:first_name),current_user.try(:last_name),params[:card_number],params[:expiration_month],params[:expiration_year],params[:cvv])
+      response = GATEWAY.purchase(amount, @credit_card)
+      return response
+    else
+      return false
+    end
   end
 
   private
