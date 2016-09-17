@@ -1,2 +1,21 @@
-<h1>Reviews#index</h1>
-<p>Find me in app/views/reviews/index.html.erb</p>
+<h3>My Reviews</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Review Time</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= "#{review.order.user.try(:fullname)}'s #{review.order.try(:title)}" %></td>
+        <td><%= review.review_time %> seconds</td>
+        <td><%= review.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

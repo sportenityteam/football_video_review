@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   resources :orders
   resources :payments
+  resources :reviews
+  get "/pending_reviews" => "reviews#pending_reviews" , as: :pending_reviews
+  get "/review_order/:id" => "reviews#new", as: :review_order
+  get "/my_reviews" => "reviews#index" , as: :my_reviews
 
   namespace :admin do
     resources :users

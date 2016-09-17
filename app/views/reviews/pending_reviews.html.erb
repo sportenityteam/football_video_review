@@ -1,0 +1,18 @@
+<h3>Pending Reviews</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= "#{order.user.fullname}'s #{order.title}" %></td>
+        <td><%= link_to 'Click To Review', review_order_path(order) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

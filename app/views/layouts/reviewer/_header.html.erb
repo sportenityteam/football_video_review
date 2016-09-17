@@ -1,4 +1,7 @@
 <h4>Reviewer Panel 
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Review Videos", pending_reviews_path %>
+
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "My Reviews", my_reviews_path %>
 	<% if user_signed_in? %>
   	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Log out", destroy_user_session_path , method: "delete" %>
 	<% end %>

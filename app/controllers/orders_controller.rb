@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
             @payment = Payment.new(:order_id => @order.id,:amount => @amount,:date_of_payment => DateTime.now, :other_data => response ,:status => "success",:transcation_id => response.params["pn_ref"])
             @payment.save
             
-            format.html { redirect_to @order, notice: 'Order was successfully created.' }
+            format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
             format.json { render :show, status: :created, location: @order }
           else
             format.html { render :new }
@@ -58,7 +58,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.where(:user_id => current_user.id)
   end
 
   def destroy

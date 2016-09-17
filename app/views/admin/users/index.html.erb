@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Avatar</th>
       <th>User name</th>
       <th>Email</th>
       <th>Gender</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= image_tag user.avatar.url(:thumb) %></td>
         <td><%= user.fullname %></td>
         <td><%= user.email %></td>
         <td>

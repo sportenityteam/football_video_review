@@ -1,11 +1,11 @@
 <h4>Admin Panel
-	<% if user_signed_in? %>
-  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Log out", destroy_user_session_path , method: "delete" %>
-	<% end %>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Reviewers", admin_users_path %>
 
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "User Videos", admin_pending_orders_path %>
 
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Reviewed Videos", '#' %>
-
+  
+	<% if user_signed_in? %>
+  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Log out", destroy_user_session_path , method: "delete" %>
+	<% end %>
 </h4><hr/>
