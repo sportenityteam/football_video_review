@@ -6,6 +6,10 @@ class Admin::OrderController < Admin::BaseController
     @orders = Order.where(:status => Order::STATUS["New"])
   end
 
+  def reviewed_videos
+    @reviews = Review.where("reviewer_id =?", current_user.id)
+  end
+
   def show
     @review = Review.new
   end

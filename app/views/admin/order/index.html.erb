@@ -4,9 +4,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <!-- <th>Description</th>
-      <th>Video</th>
-      <th colspan="3"></th> -->
     </tr>
   </thead>
 
@@ -14,12 +11,6 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= "#{order.user.fullname}'s #{order.title}" %></td>
-        <!-- <td><%= order.description %></td> -->
-        <%# if order.videos.present? %>
-          <%# order.videos.each do |video| %>
-            <!-- <td><%#= video_tag video.video_url.url, controls: true, autobuffer: true %> </td> -->
-          <%# end %>
-        <%# end %>
         <td><%= link_to 'Click To Review', admin_review_order_path(order) %></td>
       </tr>
     <% end %>

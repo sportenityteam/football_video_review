@@ -13,8 +13,10 @@ class Admin::ReviewsController < Admin::BaseController
     respond_to do |format|
       if @review.save
         if params[:commit] == "Approve"
+          @review.update_attributes(:status => "Approve")
           @order.update_attributes(:status => Order::STATUS["Admin Approved/Waiting for review"])
         elsif params[:commit] == "Reject"
+          @review.update_attributes(:status => "Reject")
           @order.update_attributes(:status => Order::STATUS["Admin rejected"])
         end
         format.html { redirect_to admin_pending_orders_path, notice: 'Review for video was submited successfully.' }
