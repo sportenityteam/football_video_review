@@ -2,21 +2,11 @@ class OrdersController < ApplicationController
   before_action :set_order, :only => [:edit,:destroy]
   before_action :restrict_user
 
-  def index
-    @orders = Order.all
-  end
-
-  def show
-  end
-
   def new
     @order = Order.new
     @order.videos.build
   end
-
-  def edit
-  end
-
+  
   def create
     @order = Order.new(order_params)
     @total_duration = 0
@@ -58,7 +48,17 @@ class OrdersController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+  end
+
   def update
+  end
+
+  def index
+    @orders = Order.all
   end
 
   def destroy

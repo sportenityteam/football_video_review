@@ -42,10 +42,10 @@
   <%= text_field_tag :card_number %><br/><br/>
 
   <%= label_tag :expiration_month %><br/>
-  <%= text_field_tag :expiration_month %><br/><br/>
+  <%= select_tag :expiration_month,options_for_select(expiration_month),{include_blank: "Select expiration month"} %><br/><br/>
 
   <%= label_tag :expiration_year %><br/>
-  <%= text_field_tag :expiration_year %><br/><br/>
+  <%= select_tag :expiration_year, options_for_select(expiration_year) , { include_blank: "Select expiration year"} %><br/><br/>
 
   <%= label_tag :cvv %><br/>
   <%= text_field_tag :cvv %><br/><br/>
