@@ -13,7 +13,7 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.title %></td>
+        <td><%= "#{order.user.fullname}'s #{order.title}" %></td>
         <!-- <td><%= order.description %></td> -->
         <%# if order.videos.present? %>
           <%# order.videos.each do |video| %>

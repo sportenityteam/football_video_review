@@ -16,10 +16,12 @@
       <td><%= @order.description %></td>
       <% if @order.videos.present? %>
         <% @order.videos.each do |video| %>
-          <td><%= video_tag video.video_url.url, controls: true, autobuffer: true %> </td>
+          <td><%= video_tag video.video_url.url, controls: true, autobuffer: true, :id => "order_video" %> </td>
         <% end %>
       <% end %>
       <!-- form for sumbit notes and enter data to review table -->
     </tr>
   </tbody>
 </table>
+<%= render "admin/reviews/form" %>
+

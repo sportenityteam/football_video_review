@@ -1,0 +1,46 @@
+<h2>Add Review</h2>
+<%= form_for([:admin,@review]) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :order_id, :value => "#{params[:id]}" %>
+  <%= f.hidden_field :reviewer_id, :value => "#{current_user.id}" %>
+  <%= f.hidden_field :review_time, :value => "", :id => "review_time" %>
+  <%= f.hidden_field :submit_time, :value => "", :id => "submit_time" %>
+
+  <div class="field">
+    <%= f.label :technical_notes %><br />
+    <%= f.text_area :technical_notes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tactical_notes %><br />
+    <%= f.text_area :tactical_notes %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Approve", :class => "submit_form" %>
+    <%= f.submit "Reject", :class => "submit_form" %>
+  </div>
+<% end %>
+
+<script>
+
+  $(".submit_form").click(function(){
+    var current_time = new Date($.now());
+    $("#submit_time").val(current_time);
+  });
+
+  $("video").on("play", function (e) {
+    var current_time = new Date($.now());
+    $("#review_time").val(current_time);
+  });
+</script>

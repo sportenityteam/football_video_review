@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :users
     get "/pending_orders" => "order#index", as: :pending_orders
     get "/review_order/:id" => "order#show", as: :review_order
+    resources :reviews, :only => [:new, :create]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

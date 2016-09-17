@@ -1,4 +1,4 @@
-class Admin::OrderController < ApplicationController
+class Admin::OrderController < Admin::BaseController
 
   before_action :set_order, :only => [:show]
 
@@ -7,6 +7,7 @@ class Admin::OrderController < ApplicationController
   end
 
   def show
+    @review = Review.new
   end
 
   private
