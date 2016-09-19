@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   validates :date_of_birth, :presence => true
   validates_numericality_of :zipcode, :greater_than_or_equal_to => 0 , message: " must have only digits from 0 to 9"
   validates_length_of :zipcode , :minimum => 5 , :message => "must be 5 characters long"
-  
+
   #scope
   scope :is_reviewer, -> {where("user_type =? ", 2)}
   scope :is_user, -> {where("user_type =? ", 3)}

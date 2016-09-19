@@ -1,7 +1,7 @@
 class Review < ActiveRecord::Base
   #associations
   belongs_to :order
-  has_many :reviewers, class_name: "User", foreign_key: "reviewer_id"
+  belongs_to :user
 
   #validations
   validates :technical_notes , :presence => true
