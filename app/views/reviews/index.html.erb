@@ -14,7 +14,6 @@
       <tr>
         <td><%= "#{review.order.user.try(:fullname)}'s #{review.order.try(:title)}" %></td>
         <td><%= review.review_time %> seconds</td>
-        <td><%= review.status %></td>
       </tr>
     <% end %>
   </tbody>
