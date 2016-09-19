@@ -3,6 +3,8 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @order.update_attributes(:status => Order::STATUS["In review"])
+    Review.find_or_create_by(:order_id => @order.id, :user_id => current_user.id)
   end
 
   def create
