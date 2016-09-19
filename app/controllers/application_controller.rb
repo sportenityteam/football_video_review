@@ -22,7 +22,6 @@ class ApplicationController < ActionController::Base
 
     #redirection of different users after sign in
     def after_sign_in_path_for(resource)
-      puts "==========resource========#{resource.inspect}======="
       if resource.is_admin?
         return admin_pending_orders_path 
       elsif resource.is_reviewer?
@@ -36,7 +35,7 @@ class ApplicationController < ActionController::Base
     # configuring registration parameters
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :gender, :date_of_birth, :position, :zipcode, :user_type])
-      #devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :gender, :date_of_birth, :position, :zipcode])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :gender, :date_of_birth, :position, :zipcode])
     end
 
     def restrict_user 

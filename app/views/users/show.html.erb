@@ -1,2 +1,12 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h3> My Profile</h3> 
+<%= image_tag current_user.avatar.url(:thumb) , alt:"image"%><br/>
+Username : <%= current_user.try(:fullname) %><br/>	
+Gender : 
+<% if current_user.gender == 1 %>
+  Male
+<% else %>
+  Female
+<% end %><br/>
+Position : <%= current_user.try(:position) %> <br/>
+Email : <%= current_user.email %><br/><br/>
+<%= link_to 'Edit Profile', edit_user_registration_path %><br/>

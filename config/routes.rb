@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions', :registrations => "users/registrations",:passwords => "users/passwords" }
 
   root 'welcome#index'
-
   resources :orders
   resources :payments
   resources :reviews
   get "/pending_reviews" => "reviews#pending_reviews" , as: :pending_reviews
   get "/review_order/:id" => "reviews#new", as: :review_order
   get "/my_reviews" => "reviews#index" , as: :my_reviews
+  get "/my_profile" => "users#show" , as: :my_profile
 
   namespace :admin do
     resources :users
