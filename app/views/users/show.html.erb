@@ -7,6 +7,14 @@ Gender :
 <% else %>
   Female
 <% end %><br/>
-Position : <%= current_user.try(:position) %> <br/>
+<% if current_user.is_reviewer? %>
+	Address : <%= current_user.try(:address) %>
+	Phone number : <%= current_user.try(:phone_number) %> <br/>
+	Current club : <%= current_user.try(:current_club) %> <br/>
+	Description : <%= current_user.try(:description) %> <br/>
+<% end %>
+<% if current_user.is_user? %>
+	Position : <%= current_user.try(:position) %> <br/>
+<% end %>
 Email : <%= current_user.email %><br/><br/>
 <%= link_to 'Edit Profile', edit_user_registration_path %><br/>
