@@ -1,0 +1,22 @@
+<h1>Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Review Time</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= "#{review.order.user.fullname}'s #{review.order.title}" %></td>
+        <td><%= review.review_time %> Second</td>
+        <td><%= review.status %></td>
+        <!-- <td><%#= link_to 'Click To Review', admin_review_order_path(order) %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>

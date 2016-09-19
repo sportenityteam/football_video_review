@@ -37,10 +37,11 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = Review.where("reviewer_id =?", current_user.id)
-  end  
+  end
 
   def pending_reviews
-    @orders = Order.where(:status => Order::STATUS["Admin Approved/Waiting for review"])
+    #@orders = Order.where(:status => Order::STATUS["Admin Approved/Waiting for review"])
+    @orders = Order.where("status =? or status =?",Order::STATUS["Admin Approved/Waiting for review"], Order::STATUS["Review rejected"])
   end
 
   private

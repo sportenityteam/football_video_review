@@ -3,8 +3,8 @@
 
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "User Videos", admin_pending_orders_path %>
 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Reviewed Videos", '#' %>
-  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Reviewed Videos", admin_reviewed_videos_path %>
+
 	<% if user_signed_in? %>
   	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Log out", destroy_user_session_path , method: "delete" %>
 	<% end %>
