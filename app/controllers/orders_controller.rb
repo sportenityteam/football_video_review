@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @order.videos.build
+    @amount = User.calculate_amount_from_age(current_user.date_of_birth.strftime("%m/%d/%Y"))
   end
   
   def create
