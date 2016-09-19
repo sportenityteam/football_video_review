@@ -12,7 +12,7 @@
   <% end %>
 
   <%= f.hidden_field :order_id, :value => "#{params[:id]}" %>
-  <%= f.hidden_field :reviewer_id, :value => "#{current_user.id}" %>
+  <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
   <%= f.hidden_field :review_time, :value => "", :id => "review_time" %>
   <%= hidden_field_tag :submit_time, :value => "", :id => "submit_time" %>
 

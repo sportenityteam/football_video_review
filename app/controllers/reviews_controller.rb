@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.where("reviewer_id =?", current_user.id)
+    @reviews = Review.where("user_id =?", current_user.id)
   end
 
   def pending_reviews
@@ -49,6 +49,6 @@ class ReviewsController < ApplicationController
       @order = Order.find(params[:id])
     end
     def review_params
-      params.require(:review).permit(:order_id, :reviewer_id, :technical_notes, :tactical_notes, :review_time)
+      params.require(:review).permit(:order_id, :user_id, :technical_notes, :tactical_notes, :review_time)
     end
 end

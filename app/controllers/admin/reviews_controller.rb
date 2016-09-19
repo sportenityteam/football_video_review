@@ -30,7 +30,7 @@ class Admin::ReviewsController < Admin::BaseController
 
   private
     def review_params
-      params.require(:review).permit(:order_id, :reviewer_id, :technical_notes, :tactical_notes, :review_time)
+      params.require(:review).permit(:order_id, :user_id, :technical_notes, :tactical_notes, :review_time)
     end
 
 end

@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
   #associations
   belongs_to :user
   has_many :videos, dependent: :destroy
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_one :payment, dependent: :destroy
 
   #validations

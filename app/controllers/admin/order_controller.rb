@@ -7,7 +7,7 @@ class Admin::OrderController < Admin::BaseController
   end
 
   def reviewed_videos
-    @reviews = Review.where("reviewer_id =?", current_user.id)
+    @reviews = Review.where("user_id =?", current_user.id)
   end
 
   def show
