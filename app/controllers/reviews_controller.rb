@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @order = Order.find(params[:review][:order_id])
-    review_time = params[:review][:review_time].present? ? ((params[:review][:submit_time].to_datetime - params[:review][:review_time].to_datetime) * 1.days) : 0
+    review_time = params[:review][:review_time].present? ? ((params[:submit_time].to_datetime - params[:review][:review_time].to_datetime) * 1.days) : 0
 
     @review.review_time = review_time
     respond_to do |format|
