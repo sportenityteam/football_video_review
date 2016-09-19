@@ -1,6 +1,6 @@
 <h4>User Panel
-	<% if user_signed_in? %>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Make Order", orders_path %>
+  <% if user_signed_in? %>
   	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Log out", destroy_user_session_path , method: "delete" %>
 	<% end %>
-  <%= link_to "Make Order", orders_path %>
 </h4><hr/>

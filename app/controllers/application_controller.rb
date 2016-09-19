@@ -20,6 +20,18 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    #redirection of different users after sign in
+    def after_sign_in_path_for(resource)
+      puts "==========resource========#{resource.inspect}======="
+      if resource.is_admin?
+        return admin_pending_orders_path 
+      elsif resource.is_reviewer?
+        return pending_reviews_path 
+      else
+        return orders_path 
+      end 
+    end
+
   protected
     # configuring registration parameters
     def configure_permitted_parameters
@@ -27,7 +39,7 @@ class ApplicationController < ActionController::Base
       #devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :gender, :date_of_birth, :position, :zipcode])
     end
 
-    def restrict_user
+    def restrict_user 
       if user_signed_in?
         if current_user.is_admin?
           redirect_to root_url
