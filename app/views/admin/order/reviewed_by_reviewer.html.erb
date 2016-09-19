@@ -10,8 +10,9 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= "#{order.user.fullname}'s #{order.title}" %>,Video Reviewed by <%= order.try(:reviews).try(:first).try(:user).try(:fullname) %></td>
-        <td><%= link_to 'Approve', "#" %></td>
+        <td><%= "#{order.user.fullname}'s #{order.title}" %></td>
+        <td><%= link_to 'Review Approve', "#" %></td>
+        <td><%= link_to 'Review Reject', "#" %></td>
       </tr>
     <% end %>
   </tbody>

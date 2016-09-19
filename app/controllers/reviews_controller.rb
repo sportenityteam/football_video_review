@@ -13,13 +13,7 @@ class ReviewsController < ApplicationController
     @review.review_time = review_time
     respond_to do |format|
       if @review.save
-        if params[:commit] == "Approve"
-          @review.update_attributes(:status => "Approve")
-          @order.update_attributes(:status => Order::STATUS["Review approved"])
-        elsif params[:commit] == "Reject"
-          @review.update_attributes(:status => "Reject")
-          @order.update_attributes(:status => Order::STATUS["Review rejected"])
-        end
+        @order.update_attributes(:status => Order::STATUS["Reviewed"])
         format.html { redirect_to reviews_path, notice: 'Review for video was submitted successfully.' }
         format.json { render :pending_reviews , status: :created, location: @review }
       else

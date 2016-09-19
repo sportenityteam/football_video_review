@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get "/pending_orders" => "order#index", as: :pending_orders
     get "/review_order/:id" => "order#show", as: :review_order
     get "/reviewed_videos" => "order#reviewed_videos", as: :reviewed_videos
-    get "/approve_by_reviewer" => "order#approve_by_reviewer", as: :approve_by_reviewer
+    get "/reviewed_by_reviewer" => "order#reviewed_by_reviewer", as: :reviewed_by_reviewer
     resources :reviews, :only => [:new, :create]
   end
   # The priority is based upon order of creation: first created -> highest priority.

@@ -14,8 +14,8 @@ class Admin::OrderController < Admin::BaseController
     @review = Review.new
   end
 
-  def approve_by_reviewer
-    @orders = Order.where(:status => Order::STATUS["Review approved"])
+  def reviewed_by_reviewer
+    @orders = Order.where(:status => Order::STATUS["Reviewed"])
   end
 
   private
