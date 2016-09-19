@@ -19,6 +19,11 @@ Rails.application.routes.draw do
     get "/reviewed_by_reviewer" => "order#reviewed_by_reviewer", as: :reviewed_by_reviewer
     resources :reviews, :only => [:new, :create]
   end
+
+  #change password
+  get  'edit_change_password' => 'users#edit_change_password', :as => :user_change_password
+  post  'change_password' => 'users#change_password', :as => :edit_change_password
+  patch  'change_password' => 'users#change_password', :as => :change_password
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

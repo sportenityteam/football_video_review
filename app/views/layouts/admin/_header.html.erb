@@ -9,6 +9,8 @@
 
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "My Profile", my_profile_path %>
 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Change Password", user_change_password_path %>
+
 	<% if user_signed_in? %>
   	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Log out", destroy_user_session_path , method: "delete" %>
 	<% end %>

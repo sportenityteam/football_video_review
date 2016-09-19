@@ -1,8 +1,14 @@
 <h4>User Panel
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Make Order', new_order_path %>
+
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Pending Orders", orders_path(:type => "New") %>
+
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Approved Orders", orders_path(:type => "Review approved") %>
+
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'My Profile', my_profile_path %>
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Change Password", user_change_password_path %>
+  
   <% if user_signed_in? %>
   	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Log out", destroy_user_session_path , method: "delete" %>
 	<% end %>
