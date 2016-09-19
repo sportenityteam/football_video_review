@@ -6,7 +6,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
+    @review = Review.find_or_initialize_by(:order_id => params[:review][:order_id], :user_id => params[:review][:user_id])
+
+    @review.technical_notes = params[:review][:technical_notes]
+    @review.tactical_notes = params[:review][:tactical_notes]
+
     @order = Order.find(params[:review][:order_id])
     review_time = params[:review][:review_time].present? ? ((params[:submit_time].to_datetime - params[:review][:review_time].to_datetime) * 1.days) : 0
 
@@ -34,8 +38,19 @@ class ReviewsController < ApplicationController
   end
 
   def pending_reviews
-    #@orders = Order.where(:status => Order::STATUS["Admin Approved/Waiting for review"])
-    @orders = Order.where("status =? or status =?",Order::STATUS["Admin Approved/Waiting for review"], Order::STATUS["Review rejected"])
+    order_ids = Review.joins(:order).where("orders.status =? or orders.status =? or orders.status =? and reviews.user_id =? ",Order::STATUS["Admin Approved/Waiting for review"], Order::STATUS["Review rejected"], Order::STATUS["In review"], current_user.id).pluck(:order_id).uniq
+    @orders = Order.where("id IN (?)", order_ids)
+  end
+
+  def destroy
+    @review = Review.where("order_id =? and user_id =?", params[:id], current_user.id)
+    @review.destroy_all
+    @order = Order.find(params[:id])
+    @order.update_attributes(:status => Order::STATUS["Admin Approved/Waiting for review"])
+    respond_to do |format|
+      format.html { redirect_to pending_reviews_path, notice: 'Order was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private

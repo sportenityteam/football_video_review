@@ -12,6 +12,9 @@
       <tr>
         <td><%= "#{order.user.fullname}'s #{order.title}" %></td>
         <td><%= link_to 'Click To Review', review_order_path(order) %></td>
+        <% if order.status == 7 %>
+          <td><%= link_to 'Cancel', review_path(order.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

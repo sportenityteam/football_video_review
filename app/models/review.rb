@@ -4,6 +4,6 @@ class Review < ActiveRecord::Base
   belongs_to :user
 
   #validations
-  validates :technical_notes , :presence => true
-  validates :tactical_notes , :presence => true
+  # validates :technical_notes , :presence => true
+  # validates :tactical_notes , :presence => true
 end

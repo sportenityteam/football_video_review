@@ -11,6 +11,8 @@ class Admin::OrderController < Admin::BaseController
   end
 
   def show
+    @order.update_attributes(:status => Order::STATUS["In review"])
+    Review.find_or_create_by(:order_id => @order.id, :user_id => current_user.id)
     @review = Review.new
   end
 
