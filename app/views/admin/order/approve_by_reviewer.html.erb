@@ -1,0 +1,18 @@
+<h1>Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= "#{order.user.fullname}'s #{order.title}" %>,Video Reviewed by <%= order.try(:reviews).try(:first).try(:reviewer).try(:fullname) %></td>
+        <td><%= link_to 'Approve', "#" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

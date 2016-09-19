@@ -14,6 +14,10 @@ class Admin::OrderController < Admin::BaseController
     @review = Review.new
   end
 
+  def approve_by_reviewer
+    @orders = Order.where(:status => Order::STATUS["Review approved"])
+  end
+
   private
     def set_order
       @order = Order.find(params[:id])
