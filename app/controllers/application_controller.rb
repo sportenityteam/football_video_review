@@ -23,12 +23,12 @@ class ApplicationController < ActionController::Base
     #redirection of different users after sign in
     def after_sign_in_path_for(resource)
       if resource.is_admin?
-        return admin_pending_orders_path 
+        return admin_pending_orders_path
       elsif resource.is_reviewer?
-        return pending_reviews_path 
+        return pending_reviews_path
       else
-        return orders_path 
-      end 
+        return orders_path(:type => "New")
+      end
     end
 
   protected
@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :gender, :date_of_birth, :position, :zipcode , :current_club, :address, :description, :phone_number])
     end
 
-    def restrict_user 
+    def restrict_user
       if user_signed_in?
         if current_user.is_admin?
           redirect_to root_url

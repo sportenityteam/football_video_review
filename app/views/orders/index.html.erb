@@ -22,9 +22,13 @@
           <% end %>
         <% end %>
         </td>
-        <td><%= link_to 'Show', order %>
-        <%= link_to 'Edit', edit_order_path(order) %>
-        <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if order.status == 1 %>
+          <td>
+            <%= link_to 'Show', order %>
+            <%= link_to 'Edit', edit_order_path(order) %>
+            <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

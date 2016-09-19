@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     @order.videos.build
     @amount = User.calculate_amount_from_age(current_user.date_of_birth.strftime("%m/%d/%Y"))
   end
-  
+
   def create
     @order = Order.new(order_params)
     @total_duration = 0
@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       #setting response of place_order if resonse is sucess then order will be saved
       response = place_order(@amount)
       if response != false
-        if response.success?  
+        if response.success?
           puts "Successfully charged $#{@amount} to the credit card #{@credit_card.number}"
           if @order.save
             if @order.videos.present?
@@ -27,11 +27,11 @@ class OrdersController < ApplicationController
               end
             end
             @order.update_attributes(:total_video_duration => @total_duration,:user_id => current_user.id)
-            
+
             #creating record of payment for placed order
             @payment = Payment.new(:order_id => @order.id,:amount => @amount,:date_of_payment => DateTime.now, :other_data => response ,:status => "success",:transcation_id => response.params["pn_ref"])
             @payment.save
-            
+
             format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
             format.json { render :show, status: :created, location: @order }
           else
@@ -59,7 +59,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.where(:user_id => current_user.id)
+    @orders = Order.where(:user_id => current_user.id, :status => Order::STATUS[params[:type]])
   end
 
   def destroy
