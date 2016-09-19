@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
 
-  before_action :set_user, :only => [:edit, :update, :destroy]
+  before_action :set_user, :only => [:edit, :update, :show, :destroy]
 
   def index
     @users = User.is_reviewer
@@ -24,6 +24,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
+  end
+
+  def show
   end
 
   def update

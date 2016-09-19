@@ -1,0 +1,12 @@
+<h3> User details</h3>
+<%= image_tag @user.avatar.url(:thumb) , alt:"image"%><br/>
+Username : <%= @user.try(:fullname) %><br/>	
+Gender : 
+<% if @user.gender == 1 %>
+  Male
+<% else %>
+  Female
+<% end %><br/>
+Phone number : <%= @user.try(:phone_number) %> <br/>
+Email : <%= @user.email %><br/>
+Current club : <%= @user.try(:current_club)%>
