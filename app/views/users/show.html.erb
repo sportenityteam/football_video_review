@@ -1,20 +1,20 @@
 <h3> My Profile</h3> 
 <%= image_tag current_user.avatar.url(:thumb) , alt:"image"%><br/>
-Username : <%= current_user.try(:fullname) %><br/>	
-Gender : 
+<p>Username : <%= current_user.try(:fullname) %></p>
+<p>Gender : 
 <% if current_user.gender == 1 %>
   Male
 <% else %>
   Female
-<% end %><br/>
+<% end %></p>
 <% if current_user.is_reviewer? %>
-	Address : <%= current_user.try(:address) %>
-	Phone number : <%= current_user.try(:phone_number) %> <br/>
-	Current club : <%= current_user.try(:current_club) %> <br/>
-	Description : <%= current_user.try(:description) %> <br/>
+	<p>Address : <%= current_user.try(:address) %></p>
+	<p>Phone number : <%= current_user.try(:phone_number) %></p>
+	<p>Current club : <%= current_user.try(:current_club) %></p>
+	<p>Description : <%= current_user.try(:description) %></p>
 <% end %>
 <% if current_user.is_user? %>
-	Position : <%= current_user.try(:position) %> <br/>
+	<p>Position : <%= current_user.try(:position) %></p>
 <% end %>
-Email : <%= current_user.email %><br/><br/>
-<%= link_to 'Edit Profile', edit_user_registration_path %><br/>
+<p>Email : <%= current_user.email %></p>
+<p><%= link_to 'Edit Profile', edit_user_registration_path %></p>
