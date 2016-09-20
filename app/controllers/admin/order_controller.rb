@@ -19,6 +19,7 @@ class Admin::OrderController < Admin::BaseController
     @orders = Order.where(:status => Order::STATUS["Reviewed"])
   end
 
+  # if admin approve or reject any order then order status will be updated
   def approval_of_admin
     status = params[:status]
     @order = Order.find(params[:id])
