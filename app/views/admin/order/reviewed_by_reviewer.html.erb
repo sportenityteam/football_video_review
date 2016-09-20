@@ -11,8 +11,8 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= "#{order.user.fullname}'s #{order.title}" %></td>
-        <td><%= link_to 'Review Approve', "#" %></td>
-        <td><%= link_to 'Review Reject', "#" %></td>
+        <td><%= link_to 'Review Approve', admin_approval_of_admin_path(order.id,status: 5) %></td>
+        <td><%= link_to 'Review Reject', admin_approval_of_admin_path(order.id,status: 6) %></td>
       </tr>
     <% end %>
   </tbody>
