@@ -38,7 +38,8 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.where("user_id =?", current_user.id)
+    #@reviews = Review.where("user_id =?", current_user.id)
+    @reviews = Review.joins(:order).where("reviews.user_id =? and orders.status != ?", current_user.id, 7)
   end
 
   def pending_reviews

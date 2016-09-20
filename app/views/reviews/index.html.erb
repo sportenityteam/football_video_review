@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Status</th>
       <th>Details</th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
     <% @reviews.each do |review| %>
       <tr>
         <td><%= "#{review.order.user.try(:fullname)}'s #{review.order.try(:title)}" %></td>
+        <td><%= Order::STATUS.key(review.order.status) %></td>
         <td><%= link_to 'Details', review_path(review) %></td>
       </tr>
     <% end %>
