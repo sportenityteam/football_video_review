@@ -44,12 +44,12 @@
   <div class="field">
     <lable>Gender : </label>
       <div>
-        <%= f.radio_button :gender, 1 , :checked => true , class: "styled" %>
+        <%= f.radio_button :gender, 1 , :checked => f.object.gender == 1 ? true : false , class: "styled" %>
         <label>Male</label>
       </div>
 
       <div>
-        <%= f.radio_button :gender, 2 , class: "styled" , :checked => true %>
+        <%= f.radio_button :gender, 2 ,:checked =>  f.object.gender == 2 ? true : false  , class: "styled"  %>
         <label>Female</label>
       </div>
     </label>
