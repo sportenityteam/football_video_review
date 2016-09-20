@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, :only => [:edit,:destroy]
+  before_action :set_order, :only => [:edit,:destroy,:show]
   before_action :restrict_user
 
   def new
@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
             @payment = Payment.new(:order_id => @order.id,:amount => @amount,:date_of_payment => DateTime.now, :other_data => response ,:status => "success",:transcation_id => response.params["pn_ref"])
             @payment.save
 
-            format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
+            format.html { redirect_to orders_path(:type=>"New"), notice: 'Order was successfully created.' }
             format.json { render :show, status: :created, location: @order }
           else
             format.html { render :new }

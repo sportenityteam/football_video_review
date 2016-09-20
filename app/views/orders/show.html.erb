@@ -1,2 +1,12 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h3> Order Details </h3>
+<p> Title : <%= @order.try(:title) %></p>
+<% if @order.videos.present? %>
+  <% @order.videos.each do |video| %>
+    <%= video_tag video.video_url.url, controls: true, autobuffer: true %>
+  <% end %>
+<% end %>
+<p> Description : <%= @order.try(:description) %></p>
+<p> Total video duration : <%= @order.try(:total_video_duration) %> seconds </p>
+<p> Date of Order : <%= @order.created_at.strftime("%m-%d-%Y %H:%M:%S") %></p>
+
+

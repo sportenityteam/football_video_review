@@ -1,10 +1,11 @@
-<h1>Orders</h1>
+<h3>Reviewed Videos</h1>
 
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Status</th>
+      <th>Details</th>
     </tr>
   </thead>
 
@@ -13,6 +14,7 @@
       <tr>
         <td><%= order.title %></td>
         <td><%= Order::STATUS.key(order.status) %></td>
+        <td><%= link_to 'Details', admin_review_details_path(order.id) %></td>
       </tr>
     <% end %>
   </tbody>

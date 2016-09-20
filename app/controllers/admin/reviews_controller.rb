@@ -31,7 +31,7 @@ class Admin::ReviewsController < Admin::BaseController
   end
 
   def show
-    @review = Review.joins(:user).where("users.user_type = ? and reviews.order_id = ? " ,2,params[:id]).last
+    @review = Review.joins(:user).where("users.user_type != ? and reviews.order_id = ? " ,3,params[:id]).last
   end
 
   private

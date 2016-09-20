@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_order, :only => [:new]
-
+  before_action :set_review, :only => [:show]
   def new
     @review = Review.new
     @order.update_attributes(:status => Order::STATUS["In review"])
@@ -60,6 +60,9 @@ class ReviewsController < ApplicationController
   private
     def set_order
       @order = Order.find(params[:id])
+    end
+    def set_review
+      @review = Review.find(params[:id])
     end
     def review_params
       params.require(:review).permit(:order_id, :user_id, :technical_notes, :tactical_notes, :review_time)

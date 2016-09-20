@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Review Time</th>
+      <th>Details</th>
     </tr>
   </thead>
 
@@ -12,7 +12,7 @@
     <% @reviews.each do |review| %>
       <tr>
         <td><%= "#{review.order.user.try(:fullname)}'s #{review.order.try(:title)}" %></td>
-        <td><%= review.review_time %> seconds</td>
+        <td><%= link_to 'Details', review_path(review) %></td>
       </tr>
     <% end %>
   </tbody>

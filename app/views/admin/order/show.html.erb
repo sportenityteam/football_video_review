@@ -1,26 +1,10 @@
-<h1>Order</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Video</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td><%= @order.title %></td>
-      <td><%= @order.description %></td>
-      <% if @order.videos.present? %>
-        <% @order.videos.each do |video| %>
-          <td><%= video_tag video.video_url.url, controls: true, autobuffer: true, :id => "order_video" %> </td>
-        <% end %>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+<h3> Review Order</h3>
+<p>Title : <%= @order.title %></p>
+<p>Description : <%= @order.description %></p>
+<% if @order.videos.present? %>
+  <% @order.videos.each do |video| %>
+    <%= video_tag video.video_url.url, controls: true, autobuffer: true, :id => "order_video" %>
+  <% end %>
+<% end %>
 <%= render "admin/reviews/form" %>
 
