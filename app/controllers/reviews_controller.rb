@@ -20,6 +20,8 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         @order.update_attributes(:status => Order::STATUS["Reviewed"])
+        @user = User.is_admin.first
+        OrderMailer.reviewed_order(@order,@user).deliver_now
         format.html { redirect_to reviews_path, notice: 'Review for video was submitted successfully.' }
         format.json { render :pending_reviews , status: :created, location: @review }
       else

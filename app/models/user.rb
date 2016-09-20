@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  #before_action :authenticate_user!
+
+  after_create :send_user_mail
 
   #Enum
   USER_TYPES =  { "admin" => 1, "reviewer" => 2, "user" => 3}
@@ -31,8 +32,10 @@ class User < ActiveRecord::Base
   validates_length_of :zipcode , :minimum => 5 , :message => "must be 5 characters long"
 
   #scope
+  scope :is_admin, -> {where("user_type =? ", 1)}
   scope :is_reviewer, -> {where("user_type =? ", 2)}
   scope :is_user, -> {where("user_type =? ", 3)}
+  scope :not_user, -> {where("user_type !=? ", 3)}
 
 
   #instance methods
@@ -70,6 +73,10 @@ class User < ActiveRecord::Base
     if self.password.nil?
       self.password = "12345678"
     end
+  end
+
+  def send_user_mail
+    UserMailer.send_new_user_message(self).deliver_now
   end
 
 end

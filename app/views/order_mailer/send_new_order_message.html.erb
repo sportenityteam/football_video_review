@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello <%= @user.fullname %>,<br></p>
+    <p></p>
+    <h4>Video uploaded by, <%= @order.try(:user).try(:fullname) %> </h4>
+
+    <p> Feel free to contact us at from@example.com with any questions.</p>
+    Thank You<br>
+    Football Video Review Team
+  </body>
+</html>

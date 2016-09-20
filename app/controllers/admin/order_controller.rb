@@ -24,6 +24,13 @@ class Admin::OrderController < Admin::BaseController
     status = params[:status]
     @order = Order.find(params[:id])
     @order.update_attributes!(:status => status)
+    @order_email = Order.find(params[:id])
+    if status == "5"
+      OrderMailer.admin_review_approved(@order_email).deliver_now
+    elsif status == "6"
+      @reviewer = @order.reviews.last.user
+      OrderMailer.admin_review_rejected(@order_email,@reviewer).deliver_now
+    end
     redirect_to admin_reviewed_by_reviewer_path , :notice => "Order successfully updated."
   end
 

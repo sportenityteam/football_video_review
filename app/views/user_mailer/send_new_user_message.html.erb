@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello <%=@user.fullname %>,<br></p>
+    <p></p>
+    <h4>Your account has confirmed successfully.</h4>
+    <h2>Login credentials:</h2>
+    <h4>Email : <%=@user.email %></h4>
+
+    <h4>URL: <a href="<%= Rails.application.secrets.host %>/">Go to Football Video Review</a></h4>
+    <br/>
+
+    <h4><a href="<%= Rails.application.secrets.host %>?forgot_pwd=true&email=<%=@user.email %> ">Forgot your registration password?</a></h4>
+
+    <p> Feel free to contact us at from@example.com with any questions.</p>
+    Thank You<br>
+    Football Video Review Team
+  </body>
+</html>
