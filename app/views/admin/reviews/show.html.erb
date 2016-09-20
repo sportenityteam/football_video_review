@@ -1,0 +1,12 @@
+<h3> Review Details </h3>
+<p> Title : <%= @review.order.try(:title) %></p>
+<% if @review.order.videos.present? %>
+  <% @review.order.videos.each do |video| %>
+    <%= video_tag video.video_url.url, controls: true, autobuffer: true %>
+  <% end %>
+<% end %>
+<p> Reviewer : <%= @review.user.try(:fullname) %></p>
+<p> Review time : <%= @review.try(:review_time) %> seconds </p>
+<p> Technical Notes : <%= @review.try(:technical_notes) %> </p>
+<p> Tactical Notes : <%= @review.try(:tactical_notes) %> </p><br/>
+<%= link_to 'Approve', admin_approval_of_admin_path(@review.order.id,status: 5) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Reject', admin_approval_of_admin_path(@review.order.id,status: 6) %>

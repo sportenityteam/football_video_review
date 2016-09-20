@@ -28,6 +28,10 @@ class Admin::ReviewsController < Admin::BaseController
     end
   end
 
+  def show
+    @review = Review.joins(:user).where("users.user_type = ? and reviews.order_id = ? " ,2,params[:id]).last
+  end
+
   private
     def review_params
       params.require(:review).permit(:order_id, :user_id, :technical_notes, :tactical_notes, :review_time)
