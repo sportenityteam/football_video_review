@@ -1,4 +1,4 @@
-<h3> Review Details </h3>
+<h3> <%= @review.try(:order).try(:user).try(:fullname) %> 's Video Review Details </h3>
 <p> Title : <%= @review.try(:order).try(:title) %></p>
 <% if @review.try(:order).try(:videos).present? %>
   <% @review.order.videos.each do |video| %>

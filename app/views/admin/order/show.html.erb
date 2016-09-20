@@ -1,4 +1,4 @@
-<h3> Review Order</h3>
+<h3>Reviewing <%= @order.user.try(:fullname)%> 's Video</h3>
 <p>Title : <%= @order.title %></p>
 <p>Description : <%= @order.description %></p>
 <% if @order.videos.present? %>
