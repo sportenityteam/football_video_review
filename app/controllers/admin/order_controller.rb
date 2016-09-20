@@ -7,7 +7,8 @@ class Admin::OrderController < Admin::BaseController
   end
 
   def reviewed_videos
-    @reviews = Review.where("user_id =?", current_user.id)
+    order_ids = Review.where("user_id =?", current_user.id).pluck(:order_id).uniq
+    @orders = Order.where("id IN (?)", order_ids)
   end
 
   def show
