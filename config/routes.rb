@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get "/list_of_orders/" => "order#list_of_orders" , as: :list_of_orders
     get "/order_details/:id" => "order#order_details", as: :order_details
     resources :reviews, :only => [:new, :create]
+    resources :prices#, :only => [:index]
   end
 
   #change password
