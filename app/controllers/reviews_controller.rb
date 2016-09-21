@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     @review_new = Review.where(:order_id => @order.id, :user_id => current_user.id).first
     @review = Review.new
     if @order.status == 7 and !@review_new.present?
-      redirect_to pending_reviews_path, notice: "Already reviewed by other"
+      redirect_to pending_reviews_path, notice: "Video Already reviewed by other reviewer."
     else
       Review.find_or_create_by(:order_id => @order.id, :user_id => current_user.id)
       @order.update_attributes(:status => Order::STATUS["In review"])
