@@ -1,0 +1,90 @@
+/*Responsive media queries*/
+
+@media only screen and (max-width:1200px){
+	.tab_content form ul li span select{
+		width:72%;
+	}
+}
+
+@media only screen and (max-width:993px){
+	.logo, .navigation{
+		width:100% !important;
+		text-align:center;
+		margin-bottom:10px;
+	}
+	
+	.logo img{
+		width:200px;
+	}
+	.navigation ul{
+		padding:0;
+	}
+	
+	.TabbedPanelsTab{
+		padding:10px 5px !important;
+		font-size:20px !important;
+	}
+	
+	.tab_content form ul li h2{
+		font-size:20px;
+	}
+	
+	.tab_content form ul li a{
+		font-size:18px;
+	}
+	
+	.box img{
+		width:20px;
+		height:20px;
+	}
+	
+	.tab_content form ul li span input{
+		width:83%;
+	}
+	
+	.tab_content form ul li button{
+		font-size:20px;
+	}
+	
+	.radio label{
+		margin:0 5px !important;
+	}
+	
+	.radio, .checkbox{
+		margin:3px 0;
+	}
+	
+	footer ul{
+		width:100%;
+		text-align:center;
+		margin-bottom:10px;
+	}
+	
+	.copy-right{
+		width:100%;
+		text-align:center;
+	}
+	
+	footer ul li{
+		padding:0 5px !important;
+	}
+	
+	footer ul li a, .copy-right p{
+		font-size:15px;
+	}
+	
+	.tab_content form ul li span select{
+		padding: 0;
+	}
+	
+}
+
+@media only screen and (max-width:360px){
+	.tab_content form ul li h2{
+		font-size:18px;
+	}
+	
+	.TabbedPanelsTab{
+		font-size:14px !important;
+	}
+}
