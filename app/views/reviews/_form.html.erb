@@ -15,23 +15,29 @@
   <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
   <%= f.hidden_field :review_time, :value => "", :id => "review_time" %>
   <%= hidden_field_tag :submit_time, :value => "", :id => "submit_time" %>
+  <%= hidden_field_tag :is_reviewed, :value => "", :id => "is_reviewed" %>
 
   <div class="field">
     <%= f.label :technical_notes %><br />
-    <%= f.text_area :technical_notes %>
+    <%= f.text_area :technical_notes,:value => @review_new.present? ? @review_new.technical_notes : "" %>
   </div>
 
   <div class="field">
     <%= f.label :tactical_notes %><br />
-    <%= f.text_area :tactical_notes %>
+    <%= f.text_area :tactical_notes , :value =>  @review_new.present? ? @review_new.tactical_notes : ""  %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Submit", :class => "submit_form" %>
+    <%= link_to "Back to List", pending_reviews_path %>
+    <%= f.submit "Submit", :class => "submit_form",:id => "review_submit" %>
+    <%= f.submit "Save Notes" %>
   </div>
 <% end %>
 
 <script>
+  $("#review_submit").click(function(){
+    $("#is_reviewed").val("1");
+  });
 
   $(".submit_form").click(function(){
     var current_time = new Date($.now());

@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @order.update_attributes(:status => Order::STATUS["In review"])
-    Review.find_or_create_by(:order_id => @order.id, :user_id => current_user.id)
+    @review_new = Review.where(:order_id => @order.id, :user_id => current_user.id).first
   end
 
   def create
@@ -19,10 +19,14 @@ class ReviewsController < ApplicationController
     @review.review_time = review_time
     respond_to do |format|
       if @review.save
-        @order.update_attributes(:status => Order::STATUS["Reviewed"])
-        @user = User.is_admin.first
-        OrderMailer.reviewed_order(@order,@user).deliver_now
-        format.html { redirect_to reviews_path, notice: 'Review for video was submitted successfully.' }
+        if params[:is_reviewed] == 1
+          @order.update_attributes(:status => Order::STATUS["Reviewed"])
+          @user = User.is_admin.first
+          OrderMailer.reviewed_order(@order,@user).deliver_now
+          format.html { redirect_to my_reviews_path, notice: 'Review for video was submitted successfully.' }
+          format.json { render :pending_reviews , status: :created, location: @review }
+         end
+        format.html { redirect_to review_order_path(@order), notice: 'Review notes saved successfully.' }
         format.json { render :pending_reviews , status: :created, location: @review }
       else
         format.html { redirect_to review_order_path(@order), :notice => "#{@review.errors.full_messages.join(' , ')}" }
@@ -35,6 +39,9 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
   end
 
   def index
