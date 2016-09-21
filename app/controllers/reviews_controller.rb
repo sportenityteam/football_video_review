@@ -1,10 +1,17 @@
 class ReviewsController < ApplicationController
+
   before_action :set_order, :only => [:new]
   before_action :set_review, :only => [:show]
+
   def new
-    @review = Review.new
-    @order.update_attributes(:status => Order::STATUS["In review"])
     @review_new = Review.where(:order_id => @order.id, :user_id => current_user.id).first
+    @review = Review.new
+    if @order.status == 7 and !@review_new.present?
+      redirect_to pending_reviews_path, notice: "Already reviewed by other"
+    else
+      Review.find_or_create_by(:order_id => @order.id, :user_id => current_user.id)
+      @order.update_attributes(:status => Order::STATUS["In review"])
+    end
   end
 
   def create
