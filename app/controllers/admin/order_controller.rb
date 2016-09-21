@@ -30,6 +30,11 @@ class Admin::OrderController < Admin::BaseController
     elsif status == "6"
       @reviewer = @order.reviews.last.user
       OrderMailer.admin_review_rejected(@order_email,@reviewer).deliver_now
+      user = User.find(@order.user_id)
+      user_orders_count = user.orders.count
+      if user_orders_count == 1
+        @order.update_attributes!(:status => 7)
+      end
     end
     redirect_to admin_reviewed_by_reviewer_path , :notice => "Order successfully updated."
   end
