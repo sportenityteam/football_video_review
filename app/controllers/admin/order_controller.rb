@@ -1,6 +1,6 @@
 class Admin::OrderController < Admin::BaseController
 
-  before_action :set_order, :only => [:show]
+  before_action :set_order, :only => [:show,:order_details]
 
   def index
     @orders = Order.where(:status => Order::STATUS["New"])
@@ -32,6 +32,14 @@ class Admin::OrderController < Admin::BaseController
       OrderMailer.admin_review_rejected(@order_email,@reviewer).deliver_now
     end
     redirect_to admin_reviewed_by_reviewer_path , :notice => "Order successfully updated."
+  end
+
+  #List of orders
+  def list_of_orders
+    @orders = Order.all
+  end
+
+  def order_details
   end
 
   private
