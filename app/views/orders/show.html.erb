@@ -7,6 +7,8 @@
 <% end %>
 <p> Description : <%= @order.try(:description) %></p>
 <p> Total video duration : <%= @order.try(:total_video_duration) %> seconds </p>
-<p> Date of Order : <%= @order.created_at.strftime("%m-%d-%Y %H:%M:%S") %></p>
-
+<p> Date of Order : <%= @order.created_at.strftime("%m-%d-%Y") %></p>
+<h3> Payment Details </h3>
+<p> Amount : <%= @order.payment.amount/100 %>$ </p>
+<p> Date of Payment : <%= @order.payment.date_of_payment.strftime("%m-%d-%Y %H:%M:%S") %> </p>
 

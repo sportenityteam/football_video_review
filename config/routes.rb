@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     get "/reviewed_by_reviewer" => "order#reviewed_by_reviewer", as: :reviewed_by_reviewer
     get "/approval_of_admin/:id" => "order#approval_of_admin", as: :approval_of_admin
     get "/review_details/:id" => "reviews#show", as: :review_details
+    get "/list_of_orders/" => "order#list_of_orders" , as: :list_of_orders
+    get "/order_details/:id" => "order#order_details", as: :order_details
     resources :reviews, :only => [:new, :create]
   end
 
