@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
             @order.update_attributes(:total_video_duration => @total_duration,:user_id => current_user.id)
 
             #creating record of payment for placed order
-            @payment = Payment.new(:order_id => @order.id,:amount => @amount,:date_of_payment => DateTime.now, :other_data => response ,:status => "success",:transcation_id => response.params["pn_ref"])
+            @payment = Payment.new(:order_id => @order.id,:amount => @amount,:date_of_payment => DateTime.now, :other_data => response.params ,:status => "success",:transcation_id => response.params["pn_ref"])
             @payment.save
 
             format.html { redirect_to orders_path(:type=>"New"), notice: 'Order was successfully created.' }
