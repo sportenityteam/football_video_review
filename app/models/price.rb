@@ -10,6 +10,6 @@ class Price < ActiveRecord::Base
 		else
 			amount = Price.find_by_name("13 and up").price
 		end
-		return amount
+		return amount*100
 	end
 end
