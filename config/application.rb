@@ -22,5 +22,12 @@ module FootballVideoReview
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.assets.precompile += %w(.svg .eot .woff .woff2 .ttf .otf)
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join("app", "assets", "images")
+    # config.paperclip_defaults = {
+    #   :storage => :s3,
+    #   :s3_credentials => "#{Rails.root.to_s}/config/aws.yml"
+    # }
   end
 end
