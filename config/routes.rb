@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :orders
   resources :payments
-  resources :reviews
+  resources :reviews, :except => [:new,:index]
   get "/pending_reviews" => "reviews#pending_reviews" , as: :pending_reviews
   get "/review_order/:id" => "reviews#new", as: :review_order
   get "/my_reviews" => "reviews#index" , as: :my_reviews
