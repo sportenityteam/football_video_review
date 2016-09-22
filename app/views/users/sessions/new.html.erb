@@ -1,26 +1,46 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div id="TabbedPanels1" class="TabbedPanels">
+  <ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab TabbedPanelsTabSelected TabbedPanelsTabHover" tabindex="0">Sign in</li>
+    <li class="TabbedPanelsTab" tabindex="0">Sign up</li>
+  </ul>
+    
+  <div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
+      <div class="tab_content col-xs-12" style="margin-top:180px;">
+        <%= render "users/sessions/login" %>
+      </div>
     </div>
-  <% end -%>
+    <div class="TabbedPanelsContent" style="display: none;">
+      <div class="tab_content col-xs-12" style="margin-top:25px;">
+        <%= render "users/registrations/registration" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <h2>Log in</h2>
+
+<%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%#= f.label :email %><br />
+    <%#= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%#= f.label :password %><br />
+    <%#= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <%# if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%#= f.check_box :remember_me %>
+      <%#= f.label :remember_me %>
+    </div>
+  <%# end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%#= f.submit "Log in" %>
   </div>
-<% end %>
+<%# end %>
 
-<%= render "users/shared/links" %>
+<%#= render "users/shared/links" %> -->

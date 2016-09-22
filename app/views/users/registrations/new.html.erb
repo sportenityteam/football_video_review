@@ -1,75 +1,100 @@
-<h2>Sign up</h2>
+<div id="TabbedPanels1" class="TabbedPanels">
+  <ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab" tabindex="0">Sign in</li>
+    <li class="TabbedPanelsTab TabbedPanelsTabSelected TabbedPanelsTabFocused" tabindex="0">Sign up</li>
+  </ul>
+    
+  <div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent " style="display: none;" >
+      <div class="tab_content col-xs-12" style="margin-top:180px;">
+        <%= render "users/sessions/login" %>
+      </div>
+    </div>
+    <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
+      <div class="tab_content col-xs-12" style="margin-top:25px;">
+        <%= render "users/registrations/registration" %>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  // $( document ).ready(function() {
+  //   console.log(Spry.Widget.TabbedPanels);
+  //   //alert($(".TabbedPanels").defaultTab());
+  // });
+</script>
+<!-- <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%#= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%#= f.label :first_name %><br />
+    <%#= f.text_field :first_name %>
   </div>
 
   <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%#= f.label :last_name %><br />
+    <%#= f.text_field :last_name %>
   </div>
 
   <div class="field">
-    <%= f.label :date_of_birth %><br />
-    <%= f.date_field :date_of_birth, autocomplete: "off" %>
+    <%#= f.label :date_of_birth %><br />
+    <%#= f.date_field :date_of_birth, autocomplete: "off" %>
   </div>
 
   <div class="field">
     <lable>Gender : </label>
       <div>
-        <%= f.radio_button :gender, 1 , :checked => true , class: "styled" %>
+        <%#= f.radio_button :gender, 1 , :checked => true , class: "styled" %>
         <label>Male</label>
       </div>
 
       <div>
-        <%= f.radio_button :gender, 2 , class: "styled" %>
+        <%#= f.radio_button :gender, 2 , class: "styled" %>
         <label>Female</label>
       </div>
     </label>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
+    <%#= f.label :email %><br />
+    <%#= f.email_field :email %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%#= f.label :password %>
+    <%# if @minimum_password_length %>
+    <em>(<%#= @minimum_password_length %> characters minimum)</em>
+    <%# end %><br />
+    <%#= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+    <%#= f.label :password_confirmation %><br />
+    <%#= f.password_field :password_confirmation %>
   </div>
 
   <div class="field">
-    <%= f.label :zipcode %><br />
-    <%= f.text_field :zipcode %>
+    <%#= f.label :zipcode %><br />
+    <%#= f.text_field :zipcode %>
   </div>
 
   <div class="field">
-    <%= f.label :position %><br />
-    <%= f.text_field :position %>
+    <%#= f.label :position %><br />
+    <%#= f.text_field :position %>
   </div>
 
   <div class="field">
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar %>
+    <%#= f.label :avatar %><br />
+    <%#= f.file_field :avatar %>
   </div><br/>
 
-  <%= f.hidden_field :user_type, :value => "#{User::USER_TYPES["user"]}" %>
+  <%#= f.hidden_field :user_type, :value => "#{User::USER_TYPES["user"]}" %>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%#= f.submit "Sign up" %>
   </div>
-<% end %>
+<%# end %>
 
-<%= render "users/shared/links" %>
+<%#= render "users/shared/links" %> -->

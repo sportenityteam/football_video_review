@@ -16,5 +16,6 @@
  *= require responsive
  *= require style
  *= require SpryTabbedPanels
+ *= require custom
  *= require_self
  */

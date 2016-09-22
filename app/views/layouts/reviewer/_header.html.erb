@@ -1,13 +1,38 @@
-<h4>Reviewer Panel 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Pending To Review", pending_reviews_path %>
-
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "My Reviews", my_reviews_path %>
-
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "My Profile", my_profile_path %>
-	
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Change Password", user_change_password_path %>
-	
-	<% if user_signed_in? %>
-  	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Log out", destroy_user_session_path , method: "delete" %>
-	<% end %>
-</h4><hr/>
+<div class="container-fluid nopadding_lr margin_btm_30">
+  <header class="col-xs-12">
+    <div class="container">
+      <div class="logo pull-left">
+        <a href="#">
+          <%= image_tag "logo.png" ,:class=> "img-responsive" %></a>
+      </div>
+       <div class="navigation pull-right">
+        <ul>
+          <% if user_signed_in? %>
+          	<li><%= link_to "Log out", destroy_user_session_path , method: "delete" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <!-- navigation -->
+  <div class="navigation white_bg col-xs-12">
+    <ul class="container padding_tb_20 menu-font">
+      <li>
+        <a href="#" class="green">Home</a>
+      </li> |
+      <li>
+        <%= link_to "Pending To Review", pending_reviews_path,:class => "dark_gray" %>
+      </li> |
+      <li>
+        <%= link_to "My Reviews", my_reviews_path ,:class => "dark_gray" %>
+      </li> |
+      <li>
+        <%= link_to "My Profile", my_profile_path,:class =>"dark_gray" %>
+      </li> |
+      <li>
+        <%= link_to "Change Password", user_change_password_path, :class =>"dark_gray" %>
+      </li>
+    </ul>
+  </div>
+  <!-- Navigation closed -->
+</div>
