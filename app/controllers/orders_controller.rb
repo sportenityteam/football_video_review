@@ -62,6 +62,10 @@ class OrdersController < ApplicationController
     @orders = Order.where(:user_id => current_user.id, :status => Order::STATUS[params[:type]])
   end
 
+  def my_orders
+    @orders = Order.where(:user_id => current_user.id)
+  end
+
   def destroy
     @order.destroy
     respond_to do |format|

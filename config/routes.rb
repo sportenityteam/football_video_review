@@ -5,12 +5,17 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :orders
   resources :order_steps
+
+  resources :orders do
+    resources :order_steps
+  end
   resources :payments
   resources :reviews, :except => [:new,:index]
   get "/pending_reviews" => "reviews#pending_reviews" , as: :pending_reviews
   get "/review_order/:id" => "reviews#new", as: :review_order
   get "/my_reviews" => "reviews#index" , as: :my_reviews
   get "/my_profile" => "users#show" , as: :my_profile
+  get "/my_orders" => "orders#my_orders" , as: :my_orders
 
   namespace :admin do
     resources :users

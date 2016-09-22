@@ -34,6 +34,10 @@ class OrderStepsController < ApplicationController
           render_wizard @order
         end
       when :add_payment
+        if params[:order_id].present?
+          puts "=======order===3===#{params[:order_id]}"
+          $orderId = params[:order_id]
+        end
         response = place_order(@amount, params[:card_number], params[:expiration_month], params[:expiration_year], params[:cvv])
         if response != false
           if response.success?

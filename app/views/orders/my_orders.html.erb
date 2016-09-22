@@ -1,0 +1,30 @@
+<h3>My Orders</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Status</th>
+      <th>View Order</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.title %></td>
+        <td>
+          <% if order.payment.present? %>
+            <%= order.try(:payment).try(:status) %>
+          <% else %>
+            <%= link_to "pending", order_order_step_url(:add_payment,:order_id => order.id) %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to 'Show', order %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
