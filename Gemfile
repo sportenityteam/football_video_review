@@ -60,3 +60,4 @@ gem 'aws-sdk', '< 2.0'
 gem "letter_opener", :group => :development
 gem 'bootstrap'
 gem 'best_in_place'
+gem 'wicked'

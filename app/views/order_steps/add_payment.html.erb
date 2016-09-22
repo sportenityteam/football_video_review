@@ -1,0 +1,24 @@
+<%= nested_form_for @payment, url: wizard_path, method: :put do |f| %>
+  <h4> Add payment details </h4>
+  <% if @errors.present? %>
+    <div id="error_explanation">
+      <ul>
+        <li><%= @errors %></li>
+      </ul>
+    </div>
+  <% end %>
+  <%= label_tag :card_number %><br/>
+  <%= text_field_tag :card_number %><br/><br/>
+
+  <%= label_tag :expiration_month %><br/>
+  <%= select_tag :expiration_month,options_for_select(expiration_month),{include_blank: "Select expiration month"} %><br/><br/>
+
+  <%= label_tag :expiration_year %><br/>
+  <%= select_tag :expiration_year, options_for_select(expiration_year) , { include_blank: "Select expiration year"} %><br/><br/>
+
+  <%= label_tag :cvv %><br/>
+  <%= text_field_tag :cvv %><br/><br/>
+  <div class="actions">
+    <%= f.submit "Continue" %>
+  </div>
+<% end %>

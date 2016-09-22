@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   resources :orders
+  resources :order_steps
   resources :payments
   resources :reviews, :except => [:new,:index]
   get "/pending_reviews" => "reviews#pending_reviews" , as: :pending_reviews
