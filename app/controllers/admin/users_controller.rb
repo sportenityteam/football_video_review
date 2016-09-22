@@ -3,7 +3,8 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, :only => [:edit, :update, :show, :destroy]
 
   def index
-    @users = User.is_reviewer
+    #@users = User.is_reviewer
+    @users = User.where(:user_type => User::USER_TYPES[params[:type]])
   end
 
   def new
@@ -14,7 +15,7 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to admin_users_path, notice: 'Reviewer was successfully created.' }
+        format.html { redirect_to admin_users_path(:type => "reviewer"), notice: 'Reviewer was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -32,7 +33,7 @@ class Admin::UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to admin_users_path, notice: 'Reviewer was successfully updated.' }
+        format.html { redirect_to admin_users_path(:type => "reviewer"), notice: 'Reviewer was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -44,7 +45,7 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_url, notice: 'Reviewer was successfully destroyed.' }
+      format.html { redirect_to admin_users_path(:type => "reviewer"), notice: 'Reviewer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -56,6 +57,6 @@ class Admin::UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :gender, :date_of_birth, :address, :zipcode, :phone_number, :user_type, :current_club, :avatar, :description)
+      params.require(:user).permit(:email, :first_name, :last_name, :gender, :date_of_birth, :address, :zipcode, :phone_number, :user_type, :current_club, :avatar, :description,:position)
     end
 end

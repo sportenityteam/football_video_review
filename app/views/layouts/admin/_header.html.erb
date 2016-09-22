@@ -21,10 +21,13 @@
         <a href="#" class="green">Home</a>
       </li> |
       <li>
-        <%= link_to "Add Reviewer", admin_users_path ,:class => "dark_gray" %>
+        <%= link_to "Reviewers", admin_users_path(:type => "reviewer") ,:class => "dark_gray" %>
       </li> |
       <li>
-        <%= link_to "Pending To Review", admin_pending_orders_path ,:class => "dark_gray" %>
+        <%= link_to "Users" , admin_users_path(:type => "user"), :class => "dark_gray"%>
+      </li>
+      <li>
+        <%= link_to "Pending Reviews", admin_pending_orders_path ,:class => "dark_gray" %>
       </li> |
       <li>
         <%= link_to "Reviewed Videos", admin_reviewed_videos_path, :class =>"dark_gray" %>

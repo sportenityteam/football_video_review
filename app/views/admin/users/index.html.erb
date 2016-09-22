@@ -1,5 +1,8 @@
-<h3>Reviewers</h3>
-
+<% if params[:type] == "user"%>
+  <h3>Users</h3>
+<% else %>
+  <h3>Reviewers</h3>
+<% end %>
 <table>
   <thead>
     <tr>
@@ -29,14 +32,18 @@
         <td><%= user.phone_number %></td>
         <td><%= user.current_club %></td>
         <td><%= link_to 'Show', admin_user_path(user) %></td>
-        <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
-        <td><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user.is_reviewer? %>
+          <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+          
+          <td><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'Add Reviewer', new_admin_user_path %>
+<% if params[:type] == "reviewer" %>
+  <%= link_to 'Add Reviewer', new_admin_user_path %>
+<% end %>
 

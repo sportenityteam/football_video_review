@@ -7,8 +7,13 @@ Gender :
 <% else %>
   Female
 <% end %><br/>
-Address : <%= @user.try(:address) %>
-Phone number : <%= @user.try(:phone_number) %> <br/>
 Email : <%= @user.email %><br/>
-Current club : <%= @user.try(:current_club)%>
-Description : <%= @user.try(:description) %>
+<% if @user.is_reviewer? %>
+	Address : <%= @user.try(:address) %><br/>
+	Phone number : <%= @user.try(:phone_number) %> <br/>
+	Current club : <%= @user.try(:current_club)%><br/>
+	Description : <%= @user.try(:description) %>
+<% else %>
+	Position : <%= @user.try(:position)%>
+<% end %>
+
