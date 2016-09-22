@@ -1,0 +1,91 @@
+<%= nested_form_for @order, url: wizard_path, method: :put do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :price %> :
+    <%= @amount/100 %>$ (Notes : You have to pay this amount to place order)
+  </div><br/>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div><br/>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div><br/>
+
+  <%= f.fields_for :videos do |video| %>
+
+    <div class="field">
+      <%= video.label :video_url %>
+      <%= video.file_field :video_url %>
+    </div><br/>
+
+    <!-- <div class="field">
+      <%#= video.label :description %><br>
+      <%#= video.text_area :description %>
+    </div> -->
+    <%= video.link_to_remove "Remove this video" %>
+
+  <% end %>
+  <p><%= f.link_to_add "Add a video", :videos %></p>
+
+
+  <div class="actions">
+    <%= f.submit "Continue" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var fieldsCount,
+    maxFieldsCount = 1,
+    $addLink = $('a.add_nested_fields');
+
+    var mfieldsCount,
+    minFieldsCount = 0, // placed at 0 because first object is auto built from controller
+    $removeLink = $('a.remove_nested_fields');
+
+    function toggleAddLink() {
+      $addLink.toggle(fieldsCount <= maxFieldsCount)
+    }
+
+    function toggleRemoveLink() {
+      $removeLink.toggle(mfieldsCount <= minFieldsCount)
+    }
+
+    $(document).on('nested:fieldAdded', function() {
+      fieldsCount += 1;
+      toggleAddLink();
+    });
+
+    $(document).on('nested:fieldRemoved', function() {
+      fieldsCount -= 1;
+      toggleAddLink();
+    });
+
+    $(document).on('nested:fieldRemoved', function() {
+      mfieldsCount -= 0;
+      toggleRemoveLink();
+    });
+
+    // count existing nested fields after page was loaded
+    fieldsCount = $('form .fields').length;
+    toggleAddLink();
+
+    mfieldsCount = $('form .fields').length;
+    toggleRemoveLink();
+  });
+</script>
