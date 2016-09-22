@@ -1,3 +1,169 @@
+<!-- <div id="TabbedPanels1" class="TabbedPanels">
+  <ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab" tabindex="0">1. Upload Video</li>
+    <li class="TabbedPanelsTab" tabindex="0">2. Payment Details</li>
+  </ul>
+  <div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent">
+      <div class="tab_content col-xs-12" style="margin-top:120px;">
+        <form class="col-xs-12">
+          <ul class="col-xs-12">
+            <div class="col-xs-12 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+              <li>
+                <h2 class="pull-left">Title</h2>
+                <span class="box">
+                  <%#= image_tag "icons/title.png"%>
+                  <input type="text" name="title">
+                </span>
+              </li>
+              
+              <li>
+                <h2 class="pull-left">Videos</h2>
+                <span class="box">
+                  <%#= image_tag "icons/video.png" %>
+                  <input id="uploadFile" placeholder="Choose a Video to Upload" disabled="disabled" />
+                  <div class="fileUpload btn btn-primary">
+                    <span>Upload</span>
+                    <input id="uploadBtn" type="file" class="upload" />
+                  </div>
+                </span>
+              </li>
+              
+              <li>
+                <h2 class="pull-left">Description</h2>
+                <span class="box">
+                  <%#= image_tag "icons/description.png" , class: "pull-left" %>
+                  <textarea name="description" cols="6"></textarea>
+                </span>
+              </li>
+              
+              <div class="col-xs-12 nopadding_lr">
+                <div class="col-xs-6 col-sm-3 nopadding_lr">
+                  <li>
+                    <button><i class="fa fa-angle-left" aria-hidden="true"></i> Cancel</button>
+                  </li>
+                </div>
+                
+                <div class="col-sm-6 hidden-xs"></div>
+                
+                <div class="col-xs-6 col-sm-3 nopadding_lr">
+                  <li>
+                    <button>Continue <i class="fa fa-angle-right" aria-hidden="true"></i> </button>
+                  </li>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-1"></div>
+          </ul>
+        </form>
+      </div>
+    </div>
+    
+    <div class="TabbedPanelsContent">
+      <div class="tab_content col-xs-12" style="margin-top:120px;">
+        <form class="col-xs-12">
+          <ul class="col-xs-12">
+            <div class="col-xs-12 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+              <li>
+                <h2 class="pull-left">Name on Card</h2>
+                <span class="box">
+                  <input type="text" name="name">
+                  <%#= image_tag "icons/mail.png" ,style: "opacity:0;" %>
+                </span>
+              </li>
+              
+              <li>
+                <h2 class="pull-left">Card Number</h2>
+                <span class="box">
+                  <input type="text" name="cardnumber">
+                  <%#= image_tag "icons/mail.png" , style: "opacity:0;" %>
+                </span>
+              </li>
+              
+              <li class="col-xs-12 col-sm-3 nopadding_lr">
+                <h2 class="pull-left">Valid Till</h2>
+                <span class="box">
+                  <select>
+                    <option>January</option>
+                      <option>February</option>
+                      <option>March</option>
+                      <option>April</option>
+                      <option>May</option>
+                      <option>June</option>
+                      <option>July</option>
+                      <option>August</option>
+                      <option>September</option>
+                      <option>October</option>
+                      <option>November</option>
+                      <option>December</option>
+                  </select>
+                  <%#= image_tag "icons/down.png" ,class: "pull-right" %>
+                </span>
+              </li>
+              
+              <li class="col-xs-12 col-sm-1 nopadding_lr hidden-xs">
+                <h2 style="opacity:0;">abc</h2>
+                  <span class="box" style="border:0; text-align:center;">
+                    <%#= image_tag "icons/slash.png" %>
+                  </span>
+              </li>
+              
+              <li class="col-xs-12 col-sm-3 nopadding_lr">
+                <h2 class="pull-left hidden-xs" style="visibility:hidden">Password</h2>
+                <span class="box">
+                  <select>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    <option>2022</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+                    <option>2028</option>
+                    <option>2029</option>
+                    <option>2030</option>
+                    <option>2031</option>
+                    <option>2032</option>
+                    <option>2033</option>
+                    <option>2034</option>
+                    <option>2035</option>
+                  </select>
+                  <%#= image_tag "icons/down.png" , class: "pull-right" %>
+                </span>
+              </li>
+              
+              <li class="col-xs-12 col-sm-2 nopadding_lr"></li>
+              
+              <li class="col-xs-12 col-sm-3 nopadding_lr">
+                <h2 class="pull-left">CVV / CVC</h2>
+                <span class="box">
+                  <input type="text" name="CVV/CVC">
+                  <%#= image_tag "icons/blank.png" ,style:"opacity:0;" ,class:"pull-right hidden-sm" %>
+                </span>
+              </li>
+            </div>
+            <div class="col-xs-12 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-4"></div>
+            <div class="col-xs-12 col-sm-4">
+              <li>
+                <button><i class="fa fa-check" aria-hidden="true"></i> Pay Now</button>
+              </li>
+            </div>
+            <div class="col-xs-12 col-sm-4"></div>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
 <%= nested_form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
@@ -102,3 +268,8 @@ $(document).ready(function() {
 }); 
 
 </script>
+<!-- <script>
+document.getElementById("uploadBtn").onchange = function () {
+  document.getElementById("uploadFile").value = this.value;
+};
+</script> -->
