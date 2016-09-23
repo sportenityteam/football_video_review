@@ -2,6 +2,7 @@
 <p> <%= @order.user.try(:fullname) %> Video </p>
 <p> Status : <%= Order::STATUS.key(@order.status) %></p>
 <p> Order Date : <%= @order.created_at.strftime("%B,%d %Y") %></p>
+<p> Name : <%= @order.title %></p>
 <p> Description : <%= @order.try(:description) %></p>
 <h3> Payment Details </h3>
 <p> Transaction : <%= @order.payment.try(:transcation_id) %></p>
