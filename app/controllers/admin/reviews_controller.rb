@@ -14,7 +14,7 @@ class Admin::ReviewsController < Admin::BaseController
       if @review.save
         if params[:commit] == "Approve"
           @review.update_attributes(:status => "Approve")
-          @order.update_attributes(:status => Order::STATUS["Admin Approved/Waiting for review"])
+          @order.update_attributes(:status => Order::STATUS["Admin Approved"])
           OrderMailer.admin_approved_order(@order).deliver_now
         elsif params[:commit] == "Reject"
           @review.update_attributes(:status => "Reject")
