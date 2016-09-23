@@ -15,6 +15,7 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
+        <td><%= image_tag order.videos.first.video_url(:thumb1) %></td>
         <td><%= order.title %></td>
         <td><%= order.description %></td>
         <td>

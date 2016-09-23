@@ -61,3 +61,4 @@ gem "letter_opener", :group => :development
 gem 'bootstrap'
 gem 'best_in_place'
 gem 'wicked'
+gem 'paperclip-av-transcoder'
