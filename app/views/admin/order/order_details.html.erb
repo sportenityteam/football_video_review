@@ -1,12 +1,12 @@
 <h3> Order Details </h3>
 <p> <%= @order.user.try(:fullname) %> Video </p>
 <p> Status : <%= Order::STATUS.key(@order.status) %></p>
-<p> Order Date : <%= @order.created_at.strftime("%m-%d-%Y") %></p>
+<p> Order Date : <%= @order.created_at.strftime("%B,%d %Y") %></p>
 <p> Description : <%= @order.try(:description) %></p>
 <h3> Payment Details </h3>
 <p> Transaction : <%= @order.payment.try(:transcation_id) %></p>
 <p> Total Amount : <%= @order.payment.amount/100 %>$ </p>
-<p> Payment Date : <%= @order.payment.date_of_payment.strftime("%m-%d-%Y %H:%M:%S") %> </p>
+<p> Payment Date : <%= @order.payment.date_of_payment.strftime("%B,%d %Y %H:%M %p") %> </p>
 <p> Status : <%= @order.try(:payment).try(:status)%></p>
 <h3> Video Details </h3>
 <p> <%= @order.user.try(:fullname) %> Video </p>
@@ -15,11 +15,11 @@
     <%= video_tag video.video_url.url, controls: true, autobuffer: true %>
   <% end %>
 <% end %>
-<% if @review.present? %> 
+<% if @review.present? %>
 	<h4> Technical Notes </h4>
 	<p> <%= @review.try(:technical_notes)%></p>
 	<h4> Tactical Notes </h4>
 	<p> <%= @review.try(:tactical_notes)%></p>
 	<h4> Reviewed By </h4> <p> <%= @review.user.try(:fullname)%></p>
-	<h4> Reviewed On </h4> <p> <%= @review.created_at.strftime("%m-%d-%Y")%></p>
+	<h4> Reviewed On </h4> <p> <%= @review.created_at.strftime("%B,%d %Y")%></p>
 <% end %>
