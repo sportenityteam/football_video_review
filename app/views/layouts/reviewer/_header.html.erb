@@ -18,19 +18,16 @@
   <div class="navigation white_bg col-xs-12">
     <ul class="container padding_tb_20 menu-font">
       <li>
-        <a href="#" class="green">Home</a>
+        <a href="<%= pending_reviews_path %>" class="<%= current_path(pending_reviews_path) %> dark_gray">Review Videos</a>
       </li> |
       <li>
-        <%= link_to "Review Videos", pending_reviews_path,:class => "dark_gray" %>
+        <a href="<%= my_reviews_path %>" class="<%= current_path(my_reviews_path) %> dark_gray">My Reviews</a>
       </li> |
       <li>
-        <%= link_to "My Reviews", my_reviews_path ,:class => "dark_gray" %>
+        <a href="<%= my_profile_path %>" class="<%= current_path(my_profile_path) %> dark_gray ">My Profile</a>
       </li> |
       <li>
-        <%= link_to "My Profile", my_profile_path,:class =>"dark_gray" %>
-      </li> |
-      <li>
-        <%= link_to "Change Password", user_change_password_path, :class =>"dark_gray" %>
+        <a href="<%= user_change_password_path %>" class="<%= current_path(user_change_password_path) %> dark_gray ">Change Password</a>
       </li>
     </ul>
   </div>

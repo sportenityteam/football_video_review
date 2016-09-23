@@ -18,14 +18,14 @@
   <div class="navigation white_bg col-xs-12">
     <ul class="container padding_tb_20 menu-font">
       <li>
-        <a href="#" class="green">Home</a>
+        <a href="#" class="dark_gray">Home</a>
       </li> |
       <li>
-        <%= link_to 'Upload Videos', order_steps_path ,:class => "dark_gray" %>
+        <a href="<%= order_steps_path %>" class="<%= current_path(order_steps_path) %> dark_gray">Upload Videos</a>
         <%#= link_to 'My Orders', my_orders_path ,:class => "dark_gray" %>
       </li> |
       <li>
-        <%= link_to 'My Reviews', my_orders_path ,:class => "dark_gray" %>
+        <a href="<%= my_orders_path %>" class="<%= current_path(my_orders_path) %> dark_gray">My Reviews</a>
         <%#= link_to 'Make Order', order_steps_path ,:class => "dark_gray" %>
       </li> |
       <!-- <li>
@@ -35,10 +35,10 @@
         <%#= link_to "Approved Orders", orders_path(:type => "Review approved") , :class =>"dark_gray" %>
       </li> | -->
       <li>
-        <%= link_to 'My Profile', my_profile_path,:class =>"dark_gray" %>
+        <a href="<%= my_profile_path %>" class="<%= current_path(my_profile_path) %> dark_gray">My Profile</a>
       </li> |
       <li>
-        <%= link_to "Change Password", user_change_password_path ,:class =>"dark_gray" %>
+        <a href="<%= user_change_password_path %>" class="<%= current_path(user_change_password_path) %> dark_gray">Change Password</a>
       </li>
     </ul>
   </div>
