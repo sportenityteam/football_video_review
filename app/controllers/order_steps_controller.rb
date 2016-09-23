@@ -35,7 +35,6 @@ class OrderStepsController < ApplicationController
         end
       when :add_payment
         if params[:order_id].present?
-          puts "=======order===3===#{params[:order_id]}"
           $orderId = params[:order_id]
         end
         response = place_order(@amount, params[:card_number], params[:expiration_month], params[:expiration_year], params[:cvv])
@@ -43,7 +42,7 @@ class OrderStepsController < ApplicationController
           if response.success?
             #creating record of payment for placed order
             @payment.update_attributes(:order_id => $orderId,:amount => @amount,:date_of_payment => DateTime.now, :other_data => response.params ,:status => "success",:transcation_id => response.params["pn_ref"])
-            redirect_to orders_path(:type => "New")
+            redirect_to my_orders_path
           else
             @errors = response.message
             render_wizard

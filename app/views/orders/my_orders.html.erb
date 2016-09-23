@@ -3,9 +3,12 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Purchase Date</th>
       <th>Status</th>
-      <th>View Order</th>
+      <th>Payment Status</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -13,6 +16,19 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.title %></td>
+        <td><%= order.description %></td>
+        <td>
+          <% if order.payment.present? %>
+            <%= order.try(:payment).try(:date_of_payment).strftime("%B,%d %Y") %>
+          <% end %>
+        </td>
+        <td>
+          <% if Order::STATUS.key(order.status) == "New" %>
+            <%= "Pending" %>
+          <% else %>
+            <%= Order::STATUS.key(order.status) %>
+          <% end %>
+        </td>
         <td>
           <% if order.payment.present? %>
             <%= order.try(:payment).try(:status) %>

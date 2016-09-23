@@ -53,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(resource)
     my_profile_path(resource)
   end
-  
+
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)
@@ -63,4 +63,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  protected
+
+    def update_resource(resource, params)
+      resource.update_without_password(params)
+    end
 end

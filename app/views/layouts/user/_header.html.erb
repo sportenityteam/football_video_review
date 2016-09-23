@@ -20,18 +20,20 @@
       <li>
         <a href="#" class="green">Home</a>
       </li> |
-       <li>
-        <%= link_to 'My Orders', my_orders_path ,:class => "dark_gray" %>
+      <li>
+        <%= link_to 'Upload Videos', order_steps_path ,:class => "dark_gray" %>
+        <%#= link_to 'My Orders', my_orders_path ,:class => "dark_gray" %>
       </li> |
       <li>
-        <%= link_to 'Make Order', order_steps_path ,:class => "dark_gray" %>
+        <%= link_to 'My Reviews', my_orders_path ,:class => "dark_gray" %>
+        <%#= link_to 'Make Order', order_steps_path ,:class => "dark_gray" %>
+      </li> |
+      <!-- <li>
+        <%#= link_to "Pending Orders", orders_path(:type => "New") ,:class => "dark_gray" %>
       </li> |
       <li>
-        <%= link_to "Pending Orders", orders_path(:type => "New") ,:class => "dark_gray" %>
-      </li> |
-      <li>
-        <%= link_to "Approved Orders", orders_path(:type => "Review approved") , :class =>"dark_gray" %>
-      </li> |
+        <%#= link_to "Approved Orders", orders_path(:type => "Review approved") , :class =>"dark_gray" %>
+      </li> | -->
       <li>
         <%= link_to 'My Profile', my_profile_path,:class =>"dark_gray" %>
       </li> |

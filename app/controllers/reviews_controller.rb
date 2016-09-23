@@ -26,15 +26,16 @@ class ReviewsController < ApplicationController
     @review.review_time = review_time
     respond_to do |format|
       if @review.save
-        if params[:is_reviewed] == 1
+        if params[:is_reviewed] == "1"
           @order.update_attributes(:status => Order::STATUS["Reviewed"])
           @user = User.is_admin.first
           OrderMailer.reviewed_order(@order,@user).deliver_now
           format.html { redirect_to my_reviews_path, notice: 'Review for video was submitted successfully.' }
           format.json { render :pending_reviews , status: :created, location: @review }
-         end
-        format.html { redirect_to review_order_path(@order), notice: 'Review notes saved successfully.' }
-        format.json { render :pending_reviews , status: :created, location: @review }
+        else
+          format.html { redirect_to review_order_path(@order), notice: 'Review notes saved successfully.' }
+          format.json { render :pending_reviews , status: :created, location: @review }
+        end
       else
         format.html { redirect_to review_order_path(@order), :notice => "#{@review.errors.full_messages.join(' , ')}" }
         format.json { render json: @review.errors, status: :unprocessable_entity }
