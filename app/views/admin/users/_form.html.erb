@@ -52,11 +52,21 @@
     <%= f.label :zipcode %><br />
     <%= f.text_field :zipcode %>
   </div>
-  
+
   <% if @user.is_user? %>
     <div class="field">
       <%= f.label :position %><br />
       <%= f.text_field :position %>
+    </div>
+
+    <div class="field">
+      <%= f.label :soccer_club %><br />
+      <%= f.text_field :soccer_club %>
+    </div>
+
+    <div class="field">
+      <%= f.label :soccer_goal %><br />
+      <%= f.text_field :soccer_goal %>
     </div>
   <% end %>
 
@@ -82,8 +92,8 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :user_type, :value => "#{User::USER_TYPES["reviewer"]}" %>
-  
+  <%= f.hidden_field :user_type, :value => @user.user_type %>
+
   <div class="actions">
     <%= f.submit "Submit" %>
   </div>
