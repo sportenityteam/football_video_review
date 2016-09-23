@@ -3,17 +3,32 @@
 <table>
   <thead>
     <tr>
-      <th>Order</th>
-      <th>Details</th>
+      <th>Name</th>
+      <th>Date</th> 
+      <th>Status</th>
+      <th>Amount</th>
+      <th colspan="2">Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.title %></td>
-        <td><%= link_to "Details" ,admin_order_details_path(order.id) %></td>
-      </tr>
+      <% if order.payment.present? %>
+        <tr>
+          <td><%= order.user.try(:fullname) %></td>
+          <td><%= order.created_at.strftime("%m-%d-%Y") %></td>
+          <td><%= Order::STATUS.key(order.status) %></td>
+          <td><%= order.payment.amount/100%>$</td>
+          <td>
+            <% if order.status == 1%>
+              <%= link_to 'Click To Review', admin_review_order_path(order) %>
+            <% elsif order.status == 4 %>
+              <%= link_to "Approve / Reject " ,admin_review_details_path(order.id) %>
+            <% end %>
+            <%= link_to 'Details', admin_order_details_path(order) %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

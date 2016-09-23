@@ -18,23 +18,24 @@
   <div class="navigation white_bg col-xs-12">
     <ul class="container padding_tb_20 menu-font">
       <li>
-        <a href="#" class="green">Home</a>
+        <a href="#" class="green">Dashboard</a>
       </li> |
+      
+      <!-- <li>
+        <%#= link_to "Reviewed Videos", admin_reviewed_videos_path, :class =>"dark_gray" %>
+      </li> | -->
+      <li>
+        <%= link_to "Video Approval", admin_reviewed_by_reviewer_path ,:class =>"dark_gray" %>
+      </li> | 
+      <li>
+        <%= link_to "Review Approval", admin_pending_orders_path ,:class => "dark_gray" %>
+      </li> | 
       <li>
         <%= link_to "Reviewers", admin_users_path(:type => "reviewer") ,:class => "dark_gray" %>
       </li> |
       <li>
         <%= link_to "Users" , admin_users_path(:type => "user"), :class => "dark_gray"%>
-      </li>
-      <li>
-        <%= link_to "Pending Reviews", admin_pending_orders_path ,:class => "dark_gray" %>
-      </li> |
-      <li>
-        <%= link_to "Reviewed Videos", admin_reviewed_videos_path, :class =>"dark_gray" %>
-      </li> |
-      <li>
-        <%= link_to "Reviewed by Reviewer", admin_reviewed_by_reviewer_path ,:class =>"dark_gray" %>
-      </li> |
+      </li> | 
       <li>
         <%= link_to "Orders", admin_list_of_orders_path,:class =>"dark_gray" %>
       </li> |
