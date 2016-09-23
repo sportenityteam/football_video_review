@@ -45,6 +45,11 @@ class Admin::OrderController < Admin::BaseController
   end
 
   def order_details
+
+    @review = Review.joins(:user).where("reviews.order_id =? and users.user_type = ?", @order.id, 2).last
+    if !@review.present?
+      @review = Review.joins(:user).where("reviews.order_id =? and users.user_type = ?", @order.id, 1).first
+    end
   end
 
   private
