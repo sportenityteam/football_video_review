@@ -9,7 +9,7 @@
           <%= f.text_field :first_name %>
         </span>
       </li>
-      
+
       <li>
         <h2 class="pull-left">E-Mail</h2>
         <span class="box">
@@ -17,7 +17,7 @@
           <%= f.email_field :email %>
         </span>
       </li>
-      
+
       <li>
         <h2 class="pull-left">Password
           <% if @minimum_password_length %>
@@ -29,7 +29,7 @@
           <%= f.password_field :password, autocomplete: "off" %>
         </span>
       </li>
-      
+
       <li>
         <h2 class="pull-left">Confirm Password</h2>
         <span class="box">
@@ -37,12 +37,12 @@
           <%= f.password_field :password_confirmation %>
         </span>
       </li>
-      
+
       <li>
         <h2 class="pull-left">Soccer Club</h2>
         <span class="box">
           <%= image_tag "icons/club.png" %>
-          <input type="text" name="club">
+          <%= f.text_field :soccer_club %>
         </span>
       </li>
     </div>
@@ -54,7 +54,7 @@
           <%= f.date_field :date_of_birth, autocomplete: "off" %>
         </span>
       </li>
-        
+
       <li>
         <h2 class="pull-left">Gender</h2>
         <span class="box">
@@ -66,7 +66,7 @@
           </div>
         </span>
       </li>
-      
+
       <li>
         <h2 class="pull-left">Position</h2>
         <span class="box">
@@ -74,7 +74,7 @@
           <%= f.text_field :position %>
         </span>
       </li>
-      
+
       <li>
         <h2 class="pull-left">Zip Code</h2>
         <span class="box">
@@ -82,12 +82,12 @@
           <%= f.text_field :zipcode %>
         </span>
       </li>
-      
+
       <li>
         <h2 class="pull-left">Soccer Goal</h2>
         <span class="box">
           <%= image_tag "icons/goal.png" %>
-          <input type="text" name="Soccer Goal">
+          <%= f.text_field :soccer_goal %>
         </span>
       </li>
     </div>
@@ -96,9 +96,9 @@
       <li>
         <button type="submit">Sign up</button>
       </li>
-        
+
       <li>
-        <h2>Already a member?</h2> 
+        <h2>Already a member?</h2>
         <%- if controller_name != 'sessions' %>
           <%= link_to "Sign in here", new_session_path(resource_name) %><br />
         <% end -%>
