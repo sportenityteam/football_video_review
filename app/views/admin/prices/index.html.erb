@@ -1,4 +1,4 @@
-<p><h3>Prices</h3>Note : Click on name or price to edit</p>
+<p><h3>Prices</h3>Note : Click on price to edit</p>
 
 <table>
   <thead>
@@ -11,11 +11,14 @@
   <tbody>
     <% @prices.each do |price| %>
       <tr>
-        <td><%= best_in_place [:admin, price], :name %></td>
+        <td><%= price.name %></td>
         <td><%= best_in_place [:admin, price], :price %></td>
+        <td><%= link_to 'Destroy', admin_price_path(price), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to "Add New", new_admin_price_path %>
 
 
