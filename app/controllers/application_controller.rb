@@ -27,7 +27,8 @@ class ApplicationController < ActionController::Base
       elsif resource.is_reviewer?
         return pending_reviews_path
       else
-        return orders_path(:type => "New")
+        #return orders_path(:type => "Pending")
+        return my_orders_path
       end
     end
 

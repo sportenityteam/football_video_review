@@ -3,7 +3,7 @@ class Admin::OrderController < Admin::BaseController
   before_action :set_order, :only => [:show,:order_details]
 
   def index
-    @orders = Order.where(:status => Order::STATUS["New"])
+    @orders = Order.where(:status => Order::STATUS["Pending"])
   end
 
   def reviewed_videos
