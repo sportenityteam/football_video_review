@@ -54,7 +54,7 @@ class Admin::PricesController < Admin::BaseController
   private
 
     def price_params
-      params.require(:price).permit!#(:name, :price)
+      params.require(:price).permit(:name, :price)
     end
 
     def set_price
