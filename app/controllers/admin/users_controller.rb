@@ -13,6 +13,7 @@ class Admin::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.user_type = 2
     respond_to do |format|
       if @user.save
         format.html { redirect_to admin_users_path(:type => "reviewer"), notice: 'Reviewer was successfully created.' }
