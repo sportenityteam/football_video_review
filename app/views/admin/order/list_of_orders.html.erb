@@ -3,7 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>User Name</th>
+      <th>Order Name</th>
       <th>Date</th>
       <th>Status</th>
       <th>Amount</th>
@@ -16,6 +17,7 @@
       <% if order.payment.present? %>
         <tr>
           <td><%= order.user.try(:fullname) %></td>
+          <td><%= order.title %></td>
           <td><%= order.created_at.strftime("%B,%d %Y") %></td>
           <td><%= Order::STATUS.key(order.status) %></td>
           <td><%= order.payment.amount/100%>$</td>

@@ -10,5 +10,5 @@
 <p> Technical Notes : <%= @review.try(:technical_notes) %> </p>
 <p> Tactical Notes : <%= @review.try(:tactical_notes) %> </p><br/>
 <% if @review.order.status == 4 %>
-	<%= link_to 'Approve', admin_approval_of_admin_path(@review.order.id,status: 5) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Reject', admin_approval_of_admin_path(@review.order.id,status: 6) %>
+	<%= link_to 'Approve', admin_approval_of_admin_path(@review.order.id,status: 5) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Reject', admin_approval_of_admin_path(@review.order.id,status: 6) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Reset', admin_review_path(@review.order.id), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

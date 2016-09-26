@@ -34,6 +34,17 @@ class Admin::ReviewsController < Admin::BaseController
     @review = Review.joins(:user).where("users.user_type != ? and reviews.order_id = ? " ,3,params[:id]).last
   end
 
+  def destroy
+    @review = Review.where("order_id =? and user_id !=?", params[:id], current_user.id)
+    @review.destroy_all
+    @order = Order.find(params[:id])
+    @order.update_attributes(:status => Order::STATUS["Admin Approved"])
+    respond_to do |format|
+      format.html { redirect_to admin_reviewed_by_reviewer_path, notice: 'Order was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     def review_params
       params.require(:review).permit(:order_id, :user_id, :technical_notes, :tactical_notes, :review_time)

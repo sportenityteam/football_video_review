@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     # configuring registration parameters
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:soccer_club, :soccer_goal, :first_name, :last_name, :gender, :date_of_birth, :position, :zipcode, :user_type])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:soccer_club, :soccer_goal, :first_name, :last_name, :gender, :date_of_birth, :position, :zipcode , :current_club, :address, :description, :phone_number])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:soccer_club, :soccer_goal, :first_name, :last_name, :gender, :date_of_birth, :position, :zipcode , :current_club, :address, :description, :phone_number, :password, :password_confirmation, :current_password])
     end
 
     def restrict_user

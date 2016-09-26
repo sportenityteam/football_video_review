@@ -68,7 +68,7 @@ class ReviewsController < ApplicationController
     @order = Order.find(params[:id])
     @order.update_attributes(:status => Order::STATUS["Admin Approved"])
     respond_to do |format|
-      format.html { redirect_to pending_reviews_path, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to pending_reviews_path, notice: 'Order was successfully reset.' }
       format.json { head :no_content }
     end
   end
