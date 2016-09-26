@@ -14,8 +14,8 @@
   <%= f.hidden_field :order_id, :value => "#{params[:id]}" %>
   <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
   <%= f.hidden_field :review_time, :value => "", :id => "review_time" %>
-  <%= hidden_field_tag :submit_time, :value => "", :id => "submit_time" %>
-  <%= hidden_field_tag :is_reviewed, :value => "", :id => "is_reviewed" %>
+  <%= hidden_field_tag :submit_time, "", :id => "submit_time" %>
+  <%= hidden_field_tag :is_reviewed, "", :id => "is_reviewed" %>
 
   <div class="field">
     <%= f.label :technical_notes %><br />
@@ -40,6 +40,7 @@
   });
 
   $(".submit_form").click(function(){
+    alert($("#submit_time").val());
     var current_time = new Date($.now());
     $("#submit_time").val(current_time);
   });
