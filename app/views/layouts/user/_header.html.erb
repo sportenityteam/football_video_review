@@ -21,7 +21,7 @@
         <a href="#" class="dark_gray">Home</a>
       </li> |
       <li>
-        <a href="/order_steps/add_order" class="/order_steps/add_order dark_gray">Upload Videos</a>
+        <a href="<%= order_step_path(:add_order) %>" class="dark_gray" id="new_order">Upload Videos</a>
         <%#= link_to 'My Orders', my_orders_path ,:class => "dark_gray" %>
       </li> |
       <li>
@@ -41,3 +41,13 @@
   </div>
   <!-- Navigation closed -->
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+ crnt_path = window.location.pathname
+ if (crnt_path == "/order_steps/add_order" || crnt_path == "/order_steps/add_payment"){
+  $(".dark_gray").removeClass("green");
+  $("#new_order").addClass("green");
+ }
+});
+</script>
