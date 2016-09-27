@@ -21,7 +21,7 @@
         <a href="#" class="dark_gray">Home</a>
       </li> |
       <li>
-        <a href="<%= order_steps_path %>" class="<%= current_path(order_steps_path) %> dark_gray">Upload Videos</a>
+        <a href="/order_steps/add_order" class="/order_steps/add_order dark_gray">Upload Videos</a>
         <%#= link_to 'My Orders', my_orders_path ,:class => "dark_gray" %>
       </li> |
       <li>
@@ -36,10 +36,7 @@
       </li> | -->
       <li>
         <a href="<%= my_profile_path %>" class="<%= current_path(my_profile_path) %> dark_gray">My Profile</a>
-      </li> |
-      <li>
-        <a href="<%= user_change_password_path %>" class="<%= current_path(user_change_password_path) %> dark_gray">Change Password</a>
-      </li>
+      </li> 
     </ul>
   </div>
   <!-- Navigation closed -->
