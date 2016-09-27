@@ -1,19 +1,23 @@
 <h3> User details</h3>
 <%= image_tag @user.avatar.url(:thumb) , alt:"image"%><br/>
-Username : <%= @user.try(:fullname) %><br/>	
-Gender : 
+<p>Username : <%= @user.try(:fullname) %></p>
+<p>Gender : 
 <% if @user.gender == 1 %>
   Male
 <% else %>
   Female
-<% end %><br/>
-Email : <%= @user.email %><br/>
+<% end %></p>
+<p>Email : <%= @user.email %></p>
 <% if @user.is_reviewer? %>
-	Address : <%= @user.try(:address) %><br/>
-	Phone number : <%= @user.try(:phone_number) %> <br/>
-	Current club : <%= @user.try(:current_club)%><br/>
-	Description : <%= @user.try(:description) %>
+	<p>Date Of Birth : <%= current_user.try(:date_of_birth).strftime("%B,%d %Y") %></p>
+	<p>Address : <%= @user.try(:address) %></p>
+	<p>Phone number : <%= @user.try(:phone_number) %> </p>
+	<p>Current club : <%= @user.try(:current_club)%></p>
+	<p>Description : <%= @user.try(:description) %></p>
 <% else %>
-	Position : <%= @user.try(:position)%>
+	<p>Date Of Birth : <%= @user.try(:date_of_birth).strftime("%B,%d %Y") %></p>
+	<p>Position : <%= @user.try(:position) %></p>
+	<p>Soccer Club : <%= @user.try(:soccer_club) %></p>
+	<p>Soccer Goal : <%= @user.try(:soccer_goal) %></p>
 <% end %>
 

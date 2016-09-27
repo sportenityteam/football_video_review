@@ -10,8 +10,12 @@
       <th>User name</th>
       <th>Email</th>
       <th>Gender</th>
-      <th>Phone number</th>
-      <th>Current club</th>
+      <% if params[:type] == "reviewer"%>
+        <th>Phone number</th>
+        <th>Current club</th>
+      <% else %>
+        <th>Soccer Club</th>
+      <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -29,8 +33,12 @@
             Female
           <% end %>
         </td>
-        <td><%= user.phone_number %></td>
-        <td><%= user.current_club %></td>
+        <% if params[:type] == "reviewer"%>
+          <td><%= user.phone_number %></td>
+          <td><%= user.current_club %></td>
+        <% else %>
+          <td><%= user.soccer_club%></td>
+        <% end %>
         <td><%= link_to 'Show', admin_user_path(user) %></td>
         <%# if user.is_reviewer? %>
         <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
