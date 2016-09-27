@@ -64,7 +64,7 @@ class OrdersController < ApplicationController
   end
 
   def my_orders
-    @orders = Order.where("user_id =? and status =? or status =? or status =? ", current_user.id, Order::STATUS["Pending"], Order::STATUS["Review approved"], Order::STATUS["In review"])
+    @orders = Order.where("user_id =? and (status =? or status =? or status =?)", current_user.id, Order::STATUS["Pending"], Order::STATUS["Review approved"], Order::STATUS["In review"])
   end
 
   def destroy

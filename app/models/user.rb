@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  after_create :send_user_mail
+  #after_create :send_user_mail
 
   #Enum
   USER_TYPES =  { "admin" => 1, "reviewer" => 2, "user" => 3}
@@ -75,8 +75,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def send_user_mail
-    UserMailer.send_new_user_message(self).deliver_now
-  end
+  # def send_user_mail
+  #   UserMailer.send_new_user_message(self).deliver_now
+  # end
 
 end
