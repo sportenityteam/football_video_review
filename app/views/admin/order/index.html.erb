@@ -10,7 +10,7 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= "#{order.user.fullname}'s #{order.title}" %></td>
+        <td><%= "#{order.user.try(:fullname)}'s #{order.try(:title)}" %></td>
         <td><%= link_to 'Click To Review', admin_review_order_path(order) %></td>
       </tr>
     <% end %>

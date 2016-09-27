@@ -21,8 +21,10 @@ class ReviewsController < ApplicationController
     @review.tactical_notes = params[:review][:tactical_notes]
 
     @order = Order.find(params[:review][:order_id])
-    review_time = params[:review][:review_time].present? ? ((params[:submit_time].to_datetime - params[:review][:review_time].to_datetime) * 1.days) : 0
-
+    if params[:is_reviewed] == "1"
+      review_time = params[:review][:review_time].present? ? ((params[:submit_time].to_datetime - params[:review][:review_time].to_datetime) * 1.days) : 0
+    end
+    
     @review.review_time = review_time
     respond_to do |format|
       if @review.save
