@@ -27,6 +27,12 @@ class Admin::PricesController < Admin::BaseController
     end
   end
 
+  def change_price
+    price = params[:price]
+    @price = Price.find(params[:id])
+    @price.update_attributes(:price => params[:price])
+  end
+
   def edit
   end
 

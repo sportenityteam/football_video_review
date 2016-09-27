@@ -1,5 +1,4 @@
-<p><h3>Pricing</h3>Note : Click on price to edit</p>
-
+<h3>Pricing</h3>
 <table>
   <thead>
     <tr>
@@ -12,13 +11,30 @@
     <% @prices.each do |price| %>
       <tr>
         <td><%= price.name %></td>
-        <td><%= best_in_place [:admin, price], :price %></td>
-        <!-- <td><%#= link_to 'Destroy', admin_price_path(price), method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        <td><%= text_field_tag :price, price.price, :class => "age_price", :id => price.id %></td>
+        <td><%= link_to "Save",'', :class => "save_price" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%#= link_to "Add New", new_admin_price_path %>
 
+<script type="text/javascript">
 
+  var priceId;
+  var priceVal;
+  $('.age_price').change(function () {
+    priceVal = $(this).val();
+    priceId = $(this).attr('id');
+  })
+
+  $(".save_price").click(function(){
+    $.ajax({
+      url: '/admin/change_price',
+      type: 'GET',
+      data: {"id": priceId,
+             "price": priceVal
+            }
+    });
+  });
+</script>

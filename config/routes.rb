@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+    get "/change_price" => "prices#change_price", as: :change_price
     get "/review_pending_approval" => "order#index", as: :pending_orders
     get "/review_order/:id" => "order#show", as: :review_order
     get "/reviewed_videos" => "order#reviewed_videos", as: :reviewed_videos
