@@ -8,13 +8,17 @@
   Female
 <% end %></p>
 <% if current_user.is_reviewer? %>
+	<p>Date Of Birth : <%= current_user.try(:date_of_birth).strftime("%B,%d %Y") %></p>
 	<p>Address : <%= current_user.try(:address) %></p>
 	<p>Phone number : <%= current_user.try(:phone_number) %></p>
 	<p>Current club : <%= current_user.try(:current_club) %></p>
 	<p>Description : <%= current_user.try(:description) %></p>
 <% end %>
 <% if current_user.is_user? %>
+	<p>Date Of Birth : <%= current_user.try(:date_of_birth).strftime("%B,%d %Y") %></p>
 	<p>Position : <%= current_user.try(:position) %></p>
+	<p>Soccer Club : <%= current_user.try(:soccer_club) %></p>
+	<p>Soccer Goal : <%= current_user.try(:soccer_goal) %></p>
 <% end %>
 <p>Email : <%= current_user.email %></p>
 <p><%= link_to 'Edit Profile', edit_user_registration_path %></p>
