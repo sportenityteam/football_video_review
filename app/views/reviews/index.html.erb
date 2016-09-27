@@ -5,9 +5,8 @@
     <tr>
       <th></th>
       <th>User Videos</th>
-      <th>Video Name</th>
       <th>Status</th>
-      <th></th>
+      <th>Review</th>
     </tr>
   </thead>
 
@@ -15,7 +14,6 @@
     <% @reviews.each do |review| %>
       <tr>
         <td><%= image_tag review.order.videos.first.video_url(:thumb1) %></td>
-        <td><%= review.order.title %></td>
         <td><%= "#{review.order.user.try(:fullname)}'s #{review.order.try(:title)}" %></td>
         <td><%= Order::STATUS.key(review.order.status) %></td>
         <% if review.order.status == 7 %>
