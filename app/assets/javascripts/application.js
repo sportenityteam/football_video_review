@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require best_in_place
+// require best_in_place
 //= require bootstrap
 //= require SpryTabbedPanels
 //= require custom
