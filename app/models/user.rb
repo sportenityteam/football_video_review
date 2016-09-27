@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  #after_create :send_user_mail
-
   #Enum
   USER_TYPES =  { "admin" => 1, "reviewer" => 2, "user" => 3}
 
@@ -74,9 +72,5 @@ class User < ActiveRecord::Base
       self.password = "12345678"
     end
   end
-
-  # def send_user_mail
-  #   UserMailer.send_new_user_message(self).deliver_now
-  # end
 
 end
