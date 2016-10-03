@@ -95,7 +95,7 @@ header{
 	margin:0 auto;
 	list-style:none;
 	color:#fff;
-	font-size:22px;
+	font-size:20px;
 }
 
 .navigation ul li{
@@ -943,6 +943,7 @@ Admin Side
 	display:inline-block;
 	margin:0 auto;
 	margin-bottom:30px;
+	overflow: hidden;
 }
 
 .dashboard ul li a{
