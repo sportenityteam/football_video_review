@@ -1,18 +1,17 @@
 <div class="container-fluid nopadding_lr margin_btm_30">
   <header class="col-xs-12">
-  	<div class="container">
+    <div class="container">
       <div class="logo pull-left">
         <a href="#">
           <%= image_tag "logo.png" ,:class=>"img-responsive" %>
         </a>
       </div>
-      
-      <div class="navigation pull-right">
+          
+      <div class="navigation pull-right hidden">
         <ul>
-          <% if !user_signed_in? %>
-            <li><%= link_to "Sign in", new_session_path(resource_name) %></li> |
-            <li><%= link_to "Sign up", new_registration_path(resource_name)%></li>
-          <% else %>
+          <li><a href="#">Sign in</a></li> |
+          <li><a href="#">Sign up</a></li>
+          <% if user_signed_in? %>
             <li><%= link_to "Log out", destroy_user_session_path , method: "delete" %></li>
           <% end %>
         </ul>
