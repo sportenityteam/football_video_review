@@ -1,15 +1,15 @@
 class OrderStepsController < ApplicationController
 
   include Wicked::Wizard
-  steps :add_order, :add_payment
+  steps :add_payment, :add_order
   before_action :set_variables
 
   def show
     case step
+      when :add_payment
+        render_wizard
       when :add_order
         @order.videos.build if @order.present?
-        render_wizard
-      when :add_payment
         render_wizard
     end
   end
@@ -18,6 +18,26 @@ class OrderStepsController < ApplicationController
     @total_duration = 0
     @errors = ''
     case step
+      when :add_payment
+        # if params[:order_id].present?
+        #   $orderId = params[:order_id]
+        # end
+        response = place_order(@amount, params[:card_number], params[:expiration_month], params[:expiration_year], params[:cvv])
+        if response != false
+          if response.success?
+            #creating record of payment for placed order
+            $transactionId = response.params["pn_ref"]
+            @payment.update_attributes(:amount => @amount,:date_of_payment => DateTime.now, :other_data => response.params ,:status => "success",:transcation_id => response.params["pn_ref"])
+            #redirect_to my_orders_path
+            render_wizard @payment
+          else
+            @errors = response.message
+            render_wizard
+          end
+        else
+          @errors = "Please fill the card details"
+          render_wizard
+        end
       when :add_order
         if @order.errors.present?
           render_wizard
@@ -30,26 +50,10 @@ class OrderStepsController < ApplicationController
             end
           end
           @order.update_attributes(:total_video_duration => @total_duration,:user_id => current_user.id)
-          $orderId = @order.id
-          render_wizard @order
-        end
-      when :add_payment
-        if params[:order_id].present?
-          $orderId = params[:order_id]
-        end
-        response = place_order(@amount, params[:card_number], params[:expiration_month], params[:expiration_year], params[:cvv])
-        if response != false
-          if response.success?
-            #creating record of payment for placed order
-            @payment.update_attributes(:order_id => $orderId,:amount => @amount,:date_of_payment => DateTime.now, :other_data => response.params ,:status => "success",:transcation_id => response.params["pn_ref"])
-            redirect_to my_orders_path
-          else
-            @errors = response.message
-            render_wizard
-          end
-        else
-          @errors = "Please fill the card details"
-          render_wizard
+          #$orderId = @order.id
+          payment = Payment.find_by_transcation_id($transactionId)
+          payment.update_attributes(:order_id => @order.id)
+          redirect_to my_orders_path
         end
     end
   end

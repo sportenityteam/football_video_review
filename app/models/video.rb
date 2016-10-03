@@ -33,9 +33,11 @@ class Video < ActiveRecord::Base
         File.delete("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
       end
     else
-      movie = FFMPEG::Movie.new("#{video_url.path}")
-      self.duration = movie.duration
-      self.save
+      if File.exists?"#{video_url.path}"
+        movie = FFMPEG::Movie.new("#{video_url.path}")
+        self.duration = movie.duration
+        self.save
+      end
     end
   end
 
