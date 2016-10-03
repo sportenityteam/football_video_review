@@ -4,6 +4,8 @@ class ReviewsController < ApplicationController
   before_action :set_review, :only => [:show]
 
   def new
+    session[:url] = request.referer.split('/').last
+    puts "=-=--=-=----=-=-==--==-=---"+session[:url].inspect
     @review_new = Review.where(:order_id => @order.id, :user_id => current_user.id).first
     @review = Review.new
     if @order.status == 7 and !@review_new.present?
@@ -24,7 +26,7 @@ class ReviewsController < ApplicationController
     if params[:is_reviewed] == "1"
       review_time = params[:review][:review_time].present? ? ((params[:submit_time].to_datetime - params[:review][:review_time].to_datetime) * 1.days) : 0
     end
-    
+
     @review.review_time = review_time
     respond_to do |format|
       if @review.save

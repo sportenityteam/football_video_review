@@ -19,13 +19,13 @@ class OrderStepsController < ApplicationController
     @errors = ''
     case step
       when :add_order
-        @order.update_attributes(order_params)
         if @order.errors.present?
           render_wizard
         else
+          @order.update_attributes(order_params)
           if @order.videos.present?
             @order.videos.each do |video|
-              video.generate_mp4(video)
+              video.generate_mp4(video.video_url)
               @total_duration = @total_duration + video.duration.to_i
             end
           end

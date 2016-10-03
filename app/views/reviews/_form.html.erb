@@ -28,7 +28,14 @@
   </div>
 
   <div class="actions">
-    <%= link_to "Back to List", :back %>
+
+    <% if session[:url] == "pending_reviews" %>
+      <%= link_to "Back to List", pending_reviews_path %>
+    <% elsif session[:url] == "my_reviews" %>
+      <%= link_to "Back to List", my_reviews_path %>
+    <% else %>
+      <%= link_to "Back to List", :back %>
+    <% end %>
     <%= f.submit "Submit", :class => "submit_form",:id => "review_submit" %>
     <%= f.submit "Save Notes" %>
   </div>
