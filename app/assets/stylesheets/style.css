@@ -406,7 +406,8 @@ footer ul li a:hover{
 
 /**Forgot Password**/
 .notificaion_txt {
-	text-align:center !important	
+	width:100%;
+	text-align:center !important;
 }
 
 .no-border {
@@ -1048,3 +1049,76 @@ ul.pagination li a:hover:not(.active) {
 /* 
 Admin Side closed
 */
+
+.modal-body form{
+	margin:0 auto;
+}
+
+.modal-body form ul{
+	list-style:none;
+	padding:0;
+	margin:0 auto;
+}
+
+.modal-body form ul li{
+	margin-bottom:20px;
+}
+
+.modal-body form ul li h2{
+	margin-top:0;
+	/*text-align:center!important;*/
+	font-weight:300;
+	font-size:20px;
+	color:#535353;
+	display:inline-block;
+}
+
+.modal-body form ul li a{
+	margin-top:0;
+	text-align:left;
+	font-weight:300;
+	font-size:22px;
+	color:#00366c;
+	margin:0;
+}
+
+.modal-body form ul li span{
+	width:100%;
+	display:inline-block;
+	text-align:left;
+	border:2px solid #c5c5c5;
+	padding:10px;
+}
+
+.modal-body form ul li span input{
+	width:85%;
+	outline:0;
+	border:0;
+	font-size:16px;
+	color:#535353;
+	background-color:transparent;
+}
+
+.modal-body form ul li button{
+	display:inline-block;
+	width:100%;
+	padding:15px 0;
+	margin-top:20px;
+	color:#fff;
+	font-size:24px;
+	font-weight:300;
+	background: rgb(69,79,88); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(69,79,88,1) 0%, rgba(69,79,88,1) 50%, rgba(52,61,70,1) 50%, rgba(101,115,126,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	border:0;
+	outline:0;
+}
+
+.modal-body form ul li button:hover{
+	background: rgb(210,210,210); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%, rgba(221,221,221,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%, rgba(221,221,221,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%,  rgba(221,221,221,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	color:#1c1c1c;
+}

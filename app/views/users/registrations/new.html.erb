@@ -1,28 +1,128 @@
 <div id="TabbedPanels1" class="TabbedPanels">
   <ul class="TabbedPanelsTabGroup">
-    <li class="TabbedPanelsTab" tabindex="0">Sign in</li>
-    <li class="TabbedPanelsTab TabbedPanelsTabSelected TabbedPanelsTabFocused" tabindex="0">Sign up</li>
+    <li class="TabbedPanelsTab" onclick="location='sign_in'" tabindex="0">Sign in</li>
+    <li class="TabbedPanelsTab TabbedPanelsTabSelected" tabindex="1">Sign up</li>
   </ul>
     
   <div class="TabbedPanelsContentGroup">
-    <div class="TabbedPanelsContent " style="display: none;" >
-      <div class="tab_content col-xs-12" style="margin-top:180px;">
-        <%= render "users/sessions/login" %>
-      </div>
+    <div class="TabbedPanelsContent" style="display: none;">
     </div>
     <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
-      <div class="tab_content col-xs-12" style="margin-top:25px;">
-        <%= render "users/registrations/registration" %>
+      <div class="tab_content col-xs-12">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "col-xs-12") do |f| %>
+          <%= devise_error_messages! %>
+          <ul class="col-xs-12">
+            <div class="col-xs-12 col-sm-6">
+              <li>
+                <h2 class="pull-left">Name</h2>
+                <span class="box">
+                  <%= image_tag "icons/name.png"%>
+                  <%= f.text_field :first_name %>
+                </span>
+              </li>
+              
+              <li>
+                <h2 class="pull-left">E-Mail</h2>
+                <span class="box">
+                  <%= image_tag "icons/mail.png" %>
+                  <%= f.email_field :email %>
+                </span>
+              </li>
+              
+              <li>
+                <h2 class="pull-left">Password</h2>
+                <span class="box">
+                  <%= image_tag "icons/password.png" %>
+                  <%= f.password_field :password, autocomplete: "off" %>
+                </span>
+              </li>
+              
+              <li>
+                <h2 class="pull-left">Confirm Password</h2>
+                <span class="box">
+                  <%= image_tag "icons/password.png" %>
+                  <%= f.password_field :password_confirmation %>
+                </span>
+              </li>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <li>
+                <h2 class="pull-left">Date of Birth</h2>
+                <span class="box">
+                  <%= image_tag "icons/dob.png" %>
+                  <%= f.date_field :date_of_birth, autocomplete: "off" %>
+                </span>
+              </li>
+              
+              <li>
+                <h2 class="pull-left">Gender</h2>
+                <span class="box">
+                  <div class="radio">
+                    <%= f.radio_button :gender, 1 , :checked => true , class: "styled" %>
+                    <label for="male">Male</label>
+                    <%= f.radio_button :gender, 2 , class: "styled" %>
+                    <label for="female">Female</label>
+                  </div>
+                </span>
+              </li>
+              
+              <li>
+                <h2 class="pull-left">Position</h2>
+                <span class="box">
+                  <%= image_tag "icons/position.png" %>
+                  <%= f.text_field :position %>
+                </span>
+              </li>
+              
+              <li>
+                <h2 class="pull-left">Zip Code</h2>
+                <span class="box">
+                  <%= image_tag "icons/zip.png" %>
+                  <%= f.text_field :zipcode %>
+                </span>
+              </li>
+            </div>
+            <div class="col-xs-12 nopadding_lr">
+              <div class="col-xs-12 col-sm-6">
+                <li>
+                  <h2 class="pull-left">Soccer Club</h2>
+                  <span class="box">
+                    <%= image_tag "icons/club.png" %>
+                    <%= f.text_field :soccer_club %>
+                  </span>
+                </li>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <li>
+                  <h2 class="pull-left">Soccer Goal</h2>
+                  <span class="box">
+                    <%= image_tag "icons/goal.png" %>
+                    <%= f.text_field :soccer_goal %>
+                  </span>
+                </li>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3"></div>
+            <div class="col-xs-12 col-sm-6">
+              <li>
+                <button>Sign up</button>
+              </li>
+                
+              <li>
+                <h2>Already a member?</h2> &nbsp; 
+                <%- if controller_name != 'sessions' %>
+                  <%= link_to "Sign in here", new_session_path(resource_name) %><br />
+                <% end -%>
+              </li>
+            </div>
+            <div class="col-xs-12 col-sm-3"></div>
+          </ul>
+          <%= f.hidden_field :user_type, :value => "#{User::USER_TYPES["user"]}" %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  // $( document ).ready(function() {
-  //   console.log(Spry.Widget.TabbedPanels);
-  //   //alert($(".TabbedPanels").defaultTab());
-  // });
-</script>
 <!-- <h2>Sign up</h2>
 
 <%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
