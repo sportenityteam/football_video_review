@@ -1,27 +1,88 @@
-<h3>My Reviews</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>User Videos</th>
-      <th>Status</th>
-      <th>Review</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td><%= image_tag review.order.videos.first.video_url(:thumb1) %></td>
-        <td><%= "#{review.order.user.try(:fullname)}'s #{review.order.try(:title)}" %></td>
-        <td><%= Order::STATUS.key(review.order.status) %></td>
-        <% if review.order.status == 7 %>
-          <td><%= link_to 'Click To Review', review_order_path(review.order) %></td>
-        <% elsif review.order.status == 6 %>
-          <td><%= link_to 'Revise Review', review_order_path(review.order) %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="TabbedPanels1" class="TabbedPanels">
+  <ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">My Reviews</li>
+  </ul>
+    
+  <div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
+      <div class="table-responsive">
+       <table class="table">
+        <thead>
+          <tr>
+            <th style="width:65%;">User Videos</th>
+            <th style="width:5%;">&nbsp;</th>
+            <th style="width:30%;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reviews.each do |review| %>
+            <tr>
+              <td>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="margin_5">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <%= image_tag review.order.videos.first.video_url(:thumb1) %>
+                      </td>
+                      <td>
+                        <table border="0" cellspacing="0" cellpadding="0">
+                          <tbody>
+                            <tr>
+                              <td><%= review.order.try(:title) %></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <!-- The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. -->
+                                <%= review.order.try(:description) %>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <table border="0" cellspacing="0" cellpadding="0">
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <div class="col-xs-6 review_table pull-left nopadding_lr">
+                                          <ul>
+                                            <li>
+                                              <%= image_tag "review_tab_user.png" %></li>
+                                            <li><%= review.order.user.try(:fullname) %></li> |
+                                          </ul>                                                   
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="col-xs-6 review_table nopadding_lr">
+                                          <ul>
+                                            <li><%= review.order.created_at.strftime("%b %d, %Y - %H:%M ") %></li>
+                                          </ul>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td></td>
+              <td style="vertical-align:middle;">
+                <div class="col-xs-12 review_table nopadding_lr">
+                  <ul>
+                    <li><%= image_tag "pending_user.png" %></li>
+                    <li><%= Order::STATUS.key(review.order.status) %></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+       </table>
+      </div>
+    </div>
+  </div>
+</div>
