@@ -6,6 +6,12 @@
 	}
 }
 
+@media only screen and (max-width:960px){
+	.container{
+		width:100%;
+	}
+}
+
 @media only screen and (max-width:993px){
 	.logo, .navigation{
 		width:100% !important;
@@ -16,9 +22,7 @@
 	.logo img{
 		width:200px;
 	}
-	.navigation ul{
-		padding:0;
-	}
+	
 	
 	.TabbedPanelsTab{
 		padding:10px 5px !important;
@@ -79,6 +83,113 @@
 	
 }
 
+@media only screen and (max-width:768px){
+	.nopadding_lr_res{		
+		padding-left:0;		
+		padding-right:0;		
+	}
+	
+	.container{
+		padding-left:0;
+		padding-right:0;
+	}
+	
+	.logo, .navigation{
+		width:100% !important;
+		text-align:center;
+		margin-bottom:10px;
+	}
+	
+	.logo img{
+		width:200px;
+	}
+	
+	.col-xs-2.text-left > img {
+		width:95%;
+	}
+	.reviewer_details h3 {
+		font-size:18px;	
+	}
+	.reviewer_details p {
+		font-size:15px;	
+	}
+	
+	.dropdown-menu li{
+		width:150px;
+		background-color:transparent;
+		border:0;
+	}
+	
+	.dropdown-menu li:hover{
+		background-color:transparent;
+	}
+	
+	.dropdown-menu li a{
+		padding-left:0;
+		display:inline-block;
+		color:#343d46 !important;
+	}
+	
+	.dropdown-menu li:hover > a{
+		color:#37bf75 !important;
+	}
+	
+	.page h4{
+		width:100%;
+		text-align:center;
+		margin-bottom:10px;
+	}
+	
+	.pagination{
+		margin:0 auto;
+		display:inline-block;
+		float:none !important;
+	}
+}
+
+@media only screen and (min-width:768px) and (max-width:940px){
+	.reviewer_details li {
+		font-size:19px;
+		margin-right:8px;
+	}
+	.saved_notes_btn {
+		padding-left:0 !important;
+	  padding-right:0 !important;
+	}
+}
+
+@media only screen and (min-width:525px) and (max-width:767px){
+	.reviewer_details li {
+		font-size:16px;
+		margin-right:7px;
+	}	
+	.saved_notes_btn {
+		padding-left:0 !important;
+	  padding-right:0 !important;
+	}
+	.saved_notes_btn {
+		padding-left:0 !important;
+	  padding-right:0 !important;
+	}
+}
+
+@media only screen and (min-width:480px) and (max-width:524px){
+	.col-sm-6.col-xs-5.text-left img {
+		width:32px;	
+	}
+	.reviewer_details li {
+		font-size:14px;
+		margin-right:3px;
+	}
+	.user_name {
+		font-size:20px;
+	}
+	.saved_notes_btn {
+		padding-left:0 !important;
+	  padding-right:0 !important;
+	}
+}
+
 @media only screen and (max-width:360px){
 	.tab_content form ul li h2{
 		font-size:18px;
@@ -86,5 +197,61 @@
 	
 	.TabbedPanelsTab{
 		font-size:14px !important;
+	}
+}
+
+@media only screen and (min-width:320px) and (max-width:479px){
+	.col-sm-6.col-xs-5.text-left img {
+		width:32px;	
+	}
+	.reviewer_details li {
+		float:left;
+		font-size:14px;
+		margin-right:3px;
+		line-height:30px;
+	}
+	.tech_note_txt {
+		font-size:22px !important;
+		color:#535353 !important;	
+	}
+	.tacti_note_txt {
+		font-size:22px !important;
+		color:#535353 !important;
+	}
+	.user_name {
+		font-size:18px;	
+	}
+	.reviewer_user_bg > .navbar-nav > li > a {
+		padding:0;	
+	}
+	.saved_notes_btn {
+		padding-left:0 !important;
+	  padding-right:0 !important;
+	}
+	.reviewer_menu {
+		min-width:300px !important;
+		max-width:50% !important;
+	}
+	.rev_det_tab_img {
+		display:none;
+		width:auto !important;
+	}
+	.rev_det_tab_namel {
+		font-size: 14px !important;
+	}
+	.rev_det_tab_namer {
+		font-size: 14px !important;
+	}
+}
+
+@media only screen and (min-width:260px) and (max-width:319px){
+	.col-sm-6.col-xs-5.text-left img {
+		width:32px;	
+	}
+	.reviewer_details li {
+		float:left;
+		font-size:14px;
+		margin-right:3px;
+		line-height:30px;
 	}
 }

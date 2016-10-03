@@ -17,5 +17,7 @@
  *= require style
  *= require SpryTabbedPanels
  *= require custom
+ *= require menu
+ *= require quill.snow
  *= require_self
  */

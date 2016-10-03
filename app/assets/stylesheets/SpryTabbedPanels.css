@@ -32,7 +32,7 @@
 	background: linear-gradient(to bottom, rgba(210,210,210,1) 0%,rgba(210,210,210,1) 50%,rgba(189,189,189,1) 50%,rgba(221,221,221,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	
 	color:#1c1c1c;
-	font-size:32px;
+	font-size:28px;
 	font-weight:300;
 }
 
@@ -61,7 +61,7 @@
 
 .TabbedPanelsContent {
 	overflow: hidden;
-	padding: 4px;
+	padding: 40px 4px 4px 4px;
 	text-align:center;
 	min-height:750px;
 	background-color:#fff;
