@@ -2,45 +2,82 @@
   <header class="col-xs-12">
     <div class="container">
       <div class="logo pull-left">
-        <a href="#">
-          <%= image_tag "logo.png" ,:class=> "img-responsive" %></a>
+        <a href="#"><%= image_tag "logo.png", :class => "img-responsive" %></a>
       </div>
-       <div class="navigation pull-right">
-        <ul>
-          <% if user_signed_in? %>
-            <li><%= link_to "Log out", destroy_user_session_path , method: "delete" %></li>
-          <% end %>
+
+      <div class="profile pull-right">
+        <ul class="nav navbar-nav hidden-xs">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag "icons/user.png" %>  Dropdown <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to edit_user_registration_path do %>
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: "delete" do %>
+                  <i class="fa fa-power-off"></i> Sign Out</a>
+                <% end %>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
   </header>
+
   <!-- navigation -->
-  <div class="navigation white_bg col-xs-12">
-    <ul class="container padding_tb_20 menu-font">
-      <li>
-        <a href="#" class="dark_gray">Home</a>
-      </li> |
-      <li>
-        <a href="<%= order_step_path(:add_order) %>" class="dark_gray" id="new_order">Upload Videos</a>
-        <%#= link_to 'My Orders', my_orders_path ,:class => "dark_gray" %>
-      </li> |
-      <li>
-        <a href="<%= my_orders_path %>" class="<%= current_path(my_orders_path) %> dark_gray">My Reviews</a>
-        <%#= link_to 'Make Order', order_steps_path ,:class => "dark_gray" %>
-      </li> |
-      <!-- <li>
-        <%#= link_to "Pending Orders", orders_path(:type => "New") ,:class => "dark_gray" %>
-      </li> |
-      <li>
-        <%#= link_to "Approved Orders", orders_path(:type => "Review approved") , :class =>"dark_gray" %>
-      </li> | -->
-      <li>
-        <a href="<%= my_profile_path %>" class="<%= current_path(my_profile_path) %> dark_gray">My Profile</a>
-      </li> 
+  <div class="navigation white_bg col-xs-12 hidden-xs">
+    <ul class="container padding_tb_20">
+      <li><a href="#" class="dark_gray">Home</a></li>
+      <li><a href="<%= order_step_path(:add_payment) %>" class="dark_gray" id="new_order">Upload Videos</a></li>
+      <li><a href="<%= my_orders_path %>" class="<%= current_path(my_orders_path) %> dark_gray">My Reviews</a></li>
     </ul>
   </div>
   <!-- Navigation closed -->
+
+  <div class="col-xs-12 navigation white_bg hidden-sm hidden-md hidden-lg padding_tb_10">
+
+    <div class="col-xs-6 pull-left">
+      <nav class="navBar">
+        <nav class="wrapper">
+          <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="label-toggle"></label>
+          </input>
+          <ul>
+            <li><a href="#" class="dark_gray">Home</a></li>
+            <li><a href="<%= order_step_path(:add_payment) %>" class="dark_gray" id="new_order">Upload Videos</a></li>
+            <li><a href="<%= my_orders_path %>" class="<%= current_path(my_orders_path) %> dark_gray">My Reviews</a></li>
+          </ul>
+        </nav>
+      </nav>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="profile">
+        <ul class="nav navbar-nav">
+          <li class="dropdown pull-right">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag "icons/user_dark.png" %>  <i class="fa fa-angle-down dark_gray" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to edit_user_registration_path do %>
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: "delete" do %>
+                  <i class="fa fa-power-off"></i> Sign Out</a>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 <script type="text/javascript">
 $(document).ready(function(){
