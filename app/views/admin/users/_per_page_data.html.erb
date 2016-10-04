@@ -1,0 +1,52 @@
+<div class="table-responsive col-xs-12 ad_order">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <% if params[:type] == "reviewer"%>
+                  <th>Contact No.</th>
+                  <th>Club</th>
+                <% else %>
+                  <th>Soccer Club</th>
+                <% end %>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td style="width:25%; vertical-align: middle;"><%= image_tag user.avatar.url(:thumb), :class=>"list-image-height img-circle", style: "height: 50px" %> <%= user.fullname%></td>
+                  <% if params[:type] == "reviewer"%>
+                    <td style="width:20%; vertical-align:middle;"><%= user.phone_number %></td>
+                    <td style="width:20%;  vertical-align: middle;"><%= user.current_club%></td>
+                  <% else %>
+                    <td style="width:20%; vertical-align: middle;"><%= user.soccer_club%></td>
+                  <% end %>
+                  <td style="width:20%; vertical-align: middle;">
+                  <a href="<%= edit_admin_user_path(user) %>" style="margin:0 15px 0 0;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                  <a href="<%= admin_user_path(user) %>" style="margin:0 15px 0 0;"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                  <a href="<%= admin_user_path(user) %>" data-method="delete" data-confirm="Are you sure?" style="margin:0 15px 0 0;"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>            
+          </table>
+        </div>
+        
+        <!-- pagination -->
+        
+        <div class="page col-xs-12">
+        
+          <!-- <h4 class="pull-left">Showing 1 to 10 of 30 entries</h4> -->
+          
+          <!-- <ul class="pagination pull-right">
+            <li><a href="#"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a></li>
+            <li><a class="active" href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+          </ul> -->
+          <h4 class="pull-left"><%= page_entries_info @users %></h4>
+          <%= paginate @users, :params => {:@users => @users} %>
+        </div>
