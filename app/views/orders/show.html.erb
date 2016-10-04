@@ -51,8 +51,12 @@
           <div class="col-xs-12 text-left order_details">
             <h2>Order Details</h2>
             <ul>
-              <li class="text-left">Order #<%= @order.payment.transcation_id %></li>
-              <li class="pull-right"><%= @order.payment.date_of_payment.strftime("%B %d, %Y") %></li>
+              <% if @order.payment.present? %>
+                <li class="text-left">Order #<%= @order.try(:payment).try(:transcation_id) %></li>
+                <% if @order.payment.date_of_payment.present? %>
+                  <li class="pull-right"><%= @order.payment.date_of_payment.strftime("%B %d, %Y") %></li>
+                <% end %>
+              <% end %>
             </ul>
             <h3><%= @order.try(:title) %></h3>
             <p><%= @order.try(:description) %></p>

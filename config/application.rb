@@ -25,9 +25,9 @@ module FootballVideoReview
     config.assets.precompile += %w(.svg .eot .woff .woff2 .ttf .otf)
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.paths << Rails.root.join("app", "assets", "images")
-    # config.paperclip_defaults = {
-    #   :storage => :s3,
-    #   :s3_credentials => "#{Rails.root.to_s}/config/aws.yml"
-    # }
+    config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => "#{Rails.root.to_s}/config/aws.yml"
+    }
   end
 end
