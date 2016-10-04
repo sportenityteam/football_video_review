@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     #redirection of different users after sign in
     def after_sign_in_path_for(resource)
       if resource.is_admin?
-        return admin_pending_orders_path
+        return admin_dashboard_path
       elsif resource.is_reviewer?
         return pending_reviews_path
       else

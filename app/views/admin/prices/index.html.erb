@@ -1,22 +1,38 @@
-<h3>Pricing</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @prices.each do |price| %>
-      <tr>
-        <td><%= price.name %></td>
-        <td><%= text_field_tag :price, price.price, :class => "age_price", :id => price.id %></td>
-        <td><%= link_to "Save",'', :class => "save_price" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div id="TabbedPanels1" class="TabbedPanels">
+    <ul class="TabbedPanelsTabGroup">
+      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">Pricing</li>
+    </ul>
+    <div class="TabbedPanelsContentGroup">
+      <div class="TabbedPanelsContent">
+        <div class="table-responsive col-xs-12 ad_order">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @prices.each do |price| %>
+                <tr>
+                  <td><%= price.name %></td>
+                  <td><%= text_field_tag :price, price.price, :class => "age_price", :id => price.id %></td>
+                  <td>
+                    <%= link_to '#', :class => "save_price" do %>
+                      <i class="fa fa-save" aria-hidden="true"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script type="text/javascript">
