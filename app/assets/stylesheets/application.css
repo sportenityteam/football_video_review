@@ -12,12 +12,12 @@
  *
  * require_tree .
  *= require bootstrap
- *= require font-awesome
- *= require responsive
  *= require style
- *= require SpryTabbedPanels
- *= require custom
+ *= require responsive
  *= require menu
- *= require quill.snow
+ *= require font-awesome
+ *= require SpryTabbedPanels
+ * require custom
+ * require quill.snow
  *= require_self
  */
