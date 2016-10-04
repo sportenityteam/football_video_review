@@ -74,7 +74,23 @@
                 <div class="col-xs-12 review_table nopadding_lr">
                   <ul>
                     <li><%= image_tag "pending_user.png" %></li>
-                    <li><%= Order::STATUS.key(review.order.status) %></li>
+                    <li>
+                      <% if review.order.status == 1 or review.order.status == 4 %>
+                        <%= Order::STATUS.key(review.order.status) %>
+                        Pending | Approval
+                      <% elsif review.order.status == 5 %>
+                        Approved
+                      <% elsif review.order.status == 6 %>
+                        Rejected
+                      <% elsif  review.order.status == 7 %>
+                        In Review
+                      <% end %>
+                    </li>
+                    <% if review.order.status == 7 %>
+                      <li class="revise_review"><%= link_to 'Click To Review', review_order_path(review.order) %></li>
+                    <% elsif review.order.status == 6 %>
+                      <li class="revise_review"><%= link_to 'Revise Review', review_order_path(review.order) %></li>
+                    <% end %>
                   </ul>
                 </div>
               </td>
