@@ -66,7 +66,7 @@ body{
 /**Header starts**/
 .navbar-toggle {
 	border: 1px solid #343d46;
-	border-radius: 0;	
+	border-radius: 0;
 }
 .navbar-toggle .icon-bar {
 		background:#343d46;
@@ -411,7 +411,7 @@ footer ul li a:hover{
 }
 
 .no-border {
-	border-bottom:none;	
+	border-bottom:none;
 	border-top:none;
 }
 
@@ -421,7 +421,7 @@ footer ul li a:hover{
 	opacity:1;
 }
 .modal-header, .modal-footer {
-	padding:0;	
+	padding:0;
 }
 .modal-content {
   border: none;
@@ -446,13 +446,13 @@ footer ul li a:hover{
 /**User Home Start**/
 .welcome {
 	background:rgba(197,197,197,0.5);
-	border:1px solid #c5c5c5;	
+	border:1px solid #c5c5c5;
 }
 .welcome p {
 	font-size:22px;
 	color:#535353;
 	font-weight:300;
-	padding:10px; 
+	padding:10px;
 }
 .our_reviewer_inc button {
 	display:inline-block;
@@ -470,20 +470,20 @@ footer ul li a:hover{
 	outline:0;
 }
 .reviewers_in {
-	margin-top:20px;	
+	margin-top:20px;
 }
 .reviewers_in h3 {
-	font-size:20px;	
+	font-size:20px;
 	color:#343d46;
 	margin-bottom:5px;
 }
 .reviewers_in p {
-	font-size:18px;	
+	font-size:18px;
 	color:#535353;
 	font-weight:300;
 }
 .many_more_txt {
-	font-size:16px;	
+	font-size:16px;
 	color:#535353;
 	font-weight:300;
 	margin-top:15px;
@@ -518,15 +518,15 @@ footer ul li a:hover{
 	text-align:left;
 	font-size:18px;
 	font-weight:300;
-	color:#535353;	
+	color:#535353;
 }
 .table a {
-	color:#535353;	
+	color:#535353;
 }
 .table > thead > tr > th {
 	font-size:22px;
 	color:#535353;
-	font-weight:400;	
+	font-weight:400;
 }
 /**My Reviews Closed**/
 
@@ -602,7 +602,7 @@ footer ul li a:hover{
 	border:1px solid #c5c5c5;
 	padding:10px;
 	font-size:16px;
-	color:#676767;	
+	color:#676767;
 }
 .revise_review a{
 	color:#676767;
@@ -636,7 +636,7 @@ footer ul li a:hover{
 
 /**Admin Review Pending Approval Start**/
 .table_cus_bord > .table-responsive {
-	border:none;	
+	border:none;
 }
 .video_notes > ul {
 	border-bottom:1px solid #dbdbdb;
@@ -715,7 +715,7 @@ footer ul li a:hover{
 }
 .navbar-nav > li > .reviewer_menu {
 	margin-top:12px;
-	margin-right:-10px;	
+	margin-right:-10px;
 }
 .reviewer_menu{
 	min-width:550px;
@@ -864,7 +864,7 @@ footer ul li a:hover{
 	display:inline;
 	margin-right:15px;
 	color:#ffffff!important;
-	font-size:15px!important;	
+	font-size:15px!important;
 	background:#39c177!important;
 	padding:12px;
 	line-height:normal !important;
@@ -900,12 +900,12 @@ footer ul li a:hover{
 	text-align:justify;
 }
 .light_txt {
-	font-weight:300;	
+	font-weight:300;
 }
 /**Reviewers Pending Reviews Closed**/
 
 
-/* 
+/*
 Admin Side
 */
 
@@ -1027,7 +1027,7 @@ ul.pagination li a:hover:not(.active) {
 }
 /*Pagination closed*/
 
-/* 
+/*
 Admin Side closed
 */
 
@@ -1117,4 +1117,67 @@ Admin Side closed
  color:#676767;
  font-size:16px;
  font-weight:300;
+
+.profile_pic{
+	border:2px solid #ccc;
+	padding:8px;
+	display:inline-block;
+	max-width:220px;
+	max-height:220px;
+	margin-bottom:20px;
+	position:relative;
+	overflow:hidden;
+}
+
+.cancel_btn{
+	position:absolute;
+	top:0;
+	right:0;
+	background-color:#bf3737;
+	padding:0 0 2px 2px;
+	z-index:999;
+}
+
+.cancel_btn i{
+	padding:0;
+	margin:0;
+	color:#fff;
+	line-height:0;
+	padding:0 5px;
+}
+
+.profile_pic img{
+	width:100%;
+	margin:0 auto;
+}
+
+.profile_pic input[type='file']{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	opacity:0;
+	/*cursor:pointer;*/
+}
+
+.upload_photo{
+	background-color:rgba(0,0,0,0.8);
+	padding:5px;
+	position:absolute;
+	bottom:-50px;
+	left:0;
+	width:100%;
+	text-align:center;
+	transition:0.3s;
+}
+
+.upload_photo p{
+	font-size:14px;
+	color:#fff;
+	margin:0;
+}
+
+.profile_pic:hover > .upload_photo{
+	bottom:0;
 }
