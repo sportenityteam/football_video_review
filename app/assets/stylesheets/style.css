@@ -1103,3 +1103,18 @@ Admin Side closed
 	background: linear-gradient(to bottom, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%,  rgba(221,221,221,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	color:#1c1c1c;
 }
+
+.view_profile_img img {
+ width:100%;
+}
+.view_profile_data {
+ text-align:left;
+}
+.view_profile_data img {
+ padding-right:8px;
+}
+.view_profile_data span {
+ color:#676767;
+ font-size:16px;
+ font-weight:300;
+}

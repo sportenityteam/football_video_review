@@ -1,24 +1,44 @@
-<h3> My Profile</h3> 
-<%= image_tag current_user.avatar.url(:thumb) , alt:"image"%><br/>
-<p>Username : <%= current_user.try(:fullname) %></p>
-<p>Gender : 
-<% if current_user.gender == 1 %>
-  Male
-<% else %>
-  Female
-<% end %></p>
-<% if current_user.is_reviewer? %>
-	<p>Date Of Birth : <%= current_user.try(:date_of_birth).strftime("%B,%d %Y") %></p>
-	<p>Address : <%= current_user.try(:address) %></p>
-	<p>Phone number : <%= current_user.try(:phone_number) %></p>
-	<p>Current club : <%= current_user.try(:current_club) %></p>
-	<p>Description : <%= current_user.try(:description) %></p>
-<% end %>
-<% if current_user.is_user? %>
-	<p>Date Of Birth : <%= current_user.try(:date_of_birth).strftime("%B,%d %Y") %></p>
-	<p>Position : <%= current_user.try(:position) %></p>
-	<p>Soccer Club : <%= current_user.try(:soccer_club) %></p>
-	<p>Soccer Goal : <%= current_user.try(:soccer_goal) %></p>
-<% end %>
-<p>Email : <%= current_user.email %></p>
-<p><%= link_to 'Edit Profile', edit_user_registration_path %></p>
+<div class="container">
+  <div id="TabbedPanels1" class="TabbedPanels">
+  	<ul class="TabbedPanelsTabGroup">
+      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">My Profile</li>
+    </ul>
+    <div class="TabbedPanelsContentGroup">
+    	<div class="TabbedPanelsContent">
+    		<div class="tab_content col-xs-12">
+    			<form class="col-xs-12">
+            <ul class="col-xs-12">
+              <div class="col-xs-12 nopadding_lr">
+								<div class="col-xs-12 col-sm-3 view_profile_img">
+									<%= image_tag current_user.avatar.url(:thumb) , alt:"image"%>
+								</div>
+								<div class="col-xs-12 col-sm-9 nopadding_lr">
+									<div class="col-xs-12 nopadding_lr view_profile_data margin_btm_20">
+										<div class="col-xs-12 col-sm-4"><%= image_tag "icons/name.png" %> <span><%= current_user.try(:fullname) %></span></div>
+										<div class="col-xs-12 col-sm-4"><%= image_tag "icons/dob.png" %> <span><%= current_user.try(:date_of_birth).strftime("%b %d, %Y") %></span></div>
+										<div class="col-xs-12 col-sm-4"><%= image_tag "icons/phone.png" %> <span><%= current_user.try(:phone_number) %></span></div>
+									</div>
+									<div class="col-xs-12 nopadding_lr view_profile_data margin_btm_20">
+										<div class="col-xs-12 col-sm-4"><span class="media-left nopadding_lr"><%= image_tag "icons/address.png" %></span> <span class="media-body"><%= current_user.try(:address) %></span></div>
+										<div class="col-xs-12 col-sm-4"><span class="media-left nopadding_lr"><%= image_tag "icons/club.png" %></span> <span class="media-body"><%= current_user.is_reviewer? ? current_user.current_club : current_user.soccer_club %></span></div>
+										<% if current_user.is_user? %>
+											<div class="col-xs-12 col-sm-4"><%= image_tag "icons/goal.png" %> <span><%= current_user.try(:soccer_goal) %></span></div>
+										<% end %>
+									</div>
+								</div>	
+								<div class="col-xs-12 view_profile_data" style="margin-top: 15px;">
+										 <span class="media-left nopadding_lr"><%= image_tag "icons/description.png" %></span> <span class="media-body" style="vertical-align: middle;"><%= current_user.try(:description) %></span>
+								</div>
+              </div>
+              <%= link_to 'Edit Profile', edit_user_registration_path %>
+            </ul>
+          </form>
+    		</div>
+    	</div>
+    </div>
+  </div>
+</div>
+
+<!-- This is left to add for is_user? -->
+	<!-- <p>Position : <%#= current_user.try(:position) %></p> -->
+	
