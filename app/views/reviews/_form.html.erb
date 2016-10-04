@@ -1,45 +1,107 @@
-<h3>Add Review</h3>
 <%= form_for @review do |f| %>
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-      <ul>
-      <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="video_notes">
+  <ul class="nav nav-pills">
+    <li class="col-xs-6 nopadding_lr active"><a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a></li>
+    <li class="col-xs-6 nopadding_lr"><a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade active in">
+      <div id="standalone-container">
+        <div id="toolbar-container" class="ql-toolbar ql-snow">
+          <%= f.text_area :technical_notes,:value => @review_new.present? ? @review_new.technical_notes : "" %>
+        </div>
+      </div>
     </div>
-  <% end %>
+    <div id="menu1" class="tab-pane fade">
+      <div id="standalone-container1">
+        <div id="toolbar-container1" class="ql-toolbar ql-snow">
+          <%= f.text_area :tactical_notes , :value =>  @review_new.present? ? @review_new.tactical_notes : ""  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="col-xs-12 nopadding_lr">
+  <div class="col-xs-12 col-sm-4 back_list_btn nopadding_lr">
+    <% if session[:url] == "pending_reviews" %>
+      <button>
+        <%= link_to pending_reviews_path do %>
+          <i class="fa fa-chevron-left"></i> Back to List
+        <% end %>
+      </button>
+    <% elsif session[:url] == "my_reviews" %>
+      <button>
+        <%= link_to my_reviews_path do %>
+          <i class="fa fa-chevron-left"></i> Back to List
+        <% end %>
+      </button>
+    <% else %>
+      <button>
+        <%= link_to :back do %>
+          <i class="fa fa-chevron-left"></i> Back to List
+        <% end %>
+      </button>
+    <% end %>
+  </div>
+  <div class="col-xs-12 col-sm-4 saved_notes_btn">
+    <%= f.submit "Save Notes" %>
+    <!-- <button><a href="#"><i class="fa fa-save"></i> Saved Notes</a></button> -->
+  </div>
+  <div class="col-xs-12 col-sm-4 submit_notes_btn nopadding_lr">
+    <%= f.submit "Submit", :class => "submit_form",:id => "review_submit" %>
+    <!-- <button><a href="#"><i class="fa fa-check"></i> Submit Notes</a></button> -->
+  </div>
+</div>
   <%= f.hidden_field :order_id, :value => "#{params[:id]}" %>
   <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
   <%= f.hidden_field :review_time, :value => "", :id => "review_time" %>
   <%= hidden_field_tag :submit_time, "", :id => "submit_time" %>
   <%= hidden_field_tag :is_reviewed, "", :id => "is_reviewed" %>
+<% end %>
+
+<!-- <h3>Add Review</h3>
+<%#= form_for @review do |f| %>
+  <%# if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%#= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <ul>
+      <% #@review.errors.full_messages.each do |message| %>
+        <li><%#= message %></li>
+      <%# end %>
+      </ul>
+    </div>
+  <%# end %>
+
+  <%#= f.hidden_field :order_id, :value => "#{params[:id]}" %>
+  <%#= f.hidden_field :user_id, :value => "#{current_user.id}" %>
+  <%#= f.hidden_field :review_time, :value => "", :id => "review_time" %>
+  <%#= hidden_field_tag :submit_time, "", :id => "submit_time" %>
+  <%#= hidden_field_tag :is_reviewed, "", :id => "is_reviewed" %>
 
   <div class="field">
-    <%= f.label :technical_notes %><br />
-    <%= f.text_area :technical_notes,:value => @review_new.present? ? @review_new.technical_notes : "" %>
+    <%#= f.label :technical_notes %><br />
+    <%#= f.text_area :technical_notes,:value => @review_new.present? ? @review_new.technical_notes : "" %>
   </div>
 
   <div class="field">
-    <%= f.label :tactical_notes %><br />
-    <%= f.text_area :tactical_notes , :value =>  @review_new.present? ? @review_new.tactical_notes : ""  %>
+    <%#= f.label :tactical_notes %><br />
+    <%#= f.text_area :tactical_notes , :value =>  @review_new.present? ? @review_new.tactical_notes : ""  %>
   </div>
 
   <div class="actions">
 
-    <% if session[:url] == "pending_reviews" %>
-      <%= link_to "Back to List", pending_reviews_path %>
-    <% elsif session[:url] == "my_reviews" %>
-      <%= link_to "Back to List", my_reviews_path %>
-    <% else %>
-      <%= link_to "Back to List", :back %>
-    <% end %>
-    <%= f.submit "Submit", :class => "submit_form",:id => "review_submit" %>
-    <%= f.submit "Save Notes" %>
+    <%# if session[:url] == "pending_reviews" %>
+      <%#= link_to "Back to List", pending_reviews_path %>
+    <%# elsif session[:url] == "my_reviews" %>
+      <%#= link_to "Back to List", my_reviews_path %>
+    <%# else %>
+      <%#= link_to "Back to List", :back %>
+    <%# end %>
+    <%#= f.submit "Submit", :class => "submit_form",:id => "review_submit" %>
+    <%#= f.submit "Save Notes" %>
   </div>
-<% end %>
+<%# end %> -->
 
 <script>
   $("#review_submit").click(function(){
@@ -54,5 +116,36 @@
   $("video").on("play", function (e) {
     var current_time = new Date($.now());
     $("#review_time").val(current_time);
+  });
+</script>
+<script type="text/javascript">
+  var toolbarOptions = [
+    [{ 'font': [] }],
+    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+    ['blockquote', 'code-block'],
+
+    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+    [{ 'direction': 'rtl' }],                         // text direction
+    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+    
+    [{ 'align': [] }],
+
+    ['clean']                                         // remove formatting button
+  ];
+  var quill = new Quill('#standalone-container', {
+      modules: {
+      toolbar: toolbarOptions
+    },
+    theme: 'snow'
+  });
+  var quill = new Quill('#standalone-container1', {
+      modules: {
+      toolbar: toolbarOptions
+    },
+    theme: 'snow'
   });
 </script>

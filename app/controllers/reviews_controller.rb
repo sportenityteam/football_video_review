@@ -4,7 +4,9 @@ class ReviewsController < ApplicationController
   before_action :set_review, :only => [:show]
 
   def new
-    session[:url] = request.referer.split('/').last
+    if request.referer.present?
+      session[:url] = request.referer.split('/').last
+    end
     puts "=-=--=-=----=-=-==--==-=---"+session[:url].inspect
     @review_new = Review.where(:order_id => @order.id, :user_id => current_user.id).first
     @review = Review.new

@@ -1,10 +1,136 @@
-<h3>Reviewing <%= @order.user.try(:fullname)%> 's Video</h3>
-<p>Title : <%= @order.title %></p>
-<p>Description : <%= @order.description %></p>
-<% if @order.videos.present? %>
-  <% @order.videos.each do |video| %>
-    <%= video_tag video.video_url.url, controls: true, autobuffer: true, :id => "order_video" %>
-  <% end %>
-<% end %>
-<%= render "/reviews/form" %>
+<div class="col-xs-12 nopadding_lr green_main_bg">
+	<div class="col-xs-9 pull-left user_name">Reviewing : <%= @order.title %></div>
+	
+	<div class="col-xs-3 col-sm-2 pull-right nopadding_lr_res hidden-xs">
+		<div class="reviewer_user_bg pull-right">
+			 <ul class="nav navbar-nav col-xs-12 nopadding_lr">
+				<li class="dropdown col-xs-12">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<%= image_tag "icons/user.png" %> <i class="fa fa-angle-down" aria-hidden="true"></i>
+					</a>
+					<ul class="dropdown-menu pull-right reviewer_menu">
+						<div class="table-responsive">
+							<table class="table table-striped" width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tbody>
+									<tr>
+										<td>&nbsp;</td>
+										<td class="rev_det_tab_img">
+											<%= image_tag "rev_det_user.png" %>
+										</td>
+										<td>&nbsp;</td>
+										<td class="rev_det_tab_namel">Name</td>
+										<td class="rev_det_tab_namer">
+											<%= @order.user.try(:fullname) %>
+										</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td class="rev_det_tab_img">
+											<%= image_tag "rev_det_gender.png" %>
+										</td>
+										<td>&nbsp;</td>
+										<td class="rev_det_tab_namel">Gender</td>
+										<td class="rev_det_tab_namer">
+											<% if @order.user.gender == 1 %>
+												Male
+											<% else %>
+												Female
+											<% end %>
+										</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td class="rev_det_tab_img">
+											<%= image_tag "rev_det_birth.png" %>
+										</td>
+										<td>&nbsp;</td>
+										<td class="rev_det_tab_namel">DoB</td>
+										<td class="rev_det_tab_namer">
+											<%= @order.user.date_of_birth.strftime("%b %d, %Y") if @order.user.date_of_birth.present? %></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td class="rev_det_tab_img">
+											<%= image_tag "rev_det_position.png" %>
+										</td>
+										<td>&nbsp;</td>
+										<td class="rev_det_tab_namel">Position</td>
+										<td class="rev_det_tab_namer"><%= @order.user.try(:position)%></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td class="rev_det_tab_img">
+											<%= image_tag "rev_det_club.png" %>
+										</td>
+										<td>&nbsp;</td>
+										<td class="rev_det_tab_namel">Soccer Club</td>
+										<td class="rev_det_tab_namer"><%= @order.user.try(:soccer_club) %></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td class="rev_det_tab_img">
+											<%= image_tag "rev_det_goal.png" %>
+										</td>
+										<td>&nbsp;</td>
+										<td class="rev_det_tab_namel">Soccer Goal</td>
+										<td class="rev_det_tab_namer"><%= @order.user.try(:soccer_goal)%></td>
+										<td>&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</ul>
+				</li>
+			</ul>
+		</div>
+  </div>
+</div>
+<div class="TabbedPanelsContentGroup">
+  <div class="TabbedPanelsContent">
+		<div class="tab_content col-xs-12">
+			<div>
+				<% if @order.videos.present? %>
+					<%if @order.videos.count == 2 %>
+						<div>
+							<div class="video_notes">
+								<ul class="nav nav-pills">
+									<li class="col-xs-6 nopadding_lr active"><a data-toggle="pill" href="#vid" class="tech_note_txt padding_top_0">First Half</a></li>
+									<li class="col-xs-6 nopadding_lr "><a data-toggle="pill" href="#vid1" class="tacti_note_txt padding_top_0">Second Half</a></li>
+								</ul>
+								<div class="tab-content">
+									<div id="vid" class="tab-pane fade active in">
+										<iframe class="videowidth" width="100%" height="315" src="<%= @order.videos.first.video_url.url(:medium)%>%>" frameborder="0" allowfullscreen=""></iframe>
+									</div>
+									<div id="vid1" class="tab-pane fade">
+										<iframe class="videowidth" width="100%" height="315" src="<%= @order.videos.last.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe>
+									</div>
+								</div>
+							</div>
+						</div>
+					<% else%>
+						<iframe width="100%" height="315" src="<%= @order.videos.first.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe>
+				  <% end %>
+				<% end %>
+			</div>
+			<%= render "/reviews/form" %>			
+  	</div>
+	</div>
+</div>
+<!-- Initialize Quill editor -->
+
+
+<!-- <h3>Reviewing <%#= @order.user.try(:fullname)%> 's Video</h3>
+<p>Title : <%#= @order.title %></p>
+<p>Description : <%#= @order.description %></p>
+<%# if @order.videos.present? %>
+  <%# @order.videos.each do |video| %>
+    <%#= video_tag video.video_url.url, controls: true, autobuffer: true, :id => "order_video" %>
+  <%# end %>
+<%# end %>
+<%#= render "/reviews/form" %> -->
 

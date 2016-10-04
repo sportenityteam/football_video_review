@@ -1101,6 +1101,7 @@ Admin Side closed
 	background: linear-gradient(to bottom, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%,  rgba(221,221,221,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	color:#1c1c1c;
 }
+<<<<<<< Updated upstream
 
 .view_profile_img img {
  width:100%;
@@ -1179,3 +1180,143 @@ Admin Side closed
 .profile_pic:hover > .upload_photo{
 	bottom:0;
 }
+
+/**Reviewers Review Details Start**/
+.green_main_bg {
+	background: rgb(86,220,147); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(86,220,147,1) 0%, rgba(86,220,147,1) 50%, rgba(63,200,125,1) 50%, rgba(80,218,143,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(86,220,147,1) 0%,rgba(86,220,147,1) 50%,rgba(63,200,125,1) 50%,rgba(80,218,143,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(86,220,147,1) 0%,rgba(86,220,147,1) 50%,rgba(63,200,125,1) 50%,rgba(80,218,143,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	outline:0;
+}
+.navbar-nav > li > .reviewer_menu {
+	border:none !important;
+}
+.navbar-nav > li > .reviewer_menu {
+	margin-top:12px;
+	margin-right:-10px;	
+}
+.reviewer_menu{
+	min-width:550px;
+	max-width:100%;
+	background:#343d46;
+	position:absolute;
+	top:50px;
+}
+.reviewer_menu > .table-responsive > .table-striped {
+   margin-bottom:0;
+}
+.reviewer_menu > .table-responsive > .table-striped {
+   margin-bottom:0;
+}
+.reviewer_menu > .table-responsive > .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #4e5861;
+}
+/*.reviewer_menu > .table-responsive > .table-striped > tbody > tr > td, .table-striped > tbody > tr > th {
+   color:#fff;
+	 font-size:20px;
+	 font-weight:400;
+}
+.reviewer_menu > .table-responsive > .table-striped > tbody > tr > td:nth-child(5n+0) {
+	 font-weight:300;
+}*/
+.reviewer_menu > .table-responsive > .table-striped > tbody > tr, td {
+   border:none!important;
+}
+.back_list_btn button {
+	background: rgb(210,210,210); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%, rgba(221,221,221,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%, rgba(221,221,221,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%,  rgba(221,221,221,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	border: 0 none;
+	color: #1c1c1c;
+	display: inline-block;
+	font-size: 24px;
+	font-weight: 300;
+	margin: 20px 0;
+	outline: 0 none;
+	padding: 7px 0;
+	width:100%;
+	height:100%;
+	float:left;
+}
+.back_list_btn button a {
+	color: #1c1c1c;
+}
+
+.saved_notes_btn button {
+	background: rgb(69,79,88); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(69,79,88,1) 0%, rgba(69,79,88,1) 50%, rgba(52,61,70,1) 50%, rgba(101,115,126,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	border: 0 none;
+	color: #fff;
+	display: inline-block;
+	font-size: 24px;
+	font-weight: 300;
+	margin: 20px 0;
+	outline: 0 none;
+	padding: 7px 0;
+	width:100%;
+	height:100%;
+	float:right;
+}
+.saved_notes_btn button a {
+	color: #fff;
+}
+.submit_notes_btn button {
+	background: rgb(86,220,147); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(86,220,147,1) 0%, rgba(86,220,147,1) 50%, rgba(63,200,125,1) 50%, rgba(80,218,143,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(86,220,147,1) 0%,rgba(86,220,147,1) 50%,rgba(63,200,125,1) 50%,rgba(80,218,143,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(86,220,147,1) 0%,rgba(86,220,147,1) 50%,rgba(63,200,125,1) 50%,rgba(80,218,143,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	border: 0 none;
+	color: #1c1c1c;
+	display: inline-block;
+	font-size: 24px;
+	font-weight: 300;
+	margin: 20px 0;
+	outline: 0 none;
+	padding: 7px 0;
+	width:100%;
+	height:100%;
+	float:right;
+}
+.submit_notes_btn button a{
+	color: #1c1c1c;
+}
+.back_list_btn button {
+	background: rgb(69,79,88); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(69,79,88,1) 0%, rgba(69,79,88,1) 50%, rgba(52,61,70,1) 50%, rgba(101,115,126,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	border: 0 none;
+	color: #fff;
+	display: inline-block;
+	font-size: 24px;
+	font-weight: 300;
+	margin: 20px 0;
+	outline: 0 none;
+	padding: 7px 0;
+	width:100%;
+	height:100%;
+}
+.back_list_btn button a {
+	color: #fff;
+}
+
+.rev_det_tab_img {
+	width:8%;
+	text-align:center;
+	vertical-align:middle;
+}
+.rev_det_tab_namel {
+	color: #fff !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+}
+.rev_det_tab_namer {
+	color: #fff !important;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+}
+/**Reviewers Review Details Closed**/
