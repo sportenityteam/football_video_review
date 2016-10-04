@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     #@users = User.is_reviewer
-    @users = User.where(:user_type => User::USER_TYPES[params[:type]])
+    @users = User.where(:user_type => User::USER_TYPES[params[:type]]).page(params[:page]).per(1)
   end
 
   def new

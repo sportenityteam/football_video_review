@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+
+  helpers:
+    page_entries_info:
+      more_pages:
+        display_entries: "Showing %{first}&nbsp;to&nbsp;%{last} of %{total} entries"
