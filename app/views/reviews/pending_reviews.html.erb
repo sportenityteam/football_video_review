@@ -1,24 +1,43 @@
-<h3>Video Pending Review</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>User Videos</th>
-      <th colspan="2">Review</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= "#{order.user.fullname}'s #{order.title}" %></td>
-        <td>
-          <%= link_to 'Click To Review', review_order_path(order) %>
-          <% if order.status == 7 %>
-            <%= link_to 'Cancel', review_path(order.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+<div id="TabbedPanels1" class="TabbedPanels">
+  <ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">Video Pending Review</li>
+  </ul>
+  
+  <div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
+      <div class="table-responsive">
+       <table class="table">
+        <thead>
+          <tr>
+            <th>User Videos</th>
+            <th>&nbsp;</th>
+            <th>Review</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr class="video-title-txt">
+              <td style="width:16%;" class="padding_20">
+                <%= image_tag order.videos.first.video_url(:thumb1) %>
+              </td>
+              <td style="width:49%;" class="padding_20">
+                <h2><%= order.try(:title) %></h2>
+                <p><%= order.try(:description) %></p>
+                <%= image_tag "review_tab_user.png" %> 
+                <span><%= order.user.try(:fullname) %></span> | 
+                <span><%= order.created_at.strftime("%b %d, %Y - %H:%M ") %></span>
+              </td>
+              <td style="width:30%; vertical-align:middle;" class="padding_20">
+                <button class="click_review_btn"><%= link_to 'Click To Review', review_order_path(order) %></button>
+                <% if order.status == 7 %>
+                  <button class="click_review_btn"><%= link_to 'Cancel', review_path(order.id), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </tbody>
+       </table>
+      </div>
+    </div>
+  </div>
+</div>

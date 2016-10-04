@@ -50,9 +50,9 @@
                   <% end %>
                 </span>
                 <% if review.order.status == 7 %>
-                  <button class="revise_review"><%= link_to 'Click To Review', review_order_path(review.order) %></button>
+                  <button class="click_review_btn"><%= link_to 'Click To Review', review_order_path(review.order) %></button>
                 <% elsif review.order.status == 6 %>
-                  <button class="revise_review"><%= link_to 'Revise Review', review_order_path(review.order) %></button>
+                  <button class="revise_review_btn"><%= link_to 'Revise Review', review_order_path(review.order) %></button>
                 <% end %>
               </td>
             </tr>
