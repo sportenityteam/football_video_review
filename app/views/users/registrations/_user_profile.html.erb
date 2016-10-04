@@ -15,8 +15,12 @@
 
                 <div class="col-xs-12 col-sm-4">
                   <span class="profile_pic">
-                    <%= image_tag "reviewer_img.png" %>
-                    <a href="#" class="cancel_btn" title="Remove Photo"><i class="fa fa-close"></i></a>
+                    <% if current_user.avatar.present? %>
+                      <%= image_tag current_user.avatar.url, :class => "remove_image" %>
+                    <% else %>
+                      <%= image_tag "reviewer_img.png", :class => "remove_image" %>
+                    <% end %>
+                    <a href="#" class="cancel_btn" title="Remove Photo" onclick="removeUserImage()"><i class="fa fa-close"></i></a>
 
                     <div class="upload_photo">
                       <p>Upload Photo</p>
@@ -44,7 +48,7 @@
                   <h2 class="pull-left">E-Mail</h2>
                   <span class="box">
                     <%= image_tag "icons/mail.png" %>
-                    <input type="text" name="email">
+                    <%= f.text_field :email, :readonly => true %>
                   </span>
                 </li>
 
@@ -53,14 +57,6 @@
                   <span class="box">
                     <%= image_tag "icons/dob.png" %>
                     <%= f.date_field :date_of_birth, autocomplete: "off" %>
-                  </span>
-                </li>
-
-                <li>
-                  <h2 class="pull-left">Position</h2>
-                  <span class="box">
-                    <%= image_tag "icons/position.png" %>
-                    <%= f.text_field :position %>
                   </span>
                 </li>
 
@@ -113,6 +109,16 @@
 
               <div class="col-xs-12">
                 <li>
+                  <h2 class="pull-left">Position</h2>
+                  <span class="box">
+                    <%= image_tag "icons/position.png" %>
+                    <%= f.text_field :position %>
+                  </span>
+                </li>
+              </div>
+
+              <div class="col-xs-12">
+                <li>
                   <h2 class="pull-left padding_tb_20"><strong>Change Password</strong> (leave blank if you don't want to change your password)</h2>
                 </li>
               </div>
@@ -152,7 +158,7 @@
               <div class="col-xs-12 col-sm-3"></div>
               <div class="col-xs-12 col-sm-6 margin_btm_30">
                 <li>
-                  <%= f.submit "Update" %>
+                  <button type="submit">Update Profile</button>
                 </li>
               </div>
               <div class="col-xs-12 col-sm-3"></div>
@@ -163,12 +169,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  $(function(){
-    $("#upload_link").on('click', function(e){
-      e.preventDefault();
-      $("#upload:hidden").trigger('click');
-    });
-  });
-</script>

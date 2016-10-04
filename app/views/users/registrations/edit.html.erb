@@ -5,3 +5,24 @@
 <% elsif resource.is_reviewer? %>
   <%= render "reviewer_profile" %>
 <% end %>
+
+<script>
+  $(function(){
+    $("#upload_link").on('click', function(e){
+      e.preventDefault();
+      $("#upload:hidden").trigger('click');
+    });
+  });
+
+  function removeUserImage(){
+    $('.remove_image').attr('src', '<%= asset_path("reviewer_img.png") %>');
+  }
+
+  $(document).ready(function(){
+    $("#user_avatar").change(function(){
+      console.log($("#user_avatar").val())
+      $(this).attr("src",$(this).val());
+    });
+  });
+
+</script>
