@@ -62,8 +62,8 @@ class ReviewsController < ApplicationController
   end
 
   def pending_reviews
-    order_ids = Review.joins(:order).where("orders.status =? or orders.status =? or orders.status =? and reviews.user_id =? ",Order::STATUS["Admin Approved"], Order::STATUS["Review rejected"], Order::STATUS["In review"], current_user.id).pluck(:order_id).uniq
-    @orders = Order.where("id IN (?)", order_ids)
+    order_ids = Review.joins(:order).where("orders.status =? or orders.status =? or orders.status =? and reviews.user_id =? ",Order::STATUS["Pending"], Order::STATUS["Review rejected"], Order::STATUS["In review"], current_user.id).pluck(:order_id).uniq
+    @orders = Order.where("id IN (?) or status =?", order_ids, Order::STATUS["Pending"])
   end
 
   def destroy
