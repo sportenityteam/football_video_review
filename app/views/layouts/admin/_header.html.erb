@@ -25,7 +25,7 @@
           <a href="<%= admin_reviewed_by_reviewer_path %>" class="<%= current_path(admin_reviewed_by_reviewer_path) %> dark_gray">Video Approval
           </a>
         </li>
-        <li><a href="<%= admin_pending_orders_path %>" class="<%= current_path(admin_pending_orders_path) %> dark_gray">Review Approval</a></li>
+        <!-- <li><a href="<%#= admin_pending_orders_path %>" class="<%= current_path(admin_pending_orders_path) %> dark_gray">Review Approval</a></li> -->
         <li><a href="<%= admin_users_path(:type => "reviewer") %>" class="<%= current_path(admin_users_path(:type => "reviewer")) %> dark_gray">Reviewers</a></li>
         <li>
         <a href="<%= admin_users_path(:type => "user") %>" class="<%= current_path(admin_users_path(:type => "user")) %> dark_gray">Users</a>
@@ -52,9 +52,9 @@
             <a href="<%= admin_reviewed_by_reviewer_path %>">
             <li>Video Approval</li>
             </a>
-            <a href="<%= admin_pending_orders_path %>">
+            <!-- <a href="<%#= admin_pending_orders_path %>">
             <li>Review Approval</li>
-            </a>
+            </a> -->
             <a href="<%= admin_users_path(:type => "reviewer") %>">
             <li>Reviewers</li>
             </a>
