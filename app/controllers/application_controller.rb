@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
     def restrict_user
       if user_signed_in?
         if current_user.is_admin?
-          redirect_to root_url
+          redirect_to admin_dashboard_path
         elsif current_user.is_reviewer?
           redirect_to root_url
         end

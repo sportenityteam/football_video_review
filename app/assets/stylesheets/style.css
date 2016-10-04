@@ -924,7 +924,6 @@ Admin Side
 	display:inline-block;
 	margin:0 auto;
 	margin-bottom:30px;
-	overflow: hidden;
 }
 
 .dashboard ul li a{
@@ -963,7 +962,6 @@ Admin Side
 	margin:0;
 	transition:0.3s;
 }
-/*Dashboard starts closed*/
 
 .ad_order > .table{
 	border-top:2px solid #ddd;
