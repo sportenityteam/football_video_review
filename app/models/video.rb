@@ -9,7 +9,7 @@ class Video < ActiveRecord::Base
                     #:default_url => "missing_user.png",
                     :styles => {
                                 :medium => { :geometry => "300x200", :format => 'mp4' },
-                                :thumb1 => { :geometry => "100x100#", :format => 'jpg', :time => 1 },
+                                :thumb1 => { :geometry => "120x120#", :format => 'jpg', :time => 1 },
                                 :thumb => { :geometry => "512x512#", :format => 'jpg', :time => 1 }
                                }, :processors => [:transcoder]
 

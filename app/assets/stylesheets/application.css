@@ -17,7 +17,7 @@
  *= require menu
  *= require font-awesome
  *= require SpryTabbedPanels
- * require custom
- * require quill.snow
+ *= require custom
+ *= require quill.snow
  *= require_self
  */

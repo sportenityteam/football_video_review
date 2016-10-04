@@ -2,97 +2,58 @@
   <ul class="TabbedPanelsTabGroup">
     <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">My Reviews</li>
   </ul>
-    
+  
   <div class="TabbedPanelsContentGroup">
     <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
       <div class="table-responsive">
        <table class="table">
         <thead>
           <tr>
-            <th style="width:65%;">User Videos</th>
-            <th style="width:5%;">&nbsp;</th>
-            <th style="width:30%;">Status</th>
+            <th>User Videos</th>
+            <th></th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
           <% @reviews.each do |review| %>
-            <tr>
-              <td>
-                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="margin_5">
-                  <tbody>
-                    <tr>
-                      <td>
-                        <%= image_tag review.order.videos.first.video_url(:thumb1) %>
-                      </td>
-                      <td>
-                        <table border="0" cellspacing="0" cellpadding="0">
-                          <tbody>
-                            <tr>
-                              <td><%= review.order.try(:title) %></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <!-- The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. -->
-                                <%= review.order.try(:description) %>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <table border="0" cellspacing="0" cellpadding="0">
-                                  <tbody>
-                                    <tr>
-                                      <td>
-                                        <div class="col-xs-6 review_table pull-left nopadding_lr">
-                                          <ul>
-                                            <li>
-                                              <%= image_tag "review_tab_user.png" %></li>
-                                            <li><%= review.order.user.try(:fullname) %></li> |
-                                          </ul>                                                   
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="col-xs-6 review_table nopadding_lr">
-                                          <ul>
-                                            <li><%= review.order.created_at.strftime("%b %d, %Y - %H:%M ") %></li>
-                                          </ul>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+            <tr class="video-title-txt">
+              <td style="width:16%;" class="padding_20">
+                <%= image_tag review.order.videos.first.video_url(:thumb1) %>
               </td>
-              <td></td>
-              <td style="vertical-align:middle;">
-                <div class="col-xs-12 review_table nopadding_lr">
-                  <ul>
-                    <li><%= image_tag "pending_user.png" %></li>
-                    <li>
-                      <% if review.order.status == 1 or review.order.status == 4 %>
-                        <%= Order::STATUS.key(review.order.status) %>
-                        Pending | Approval
-                      <% elsif review.order.status == 5 %>
-                        Approved
-                      <% elsif review.order.status == 6 %>
-                        Rejected
-                      <% elsif  review.order.status == 7 %>
-                        In Review
-                      <% end %>
-                    </li>
-                    <% if review.order.status == 7 %>
-                      <li class="revise_review"><%= link_to 'Click To Review', review_order_path(review.order) %></li>
-                    <% elsif review.order.status == 6 %>
-                      <li class="revise_review"><%= link_to 'Revise Review', review_order_path(review.order) %></li>
-                    <% end %>
-                  </ul>
-                </div>
+              <td style="width:49%;" class="padding_20">
+                <h2><%= review.order.try(:title) %></h2>
+                <p><%= review.order.try(:description) %></p>
+                <%= image_tag "review_tab_user.png" %> 
+                <span><%= review.order.user.try(:fullname) %></span> | 
+                <span><%= review.order.created_at.strftime("%b %d, %Y - %H:%M ") %></span>
+              </td>
+              <td style="width:30%; vertical-align:middle;" class="padding_20">
+                <% if review.order.status == 1 or review.order.status == 4 %>
+                  <%= image_tag "pending_user.png" %>
+                <% elsif review.order.status == 5 %>
+                  <%= image_tag "reviewers_right.png" %>
+                <% elsif review.order.status == 6 %>
+                  <%= image_tag "reviewers_wrong.png" %>
+                <% elsif  review.order.status == 7 %>
+                  <%= image_tag "pending_user.png" %>
+                <% end %>
+                <span class="border-none">
+                  <% if review.order.status == 1 or review.order.status == 4 %>
+                    <%= Order::STATUS.key(review.order.status) %>
+                    Pending | Approval
+                  <% elsif review.order.status == 5 %>
+                    Approved
+                  <% elsif review.order.status == 6 %>
+                    Rejected
+                  <% elsif  review.order.status == 7 %>
+                    In Review
+                  <% end %>
+                </span>
+                <% if review.order.status == 7 %>
+                  <button class="revise_review"><%= link_to 'Click To Review', review_order_path(review.order) %></button>
+                <% elsif review.order.status == 6 %>
+                  <button class="revise_review"><%= link_to 'Revise Review', review_order_path(review.order) %></button>
+                <% end %>
               </td>
             </tr>
           <% end %>
@@ -102,3 +63,4 @@
     </div>
   </div>
 </div>
+
