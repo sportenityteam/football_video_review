@@ -11,7 +11,7 @@
               <div class="col-sm-6 col-xs-5 text-left">
                 <ul>
                   <% if @reviewer.user.avatar.present? %>
-                    <li><%= image_tag @reviewer.user.avatar.url %></li>
+                    <li><%= image_tag @reviewer.user.avatar.url(:thumb) %></li>
                   <% else %>
                     <li><%= image_tag "icons/reviewer.png" %></li>
                   <% end%>
