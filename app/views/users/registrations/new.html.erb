@@ -3,7 +3,7 @@
     <li class="TabbedPanelsTab" onclick="location='sign_in'" tabindex="0">Sign in</li>
     <li class="TabbedPanelsTab TabbedPanelsTabSelected" tabindex="1">Sign up</li>
   </ul>
-    
+
   <div class="TabbedPanelsContentGroup">
     <div class="TabbedPanelsContent" style="display: none;">
     </div>
@@ -14,13 +14,13 @@
           <ul class="col-xs-12">
             <div class="col-xs-12 col-sm-6">
               <li>
-                <h2 class="pull-left">Name</h2>
+                <h2 class="pull-left">First Name</h2>
                 <span class="box">
                   <%= image_tag "icons/name.png"%>
                   <%= f.text_field :first_name %>
                 </span>
               </li>
-              
+
               <li>
                 <h2 class="pull-left">E-Mail</h2>
                 <span class="box">
@@ -28,7 +28,7 @@
                   <%= f.email_field :email %>
                 </span>
               </li>
-              
+
               <li>
                 <h2 class="pull-left">Password</h2>
                 <span class="box">
@@ -36,7 +36,7 @@
                   <%= f.password_field :password, autocomplete: "off" %>
                 </span>
               </li>
-              
+
               <li>
                 <h2 class="pull-left">Confirm Password</h2>
                 <span class="box">
@@ -47,13 +47,20 @@
             </div>
             <div class="col-xs-12 col-sm-6">
               <li>
+                <h2 class="pull-left">Last Name1</h2>
+                <span class="box">
+                  <%= image_tag "icons/name.png"%>
+                  <%= f.text_field :last_name %>
+                </span>
+              </li>
+              <li>
                 <h2 class="pull-left">Date of Birth</h2>
                 <span class="box">
                   <%= image_tag "icons/dob.png" %>
-                  <%= f.date_field :date_of_birth, autocomplete: "off" %>
+                  <%= f.text_field :date_of_birth, autocomplete: "off", :id => "dob" %>
                 </span>
               </li>
-              
+
               <li>
                 <h2 class="pull-left">Gender</h2>
                 <span class="box">
@@ -65,15 +72,6 @@
                   </div>
                 </span>
               </li>
-              
-              <li>
-                <h2 class="pull-left">Position</h2>
-                <span class="box">
-                  <%= image_tag "icons/position.png" %>
-                  <%= f.text_field :position %>
-                </span>
-              </li>
-              
               <li>
                 <h2 class="pull-left">Zip Code</h2>
                 <span class="box">
@@ -102,14 +100,23 @@
                 </li>
               </div>
             </div>
+            <div class="col-xs-12">
+              <li>
+                <h2 class="pull-left">Position</h2>
+                <span class="box">
+                  <%= image_tag "icons/position.png" %>
+                  <%= f.text_field :position, :placeholder => "Play on a Middle School team, Play on a High School team, Play professionally, etc." %>
+                </span>
+              </li>
+            </div>
             <div class="col-xs-12 col-sm-3"></div>
             <div class="col-xs-12 col-sm-6">
               <li>
                 <button>Sign up</button>
               </li>
-                
+
               <li>
-                <h2>Already a member?</h2> &nbsp; 
+                <h2>Already a member?</h2> &nbsp;
                 <%- if controller_name != 'sessions' %>
                   <%= link_to "Sign in here", new_session_path(resource_name) %><br />
                 <% end -%>
@@ -123,78 +130,11 @@
     </div>
   </div>
 </div>
-<!-- <h2>Sign up</h2>
 
-<%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%#= devise_error_messages! %>
-
-  <div class="field">
-    <%#= f.label :first_name %><br />
-    <%#= f.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%#= f.label :last_name %><br />
-    <%#= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%#= f.label :date_of_birth %><br />
-    <%#= f.date_field :date_of_birth, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <lable>Gender : </label>
-      <div>
-        <%#= f.radio_button :gender, 1 , :checked => true , class: "styled" %>
-        <label>Male</label>
-      </div>
-
-      <div>
-        <%#= f.radio_button :gender, 2 , class: "styled" %>
-        <label>Female</label>
-      </div>
-    </label>
-  </div>
-
-  <div class="field">
-    <%#= f.label :email %><br />
-    <%#= f.email_field :email %>
-  </div>
-
-  <div class="field">
-    <%#= f.label :password %>
-    <%# if @minimum_password_length %>
-    <em>(<%#= @minimum_password_length %> characters minimum)</em>
-    <%# end %><br />
-    <%#= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%#= f.label :password_confirmation %><br />
-    <%#= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="field">
-    <%#= f.label :zipcode %><br />
-    <%#= f.text_field :zipcode %>
-  </div>
-
-  <div class="field">
-    <%#= f.label :position %><br />
-    <%#= f.text_field :position %>
-  </div>
-
-  <div class="field">
-    <%#= f.label :avatar %><br />
-    <%#= f.file_field :avatar %>
-  </div><br/>
-
-  <%#= f.hidden_field :user_type, :value => "#{User::USER_TYPES["user"]}" %>
-
-  <div class="actions">
-    <%#= f.submit "Sign up" %>
-  </div>
-<%# end %>
-
-<%#= render "users/shared/links" %> -->
+<script>
+  $(document).ready(function(){
+    $('#dob').datetimepicker({
+      format: 'YYYY-MM-DD'
+    });
+  });
+</script>

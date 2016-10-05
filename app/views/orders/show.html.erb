@@ -4,65 +4,65 @@
       <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">My Reviews</li>
     </ul>
 
-      <div class="TabbedPanelsContentGroup">
-        <div class="TabbedPanelsContent">
-          <div class="col-xs-12 reviewer_details nopadding_lr">
-            <% if @reviewer.present? %>
-              <div class="col-sm-6 col-xs-5 text-left">
-                <ul>
-                  <% if @reviewer.user.avatar.present? %>
-                    <li><%= image_tag @reviewer.user.avatar.url(:thumb) %></li>
-                  <% else %>
-                    <li><%= image_tag "icons/reviewer.png" %></li>
-                  <% end%>
-                  <li><%= @reviewer.user.fullname %></li>
-                </ul>
-              </div>
-              <div class="col-sm-6 col-xs-7 text-right">
-                <ul>
-                  <li>Reviewed on - </li>
-                  <li style="font-weight:300;"><%= @reviewer.created_at.strftime("%B %d, %Y") %></li>
-                </ul>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="col-xs-12 reviewer_details nopadding_lr">
-            <div class="col-xs-2 text-left">
-              <% if @order.videos.present? %>
-                <%= image_tag @order.videos.first.video_url(:thumb1) %>
-              <% else %>
-                <%= image_tag "thumb_video.jpg" %>
-              <% end %>
-            </div>
-            <div class="col-xs-10 text-left">
-              <h3><%= @order.try(:title) %></h3>
-              <p><%= @order.try(:description) %></p>
-            </div>
-          </div>
-
+    <div class="TabbedPanelsContentGroup">
+      <div class="TabbedPanelsContent">
+        <div class="col-xs-12 reviewer_details nopadding_lr">
           <% if @reviewer.present? %>
-            <div class="col-xs-12 text-left reviewer_details">
-              <h3>Technical Notes</h3>
-              <p><%= @reviewer.technical_notes %></p>
+            <div class="col-sm-6 col-xs-5 text-left">
+              <ul>
+                <% if @reviewer.user.avatar.present? %>
+                  <li><%= image_tag @reviewer.user.avatar.url(:thumb) %></li>
+                <% else %>
+                  <li><%= image_tag "icons/reviewer.png" %></li>
+                <% end%>
+                <li><%= @reviewer.user.fullname %></li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-xs-7 text-right">
+              <ul>
+                <li>Reviewed on - </li>
+                <li style="font-weight:300;"><%= @reviewer.created_at.strftime("%B %d, %Y") %></li>
+              </ul>
             </div>
           <% end %>
+        </div>
 
-          <div class="col-xs-12 text-left order_details">
-            <h2>Order Details</h2>
-            <ul>
-              <% if @order.payment.present? %>
-                <li class="text-left">Order #<%= @order.try(:payment).try(:transcation_id) %></li>
-                <% if @order.payment.date_of_payment.present? %>
-                  <li class="pull-right"><%= @order.payment.date_of_payment.strftime("%B %d, %Y") %></li>
-                <% end %>
-              <% end %>
-            </ul>
+        <div class="col-xs-12 reviewer_details nopadding_lr">
+          <div class="col-xs-2 text-left">
+            <% if @order.videos.present? %>
+              <%= image_tag @order.videos.first.video_url(:thumb1) %>
+            <% else %>
+              <%= image_tag "thumb_video.jpg" %>
+            <% end %>
+          </div>
+          <div class="col-xs-10 text-left">
             <h3><%= @order.try(:title) %></h3>
             <p><%= @order.try(:description) %></p>
           </div>
-
         </div>
+
+        <% if @reviewer.present? %>
+          <div class="col-xs-12 text-left reviewer_details">
+            <h3>Technical Notes</h3>
+            <p><%= @reviewer.technical_notes %></p>
+          </div>
+        <% end %>
+
+        <div class="col-xs-12 text-left order_details">
+          <h2>Order Details</h2>
+          <ul>
+            <% if @order.payment.present? %>
+              <li class="text-left">Order #<%= @order.try(:payment).try(:transcation_id) %></li>
+              <% if @order.payment.date_of_payment.present? %>
+                <li class="pull-right"><%= @order.payment.date_of_payment.strftime("%B %d, %Y") %></li>
+              <% end %>
+            <% end %>
+          </ul>
+          <h3><%= @order.try(:title) %></h3>
+          <p><%= @order.try(:description) %></p>
+        </div>
+
       </div>
+    </div>
   </div>
 </div>

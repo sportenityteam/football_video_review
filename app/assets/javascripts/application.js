@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require bootstrap
+//= require moment.min
+//= require bootstrap-datetimepicker.min
 //= require SpryTabbedPanels
 // require quill
 //= require quill.min
