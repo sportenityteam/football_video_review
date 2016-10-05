@@ -29,5 +29,6 @@ module FootballVideoReview
       :storage => :s3,
       :s3_credentials => "#{Rails.root.to_s}/config/aws.yml"
     }
+    config.active_job.queue_adapter = :delayed_job
   end
 end
