@@ -1,15 +1,178 @@
-<h3> <%= @review.try(:order).try(:user).try(:fullname) %> 's Video Review Details </h3>
-<p> Title : <%= @review.try(:order).try(:title) %></p>
-<% if @review.try(:order).try(:videos).present? %>
-  <% @review.order.videos.each do |video| %>
-    <%= video_tag video.video_url.url, controls: true, autobuffer: true %>
-  <% end %>
-<% end %>
-<p> Reviewer : <%= @review.user.try(:fullname) %></p>
-<p> Review time : <%= @review.try(:review_time) %> seconds </p>
-<p> Technical Notes : <%= @review.try(:technical_notes) %> </p>
-<p> Tactical Notes : <%= @review.try(:tactical_notes) %> </p><br/>
-<% if @review.order.status == 4 %>
-	<%= link_to 'Approve', admin_approval_of_admin_path(@review.order.id,status: 5) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Reject', admin_approval_of_admin_path(@review.order.id,status: 6) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Reset', admin_review_path(@review.order.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+<!-- <h3> <%#= @review.try(:order).try(:user).try(:fullname) %> 's Video Review Details </h3>
+<p> Title : <%#= @review.try(:order).try(:title) %></p>
+<%# if @review.try(:order).try(:videos).present? %>
+  <%# @review.order.videos.each do |video| %>
+    <%#= video_tag video.video_url.url, controls: true, autobuffer: true %>
+  <%# end %>
+<%# end %>
+<p> Reviewer : <%#= @review.user.try(:fullname) %></p>
+<p> Review time : <%#= @review.try(:review_time) %> seconds </p>
+<p> Technical Notes : <%#= @review.try(:technical_notes) %> </p>
+<p> Tactical Notes : <%#= @review.try(:tactical_notes) %> </p><br/>
+<%# if @review.order.status == 4 %>
+	<%#= link_to 'Approve', admin_approval_of_admin_path(@review.order.id,status: 5) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%#= link_to 'Reject', admin_approval_of_admin_path(@review.order.id,status: 6) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%#= link_to 'Reset', admin_review_path(@review.order.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%# end %> -->
 
+<div class="container">
+
+  <div id="TabbedPanels1" class="TabbedPanels">
+    <ul class="TabbedPanelsTabGroup">
+      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">Review Approval</li>
+    </ul>
+
+	  <div class="TabbedPanelsContentGroup">
+	    <div class="TabbedPanelsContent">
+	      <div class="tab_content col-xs-12 table_cus_bord">
+
+	        <div class="table-responsive">
+	          <table class="table">
+		          <thead>
+		            <tr>
+		              <th>Reviewed By</th>
+		              <th>Reviewed On</th>
+		              <th>Reviewed Time</th>
+		            </tr>
+		          </thead>
+		          <tbody>
+		            <tr>
+		              <td style="width:33%;"><%= @review.try(:order).try(:title) %></td>
+		              <td style="width:33%;"><%= @review.created_at.strftime("%B %d, %Y") %></td>
+		              <td style="width:33%;"><%= @review.try(:review_time) %>2 Hours 40 Minutes</td>
+		            </tr>
+		          </tbody>
+	         	</table>
+	     		</div>
+
+	     		<% if @review.order.videos.present? %>
+						<%if @review.order.videos.count == 2 %>
+							<div>
+								<div class="video_notes">
+									<ul class="nav nav-pills">
+										<li class="col-xs-6 nopadding_lr active">
+											<a data-toggle="pill" href="#vid" class="tech_note_txt padding_top_0">First Half</a>
+										</li>
+										<li class="col-xs-6 nopadding_lr ">
+											<a data-toggle="pill" href="#vid1" class="tacti_note_txt padding_top_0">Second Half</a>
+										</li>
+									</ul>
+									<div class="tab-content">
+										<div id="vid" class="tab-pane fade active in">
+											<iframe class="videowidth" width="100%" height="315" src="<%= @review.order.videos.first.video_url.url(:medium)%>%>" frameborder="0" allowfullscreen=""></iframe>
+										</div>
+										<div id="vid1" class="tab-pane fade">
+											<iframe class="videowidth" width="100%" height="315" src="<%= @review.order.videos.last.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe>
+										</div>
+									</div>
+								</div>
+							</div>
+						<% else%>
+							<div>
+								<iframe width="100%" height="315" src="<%= @review.order.videos.first.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe>
+							</div>
+					  <% end %>
+					<% end %>
+					
+					<div class="video_notes">
+				    <ul class="nav nav-pills">
+				      <li class="col-xs-6 nopadding_lr padding_top_0 active">
+				         <a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a>
+				        <!-- <a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a> -->
+				      </li>
+				      <li class="col-xs-6 nopadding_lr padding_top_0">
+				        <a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a>
+				        <!-- <a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a> -->
+				      </li>
+				    </ul>
+				    <div class="tab-content">
+				      <div id="home" class="tab-pane fade active in">
+				        <div id="standalone-container">
+				          <div id="toolbar-container" class="ql-toolbar ql-snow">
+				          </div>
+				        </div>
+				      </div>
+				      <div id="menu1" class="tab-pane fade">
+				        <div id="standalone-container1">
+				          <div id="toolbar-container1" class="ql-toolbar ql-snow">
+				          </div>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+
+				  <div class="col-xs-12 nopadding_lr">
+					  <div class="col-xs-12 col-sm-4 reject_notes_btn nopadding_lr">
+					  	<button type="submit" class="submit_form">
+				      	<%= link_to admin_approval_of_admin_path(@review.order.id,status: 6) do%> <i class="fa fa-close"></i> Reject Notes
+				      	<% end %>
+				      </button>
+					  </div>
+					  <div class="col-xs-12 col-sm-4 approved_notes_btn">
+					    <button class="submit_form">
+				      	<%= link_to admin_review_path(@review.order.id), method: :delete, data: { confirm: 'Are you sure?' } do%> <i class="fa fa-check"></i> Reset 
+				      	<% end %>
+				      </button>
+					  </div>
+					  <div class="col-xs-12 col-sm-4 submit_notes_btn nopadding_lr">
+					    <button class="submit_form">
+				      	<%= link_to admin_approval_of_admin_path(@review.order.id,status: 5) do%> <i class="fa fa-check"></i> Approve Notes
+				      	<% end %>
+				      </button>
+					  </div>
+					</div>
+	  		</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+  var toolbarOptions = [
+    [{ 'font': [] }],
+    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+    ['blockquote', 'code-block'],
+
+    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+    [{ 'direction': 'rtl' }],                         // text direction
+    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+    
+    [{ 'align': [] }],
+
+    ['clean']                                         // remove formatting button
+  ];
+  var quill = new Quill('#standalone-container', {
+      modules: {
+      toolbar: toolbarOptions
+    },
+    theme: 'snow'
+  });
+  var quill1 = new Quill('#standalone-container1', {
+      modules: {
+      toolbar: toolbarOptions
+    },
+    theme: 'snow'
+  });
+  $(document).ready(function(){
+    // quill.on('text-change', function() {
+    //   console.log('Text change!');
+    //   var text = quill.getText();
+    //   //console.log(text);
+    //   $("#technical_notes").val(text);
+    // });
+    // quill1.on('text-change', function() {
+    //   console.log('Text change!');
+    //   var inner_text1 = quill1.getText();
+    //   //console.log(text);
+    //   $("#tactical_notes").val(inner_text1);
+    // });
+    var technical_notes = '<%= @review.technical_notes.split("\r")[0] %>';
+    quill.setText(technical_notes);
+
+    var tactical_notes = '<%= @review.tactical_notes.split("\r")[0] %>';
+    quill1.setText(tactical_notes);
+
+  });
+</script>

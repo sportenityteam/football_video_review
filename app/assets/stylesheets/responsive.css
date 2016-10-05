@@ -156,6 +156,10 @@
 		padding-left:0 !important;
 	  padding-right:0 !important;
 	}
+	.approved_notes_btn{
+		padding-left:0 !important;
+	  padding-right:0 !important;
+	}
 }
 
 @media only screen and (min-width:525px) and (max-width:767px){
@@ -164,6 +168,10 @@
 		margin-right:7px;
 	}	
 	.saved_notes_btn {
+		padding-left:0 !important;
+	  padding-right:0 !important;
+	}
+	.approved_notes_btn{
 		padding-left:0 !important;
 	  padding-right:0 !important;
 	}
@@ -193,6 +201,10 @@
 		font-size:20px;
 	}
 	.saved_notes_btn {
+		padding-left:0 !important;
+	  padding-right:0 !important;
+	}
+	.approved_notes_btn{
 		padding-left:0 !important;
 	  padding-right:0 !important;
 	}
@@ -240,6 +252,10 @@
 		padding:0;	
 	}
 	.saved_notes_btn {
+		padding-left:0 !important;
+	  padding-right:0 !important;
+	}
+	.approved_notes_btn{
 		padding-left:0 !important;
 	  padding-right:0 !important;
 	}
