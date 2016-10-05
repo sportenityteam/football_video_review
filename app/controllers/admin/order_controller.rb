@@ -3,7 +3,7 @@ class Admin::OrderController < Admin::BaseController
   before_action :set_order, :only => [:show,:order_details]
 
   def index
-    @orders = Order.where("status =? and payment_status =?" , Order::STATUS["Pending"], "paid")
+    @orders = Order.where(:status => Order::STATUS["Pending"])
   end
 
   def reviewed_videos
@@ -52,7 +52,8 @@ class Admin::OrderController < Admin::BaseController
     if params[:per_page].present?
       page = params[:per_page]
     end
-    @orders = Order.all.page(params[:page]).per(page)
+    @orders = Order.where("payment_status =?", "paid")
+    @orders = @orders.page(params[:page]).per(page)
     if params[:search].present?
       @orders = @orders.search_items(params[:search])
     end
