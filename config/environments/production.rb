@@ -81,14 +81,24 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
-  ActionMailer::Base.smtp_settings = {
-    user_name: 'SMTP_Injection',
-    password: 'b7865ea5560c84fd1cc8847c630ec9dc430f4371',
-    address: 'smtp.sparkpostmail.com',
-    port: 587,
-    enable_starttls_auto: true,
-    format: :html,
-    from: 'hello@sportenity.com'
+  # ActionMailer::Base.smtp_settings = {
+  #   user_name: 'SMTP_Injection',
+  #   password: 'b7865ea5560c84fd1cc8847c630ec9dc430f4371',
+  #   address: 'smtp.sparkpostmail.com',
+  #   port: 587,
+  #   enable_starttls_auto: true,
+  #   format: :html,
+  #   from: 'hello@sportenity.com'
+  # }
+
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "gmail.com",
+    :user_name            => "cspltesting@gmail.com",
+    :password             => "complitech",
+    :authentication       => :plain,
+    :enable_starttls_auto => true
   }
 
   ActiveMerchant::Billing::Base.mode = :test
