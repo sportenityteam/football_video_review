@@ -1,2 +1,5 @@
-<h3>Edit Reviewer</h3>
-<%= render "form" %>
+<% if @user.user_type == 3 %>
+  <%= render "user_profile" %>
+<% elsif @user.user_type == 2 %>
+  <%= render "reviewer_profile" %>
+<% end %>

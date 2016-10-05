@@ -1,0 +1,204 @@
+<div class="container">
+  <div id="TabbedPanels1" class="TabbedPanels">
+    <ul class="TabbedPanelsTabGroup">
+      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">Edit </li>
+    </ul>
+
+    <div class="TabbedPanelsContentGroup">
+      <div class="TabbedPanelsContent">
+        <div class="tab_content col-xs-12">
+          <%= form_for([:admin,@user]) do |f| %>
+            <ul class="col-xs-12">
+              <% if @user.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this order from being saved:</h2>
+                  <ul>
+                  <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <div class="col-xs-12 nopadding_lr">
+                <div class="col-xs-12 col-sm-4"></div>
+
+                <div class="col-xs-12 col-sm-4">
+                  <span class="profile_pic">
+                    <% if f.object.avatar.present? %>
+                      <%= image_tag f.object.avatar.url, :class => "remove_image" %>
+                    <% else %>
+                      <%= image_tag "reviewer_img.png", :class => "remove_image" %>
+                    <% end %>
+                    <a href="#" class="cancel_btn" title="Remove Photo" onclick="removeUserImage()"><i class="fa fa-close"></i></a>
+
+                    <div class="upload_photo">
+                      <p>Upload Photo</p>
+                    </div>
+
+                    <%= f.file_field :avatar %>
+                  </span>
+                </div>
+
+                <div class="col-xs-12 col-sm-4"></div>
+              </div>
+
+              <div class="col-xs-12"></div>
+
+              <div class="col-xs-12 col-sm-6">
+                <li>
+                  <h2 class="pull-left">First Name</h2>
+                  <span class="box">
+                    <%= image_tag "icons/name.png" %>
+                    <%= f.text_field :first_name %>
+                  </span>
+                </li>
+
+                <li>
+                  <h2 class="pull-left">E-Mail</h2>
+                  <span class="box">
+                    <%= image_tag "icons/mail.png" %>
+                    <%= f.text_field :email, :readonly => true %>
+                  </span>
+                </li>
+
+                <li>
+                  <h2 class="pull-left">Date of Birth</h2>
+                  <span class="box">
+                    <%= image_tag "icons/dob.png" %>
+                    <%= f.text_field :date_of_birth, autocomplete: "off" %>
+                  </span>
+                </li>
+
+                <li>
+                  <h2 class="pull-left">Soccer Club</h2>
+                  <span class="box">
+                    <%= image_tag "icons/club.png" %>
+                    <%= f.text_field :soccer_club %>
+                  </span>
+                </li>
+              </div>
+
+              <div class="col-xs-12 col-sm-6">
+                <li>
+                  <h2 class="pull-left">Last Name</h2>
+                  <span class="box">
+                    <%= image_tag "icons/name.png" %>
+                    <%= f.text_field :last_name %>
+                  </span>
+                </li>
+
+                <li>
+                  <h2 class="pull-left">Gender</h2>
+                  <span class="box">
+                    <div class="radio">
+                      <%= f.radio_button :gender, 1 , :checked => f.object.gender == 1 ? true : false %>
+                      <label for="male">Male</label>
+                      <%= f.radio_button :gender, 2 ,:checked =>  f.object.gender == 2 ? true : false %>
+                      <label for="female">Female</label>
+                    </div>
+                  </span>
+                </li>
+
+                <li>
+                  <h2 class="pull-left">Zip Code</h2>
+                  <span class="box">
+                    <%= image_tag "icons/zip.png" %>
+                    <%= f.text_field :zipcode %>
+                  </span>
+                </li>
+
+                <li>
+                  <h2 class="pull-left">Soccer Goal</h2>
+                  <span class="box">
+                    <%= image_tag "icons/goal.png" %>
+                    <%= f.text_field :soccer_goal %>
+                  </span>
+                </li>
+              </div>
+
+              <div class="col-xs-12">
+                <li>
+                  <h2 class="pull-left">Position</h2>
+                  <span class="box">
+                    <%= image_tag "icons/position.png" %>
+                    <%= f.text_field :position %>
+                  </span>
+                </li>
+              </div>
+
+              <div class="col-xs-12">
+                <li>
+                  <h2 class="pull-left padding_tb_20"><strong>Change Password</strong> (leave blank if you don't want to change your password)</h2>
+                </li>
+              </div>
+
+              <div class="col-xs-12 nopadding_lr">
+                <div class="col-xs-12 col-sm-4">
+                  <li>
+                    <h2 class="pull-left">Password</h2>
+                    <span class="box">
+                      <%= image_tag "icons/password.png" %>
+                      <%= f.password_field :current_password %>
+                    </span>
+                  </li>
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+                  <li>
+                    <h2 class="pull-left">New Password</h2>
+                    <span class="box">
+                      <%= image_tag "icons/password.png" %>
+                      <%= f.password_field :password %>
+                    </span>
+                  </li>
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+                  <li>
+                    <h2 class="pull-left">Confirm Password</h2>
+                    <span class="box">
+                      <%= image_tag "icons/password.png" %>
+                      <%= f.password_field :password_confirmation %>
+                    </span>
+                  </li>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-3"></div>
+              <div class="col-xs-12 col-sm-6 margin_btm_30">
+                <li>
+                  <button type="submit">Update Profile</button>
+                </li>
+              </div>
+              <div class="col-xs-12 col-sm-3"></div>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function(){
+    $("#upload_link").on('click', function(e){
+      e.preventDefault();
+      $("#upload:hidden").trigger('click');
+    });
+  });
+
+  function removeUserImage(){
+    $('.remove_image').attr('src', '<%= asset_path("reviewer_img.png") %>');
+  }
+
+  $(document).ready(function(){
+    $("#user_avatar").change(function(){
+      console.log($("#user_avatar").val())
+      $(this).attr("src",$(this).val());
+    });
+  });
+  $(document).ready(function(){
+    $('#user_date_of_birth').datetimepicker({
+      format: 'YYYY-MM-DD'
+    });
+  });
+</script>
