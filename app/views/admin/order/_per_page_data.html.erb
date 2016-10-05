@@ -12,16 +12,16 @@
     </thead>
     <tbody>
       <% @orders.each do |order| %>
-        <% if order.payment.present? %>
+        <%# if order.payment.present? %>
           <tr>
             <td style="width:15%;">#074</td>
             <td style="width:15%;"><%= order.user.try(:fullname) %></td>
             <td style="width:20%;"><%= order.created_at.strftime("%B %d, %Y") %></td>
             <td style="width:15%;"><%= Order::STATUS.key(order.status) %></td>
-            <td style="width:10%;">$<%= order.payment.amount/100%></td>
+            <td style="width:10%;">$0<%#= order.try(:payment).try(:amount)/100 %></td>
             <td style="width:10%; text-align:center"><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
           </tr>
-        <% end %>
+        <%# end %>
       <% end %>
     </tbody>
   </table>

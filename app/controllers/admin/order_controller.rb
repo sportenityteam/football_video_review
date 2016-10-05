@@ -42,10 +42,11 @@ class Admin::OrderController < Admin::BaseController
   #List of orders
   def list_of_orders
     page = 10
-    if params[:page].present?
-      page = params[:page]
+    if params[:per_page].present?
+      page = params[:per_page]
     end
     @orders = Order.all.page(params[:page]).per(page)
+    # raise @orders.count.inspect
   end
 
   def order_details
