@@ -55,7 +55,7 @@ end
 gem 'nested_form'
 gem 'streamio-ffmpeg'
 # Use paperclip for image/video upload
-gem "paperclip", "~> 4.1"
+gem 'paperclip', '~> 4.3.1'
 # Use to upload video/image to amazon server
 gem 'aws-sdk', '< 2.0'
 gem "letter_opener", :group => :development
@@ -67,3 +67,4 @@ gem 'kaminari'
 gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'sparkpost_rails'
+gem "paperclip-ffmpeg", "~> 1.2.0"
