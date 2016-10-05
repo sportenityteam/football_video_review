@@ -81,6 +81,8 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
+  config.mailer_sender = 'hello@sportenity.com'
+
   ActionMailer::Base.smtp_settings = {
     user_name: 'SMTP_Injection',
     password: 'b7865ea5560c84fd1cc8847c630ec9dc430f4371',
