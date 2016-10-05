@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -63,3 +63,5 @@ gem 'bootstrap'
 gem 'wicked'
 gem 'paperclip-av-transcoder'
 gem 'kaminari'
+gem 'daemons'
+gem 'delayed_job_active_record'
