@@ -25,16 +25,16 @@
                     </span> </div>
                   <div class="col-xs-4 nopadding_lr"> <span class="box arrow_down">
                     <select id="per_page_select">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10" selected>10</option>
+                      <option value="1" <%= check_selected_page(params, 1) %>>1</option>
+                      <option value="2" <%= check_selected_page(params, 2) %>>2</option>
+                      <option value="3" <%= check_selected_page(params, 3) %>>3</option>
+                      <option value="4" <%= check_selected_page(params, 4) %>>4</option>
+                      <option value="5" <%= check_selected_page(params, 5) %>>5</option>
+                      <option value="6" <%= check_selected_page(params, 6) %>>6</option>
+                      <option value="7" <%= check_selected_page(params, 7) %>>7</option>
+                      <option value="8" <%= check_selected_page(params, 8) %>>8</option>
+                      <option value="9" <%= check_selected_page(params, 9) %>>9</option>
+                      <option value="10" <%= check_selected_page(params, 10) == "number" ? "selected" : "" %>>10</option>
                     </select>
                     </span> </div>
                 </li>
@@ -53,7 +53,7 @@
   $("#per_page_select").change(function(){
     val = $(this).val();
     $.ajax({
-      url:'/admin/users?type=reviewer',
+      url:'/admin/users?type=<%= params[:type].to_s %>',
       type: 'GET',
       data:{per_page:val},
       dataType: 'script'
@@ -62,7 +62,7 @@
   $("#search_text").on("keyup",function(){
     text = $(this).val();
     $.ajax({
-      url:'/admin/users?type=reviewer',
+      url:'/admin/users?type=<%= params[:type].to_s %>',
       type: 'GET',
       data:{search:text},
       dataType: 'script'

@@ -1,4 +1,8 @@
 class Order < ActiveRecord::Base
+  #Search
+  include PgSearch
+  pg_search_scope :search_items, :against => [:id, :created_at]
+
   #Enum
   #STATUS = { "New" => 1 , "Admin Approved/Waiting for review" => 2, "Admin rejected" => 3, "Reviewed" => 4, "Review approved" => 5, "Review rejected" => 6, "In review" => 7 }
   STATUS = { "Pending" => 1 , "Admin Approved" => 2, "Admin rejected" => 3, "Reviewed" => 4, "Review approved" => 5, "Review rejected" => 6, "In review" => 7 }

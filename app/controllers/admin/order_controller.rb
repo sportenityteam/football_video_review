@@ -21,6 +21,9 @@ class Admin::OrderController < Admin::BaseController
       page = params[:per_page]
     end
     @orders = Order.where(:status => Order::STATUS["Reviewed"]).page(params[:page]).per(page)
+    if params[:search].present?
+      @orders = @orders.search_items(params[:search])
+    end
   end
 
   # if admin approve or reject any order then order status will be updated
@@ -50,7 +53,9 @@ class Admin::OrderController < Admin::BaseController
       page = params[:per_page]
     end
     @orders = Order.all.page(params[:page]).per(page)
-    # raise @orders.count.inspect
+    if params[:search].present?
+      @orders = @orders.search_items(params[:search])
+    end
   end
 
   def order_details

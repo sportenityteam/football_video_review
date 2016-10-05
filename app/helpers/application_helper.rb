@@ -17,4 +17,14 @@ module ApplicationHelper
   def current_path(path)
     "green" if current_page?(path)
   end
+
+  # Check page
+  def check_selected_page(params, val)
+    if params[:per_page].present?
+      value = params[:per_page].to_i == val ? "selected" : ""
+    else
+      value = "number"
+    end
+    return value
+  end
 end
