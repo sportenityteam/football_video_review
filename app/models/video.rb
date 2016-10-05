@@ -6,11 +6,8 @@ class Video < ActiveRecord::Base
   has_attached_file :video_url,
                     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
                     :url => "/system/:attachment/:id/:style/:filename",
-                    :styles => {
-                                :medium => { :geometry => "640x480", :format => 'mp4' },
-                                :thumb1 => { :geometry => "120x120#", :format => 'jpg', :time => 1 },
-                                :thumb => { :geometry => "512x512#", :format => 'jpg', :time => 1 }
-                               }, :processors => [:transcoder]
+                    :styles => {:medium => { :geometry => "800x400<", :format => 'mp4' }, :thumb1 => { :geometry => "120x120#", :format => 'jpg', :time => 1 }, :thumb => { :geometry => "512x512#", :format => 'jpg', :time => 1 }},
+                    :processors => [:transcoder]
 
 
   #validations
