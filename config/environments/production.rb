@@ -77,6 +77,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.action_mailer.default_url_options = { :host => 'sportenity.com' }
+
   ActionMailer::Base.smtp_settings = {
     user_name: 'SMTP_Injection',
     password: 'b7865ea5560c84fd1cc8847c630ec9dc430f4371',
