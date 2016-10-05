@@ -1,6 +1,6 @@
 class OrderMailer < ActionMailer::Base
 
-  #default from: "from@example.com"
+  default from: "from@example.com"
 
   def send_new_order_message(order,user)
     @user = user
