@@ -76,4 +76,14 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  ActionMailer::Base.smtp_settings = {
+    user_name: 'SMTP_Injection',
+    password: 'b7865ea5560c84fd1cc8847c630ec9dc430f4371',
+    address: 'smtp.sparkpostmail.com',
+    port: 587,
+    enable_starttls_auto: true,
+    format: :html,
+    from: 'hello@sportenity.com'
+  }
 end
