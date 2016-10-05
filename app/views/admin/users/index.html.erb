@@ -1,7 +1,7 @@
 <div class="container">
   <div id="TabbedPanels1" class="TabbedPanels">
     <ul class="TabbedPanelsTabGroup">
-      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">Reviewer</li>
+      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0"><%= params[:type] == "user" ? "Users" : "Reviewers" %></li>
     </ul>
     <div class="TabbedPanelsContentGroup">
       <div class="TabbedPanelsContent">
@@ -45,6 +45,10 @@
         <div id="per_page_data">
           <%= render "per_page_data", :@users => @users %>
         </div>
+
+        <% if params[:type] == "reviewer" %>
+          <%= link_to "new", new_admin_user_path ,:class=> "addlink"%>
+        <% end %>
       </div>
     </div>
   </div>
@@ -69,4 +73,3 @@
     });
   });
 </script>
-<%= link_to "new", new_admin_user_path %>

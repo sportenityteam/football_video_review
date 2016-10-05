@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
 
   #associations
   has_many :orders
-
+  has_many :reviews ,dependent: :destroy
+  
   #paperclip
   has_attached_file :avatar,
                     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",

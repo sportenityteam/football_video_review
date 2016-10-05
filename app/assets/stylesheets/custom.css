@@ -5,3 +5,12 @@
 .list-image-height{
 	height: 50px;
 }
+
+.quillheight{
+	height: 100px!important;
+}
+
+.addlink{
+	float: left;
+  padding-left: 15px;
+}
