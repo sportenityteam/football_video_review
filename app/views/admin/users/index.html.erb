@@ -14,7 +14,7 @@
                     <h2 class="pull-left">Filter</h2>
                     </span> </div>
                   <div class="col-xs-12 col-sm-10 nopadding_lr"> <span class="box"> <%= image_tag "icons/search.png" %>
-                    <input type="text" name="search">
+                    <input type="text" name="search" id="search_text">
                     </span> </div>
                 </li>
               </div>
@@ -51,13 +51,22 @@
 </div>
 <script type="text/javascript">
   $("#per_page_select").change(function(){
-  val = $(this).val();
-  $.ajax({
-    url:'/admin/users?type=reviewer',
-    type: 'GET',
-    data:{per_page:val},
-    dataType: 'script'
+    val = $(this).val();
+    $.ajax({
+      url:'/admin/users?type=reviewer',
+      type: 'GET',
+      data:{per_page:val},
+      dataType: 'script'
+    });
   });
-});
+  $("#search_text").on("keyup",function(){
+    text = $(this).val();
+    $.ajax({
+      url:'/admin/users?type=reviewer',
+      type: 'GET',
+      data:{search:text},
+      dataType: 'script'
+    });
+  });
 </script>
 <%= link_to "new", new_admin_user_path %>

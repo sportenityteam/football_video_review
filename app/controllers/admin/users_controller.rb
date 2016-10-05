@@ -9,7 +9,9 @@ class Admin::UsersController < ApplicationController
       page = params[:per_page]
     end
     @users = User.where(:user_type => User::USER_TYPES[params[:type]]).page(params[:page]).per(page)
-    
+    if params[:search].present?
+      @users = @users.search_items(params[:search])
+    end
   end
 
   def new

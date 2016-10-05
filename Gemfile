@@ -17,6 +17,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'devise'
 # Use pg as the database for Active Record
 gem 'pg'
+gem 'pg_search'
 # Use activemerchant for payment
 gem 'activemerchant'
 

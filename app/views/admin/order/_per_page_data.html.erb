@@ -14,7 +14,7 @@
       <% @orders.each do |order| %>
         <%# if order.payment.present? %>
           <tr>
-            <td style="width:15%;">#074</td>
+            <td style="width:15%;">#<%= order.id %></td>
             <td style="width:15%;"><%= order.user.try(:fullname) %></td>
             <td style="width:20%;"><%= order.created_at.strftime("%B %d, %Y") %></td>
             <td style="width:15%;"><%= Order::STATUS.key(order.status) %></td>

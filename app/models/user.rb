@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  #Search
+  include PgSearch
+  pg_search_scope :search_items, :against => [:first_name, :last_name, :current_club, :soccer_club]
+
   #Enum
   USER_TYPES =  { "admin" => 1, "reviewer" => 2, "user" => 3}
 

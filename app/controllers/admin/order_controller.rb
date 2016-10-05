@@ -16,7 +16,11 @@ class Admin::OrderController < Admin::BaseController
   end
 
   def reviewed_by_reviewer
-    @orders = Order.where(:status => Order::STATUS["Reviewed"])
+    page = 10
+    if params[:per_page].present?
+      page = params[:per_page]
+    end
+    @orders = Order.where(:status => Order::STATUS["Reviewed"]).page(params[:page]).per(page)
   end
 
   # if admin approve or reject any order then order status will be updated

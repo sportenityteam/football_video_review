@@ -24,17 +24,17 @@
                     <h2 class="pull-right">show</h2>
                     </span> </div>
                   <div class="col-xs-4 nopadding_lr"> <span class="box arrow_down">
-                    <select>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
+                    <select id="per_page_select">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
                     </select>
                     </span> </div>
                 </li>
@@ -42,53 +42,24 @@
             </ul>
           </form>
         </div>
-        <div class="table-responsive col-xs-12 ad_order">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Order ID</th>
-                <th>Name</th>
-                <th>Order On</th>
-                <th></th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @orders.each do |order| %>
-                <tr>
-                  <td style="width:15%;">#<%= order.id %></td>
-                  <td style="width:20%;"><%= order.title %></td>
-                  <td style="width:30%;"><%= order.created_at.strftime("%b %d, %Y - %H:%M ") %></td>
-                  <td style="width:5%;"></td>
-                  <td style="width:15%;">
-                    <%#= link_to "Approve / Reject " ,admin_review_details_path(order.id) %>
-                    <%= link_to admin_review_details_path(order.id) do %>
-                      <i class="fa fa-check-circle green" aria-hidden="true"></i> Approve / Reject </a>
-                    <% end %>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+        <div id="per_page_data">
+          <%= render "per_page_reviewed_data", :@orders => @orders %>
         </div>
-
-        <!-- pagination -->
-        <div class="page col-xs-12">
-
-          <!-- <h4 class="pull-left">Showing 1 to 10 of 30 entries</h4> -->
-
-<!--         <ul class="pagination pull-right">
-          <li><a href="#"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a></li>
-          <li><a class="active" href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
-        </ul> -->
-
-       </div>
+        
        <!-- pagination closed-->
 
       </div>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $("#per_page_select").change(function(){
+  val = $(this).val();
+  $.ajax({
+    url:'/admin/video_pending_approval',
+    type: 'GET',
+    data:{per_page:val},
+    dataType: 'script'
+  });
+});
+</script>

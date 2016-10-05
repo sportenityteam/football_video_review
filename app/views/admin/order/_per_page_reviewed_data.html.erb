@@ -1,0 +1,31 @@
+<div class="table-responsive col-xs-12 ad_order">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Name</th>
+        <th>Order On</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td style="width:15%;">#<%= order.id %></td>
+          <td style="width:20%;"><%= order.title %></td>
+          <td style="width:30%;"><%= order.created_at.strftime("%b %d, %Y - %H:%M ") %></td>
+          <td style="width:25%;">
+            <%#= link_to "Approve / Reject " ,admin_review_details_path(order.id) %>
+            <%= link_to admin_review_details_path(order.id) do %>
+              <i class="fa fa-check-circle green" aria-hidden="true"></i> Approve / Reject
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="page col-xs-12">
+  <h4 class="pull-left"><%= page_entries_info @orders %></h4>
+  <%= paginate @orders, :params => {:@orders => @orders} %>
+</div>
