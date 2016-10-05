@@ -1,8 +1,23 @@
 <%= form_for @review do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+     <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <div class="video_notes">
   <ul class="nav nav-pills">
-    <li class="col-xs-6 nopadding_lr padding_top_0 active"><a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a></li>
-    <li class="col-xs-6 nopadding_lr padding_top_0"><a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a></li>
+    <li class="col-xs-6 nopadding_lr padding_top_0 active">
+       <a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a>
+      <!-- <a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a> -->
+    </li>
+    <li class="col-xs-6 nopadding_lr padding_top_0">
+      <a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a>
+      <!-- <a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a> -->
+    </li>
   </ul>
   <div class="tab-content">
     <div id="home" class="tab-pane fade active in">
@@ -19,7 +34,6 @@
     </div>
   </div>
 </div>
-<%#= quill_editor nil, { name: 'technical_notes', id: 'technical_notes' } %>
 
 <div class="col-xs-12 nopadding_lr">
   <div class="col-xs-12 col-sm-4 back_list_btn nopadding_lr">
@@ -44,11 +58,9 @@
     <% end %>
   </div>
   <div class="col-xs-12 col-sm-4 saved_notes_btn">
-    <%#= f.submit "Save Notes" %>
     <button type="submit"><i class="fa fa-save"></i> Saved Notes</button>
   </div>
   <div class="col-xs-12 col-sm-4 submit_notes_btn nopadding_lr">
-    <%#= f.submit "Submit", :class => "submit_form",:id => "review_submit" %>
     <button type="submit" class="submit_form" id="review_submit"><i class="fa fa-check"></i> Submit Notes</button>
   </div>
 </div>

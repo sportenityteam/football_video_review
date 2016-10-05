@@ -841,6 +841,16 @@ footer ul li a:hover{
   font-size: 20px !important;
   font-weight: 300 !important;
 }
+.tech_note_txt {
+ 	color: #535353 !important;
+  font-size: 30px !important;
+  font-weight: 300; 
+}
+.tacti_note_txt {
+ 	color: #535353 !important;
+  font-size: 30px !important;
+  font-weight: 300;
+}
 /**Reviewers Review Details Closed**/
 
 
