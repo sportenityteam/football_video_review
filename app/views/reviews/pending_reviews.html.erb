@@ -17,17 +17,17 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr class="video-title-txt">
-              <td style="width:16%;" class="padding_20">
+              <td style="width:16%;">
                 <%= image_tag order.videos.first.video_url(:thumb1) %>
               </td>
-              <td style="width:49%;" class="padding_20">
+              <td style="width:54%;">
                 <h2><%= order.try(:title) %></h2>
                 <p><%= order.try(:description) %></p>
                 <%= image_tag "review_tab_user.png" %> 
                 <span><%= order.user.try(:fullname) %></span> | 
                 <span><%= order.created_at.strftime("%b %d, %Y - %H:%M ") %></span>
               </td>
-              <td style="width:30%; vertical-align:middle;" class="padding_20">
+              <td style="width:30%; vertical-align:middle;">
                 <button class="click_review_btn"><%= link_to 'Click To Review', review_order_path(order) %></button>
                 <% if order.status == 7 %>
                   <button class="click_review_btn"><%= link_to 'Cancel', review_path(order.id), method: :delete, data: { confirm: 'Are you sure?' } %></button>

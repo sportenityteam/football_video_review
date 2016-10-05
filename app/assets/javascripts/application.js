@@ -15,6 +15,7 @@
 //= require jquery_nested_form
 //= require bootstrap
 //= require SpryTabbedPanels
+// require quill
 //= require quill.min
 // require turbolinks
 // require_tree .

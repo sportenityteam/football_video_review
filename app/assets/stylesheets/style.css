@@ -763,6 +763,7 @@ footer ul li a:hover{
 }
 .back_list_btn button a {
 	color: #1c1c1c;
+	text-decoration: none;
 }
 
 .saved_notes_btn button {
@@ -1101,7 +1102,6 @@ Admin Side closed
 	background: linear-gradient(to bottom, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%,  rgba(221,221,221,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	color:#1c1c1c;
 }
-<<<<<<< Updated upstream
 
 .view_profile_img img {
  width:100%;
@@ -1318,5 +1318,8 @@ Admin Side closed
 	color: #fff !important;
   font-size: 20px !important;
   font-weight: 300 !important;
+}
+.padding_top_0 {
+ padding-top:0 !important;
 }
 /**Reviewers Review Details Closed**/

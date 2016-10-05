@@ -1,26 +1,25 @@
 <%= form_for @review do |f| %>
 <div class="video_notes">
   <ul class="nav nav-pills">
-    <li class="col-xs-6 nopadding_lr active"><a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a></li>
-    <li class="col-xs-6 nopadding_lr"><a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a></li>
+    <li class="col-xs-6 nopadding_lr padding_top_0 active"><a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a></li>
+    <li class="col-xs-6 nopadding_lr padding_top_0"><a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a></li>
   </ul>
   <div class="tab-content">
     <div id="home" class="tab-pane fade active in">
       <div id="standalone-container">
         <div id="toolbar-container" class="ql-toolbar ql-snow">
-          <%= f.text_area :technical_notes,:value => @review_new.present? ? @review_new.technical_notes : "" %>
         </div>
       </div>
     </div>
     <div id="menu1" class="tab-pane fade">
       <div id="standalone-container1">
         <div id="toolbar-container1" class="ql-toolbar ql-snow">
-          <%= f.text_area :tactical_notes , :value =>  @review_new.present? ? @review_new.tactical_notes : ""  %>
         </div>
       </div>
     </div>
   </div>
 </div>
+<%#= quill_editor nil, { name: 'technical_notes', id: 'technical_notes' } %>
 
 <div class="col-xs-12 nopadding_lr">
   <div class="col-xs-12 col-sm-4 back_list_btn nopadding_lr">
@@ -45,12 +44,12 @@
     <% end %>
   </div>
   <div class="col-xs-12 col-sm-4 saved_notes_btn">
-    <%= f.submit "Save Notes" %>
-    <!-- <button><a href="#"><i class="fa fa-save"></i> Saved Notes</a></button> -->
+    <%#= f.submit "Save Notes" %>
+    <button type="submit"><i class="fa fa-save"></i> Saved Notes</button>
   </div>
   <div class="col-xs-12 col-sm-4 submit_notes_btn nopadding_lr">
-    <%= f.submit "Submit", :class => "submit_form",:id => "review_submit" %>
-    <!-- <button><a href="#"><i class="fa fa-check"></i> Submit Notes</a></button> -->
+    <%#= f.submit "Submit", :class => "submit_form",:id => "review_submit" %>
+    <button type="submit" class="submit_form" id="review_submit"><i class="fa fa-check"></i> Submit Notes</button>
   </div>
 </div>
   <%= f.hidden_field :order_id, :value => "#{params[:id]}" %>
@@ -58,6 +57,8 @@
   <%= f.hidden_field :review_time, :value => "", :id => "review_time" %>
   <%= hidden_field_tag :submit_time, "", :id => "submit_time" %>
   <%= hidden_field_tag :is_reviewed, "", :id => "is_reviewed" %>
+  <%= hidden_field_tag :technical_notes, "", :id => "technical_notes" %>
+  <%= hidden_field_tag :tactical_notes, "", :id => "tactical_notes" %>
 <% end %>
 
 <!-- <h3>Add Review</h3>
@@ -142,10 +143,30 @@
     },
     theme: 'snow'
   });
-  var quill = new Quill('#standalone-container1', {
+  var quill1 = new Quill('#standalone-container1', {
       modules: {
       toolbar: toolbarOptions
     },
     theme: 'snow'
+  });
+  $(document).ready(function(){
+    quill.on('text-change', function() {
+      console.log('Text change!');
+      var text = quill.getText();
+      //console.log(text);
+      $("#technical_notes").val(text);
+    });
+    quill1.on('text-change', function() {
+      console.log('Text change!');
+      var inner_text1 = quill1.getText();
+      //console.log(text);
+      $("#tactical_notes").val(inner_text1);
+    });
+    var technical_notes = '<%= @review_new.technical_notes.split("\r")[0] %>';
+    quill.setText(technical_notes);
+
+    var tactical_notes = '<%= @review_new.tactical_notes.split("\r")[0] %>';
+    quill1.setText(tactical_notes);
+
   });
 </script>
