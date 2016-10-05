@@ -47,15 +47,4 @@ Rails.application.configure do
     :partner => "PayPal"
   )
 
-  # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
-  # config.paperclip_defaults = {
-  #   storage: :s3,
-  #   s3_credentials: {
-  #     bucket: 'thingealogy-developmenet',
-  #     access_key_id: "AKIAJOI7K3LGWFM7SNGQ",
-  #     secret_access_key: "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",
-  #     s3_origin: "us-west-2"
-  #   }
-  # }
 end

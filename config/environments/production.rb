@@ -90,4 +90,11 @@ Rails.application.configure do
     format: :html,
     from: 'hello@sportenity.com'
   }
+
+  ActiveMerchant::Billing::Base.mode = :test
+  ::GATEWAY = ActiveMerchant::Billing::PayflowGateway.new(
+    :login => "FootballVideo",
+    :password => "mittal123",
+    :partner => "PayPal"
+  )
 end
