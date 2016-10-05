@@ -38,7 +38,7 @@ class Admin::ReviewsController < Admin::BaseController
     @review = Review.where("order_id =? and user_id !=?", params[:id], current_user.id)
     @review.destroy_all
     @order = Order.find(params[:id])
-    @order.update_attributes(:status => Order::STATUS["Admin Approved"])
+    @order.update_attributes(:status => Order::STATUS["Pending"])
     respond_to do |format|
       format.html { redirect_to admin_reviewed_by_reviewer_path, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
