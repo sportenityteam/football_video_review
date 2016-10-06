@@ -25,7 +25,7 @@
                   <td style="width:30%;"><%= order.description %></td>
                   <td style="width:20%;">
                     <% if order.payment.present? %>
-                      <%#= order.try(:payment).try(:date_of_payment).strftime("%B,%d %Y") %>
+                      <%= order.try(:payment).try(:date_of_payment).strftime("%B,%d %Y") %>
                     <% end %>
                   </td>
                   <td style="width:15%;"><%= Order::STATUS.key(order.status) %></td>
