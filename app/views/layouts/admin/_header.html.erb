@@ -20,17 +20,26 @@
   <div class="navigation white_bg col-xs-12 hidden-xs">
     <ul class="container padding_tb_20">
       <li>
-        <a href="<%= admin_dashboard_path %>" class="<%= current_path(admin_dashboard_path) %> dark_gray">Dashboard</a></li>
-        <li>
-          <a href="<%= admin_reviewed_by_reviewer_path %>" class="<%= current_path(admin_reviewed_by_reviewer_path) %> dark_gray">Video Approval
-          </a>
-        </li>
-        <!-- <li><a href="<%#= admin_pending_orders_path %>" class="<%= current_path(admin_pending_orders_path) %> dark_gray">Review Approval</a></li> -->
-        <li><a href="<%= admin_users_path(:type => "reviewer") %>" class="<%= current_path(admin_users_path(:type => "reviewer")) %> dark_gray">Reviewers</a></li>
-        <li>
-        <a href="<%= admin_users_path(:type => "user") %>" class="<%= current_path(admin_users_path(:type => "user")) %> dark_gray">Users</a>
+        <a href="<%= admin_dashboard_path %>" class="<%= current_path(admin_dashboard_path) %> dark_gray">Dashboard</a>
       </li>
-        <li><a href="<%= admin_list_of_orders_path %>" class="<%= current_path(admin_list_of_orders_path) %> dark_gray">Orders</a></li>
+      <li>
+        <a href="<%= admin_reviewed_by_reviewer_path %>" class="<%= current_path(admin_reviewed_by_reviewer_path) %> dark_gray">Video Approval
+        </a>
+      </li>
+        <!-- <li><a href="<%#= admin_pending_orders_path %>" class="<%= current_path(admin_pending_orders_path) %> dark_gray">Review Approval</a></li> -->
+      <li>
+        <a href="<%= admin_users_path(:type => "reviewer") %>" class="<%= current_path(admin_users_path(:type => "reviewer")) %> dark_gray">Reviewers</a>
+      </li>
+      <li>
+        <a href="<%= new_admin_user_path(:type => "reviewer") %>" class="<%= current_path(new_admin_user_path(:type => "reviewer")) %> dark_gray">Add Reviewer</a>
+      </li>
+      <li>
+        <a href="<%= admin_users_path(:type => "user") %>" class="<%= current_path(admin_users_path(:type => "user")) %> dark_gray">Users
+        </a>
+      </li>
+      <li>
+        <a href="<%= admin_list_of_orders_path %>" class="<%= current_path(admin_list_of_orders_path) %> dark_gray">Orders</a>
+      </li>
       <li>
         <a href="<%= admin_prices_path %>" class="<%= current_path(admin_prices_path) %> dark_gray">Pricing</a>
       </li>

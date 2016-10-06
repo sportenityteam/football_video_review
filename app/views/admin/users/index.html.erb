@@ -45,10 +45,6 @@
         <div id="per_page_data">
           <%= render "per_page_data", :@users => @users %>
         </div>
-
-        <% if params[:type] == "reviewer" %>
-          <%= link_to "new", new_admin_user_path ,:class=> "addlink"%>
-        <% end %>
       </div>
     </div>
   </div>
