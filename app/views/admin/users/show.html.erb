@@ -1,23 +1,79 @@
-<h3> User details</h3>
-<%= image_tag @user.avatar.url(:thumb) , alt:"image"%><br/>
-<p>Username : <%= @user.try(:fullname) %></p>
-<p>Gender : 
-<% if @user.gender == 1 %>
-  Male
-<% else %>
-  Female
-<% end %></p>
-<p>Email : <%= @user.email %></p>
-<% if @user.is_reviewer? %>
-	<p>Date Of Birth : <%= current_user.try(:date_of_birth).strftime("%B,%d %Y") %></p>
-	<p>Address : <%= @user.try(:address) %></p>
-	<p>Phone number : <%= @user.try(:phone_number) %> </p>
-	<p>Current club : <%= @user.try(:current_club)%></p>
-	<p>Description : <%= @user.try(:description) %></p>
-<% else %>
-	<p>Date Of Birth : <%= @user.try(:date_of_birth).strftime("%B,%d %Y") %></p>
-	<p>Position : <%= @user.try(:position) %></p>
-	<p>Soccer Club : <%= @user.try(:soccer_club) %></p>
-	<p>Soccer Goal : <%= @user.try(:soccer_goal) %></p>
-<% end %>
+<div class="container">
+  <div id="TabbedPanels1" class="TabbedPanels">
+  	<ul class="TabbedPanelsTabGroup">
+      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0"><%= @user.is_reviewer? ? "Reviewer Details" : "User Details" %></li>
+    </ul>
+    <div class="TabbedPanelsContentGroup">
+    	<div class="TabbedPanelsContent">
+    		<div class="tab_content col-xs-12">
+    			<form class="col-xs-12">
+            <ul class="col-xs-12">
+              <div class="col-xs-12 nopadding_lr">
+								<div class="col-xs-12 col-sm-3 view_profile_img">
+									<%= image_tag @user.avatar.url(:thumb) , alt:"image"%>
+								</div>
+								<div class="col-xs-12 col-sm-9 nopadding_lr">
+									<div class="col-xs-12 nopadding_lr view_profile_data margin_btm_20">
+										<div class="col-xs-12 col-sm-4"><%= image_tag "icons/name.png" %> <span><%= @user.try(:fullname) %></span></div>
+										<div class="col-xs-12 col-sm-4"><%= image_tag "icons/dob.png" %> <span><%= @user.try(:date_of_birth).strftime("%b %d, %Y") %></span></div>
+										<% if @user.is_reviewer? %>
+											<div class="col-xs-12 col-sm-4"><%= image_tag "icons/phone.png" %> <span><%= @user.try(:phone_number) %></span></div>
+										<% else %>
+											<div class="col-xs-12 col-sm-4"><%= image_tag "icons/position.png" %> <span><%= @user.try(:position) %></span></div>
+										<% end %>
+									</div>
+									<div class="col-xs-12 nopadding_lr view_profile_data margin_btm_20">
+										<% if @user.is_reviewer? %>
+											<div class="col-xs-12 col-sm-4"><span class="media-left nopadding_lr"><%= image_tag "icons/address.png" %></span> <span class="media-body"><%= @user.try(:address) %></span></div>
+										<% end %>
+										<div class="col-xs-12 col-sm-4"><span class="media-left nopadding_lr"><%= image_tag "icons/club.png" %></span> <span class="media-body"><%= @user.is_reviewer? ? @user.current_club : @user.soccer_club %></span></div>
+										<% if @user.is_user? %>
+											<div class="col-xs-12 col-sm-4"><%= image_tag "icons/goal.png" %> <span><%= @user.try(:soccer_goal) %></span></div>
+										<% end %>
+									</div>
+								</div>
+								<% if @user.is_reviewer? %>	
+									<div class="col-xs-12 view_profile_data" style="margin-top: 15px;">
+										<span class="media-left nopadding_lr">
+											<%= image_tag "icons/description.png" %>
+										</span> 
+										<span class="media-body" style="vertical-align: middle;">
+											<%= @user.try(:description) %>
+										</span>
+									</div>
+								<% end %>
+              </div>
+              <%= link_to 'Edit', edit_admin_user_path(@user) %>
+            </ul>
+          </form>
+    		</div>
+    	</div>
+    </div>
+  </div>
+</div>
 
+<!-- This is left to add for is_user? -->
+	<!-- <p>Position : <%#= current_user.try(:position) %></p> -->
+	
+<!-- <h3> User details</h3>
+<%#= image_tag @user.avatar.url(:thumb) , alt:"image"%><br/>
+<p>Username : <%#= @user.try(:fullname) %></p>
+<p>Gender : 
+<%# if @user.gender == 1 %>
+  Male
+<%# else %>
+  Female
+<%# end %></p>
+<p>Email : <%#= @user.email %></p>
+<%# if @user.is_reviewer? %>
+	<p>Date Of Birth : <%#= current_user.try(:date_of_birth).strftime("%B,%d %Y") %></p>
+	<p>Address : <%#= @user.try(:address) %></p>
+	<p>Phone number : <%#= @user.try(:phone_number) %> </p>
+	<p>Current club : <%#= @user.try(:current_club)%></p>
+	<p>Description : <%#= @user.try(:description) %></p>
+<%# else %>
+	<p>Date Of Birth : <%#= @user.try(:date_of_birth).strftime("%B,%d %Y") %></p>
+	<p>Position : <%#= @user.try(:position) %></p>
+	<p>Soccer Club : <%#= @user.try(:soccer_club) %></p>
+	<p>Soccer Goal : <%#= @user.try(:soccer_goal) %></p>
+<%# end %> -->

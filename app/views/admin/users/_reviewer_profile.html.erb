@@ -1,7 +1,7 @@
 <div class="container">
   <div id="TabbedPanels1" class="TabbedPanels">
     <ul class="TabbedPanelsTabGroup">
-      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0"><%= @user.id == nil ? "New" : "Edit" %></li>
+      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0"><%= @user.id == nil ? "Add Reviewer" : "Edit Reviewer" %></li>
     </ul>
 
     <div class="TabbedPanelsContentGroup">
@@ -19,29 +19,6 @@
                   </ul>
                 </div>
               <% end %>
-              <div class="col-xs-12 nopadding_lr">
-                <div class="col-xs-12 col-sm-4"></div>
-
-                <div class="col-xs-12 col-sm-4">
-                  <span class="profile_pic">
-                    <% if f.object.avatar.present? %>
-                      <%= image_tag f.object.avatar.url, :class => "remove_image" %>
-                    <% else %>
-                      <%= image_tag "reviewer_img.png", :class => "remove_image" %>
-                    <% end %>
-                    <a href="#" class="cancel_btn" title="Remove Photo" onclick="removeUserImage()"><i class="fa fa-close"></i></a>
-
-                    <div class="upload_photo">
-                      <p>Upload Photo</p>
-                    </div>
-
-                    <%= f.file_field :avatar %>
-                  </span>
-                </div>
-
-                <div class="col-xs-12 col-sm-4"></div>
-              </div>
-
               <div class="col-xs-12"></div>
 
               <div class="col-xs-12 col-sm-6">
@@ -131,50 +108,11 @@
                   </span>
                 </li>
               </div>
-
-              <div class="col-xs-12">
-                <li>
-                  <h2 class="pull-left padding_tb_20"><strong>Change Password</strong> (leave blank if you don't want to change your password)</h2>
-                </li>
-              </div>
-
-              <div class="col-xs-12 nopadding_lr">
-                <div class="col-xs-12 col-sm-4">
-                  <li>
-                    <h2 class="pull-left">Password</h2>
-                    <span class="box">
-                      <%= image_tag "icons/password.png" %>
-                      <%= f.password_field :current_password %>
-                    </span>
-                  </li>
-                </div>
-
-                <div class="col-xs-12 col-sm-4">
-                  <li>
-                    <h2 class="pull-left">New Password</h2>
-                    <span class="box">
-                      <%= image_tag "icons/password.png" %>
-                      <%= f.password_field :password %>
-                    </span>
-                  </li>
-                </div>
-
-                <div class="col-xs-12 col-sm-4">
-                  <li>
-                    <h2 class="pull-left">Confirm Password</h2>
-                    <span class="box">
-                      <%= image_tag "icons/password.png" %>
-                      <%= f.password_field :password_confirmation %>
-                    </span>
-                  </li>
-                </div>
-              </div>
-
               <div class="col-xs-12 col-sm-3"></div>
               <div class="col-xs-12 col-sm-6 margin_btm_30">
                 <li>
 
-                  <button type="submit"><%= f.object.new_record? ? "New" : "Update" %></button>
+                  <button type="submit"><%= f.object.new_record? ? "Save" : "Update" %></button>
                 </li>
               </div>
               <div class="col-xs-12 col-sm-3"></div>
@@ -186,23 +124,23 @@
   </div>
 </div>
 <script>
-  $(function(){
-    $("#upload_link").on('click', function(e){
-      e.preventDefault();
-      $("#upload:hidden").trigger('click');
-    });
-  });
+  // $(function(){
+  //   $("#upload_link").on('click', function(e){
+  //     e.preventDefault();
+  //     $("#upload:hidden").trigger('click');
+  //   });
+  // });
 
-  function removeUserImage(){
-    $('.remove_image').attr('src', '<%= asset_path("reviewer_img.png") %>');
-  }
+  // function removeUserImage(){
+  //   $('.remove_image').attr('src', '<%#= asset_path("reviewer_img.png") %>');
+  // }
 
-  $(document).ready(function(){
-    $("#user_avatar").change(function(){
-      console.log($("#user_avatar").val())
-      $(this).attr("src",$(this).val());
-    });
-  });
+  // $(document).ready(function(){
+  //   $("#user_avatar").change(function(){
+  //     console.log($("#user_avatar").val())
+  //     $(this).attr("src",$(this).val());
+  //   });
+  // });
   $(document).ready(function(){
     $('#user_date_of_birth').datetimepicker({
       format: 'YYYY-MM-DD'
