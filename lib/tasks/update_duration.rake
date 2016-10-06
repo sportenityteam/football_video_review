@@ -6,7 +6,7 @@ namespace :football_review do
 			movie = FFMPEG::Movie.new("#{video.video_url.url}")
 			if movie.present?
 				video.duration = movie.duration
-				video.order.total_video_duration += movie.duration
+				video.order.total_video_duration.to_i += movie.duration.to_i
     			video.order.save
 				video.save
 			end
