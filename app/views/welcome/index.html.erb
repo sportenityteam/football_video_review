@@ -29,9 +29,9 @@
                 <% @reviewers.each do |user| %>
                   <div class="reviewers_in col-sm-4 col-xs-12">
                     <% if user.avatar.present? %>
-                      <%= user.avatar.url %>
+                      <%= image_tag user.avatar.url(:medium) , :class=> "reviewer-icon"%>
                     <% else %>
-                      <%= image_tag "reviewer_img.png" %>
+                      <%= image_tag "reviewer_img.png" , :class=> "reviewer-icon"%>
                     <% end %>
                     <h3><%= user.fullname %></h3>
                     <p>Coach : <%= user.current_club %></p>
