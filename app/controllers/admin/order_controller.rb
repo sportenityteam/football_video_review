@@ -22,7 +22,8 @@ class Admin::OrderController < Admin::BaseController
     end
     @orders = Order.where(:status => Order::STATUS["Reviewed"]).page(params[:page]).per(page)
     if params[:search].present?
-      @orders = @orders.search_items(params[:search])
+      # @orders = @orders.search_items(params[:search])
+      @orders = @orders.where("lower(title) like ?", "%"+params[:search]+"%".downcase)
     end
   end
 
@@ -52,10 +53,11 @@ class Admin::OrderController < Admin::BaseController
     if params[:per_page].present?
       page = params[:per_page]
     end
-    @orders = Order.where("payment_status =?", "paid")
+    @orders = Order.joins(:user).all #.where("payment_status =?", "paid")
     @orders = @orders.page(params[:page]).per(page)
     if params[:search].present?
-      @orders = @orders.search_items(params[:search])
+      # @orders = @orders.search_items(params[:search])
+      @orders = @orders.where('lower(users.first_name) like ? or lower(users.last_name) like ?', "%"+params[:search]+"%", "%"+params[:search]+"%")
     end
   end
 

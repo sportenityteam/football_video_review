@@ -11,7 +11,7 @@ class Admin::UsersController < ApplicationController
     @users = User.where(:user_type => User::USER_TYPES[params[:type]]).page(params[:page]).per(page)
     if params[:search].present?
       # @users = @users.search_items(params[:search])
-      @users = @users.where("first_name like ? or last_name like ? or phone_number like ? or current_club like ? or soccer_club like ?", "%"+params[:search]+"%", "%"+params[:search]+"%", "%"+params[:search]+"%", "%"+params[:search]+"%", "%"+params[:search]+"%")
+      @users = @users.where("lower(first_name) like ? or lower(last_name) like ? or lower(phone_number) like ? or lower(current_club) like ? or lower(soccer_club) like ?", "%"+params[:search]+"%".downcase, "%"+params[:search]+"%".downcase, "%"+params[:search]+"%".downcase, "%"+params[:search]+"%".downcase, "%"+params[:search]+"%".downcase)
     end
   end
 
