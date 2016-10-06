@@ -8,6 +8,7 @@
         <div class="table-responsive col-xs-12 ad_order">
           <table class="table">
             <thead>
+              <div class="row error_div" id="message">Price was successfully updated.</div>
               <tr>
                 <th>Name</th>
                 <th>Price</th>
@@ -36,7 +37,7 @@
 
 
 <script type="text/javascript">
-
+  $("#message").hide();
   var priceId;
   var priceVal;
   $('.age_price').change(function () {
@@ -52,5 +53,7 @@
              "price": priceVal
             }
     });
+    $("#message").show();
+    $("#message").fadeOut(2500);
   });
 </script>
