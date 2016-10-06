@@ -18,7 +18,7 @@ class Admin::PricesController < Admin::BaseController
     @price = Price.new(price_params)
     respond_to do |format|
       if @price.save
-        format.html { redirect_to admin_prices_path, :notice => 'Price was successfully added.' }
+        format.html { redirect_to admin_prices_path, :notice => 'Price was successfully updated.' }
         format.json { render :show, status: :created, location: @price }
       else
         format.html { render :new }

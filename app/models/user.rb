@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   # User GENDER = {"male" => 1, "female" => 2}
 
   #callback
-  before_validation :check_for_password
+  #before_validation :check_for_password
 
   #associations
   has_many :orders
@@ -72,10 +72,10 @@ class User < ActiveRecord::Base
     return amount
   end
 
-  def check_for_password
-    if self.password.nil?
-      self.password = "12345678"
-    end
-  end
+  # def check_for_password
+  #   if self.password.nil?
+  #     self.password = "12345678"
+  #   end
+  # end
 
 end

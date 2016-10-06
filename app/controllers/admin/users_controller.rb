@@ -22,8 +22,10 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.user_type = 2
+    @user.password = "12345678"
     respond_to do |format|
-      if @user.save
+      if @user.save(validate: false)
+        @user.update_attributes(:password => "12345678")
         format.html { redirect_to admin_users_path(:type => "reviewer"), notice: 'Reviewer was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -48,7 +50,7 @@ class Admin::UsersController < ApplicationController
         elsif @user.is_user?
           format.html { redirect_to admin_users_path(:type => "user"), notice: 'Reviewer was successfully updated.' }
           format.json { render :show, status: :ok, location: @user }
-        end          
+        end
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }

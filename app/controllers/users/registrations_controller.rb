@@ -20,7 +20,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    super
+    unless params[:user][:current_password] == ""
+      respond_to do |format|
+        if resource.update_with_password(user_password_params)
+          format.html { redirect_to my_profile_path, notice: 'Profile was successfully updated.' }
+        else
+          format.html { render action: "edit" }
+        end
+      end
+    else
+      respond_to do |format|
+        if resource.update_without_password(user_params)
+          format.html { redirect_to my_profile_path, notice: 'Profile was successfully updated.' }
+        else
+          format.html { render action: "edit" }
+        end
+      end
+    end
   end
 
   # DELETE /resource
@@ -52,6 +68,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after update profile
   def after_update_path_for(resource)
     my_profile_path#(resource)
+  end
+
+  def user_params
+    params.require(:user).permit(:soccer_club, :soccer_goal, :first_name, :last_name, :gender, :date_of_birth, :position, :zipcode,:avatar,:current_club,:address,:description,:phone_number)
+  end
+
+  def user_password_params
+    params.require(:user).permit(:soccer_club, :soccer_goal, :first_name, :last_name, :gender, :date_of_birth, :position, :zipcode,:avatar,:current_club,:address,:description,:phone_number,:password, :password_confirmation, :current_password)
   end
 
   # The path used after sign up.
