@@ -56,6 +56,9 @@ class OrderStepsController < ApplicationController
           payment = Payment.find_by_transcation_id($transactionId)
           if payment.present?
             payment.update_attributes(:order_id => @order.id)
+          else
+            order_id = current_user.orders.last.id
+            payment.update_attributes(:order_id => order_id)
           end
           redirect_to my_orders_path
         end
