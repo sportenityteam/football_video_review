@@ -16,7 +16,7 @@
             <tbody>
               <% @users.each do |user| %>
                 <tr>
-                  <td style="width:25%; vertical-align: middle;"><%= image_tag user.avatar.url(:thumb), :class=>"list-image-height img-circle", style: "height: 50px" %> <%= user.fullname%></td>
+                  <td style="width:25%; vertical-align: middle;"><%= image_tag user.avatar.url, :class=>"list-image-height img-circle" %> <%= user.fullname%></td>
                   <% if params[:type] == "reviewer"%>
                     <td style="width:20%; vertical-align:middle;"><%= user.phone_number %></td>
                     <td style="width:20%;  vertical-align: middle;"><%= user.current_club%></td>
