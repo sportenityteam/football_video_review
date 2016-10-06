@@ -1,16 +1,32 @@
-<h2>Resend confirmation instructions</h2>
+<div id="TabbedPanels1" class="TabbedPanels">
+    <ul class="TabbedPanelsTabGroup">
+      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">Resend confirmation instructions</li>
+     </ul>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+    <div class="TabbedPanelsContentGroup">
+      <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
+      	<div class="tab_content col-xs-12">
+          <ul class="col-xs-12">
+          	<div class="col-xs-12 col-sm-3 nopadding_lr"></div>
+            <div class="col-xs-12 col-sm-6 nopadding_lr">
+            	<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+            		<%= devise_error_messages! %>
+            		<ul>
+            			<li>
+            				<h2 class="pull-left">E-Mail</h2>
+                    <span class="box">
+                      <%= image_tag "icons/mail.png" %>
+                      <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+                    </span>
+            			</li>
+            			<li>
+            				<button type="submit">Resend confirmation instructions</button>
+            			</li>
+            		</ul>
+            	<% end %>
+            </div>
+            <div class="col-xs-12 col-sm-3"></div>
+          </ul>
+        </div>
+      </div>
+    </div>
