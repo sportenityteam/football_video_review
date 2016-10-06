@@ -26,3 +26,16 @@
 	height: 30px!important;
 	width: 30px!important;
 }
+
+.box > .dropdown-menu{
+	z-index: 99999999999999;
+}
+
+.box > .dropdown-menu li{
+	padding:0px;
+	border-bottom:none;
+}
+
+.box > .dropdown-menu li:hover{
+	background-color:transparent;
+}

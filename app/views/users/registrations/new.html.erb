@@ -17,7 +17,7 @@
                 <h2 class="pull-left">First Name</h2>
                 <span class="box">
                   <%= image_tag "icons/name.png"%>
-                  <%= f.text_field :first_name %>
+                  <%= f.text_field :first_name, :tabindex => "1" %>
                 </span>
               </li>
 
@@ -25,7 +25,7 @@
                 <h2 class="pull-left">E-Mail</h2>
                 <span class="box">
                   <%= image_tag "icons/mail.png" %>
-                  <%= f.email_field :email %>
+                  <%= f.email_field :email, :tabindex => "3" %>
                 </span>
               </li>
 
@@ -33,39 +33,31 @@
                 <h2 class="pull-left">Password</h2>
                 <span class="box">
                   <%= image_tag "icons/password.png" %>
-                  <%= f.password_field :password, autocomplete: "off" %>
-                </span>
-              </li>
-
-              <li>
-                <h2 class="pull-left">Confirm Password</h2>
-                <span class="box">
-                  <%= image_tag "icons/password.png" %>
-                  <%= f.password_field :password_confirmation %>
-                </span>
-              </li>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-              <li>
-                <h2 class="pull-left">Last Name</h2>
-                <span class="box">
-                  <%= image_tag "icons/name.png"%>
-                  <%= f.text_field :last_name %>
+                  <%= f.password_field :password, autocomplete: "off", :tabindex => "5" %>
                 </span>
               </li>
               <li>
                 <h2 class="pull-left">Date of Birth</h2>
                 <span class="box">
                   <%= image_tag "icons/dob.png" %>
-                  <%= f.text_field :date_of_birth, autocomplete: "off", :id => "dob" %>
+                  <%= f.text_field :date_of_birth, autocomplete: "off", :id => "dob", :tabindex => "7" %>
                 </span>
               </li>
-
+              
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <li>
+                <h2 class="pull-left">Last Name</h2>
+                <span class="box">
+                  <%= image_tag "icons/name.png"%>
+                  <%= f.text_field :last_name, :tabindex => "2" %>
+                </span>
+              </li>
               <li>
                 <h2 class="pull-left">Gender</h2>
                 <span class="box">
                   <div class="radio">
-                    <%= f.radio_button :gender, 1 , :checked => true , class: "styled" %>
+                    <%= f.radio_button :gender, 1 , :checked => true , class: "styled", :tabindex => "4" %>
                     <label for="male">Male</label>
                     <%= f.radio_button :gender, 2 , class: "styled" %>
                     <label for="female">Female</label>
@@ -73,10 +65,17 @@
                 </span>
               </li>
               <li>
+                <h2 class="pull-left">Confirm Password</h2>
+                <span class="box">
+                  <%= image_tag "icons/password.png" %>
+                  <%= f.password_field :password_confirmation, :tabindex => "6" %>
+                </span>
+              </li>
+              <li>
                 <h2 class="pull-left">Zip Code</h2>
                 <span class="box">
                   <%= image_tag "icons/zip.png" %>
-                  <%= f.text_field :zipcode %>
+                  <%= f.text_field :zipcode, :tabindex => "8" %>
                 </span>
               </li>
             </div>
@@ -86,7 +85,7 @@
                   <h2 class="pull-left">Soccer Club</h2>
                   <span class="box">
                     <%= image_tag "icons/club.png" %>
-                    <%= f.text_field :soccer_club %>
+                    <%= f.text_field :soccer_club, :tabindex => "9" %>
                   </span>
                 </li>
               </div>
@@ -95,7 +94,7 @@
                   <h2 class="pull-left">Soccer Goal</h2>
                   <span class="box">
                     <%= image_tag "icons/goal.png" %>
-                    <%= f.text_field :soccer_goal %>
+                    <%= f.text_field :soccer_goal, :tabindex => "10" %>
                   </span>
                 </li>
               </div>
@@ -105,14 +104,14 @@
                 <h2 class="pull-left">Position</h2>
                 <span class="box">
                   <%= image_tag "icons/position.png" %>
-                  <%= f.text_field :position, :placeholder => "Play on a Middle School team, Play on a High School team, Play professionally, etc." %>
+                  <%= f.text_field :position, :placeholder => "Play on a Middle School team, Play on a High School team, Play professionally, etc.", :tabindex => "11" %>
                 </span>
               </li>
             </div>
             <div class="col-xs-12 col-sm-3"></div>
             <div class="col-xs-12 col-sm-6">
               <li>
-                <button>Sign up</button>
+                <button tabindex="12">Sign up</button>
               </li>
 
               <li>
