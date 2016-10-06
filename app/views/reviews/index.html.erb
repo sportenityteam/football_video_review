@@ -18,7 +18,9 @@
           <% @reviews.each do |review| %>
             <tr class="video-title-txt">
               <td style="width:16%;" class="padding_20">
-                <%= image_tag review.order.videos.first.video_url(:thumb1) %>
+                <% if review.order.videos.present? %>
+                  <%= image_tag review.order.videos.first.video_url(:thumb1) %>
+                <% end %>
               </td>
               <td style="width:49%;" class="padding_20">
                 <h2><%= review.order.try(:title) %></h2>

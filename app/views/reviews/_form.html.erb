@@ -124,6 +124,7 @@
   $(".submit_form").click(function(){
     var current_time = new Date($.now());
     $("#submit_time").val(current_time);
+    alert(current_time);
   });
 
   $("video").on("play", function (e) {
@@ -174,11 +175,14 @@
       //console.log(text);
       $("#tactical_notes").val(inner_text1);
     });
-    var technical_notes = '<%= @review_new.technical_notes.split("\r")[0] %>';
-    quill.setText(technical_notes);
+    <% if @review_new.present? %>
+    {
+      var technical_notes = '<%= @review_new.technical_notes.split("\r")[0] if @review_new.technical_notes.present? %>';
+      quill.setText(technical_notes);
 
-    var tactical_notes = '<%= @review_new.tactical_notes.split("\r")[0] %>';
-    quill1.setText(tactical_notes);
-
+      var tactical_notes = '<%= @review_new.tactical_notes.split("\r")[0] if @review_new.tactical_notes.present? %>';
+      quill1.setText(tactical_notes);
+    }
+    <% end %>
   });
 </script>
