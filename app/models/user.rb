@@ -19,12 +19,12 @@ class User < ActiveRecord::Base
   #associations
   has_many :orders
   has_many :reviews ,dependent: :destroy
-  
+
   #paperclip
   has_attached_file :avatar,
                     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
                     :url => "/system/:attachment/:id/:style/:filename",
-                    :default_url => "missing_user.png",
+                    :default_url => "reviewer_img.png",
                     :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   #validations
