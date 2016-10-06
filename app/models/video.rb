@@ -16,6 +16,9 @@ class Video < ActiveRecord::Base
   validates_attachment_content_type :video_url, :content_type => /\Avideo\/.*\Z/
   validates :video_url, :presence => true
 
+  #scope
+  scope :video_without_duration, -> {where(duration: nil)}
+
   def generate_mp4(video_url)
     if self.video_url.present? && self.video_url_file_name.split('.').last != "mp4"
       filename = "media1#{Time.now.to_i}"
