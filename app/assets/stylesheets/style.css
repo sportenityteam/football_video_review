@@ -1346,3 +1346,29 @@ Admin Side closed
  padding-top:0 !important;
 }
 /**Reviewers Review Details Closed**/
+
+.cancel_payment_btn{
+	display:inline-block;
+	width:100%;
+	padding:15px 0;
+	margin-top:20px!important;
+	color:#fff!important;
+	font-size:24px;
+	font-weight:300;
+	background: rgb(69,79,88); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(69,79,88,1) 0%, rgba(69,79,88,1) 50%, rgba(52,61,70,1) 50%, rgba(101,115,126,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	border:0;
+	outline:0;
+	text-decoration: none!important;
+	text-align: center!important;
+}
+
+.cancel_payment_btn:hover{
+	background: rgb(210,210,210); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%, rgba(221,221,221,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%, rgba(221,221,221,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%,  rgba(221,221,221,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	color:#1c1c1c!important;
+}
