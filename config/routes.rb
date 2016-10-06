@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :payments
 
   post "/contact_us" => "contact_us#contact_us_mail", as: :contact_us
-  get "/contact_us" => "contact_us#contact_us_mail", as: :contact_us_mail
+  get "/contact_us" => "contact_us#new", as: :contact_us_mail
 
   resources :reviews, :except => [:new,:index]
   get "/pending_reviews" => "reviews#pending_reviews" , as: :pending_reviews
