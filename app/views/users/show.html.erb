@@ -32,13 +32,13 @@
 										<% end %>
 									</div>
 								</div>
-								<% if current_user.is_reviewer? %>	
+								<% if current_user.is_reviewer? %>
 									<div class="col-xs-12 view_profile_data" style="margin-top: 15px;">
 										<span class="media-left nopadding_lr"><%= image_tag "icons/description.png" %></span> <span class="media-body" style="vertical-align: middle;"><%= current_user.try(:description) %></span>
 									</div>
 								<% end %>
               </div>
-              <%= link_to 'Edit Profile', edit_user_registration_path %>
+              <%#= link_to 'Edit Profile', edit_user_registration_path %>
             </ul>
           </form>
     		</div>
@@ -49,4 +49,3 @@
 
 <!-- This is left to add for is_user? -->
 	<!-- <p>Position : <%#= current_user.try(:position) %></p> -->
-	
