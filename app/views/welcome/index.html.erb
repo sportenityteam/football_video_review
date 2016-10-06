@@ -26,21 +26,17 @@
               <button>Our Reviewers Include ...</button>
 
               <div class="col-xs-12">
-                <div class="reviewers_in col-sm-4 col-xs-12">
-                  <%= image_tag "reviewer_img.png" %>
-                  <h3>Michael Gibson</h3>
-                  <p>Coach : Real Madrid</p>
-                </div>
-                <div class="reviewers_in col-sm-4 col-xs-12">
-                  <%= image_tag "reviewer_img.png" %>
-                  <h3>Kevin Smith</h3>
-                  <p>Coach : FCB</p>
-                </div>
-                <div class="reviewers_in col-sm-4 col-xs-12">
-                  <%= image_tag "reviewer_img.png" %>
-                  <h3>John North</h3>
-                  <p>Coach : Real Madrid</p>
-                </div>
+                <% @reviewers.each do |user| %>
+                  <div class="reviewers_in col-sm-4 col-xs-12">
+                    <% if user.avatar.present? %>
+                      <%= user.avatar.url %>
+                    <% else %>
+                      <%= image_tag "reviewer_img.png" %>
+                    <% end %>
+                    <h3><%= user.fullname %></h3>
+                    <p>Coach : <%= user.current_club %></p>
+                  </div>
+                <% end %>
                 <p class="many_more_txt col-xs-12">... and many more</p>
               </div>
 
@@ -48,7 +44,8 @@
                 <div class="col-sm-3 col-xs-12">
                 </div>
                 <div class="purchase_review_button col-sm-6 col-xs-12">
-                  <button>Purchase Your Review</button>
+                  <%= link_to order_step_path(:add_payment) , :class=>"cancel_payment_btn" do %>Purchase Your Review
+                  <% end %>
                 </div>
                 <div class="col-sm-3 col-xs-12">
                 </div>
