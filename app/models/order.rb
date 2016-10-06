@@ -24,7 +24,7 @@ class Order < ActiveRecord::Base
   #send mail to reviewer and admin for new video create
   def send_admin_reviewer_mail
     @order = self
-    puts "=-=-=-=-=-=-=-=-=-=--=-= #{@order.inspect}"
+    logger.warn("=-=-=-=-=-=-=-=-=-=--=-= #{@order.user.inspect}")
     @users = User.not_user
     @users.each do |user|
       OrderMailer.send_new_order_message(@order,user).deliver_now

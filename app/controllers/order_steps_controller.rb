@@ -42,6 +42,7 @@ class OrderStepsController < ApplicationController
         if @order.errors.present?
           render_wizard
         else
+          @order.update_attributes(:user_id => current_user.id)
           @order.update_attributes(order_params)
           if @order.videos.present?
             @order.videos.each do |video|
@@ -52,7 +53,9 @@ class OrderStepsController < ApplicationController
           @order.update_attributes(:total_video_duration => @total_duration,:user_id => current_user.id, :payment_status => "paid")
           #$orderId = @order.id
           payment = Payment.find_by_transcation_id($transactionId)
-          payment.update_attributes(:order_id => @order.id)
+          if payment.present?
+            payment.update_attributes(:order_id => @order.id)
+          end
           redirect_to my_orders_path
         end
     end
