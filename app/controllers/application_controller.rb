@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
         elsif current_user.is_reviewer?
           "reviewer"
         end
+      else
+        "devise"
       end
     end
 
