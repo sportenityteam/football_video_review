@@ -10,7 +10,8 @@ class Admin::UsersController < ApplicationController
     end
     @users = User.where(:user_type => User::USER_TYPES[params[:type]]).page(params[:page]).per(page)
     if params[:search].present?
-      @users = @users.search_items(params[:search])
+      # @users = @users.search_items(params[:search])
+      @users = @users.where("first_name like ? or last_name like ? or phone_number like ? or current_club like ? or soccer_club like ?", "%"+params[:search]+"%", "%"+params[:search]+"%", "%"+params[:search]+"%", "%"+params[:search]+"%", "%"+params[:search]+"%")
     end
   end
 
