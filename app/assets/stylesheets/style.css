@@ -857,7 +857,7 @@ footer ul li a:hover{
 .tech_note_txt {
  	color: #535353 !important;
   font-size: 30px !important;
-  font-weight: 300; 
+  font-weight: 300;
 }
 .tacti_note_txt {
  	color: #535353 !important;
@@ -1217,7 +1217,7 @@ Admin Side closed
 }
 .navbar-nav > li > .reviewer_menu {
 	margin-top:12px;
-	margin-right:-10px;	
+	margin-right:-10px;
 }
 .reviewer_menu{
 	min-width:550px;
@@ -1371,4 +1371,28 @@ Admin Side closed
 	background: -webkit-linear-gradient(top, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%, rgba(221,221,221,1) 100%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to bottom, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%,  rgba(221,221,221,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	color:#1c1c1c!important;
+}
+
+.add_btn button{
+ display:inline-block;
+ width:100%;
+ padding:15px 0;
+ margin-top:20px;
+ color:#fff;
+ font-size:24px;
+ font-weight:300;
+ background: rgb(69,79,88); /* Old browsers */
+ background: -moz-linear-gradient(top, rgba(69,79,88,1) 0%, rgba(69,79,88,1) 50%, rgba(52,61,70,1) 50%, rgba(101,115,126,1) 100%);
+ background: -webkit-linear-gradient(top, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%);
+ background: linear-gradient(to bottom, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%);
+ border:0;
+ outline:0;
+ margin-bottom:15px;
+}
+.add_btn button:hover{
+ background: rgb(210,210,210); /* Old browsers */
+ background: -moz-linear-gradient(top, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%, rgba(221,221,221,1) 100%);
+ background: -webkit-linear-gradient(top, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%, rgba(221,221,221,1) 100%);
+ background: linear-gradient(to bottom, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%,  rgba(221,221,221,1) 100%);
+ color:#1c1c1c;
 }

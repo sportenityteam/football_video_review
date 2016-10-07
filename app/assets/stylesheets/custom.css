@@ -49,3 +49,7 @@
 .box > .dropdown-menu li:hover{
 	background-color:transparent;
 }
+
+.mrg-btn{
+  margin-bottom: 5px;
+}
