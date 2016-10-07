@@ -13,7 +13,7 @@
 <p> <%= @order.user.try(:fullname) %> Video </p>
 <% if @order.videos.present? %>
   <% @order.videos.each do |video| %>
-    <%= video_tag video.video_url.url, controls: true, autobuffer: true %>
+    <%= video_tag video.video_url.url, controls: true, autobuffer: true, :class => "wdth100" %>
   <% end %>
 <% end %>
 <% if @review.present? %>

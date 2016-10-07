@@ -3,7 +3,7 @@
 <p>Description : <%= @order.description %></p>
 <% if @order.videos.present? %>
   <% @order.videos.each do |video| %>
-    <%= video_tag video.video_url.url, controls: true, autobuffer: true, :id => "order_video" %>
+    <%= video_tag video.video_url.url, controls: true, autobuffer: true, :id => "order_video", :class => "wdth100" %>
   <% end %>
 <% end %>
 <%= render "admin/reviews/form" %>

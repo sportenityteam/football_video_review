@@ -1,6 +1,6 @@
 <div class="col-xs-12 nopadding_lr green_main_bg">
 	<div class="col-xs-9 pull-left user_name">Reviewing : <%= @order.title %></div>
-	
+
 	<div class="col-xs-3 col-sm-2 pull-right nopadding_lr_res hidden-xs">
 		<div class="reviewer_user_bg pull-right">
 			 <ul class="nav navbar-nav col-xs-12 nopadding_lr">
@@ -110,11 +110,11 @@
 									<div class="tab-content">
 										<div id="vid" class="tab-pane fade active in">
 											<!-- <iframe class="videowidth" width="100%" height="315" src="<%#= @order.videos.first.video_url.url(:medium)%>%>" frameborder="0" allowfullscreen=""></iframe> -->
-											<%= video_tag @order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video" %>
+											<%= video_tag @order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video", :class => "wdth100" %>
 										</div>
 										<div id="vid1" class="tab-pane fade">
 											<!-- <iframe class="videowidth" width="100%" height="315" src="<%#= @order.videos.last.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe> -->
-											<%= video_tag @order.videos.last.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video" %>
+											<%= video_tag @order.videos.last.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video", :class => "wdth100" %>
 										</div>
 									</div>
 								<% end %>
@@ -123,12 +123,12 @@
 					<% else%>
 						<% if @order.videos.present? %>
 							<!-- <iframe width="100%" height="315" src="<%#= @order.videos.first.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe> -->
-							<%= video_tag @order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video" %>
+							<%= video_tag @order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video", :class => "wdth100" %>
 						<% end %>
 				  <% end %>
 				<% end %>
 			</div>
-			<%= render "/reviews/form" %>			
+			<%= render "/reviews/form" %>
   	</div>
 	</div>
 </div>

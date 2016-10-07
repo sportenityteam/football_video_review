@@ -61,11 +61,11 @@
 										<div class="tab-content">
 											<div id="vid" class="tab-pane fade active in">
 												<!-- <iframe class="videowidth" width="100%" height="315" src="<%#= @review.order.videos.first.video_url.url(:medium)%>%>" frameborder="0" allowfullscreen=""></iframe> -->
-												<%= video_tag @review.order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video" %>
+												<%= video_tag @review.order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video", :class => "wdth100" %>
 											</div>
 											<div id="vid1" class="tab-pane fade">
 												<!-- <iframe class="videowidth" width="100%" height="315" src="<%#= @review.order.videos.last.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe> -->
-												<%= video_tag @review.order.videos.last.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video" %>
+												<%= video_tag @review.order.videos.last.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video", :class => "wdth100" %>
 											</div>
 										</div>
 									<% end %>
@@ -75,12 +75,12 @@
 							<% if @review.order.videos.present? %>
 								<div>
 									<!-- <iframe width="100%" height="315" src="<%#= @review.order.videos.first.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe> -->
-									<%= video_tag @review.order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video" %>
+									<%= video_tag @review.order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video", :class => "wdth100" %>
 								</div>
 							<% end %>
 					  <% end %>
 					<% end %>
-					
+
 					<div class="video_notes">
 				    <ul class="nav nav-pills">
 				      <li class="col-xs-6 nopadding_lr padding_top_0 active">
@@ -117,7 +117,7 @@
 					  </div>
 					  <div class="col-xs-12 col-sm-4 approved_notes_btn">
 					    <button class="submit_form">
-				      	<%= link_to admin_review_path(@review.order.id), method: :delete, data: { confirm: 'Are you sure?' } do%> <i class="fa fa-check"></i> Reset 
+				      	<%= link_to admin_review_path(@review.order.id), method: :delete, data: { confirm: 'Are you sure?' } do%> <i class="fa fa-check"></i> Reset
 				      	<% end %>
 				      </button>
 					  </div>
@@ -147,7 +147,7 @@
     [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
     //[{ 'direction': 'rtl' }],                         // text direction
     [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-    
+
     [{ 'align': [] }],
 
     ['clean']                                         // remove formatting button

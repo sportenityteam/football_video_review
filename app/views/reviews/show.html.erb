@@ -2,7 +2,7 @@
 <p> Title : <%= @review.try(:order).try(:title) %></p>
 <% if @review.try(:order).try(:videos).present? %>
   <% @review.order.videos.each do |video| %>
-    <%= video_tag video.video_url.url, controls: true, autobuffer: true %>
+    <%= video_tag video.video_url.url, controls: true, autobuffer: true, :class => "wdth100" %>
   <% end %>
 <% end %>
 <p> Reviewer : <%= @review.user.try(:fullname) %></p>
