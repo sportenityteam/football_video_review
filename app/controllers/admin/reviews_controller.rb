@@ -32,6 +32,7 @@ class Admin::ReviewsController < Admin::BaseController
 
   def show
     @review = Review.joins(:user).where("users.user_type != ? and reviews.order_id = ? " ,3,params[:id]).last
+    @review_time = second_to_hours(@review.review_time)
   end
 
   def destroy
@@ -45,6 +46,26 @@ class Admin::ReviewsController < Admin::BaseController
     end
   end
 
+  # convert review time into hours and minutes
+  def second_to_hours(seconds)
+    puts "======seconds=======#{seconds}========="
+    mm ,ss = seconds.divmod(60)
+    hh, mm = mm.divmod(60)
+    if hh > 0 && mm > 0 && ss > 0
+     return "#{hh} hours #{mm} minutes #{ss} seconds"
+    elsif hh > 0 && mm > 0
+      return "#{hh} hours #{mm} minutes"                      
+    elsif mm > 0 && ss > 0
+      return "#{mm} minutes #{ss} seconds"
+    elsif hh > 0 && ss > 0  
+      return "#{hh} hours #{ss} seconds"    
+    elsif ss > 0 
+      return "#{ss} seconds"
+    else
+      return "#{ss} seconds"
+    end
+  end
+  
   private
     def review_params
       params.require(:review).permit(:order_id, :user_id, :technical_notes, :tactical_notes, :review_time)

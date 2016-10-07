@@ -58,7 +58,7 @@
     <% end %>
   </div>
   <div class="col-xs-12 col-sm-4 saved_notes_btn">
-    <button type="submit"><i class="fa fa-save"></i> Saved Notes</button>
+    <button type="submit"><i class="fa fa-save"></i> Save Notes</button>
   </div>
   <div class="col-xs-12 col-sm-4 submit_notes_btn nopadding_lr">
     <button type="submit" class="submit_form" id="review_submit"><i class="fa fa-check"></i> Submit Notes</button>
@@ -124,7 +124,6 @@
   $(".submit_form").click(function(){
     var current_time = new Date($.now());
     $("#submit_time").val(current_time);
-    alert(current_time);
   });
 
   $("video").on("play", function (e) {
@@ -137,13 +136,13 @@
     [{ 'font': [] }],
     [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-    ['blockquote', 'code-block'],
+    //['blockquote', 'code-block'],
 
     [{ 'header': 1 }, { 'header': 2 }],               // custom button values
     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+    //[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
     [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-    [{ 'direction': 'rtl' }],                         // text direction
+    //[{ 'direction': 'rtl' }],                         // text direction
     [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
 
     [{ 'align': [] }],

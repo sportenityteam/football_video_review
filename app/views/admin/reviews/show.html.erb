@@ -37,7 +37,9 @@
 		            <tr>
 		              <td style="width:33%;"><%= @review.try(:order).try(:title) %></td>
 		              <td style="width:33%;"><%= @review.created_at.strftime("%B %d, %Y") %></td>
-		              <td style="width:33%;"><%= @review.try(:review_time) %>2 Hours 40 Minutes</td>
+		              <td style="width:33%;">
+		              	<%= @review_time %>
+		              </td>
 		            </tr>
 		          </tbody>
 	         	</table>
@@ -55,20 +57,27 @@
 											<a data-toggle="pill" href="#vid1" class="tacti_note_txt padding_top_0">Second Half</a>
 										</li>
 									</ul>
-									<div class="tab-content">
-										<div id="vid" class="tab-pane fade active in">
-											<iframe class="videowidth" width="100%" height="315" src="<%= @review.order.videos.first.video_url.url(:medium)%>%>" frameborder="0" allowfullscreen=""></iframe>
+									<% if @review.order.videos.present? %>
+										<div class="tab-content">
+											<div id="vid" class="tab-pane fade active in">
+												<!-- <iframe class="videowidth" width="100%" height="315" src="<%#= @review.order.videos.first.video_url.url(:medium)%>%>" frameborder="0" allowfullscreen=""></iframe> -->
+												<%= video_tag @review.order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video" %>
+											</div>
+											<div id="vid1" class="tab-pane fade">
+												<!-- <iframe class="videowidth" width="100%" height="315" src="<%#= @review.order.videos.last.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe> -->
+												<%= video_tag @review.order.videos.last.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video" %>
+											</div>
 										</div>
-										<div id="vid1" class="tab-pane fade">
-											<iframe class="videowidth" width="100%" height="315" src="<%= @review.order.videos.last.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe>
-										</div>
-									</div>
+									<% end %>
 								</div>
 							</div>
 						<% else%>
-							<div>
-								<iframe width="100%" height="315" src="<%= @review.order.videos.first.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe>
-							</div>
+							<% if @review.order.videos.present? %>
+								<div>
+									<!-- <iframe width="100%" height="315" src="<%#= @review.order.videos.first.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe> -->
+									<%= video_tag @review.order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video" %>
+								</div>
+							<% end %>
 					  <% end %>
 					<% end %>
 					
@@ -130,13 +139,13 @@
     [{ 'font': [] }],
     [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-    ['blockquote', 'code-block'],
+    //['blockquote', 'code-block'],
 
     [{ 'header': 1 }, { 'header': 2 }],               // custom button values
     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+    //[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
     [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-    [{ 'direction': 'rtl' }],                         // text direction
+    //[{ 'direction': 'rtl' }],                         // text direction
     [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
     
     [{ 'align': [] }],
