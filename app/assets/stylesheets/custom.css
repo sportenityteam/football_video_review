@@ -53,3 +53,19 @@
 .mrg-btn{
   margin-bottom: 5px;
 }
+
+.our_reviewer_inc {
+  display:inline-block;
+  width:100%;
+  padding:15px 0;
+  margin-top:20px;
+  color:#fff;
+  font-size:24px;
+  font-weight:300;
+  background: rgb(69,79,88);
+  background: -moz-linear-gradient(top, rgba(69,79,88,1) 0%, rgba(69,79,88,1) 50%, rgba(52,61,70,1) 50%, rgba(101,115,126,1) 100%);
+  background: -webkit-linear-gradient(top, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%);
+  background: linear-gradient(to bottom, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%);
+  border:0;
+  outline:0;
+}

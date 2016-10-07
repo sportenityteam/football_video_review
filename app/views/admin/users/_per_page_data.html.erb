@@ -51,15 +51,16 @@
   <h4 class="pull-left"><%= page_entries_info @users %></h4>
   <%= paginate @users, :params => {:@users => @users} %>
 </div>
+<% if params[:type] == "reviewer" %>
+  <div class="col-xs-12 nopadding_lr add_btn">
+    <div class="col-xs-6 col-sm-3 nopadding_lr hidden-xs"></div>
 
-<div class="col-xs-12 nopadding_lr add_btn">
-  <div class="col-xs-6 col-sm-3 nopadding_lr hidden-xs"></div>
+    <div class="col-sm-6 nopadding_lr hidden-xs"></div>
 
-  <div class="col-sm-6 nopadding_lr hidden-xs"></div>
-
-  <div class="col-xs-6 col-sm-3 pull-right">
-    <%= link_to new_admin_user_path(:type => "reviewer") , :class=>"cancel_payment_btn mrg-btn" do %>
-      <i class="" aria-hidden="true"></i> Add
-    <% end %>
+    <div class="col-xs-6 col-sm-3 pull-right">
+      <%= link_to new_admin_user_path(:type => "reviewer") , :class=>"cancel_payment_btn mrg-btn" do %>
+        <i class="" aria-hidden="true"></i> Add
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>

@@ -43,22 +43,25 @@
                         </div>
                       <% end %>
 										<% end %>
+                    <div class="col-xs-12 col-sm-6">
+                      <%= image_tag "icons/mail.png" %> <span><%= @user.try(:email) %></span>
+                    </div>
 										<div class="col-xs-12 col-sm-4">
-                      <% if current_user.is_reviewer? %>
-                        <% if current_user.current_club.present? %>
+                      <% if @user.is_reviewer? %>
+                        <% if @user.current_club.present? %>
                           <span class="media-left nopadding_lr"><%= image_tag "icons/club.png" %></span>
-                          <span class="media-body"><%= current_user.current_club %></div>
+                          <span class="media-body"><%= @user.current_club %></div>
                         <% end %>
-                      <% elsif current_user.is_user? %>
-                        <% if current_user.soccer_club.present? %>
+                      <% elsif @user.is_user? %>
+                        <% if @user.soccer_club.present? %>
                           <span class="media-left nopadding_lr"><%= image_tag "icons/club.png" %></span>
-                          <span class="media-body"><%= current_user.soccer_club %></div>
+                          <span class="media-body"><%= @user.soccer_club %></div>
                         <% end %>
                       <% end %>
                     </div>
 
 										<% if @user.is_user? %>
-                      <% if user.soccer_goal.present? %>
+                      <% if @user.soccer_goal.present? %>
   											<div class="col-xs-12 col-sm-4">
                           <%= image_tag "icons/goal.png" %> <span><%= @user.try(:soccer_goal) %></span>
                         </div>
@@ -69,23 +72,17 @@
 								<% if @user.is_reviewer? %>
                   <% if @user.description.present? %>
   									<div class="col-xs-12 view_profile_data" style="margin-top: 15px;">
-  										<span class="media-left nopadding_lr">
-  											<%= image_tag "icons/description.png" %>
-  										</span>
-  										<span class="media-body" style="vertical-align: middle;">
-  											<%= @user.try(:description) %>
-  										</span>
+  										<span class="media-left nopadding_lr"><%= image_tag "icons/description.png" %></span>
+  										<span class="media-body" style="vertical-align: middle;"><%= @user.try(:description) %></span>
   									</div>
                   <% end %>
 								<% end %>
               </div>
               <div class="col-xs-12 col-sm-3"></div>
               <div class="col-xs-12 col-sm-6 margin_btm_30">
-                <li>
-                  <%= link_to edit_admin_user_path(@user) , :class=>"cancel_payment_btn" do %>
-                    <i class="fa fa-pencile" aria-hidden="true"></i> Edit
-                  <% end %>
-                </li>
+                <%= link_to edit_admin_user_path(@user), :class=>"cancel_payment_btn" do %>
+                  <i class="" aria-hidden="true"></i> Edit
+                <% end %>
               </div>
               <div class="col-xs-12 col-sm-3"></div>
             </ul>

@@ -19,6 +19,28 @@
                   </ul>
                 </div>
               <% end %>
+              <div class="col-xs-12 nopadding_lr">
+                <div class="col-xs-12 col-sm-4"></div>
+
+                 <div class="col-xs-12 col-sm-4">
+                  <span class="profile_pic">
+                    <% if f.object.avatar.present? %>
+                      <%= image_tag f.object.avatar.url, :class => "remove_image" %>
+                    <% else %>
+                      <%= image_tag "reviewer_img.png", :class => "remove_image" %>
+                    <% end %>
+                    <a href="#" class="cancel_btn" title="Remove Photo" onclick="removeUserImage()"><i class="fa fa-close"></i></a>
+
+                    <div class="upload_photo">
+                      <p>Upload Photo</p>
+                    </div>
+
+                    <%= f.file_field :avatar %>
+                  </span>
+                </div>
+
+                <div class="col-xs-12 col-sm-4"></div>
+              </div>
               <div class="col-xs-12"></div>
 
               <div class="col-xs-12 col-sm-6">
@@ -124,23 +146,23 @@
   </div>
 </div>
 <script>
-  // $(function(){
-  //   $("#upload_link").on('click', function(e){
-  //     e.preventDefault();
-  //     $("#upload:hidden").trigger('click');
-  //   });
-  // });
+  $(function(){
+    $("#upload_link").on('click', function(e){
+      e.preventDefault();
+      $("#upload:hidden").trigger('click');
+    });
+  });
 
-  // function removeUserImage(){
-  //   $('.remove_image').attr('src', '<%#= asset_path("reviewer_img.png") %>');
-  // }
+  function removeUserImage(){
+    $('.remove_image').attr('src', '<%#= asset_path("reviewer_img.png") %>');
+  }
 
-  // $(document).ready(function(){
-  //   $("#user_avatar").change(function(){
-  //     console.log($("#user_avatar").val())
-  //     $(this).attr("src",$(this).val());
-  //   });
-  // });
+  $(document).ready(function(){
+    $("#user_avatar").change(function(){
+      console.log($("#user_avatar").val())
+      $(this).attr("src",$(this).val());
+    });
+  });
   $(document).ready(function(){
     $('#user_date_of_birth').datetimepicker({
       format: 'YYYY-MM-DD'

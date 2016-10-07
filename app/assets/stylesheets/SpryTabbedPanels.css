@@ -22,7 +22,7 @@
 	list-style: none;
 	-moz-user-select: none;
 	-khtml-user-select: none;
-	cursor: pointer;
+	/*cursor: pointer;*/
 	margin:0;
 	width:50%;
 	text-align:center;
@@ -30,7 +30,7 @@
 	background: -moz-linear-gradient(top, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%, rgba(221,221,221,1) 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top, rgba(210,210,210,1) 0%,rgba(210,210,210,1) 50%,rgba(189,189,189,1) 50%,rgba(221,221,221,1) 100%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to bottom, rgba(210,210,210,1) 0%,rgba(210,210,210,1) 50%,rgba(189,189,189,1) 50%,rgba(221,221,221,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	
+
 	color:#1c1c1c;
 	font-size:28px;
 	font-weight:300;
