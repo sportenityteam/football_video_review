@@ -8,62 +8,62 @@
       </ul>
     </div>
   <% end %>
-<div class="video_notes">
-  <ul class="nav nav-pills">
-    <li class="col-xs-6 nopadding_lr padding_top_0 active">
-       <a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a>
-      <!-- <a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a> -->
-    </li>
-    <li class="col-xs-6 nopadding_lr padding_top_0">
-      <a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a>
-      <!-- <a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a> -->
-    </li>
-  </ul>
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade active in">
-      <div id="standalone-container" class="quillheight">
-        <div id="toolbar-container" class="ql-toolbar ql-snow">
+  <div class="video_notes">
+    <ul class="nav nav-pills">
+      <li class="col-xs-6 nopadding_lr padding_top_0 active">
+         <a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a>
+        <!-- <a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a> -->
+      </li>
+      <li class="col-xs-6 nopadding_lr padding_top_0">
+        <a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a>
+        <!-- <a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a> -->
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade active in">
+        <div id="standalone-container" class="quillheight">
+          <div id="toolbar-container" class="ql-toolbar ql-snow">
+          </div>
         </div>
       </div>
-    </div>
-    <div id="menu1" class="tab-pane fade">
-      <div id="standalone-container1" class="quillheight">
-        <div id="toolbar-container1" class="ql-toolbar ql-snow">
+      <div id="menu1" class="tab-pane fade">
+        <div id="standalone-container1" class="quillheight">
+          <div id="toolbar-container1" class="ql-toolbar ql-snow">
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="col-xs-12 nopadding_lr">
-  <div class="col-xs-12 col-sm-4 back_list_btn nopadding_lr">
-    <% if session[:url] == "pending_reviews" %>
-      <button>
-        <%= link_to pending_reviews_path do %>
-          <i class="fa fa-chevron-left"></i> Back to List
-        <% end %>
-      </button>
-    <% elsif session[:url] == "my_reviews" %>
-      <button>
-        <%= link_to my_reviews_path do %>
-          <i class="fa fa-chevron-left"></i> Back to List
-        <% end %>
-      </button>
-    <% else %>
-      <button>
-        <%= link_to :back do %>
-          <i class="fa fa-chevron-left"></i> Back to List
-        <% end %>
-      </button>
-    <% end %>
+  <div class="col-xs-12 nopadding_lr">
+    <div class="col-xs-12 col-sm-4 back_list_btn nopadding_lr">
+      <% if session[:url] == "pending_reviews" %>
+        <button>
+          <%= link_to pending_reviews_path do %>
+            <i class="fa fa-chevron-left"></i> Back to List
+          <% end %>
+        </button>
+      <% elsif session[:url] == "my_reviews" %>
+        <button>
+          <%= link_to my_reviews_path do %>
+            <i class="fa fa-chevron-left"></i> Back to List
+          <% end %>
+        </button>
+      <% else %>
+        <button>
+          <%= link_to :back do %>
+            <i class="fa fa-chevron-left"></i> Back to List
+          <% end %>
+        </button>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-4 saved_notes_btn">
+      <button type="submit"><i class="fa fa-save"></i> Save Notes</button>
+    </div>
+    <div class="col-xs-12 col-sm-4 submit_notes_btn nopadding_lr">
+      <button type="submit" class="submit_form" id="review_submit"><i class="fa fa-check"></i> Submit Notes</button>
+    </div>
   </div>
-  <div class="col-xs-12 col-sm-4 saved_notes_btn">
-    <button type="submit"><i class="fa fa-save"></i> Save Notes</button>
-  </div>
-  <div class="col-xs-12 col-sm-4 submit_notes_btn nopadding_lr">
-    <button type="submit" class="submit_form" id="review_submit"><i class="fa fa-check"></i> Submit Notes</button>
-  </div>
-</div>
   <%= f.hidden_field :order_id, :value => "#{params[:id]}" %>
   <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
   <%= f.hidden_field :review_time, :value => "", :id => "review_time" %>
@@ -130,8 +130,15 @@
     var current_time = new Date($.now());
     $("#review_time").val(current_time);
   });
-</script>
-<script type="text/javascript">
+
+  $(".tacti_note_txt").click(function(){
+    $("#order_video_01").get(0).pause();
+  })
+
+  $(".tech_note_txt").click(function(){
+    $("#order_video_02").get(0).pause();
+  })
+
   var toolbarOptions = [
     [{ 'font': [] }],
     [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
