@@ -17,7 +17,7 @@
                   <input type="text" name="title">
                 </span>
               </li>
-              
+
               <li>
                 <h2 class="pull-left">Videos</h2>
                 <span class="box">
@@ -29,7 +29,7 @@
                   </div>
                 </span>
               </li>
-              
+
               <li>
                 <h2 class="pull-left">Description</h2>
                 <span class="box">
@@ -37,16 +37,16 @@
                   <textarea name="description" cols="6"></textarea>
                 </span>
               </li>
-              
+
               <div class="col-xs-12 nopadding_lr">
                 <div class="col-xs-6 col-sm-3 nopadding_lr">
                   <li>
                     <button><i class="fa fa-angle-left" aria-hidden="true"></i> Cancel</button>
                   </li>
                 </div>
-                
+
                 <div class="col-sm-6 hidden-xs"></div>
-                
+
                 <div class="col-xs-6 col-sm-3 nopadding_lr">
                   <li>
                     <button>Continue <i class="fa fa-angle-right" aria-hidden="true"></i> </button>
@@ -59,7 +59,7 @@
         </form>
       </div>
     </div>
-    
+
     <div class="TabbedPanelsContent">
       <div class="tab_content col-xs-12" style="margin-top:120px;">
         <form class="col-xs-12">
@@ -73,7 +73,7 @@
                   <%#= image_tag "icons/mail.png" ,style: "opacity:0;" %>
                 </span>
               </li>
-              
+
               <li>
                 <h2 class="pull-left">Card Number</h2>
                 <span class="box">
@@ -81,7 +81,7 @@
                   <%#= image_tag "icons/mail.png" , style: "opacity:0;" %>
                 </span>
               </li>
-              
+
               <li class="col-xs-12 col-sm-3 nopadding_lr">
                 <h2 class="pull-left">Valid Till</h2>
                 <span class="box">
@@ -102,14 +102,14 @@
                   <%#= image_tag "icons/down.png" ,class: "pull-right" %>
                 </span>
               </li>
-              
+
               <li class="col-xs-12 col-sm-1 nopadding_lr hidden-xs">
                 <h2 style="opacity:0;">abc</h2>
                   <span class="box" style="border:0; text-align:center;">
                     <%#= image_tag "icons/slash.png" %>
                   </span>
               </li>
-              
+
               <li class="col-xs-12 col-sm-3 nopadding_lr">
                 <h2 class="pull-left hidden-xs" style="visibility:hidden">Password</h2>
                 <span class="box">
@@ -138,9 +138,9 @@
                   <%#= image_tag "icons/down.png" , class: "pull-right" %>
                 </span>
               </li>
-              
+
               <li class="col-xs-12 col-sm-2 nopadding_lr"></li>
-              
+
               <li class="col-xs-12 col-sm-3 nopadding_lr">
                 <h2 class="pull-left">CVV / CVC</h2>
                 <span class="box">
@@ -167,12 +167,11 @@
 <%= nested_form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
+      <!-- <h2><%#= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2> -->
       <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -207,7 +206,7 @@
 
   <% end %>
   <p><%= f.link_to_add "Add a video", :videos %></p>
-  
+
   <h4> Add payment details </h4>
   <%= label_tag :card_number %><br/>
   <%= text_field_tag :card_number %><br/><br/>
@@ -257,7 +256,7 @@ $(document).ready(function() {
   $(document).on('nested:fieldRemoved', function() {
     mfieldsCount -= 0;
     toggleRemoveLink();
-  });  
+  });
 
   // count existing nested fields after page was loaded
   fieldsCount = $('form .fields').length;
@@ -265,7 +264,7 @@ $(document).ready(function() {
 
   mfieldsCount = $('form .fields').length;
   toggleRemoveLink();
-}); 
+});
 
 </script>
 <!-- <script>
