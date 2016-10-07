@@ -4,7 +4,7 @@
       <!-- <h2><%#= pluralize(@price.errors.count, "error") %> prohibited this order from being saved:</h2> -->
       <ul>
         <% @price.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <li class="error_div"><%= message %></li>
         <% end %>
       </ul>
     </div>
@@ -23,3 +23,9 @@
     <%= f.submit "Submit" %>
   </div>
 <% end %>
+
+<script>
+  $(document).ready(function(){
+    $('.field_with_errors').contents().unwrap();
+  });
+</script>

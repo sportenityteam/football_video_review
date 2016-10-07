@@ -5,7 +5,7 @@
       <!-- <h2><%#= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2> -->
       <ul>
         <% @review.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <li class="error_div"><%= message %></li>
         <% end %>
       </ul>
     </div>
@@ -33,7 +33,6 @@
 <% end %>
 
 <script>
-
   $(".submit_form").click(function(){
     var current_time = new Date($.now());
     $("#submit_time").val(current_time);
@@ -42,5 +41,11 @@
   $("video").on("play", function (e) {
     var current_time = new Date($.now());
     $("#review_time").val(current_time);
+  });
+</script>
+
+<script>
+  $(document).ready(function(){
+    $('.field_with_errors').contents().unwrap();
   });
 </script>

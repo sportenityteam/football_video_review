@@ -1,25 +1,87 @@
-<h2>Change your password</h2>
+<div id="TabbedPanels1" class="TabbedPanels">
+  <ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">Forgot your password?</li>
+  </ul>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+  <div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
+      <div class="tab_content col-xs-12">
+        <ul class="col-xs-12">
+          <div class="col-xs-12 col-sm-3 nopadding_lr"></div>
+          <div class="col-xs-12 col-sm-6 nopadding_lr">
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+              <%#= devise_error_messages! %>
+              <% if resource.errors.any? %>
+                <div id="error_explanation">
+                  <ul>
+                    <% resource.errors.full_messages.each do |message| %>
+                      <li class="error_div"><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <%= f.hidden_field :reset_password_token %>
+              <ul>
+                <li>
+                  <h2 class="pull-left">New Password</h2>
+                  <span class="box">
+                    <%= image_tag "icons/password.png" %>
+                    <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+                    <% end %>
+                    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+                  </span>
+                </li>
+
+                <li>
+                  <h2 class="pull-left">Confirm New Password</h2>
+                  <span class="box">
+                    <%= image_tag "icons/password.png" %>
+                    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                  </span>
+                </li>
+                <li>
+                  <button type="submit">Change my password</button>
+                </li>
+              </ul>
+            <% end %>
+          </div>
+          <div class="col-xs-12 col-sm-3"></div>
+        </ul>
+        <%= render "users/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <h2>Change your password</h2>
+
+<%#= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%#= devise_error_messages! %>
+  <%#= f.hidden_field :reset_password_token %>
 
   <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+    <%#= f.label :password, "New password" %><br />
+    <%# if @minimum_password_length %>
+      <em>(<%#= @minimum_password_length %> characters minimum)</em><br />
+    <%# end %>
+    <%#= f.password_field :password, autofocus: true, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%#= f.label :password_confirmation, "Confirm new password" %><br />
+    <%#= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Change my password" %>
+    <%#= f.submit "Change my password" %>
   </div>
-<% end %>
+<%# end %>
 
-<%= render "users/shared/links" %>
+<%#= render "users/shared/links" %> -->
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.field_with_errors').contents().unwrap();
+  });
+</script>

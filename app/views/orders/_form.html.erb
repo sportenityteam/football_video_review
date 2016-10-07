@@ -170,7 +170,7 @@
       <!-- <h2><%#= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2> -->
       <ul>
         <% @order.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <li class="error_div"><%= message %></li>
         <% end %>
       </ul>
     </div>
@@ -264,6 +264,8 @@ $(document).ready(function() {
 
   mfieldsCount = $('form .fields').length;
   toggleRemoveLink();
+
+  $('.field_with_errors').contents().unwrap();
 });
 
 </script>

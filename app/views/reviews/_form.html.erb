@@ -3,7 +3,7 @@
     <div id="error_explanation">
      <ul>
       <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li class="error_div"><%= message %></li>
       <% end %>
       </ul>
     </div>
@@ -145,7 +145,7 @@
     [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
     [{ 'direction': 'rtl' }],                         // text direction
     [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-    
+
     [{ 'align': [] }],
 
     ['clean']                                         // remove formatting button
@@ -163,6 +163,8 @@
     theme: 'snow'
   });
   $(document).ready(function(){
+    $('.field_with_errors').contents().unwrap();
+
     quill.on('text-change', function() {
       console.log('Text change!');
       var text = quill.getText();

@@ -14,7 +14,7 @@
                   <!-- <h2><%#= pluralize(@user.errors.count, "error") %> prohibited this order from being saved:</h2> -->
                   <ul>
                     <% @user.errors.full_messages.each do |message| %>
-                      <li><%= message %></li>
+                      <li class="error_div"><%= message %></li>
                     <% end %>
                   </ul>
                 </div>
@@ -145,5 +145,6 @@
     $('#user_date_of_birth').datetimepicker({
       format: 'YYYY-MM-DD'
     });
+    $('.field_with_errors').contents().unwrap();
   });
 </script>

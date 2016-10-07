@@ -3,7 +3,7 @@
       <li class="TabbedPanelsTab TabbedPanelsTabSelected" tabindex="0">Sign in</li>
       <li class="TabbedPanelsTab" onclick="location='sign_up'" tabindex="0">Sign up</li>
     </ul>
-    
+
     <div class="TabbedPanelsContentGroup">
       <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
         <div class="tab_content col-xs-12">
@@ -19,7 +19,7 @@
                       <%= f.email_field :email, autofocus: true %>
                     </span>
                   </li>
-                  
+
                   <li>
                     <h2 class="pull-left">Password</h2>
                     <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
@@ -30,14 +30,14 @@
                       <%= f.password_field :password, autocomplete: "off" %>
                     </span>
                   </li>
-                  
+
                   <li>
                     <button type="submit">Sign in</button>
                     <%#= f.submit "Sign in" %>
                   </li>
-                    
+
                   <li>
-                    <h2>Not yet member?</h2> &nbsp; 
+                    <h2>Not yet member?</h2> &nbsp;
                     <%#- if devise_mapping.registerable? && controller_name != 'registrations' %>
                       <%= link_to "Sign up here", new_registration_path(resource_name) %>
                     <%# end -%>
@@ -58,27 +58,36 @@
     <div class="modal-content">
       <div class="modal-header no-border">
           <ul class="TabbedPanelsTabGroup">
-            <li class="TabbedPanelsTab TabbedPanelsTabSelected full-width" tabindex="0">Forgot Password? 
+            <li class="TabbedPanelsTab TabbedPanelsTabSelected full-width" tabindex="0">Forgot Password?
             <%= image_tag "icons/close.png" ,:class=>"pull-right close" ,"data-dismiss": "modal"%></li>
           </ul>
       </div>
     </div>
-      
+
     <div class="modal-body">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post , class:"col-xs-12"}) do |f| %>
       <ul>
-        <%= devise_error_messages! %>
-          <li><h2 class="notificaion_txt">If you have forgotten your password <br> you can reset it here.</h2></li>
-          <li>
-            <h2 class="pull-left">E-Mail</h2>
-            <span class="box">
-              <%= image_tag "icons/mail.png" %>
-              <%= f.email_field :email, autofocus: true %>
-            </span>
-          </li>
-          <li>
-            <button type="submit">Reset Password</button>
-          </li>   
+        <%#= devise_error_messages! %>
+        <% if resource.errors.any? %>
+          <div id="error_explanation">
+            <ul>
+              <% resource.errors.full_messages.each do |message| %>
+                <li class="error_div"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <li><h2 class="notificaion_txt">If you have forgotten your password <br> you can reset it here.</h2></li>
+        <li>
+          <h2 class="pull-left">E-Mail</h2>
+          <span class="box">
+            <%= image_tag "icons/mail.png" %>
+            <%= f.email_field :email, autofocus: true %>
+          </span>
+        </li>
+        <li>
+          <button type="submit">Reset Password</button>
+        </li>
       </ul>
       <% end %>
     </div>
@@ -114,3 +123,8 @@
 <%# end %>
 
 <%#= render "users/shared/links" %> -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.field_with_errors').contents().unwrap();
+  });
+</script>

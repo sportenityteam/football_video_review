@@ -24,7 +24,7 @@ class Admin::UsersController < ApplicationController
     @user.user_type = 2
     @user.password = "12345678"
     respond_to do |format|
-      if @user.save(validate: false)
+      if @user.save
         @user.update_attributes(:password => "12345678")
         format.html { redirect_to admin_users_path(:type => "reviewer"), notice: 'Reviewer was successfully created.' }
         format.json { render :show, status: :created, location: @user }

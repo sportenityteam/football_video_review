@@ -16,10 +16,15 @@
   padding-left: 15px;
 }
 
-.error_div{
+.success_div{
   padding-bottom:2px;
   color:green;
   font-size:20px;
+}
+
+.error_div{
+  color:red;
+  font-size:14px;
 }
 
 .profile-img{
