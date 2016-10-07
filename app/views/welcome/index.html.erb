@@ -1,62 +1,59 @@
 <!-- <p> Welcome <%#= current_user.fullname %> to football video review app!!!!!!!!!!!! </p> -->
-<div class="container">
-  <div id="TabbedPanels1" class="TabbedPanels">
-    <ul class="TabbedPanelsTabGroup">
-      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">Get Reviewed by Professional Coaches</li>
-    </ul>
+<div id="TabbedPanels1" class="TabbedPanels">
+  <ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">Get Reviewed by Professional Coaches</li>
+  </ul>
 
-      <div class="TabbedPanelsContentGroup">
-        <div class="TabbedPanelsContent">
+    <div class="TabbedPanelsContentGroup">
+      <div class="TabbedPanelsContent">
 
-          <div class="col-xs-12">
-            <div class="col-sm-1 col-xs-12"></div>
-            <div class="col-sm-10 col-xs-12">
-              <div class="welcome col-sm-12 col-xs-12">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-  text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.
-                </p>
-              </div>
+        <div class="col-xs-12">
+          <div class="col-sm-1 col-xs-12"></div>
+          <div class="col-sm-10 col-xs-12">
+            <div class="welcome col-sm-12 col-xs-12">
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.
+              </p>
             </div>
-            <div class="col-sm-1 col-xs-12"></div>
           </div>
+          <div class="col-sm-1 col-xs-12"></div>
+        </div>
 
-          <div class="col-xs-12">
-            <div class="col-sm-1 col-xs-12"></div>
-            <div class="col-sm-10 col-xs-12">
-              <div class="our_reviewer_inc">Our Reviewers Include ...</div>
+        <div class="col-xs-12">
+          <div class="col-sm-1 col-xs-12"></div>
+          <div class="col-sm-10 col-xs-12">
+            <div class="our_reviewer_inc">Our Reviewers Include ...</div>
 
-              <div class="col-xs-12">
-                <% @reviewers.each do |user| %>
-                  <div class="reviewers_in col-sm-4 col-xs-12">
-                    <% if user.avatar.present? %>
-                      <%= image_tag user.avatar.url(:medium) , :class=> "reviewer-icon"%>
-                    <% else %>
-                      <%= image_tag "reviewer_img.png" , :class=> "reviewer-icon"%>
-                    <% end %>
-                    <h3><%= user.fullname %></h3>
-                    <p>Coach : <%= user.current_club %></p>
-                  </div>
-                <% end %>
-                <p class="many_more_txt col-xs-12">... and many more</p>
-              </div>
-
-              <div class="col-xs-12">
-                <div class="col-sm-3 col-xs-12">
-                </div>
-                <div class="purchase_review_button col-sm-6 col-xs-12">
-                  <%= link_to order_step_path(:add_payment) , :class=>"cancel_payment_btn" do %>Purchase Your Review
+            <div class="col-xs-12">
+              <% @reviewers.each do |user| %>
+                <div class="reviewers_in col-sm-4 col-xs-12">
+                  <% if user.avatar.present? %>
+                    <%= image_tag user.avatar.url(:medium) , :class=> "reviewer-icon"%>
+                  <% else %>
+                    <%= image_tag "reviewer_img.png" , :class=> "reviewer-icon"%>
                   <% end %>
+                  <h3><%= user.fullname %></h3>
+                  <p>Coach : <%= user.current_club %></p>
                 </div>
-                <div class="col-sm-3 col-xs-12">
-                </div>
-              </div>
-
+              <% end %>
+              <p class="many_more_txt col-xs-12">... and many more</p>
             </div>
-            <div class="col-sm-1 col-xs-12"></div>
-          </div>
 
+            <div class="col-xs-12">
+              <div class="col-sm-3 col-xs-12">
+              </div>
+              <div class="purchase_review_button col-sm-6 col-xs-12">
+                <%= link_to order_step_path(:add_payment) , :class=>"cancel_payment_btn" do %>Purchase Your Review
+                <% end %>
+              </div>
+              <div class="col-sm-3 col-xs-12">
+              </div>
+            </div>
+
+          </div>
+          <div class="col-sm-1 col-xs-12"></div>
         </div>
 
       </div>
-  </div>
+
+    </div>
 </div>

@@ -1,50 +1,48 @@
-<div class="container">
-  <div id="TabbedPanels1" class="TabbedPanels">
-    <ul class="TabbedPanelsTabGroup">
-      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0"><%= params[:type] == "user" ? "Users" : "Reviewers" %></li>
-    </ul>
-    <div class="TabbedPanelsContentGroup">
-      <div class="TabbedPanelsContent">
-        <div class="tab_content col-xs-12">
-          <form class="col-xs-12">
-            <ul class="col-xs-12">
-              <div class="col-xs-12 col-sm-8 nopadding_lr">
-                <li class="col-xs-12 nopadding_lr">
-                  <div class=" col-xs-12 col-sm-2 nopadding_lr"> <span class="box" style="border-color:transparent;">
-                    <h2 class="pull-left">Filter</h2>
-                    </span> </div>
-                  <div class="col-xs-12 col-sm-10 nopadding_lr"> <span class="box"> <%= image_tag "icons/search.png" %>
-                    <input type="text" name="search" id="search_text">
-                    </span> </div>
-                </li>
-              </div>
-              <div class="col-xs-12 col-sm-4">
-                <li class="col-xs-12 nopadding_lr">
-                  <div class=" col-xs-8 nopadding_lr"> <span class="box" style="border-color:transparent;">
-                    <h2 class="pull-right">show</h2>
-                    </span> </div>
-                  <div class="col-xs-4 nopadding_lr"> <span class="box arrow_down">
-                    <select id="per_page_select">
-                      <option value="1" <%= check_selected_page(params, 1) %>>1</option>
-                      <option value="2" <%= check_selected_page(params, 2) %>>2</option>
-                      <option value="3" <%= check_selected_page(params, 3) %>>3</option>
-                      <option value="4" <%= check_selected_page(params, 4) %>>4</option>
-                      <option value="5" <%= check_selected_page(params, 5) %>>5</option>
-                      <option value="6" <%= check_selected_page(params, 6) %>>6</option>
-                      <option value="7" <%= check_selected_page(params, 7) %>>7</option>
-                      <option value="8" <%= check_selected_page(params, 8) %>>8</option>
-                      <option value="9" <%= check_selected_page(params, 9) %>>9</option>
-                      <option value="10" <%= check_selected_page(params, 10) == "number" ? "selected" : "" %>>10</option>
-                    </select>
-                    </span> </div>
-                </li>
-              </div>
-            </ul>
-          </form>
-        </div>
-        <div id="per_page_data">
-          <%= render "per_page_data", :@users => @users %>
-        </div>
+<div id="TabbedPanels1" class="TabbedPanels">
+  <ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0"><%= params[:type] == "user" ? "Users" : "Reviewers" %></li>
+  </ul>
+  <div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent">
+      <div class="tab_content col-xs-12">
+        <form class="col-xs-12">
+          <ul class="col-xs-12">
+            <div class="col-xs-12 col-sm-8 nopadding_lr">
+              <li class="col-xs-12 nopadding_lr">
+                <div class=" col-xs-12 col-sm-2 nopadding_lr"> <span class="box" style="border-color:transparent;">
+                  <h2 class="pull-left">Filter</h2>
+                  </span> </div>
+                <div class="col-xs-12 col-sm-10 nopadding_lr"> <span class="box"> <%= image_tag "icons/search.png" %>
+                  <input type="text" name="search" id="search_text">
+                  </span> </div>
+              </li>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <li class="col-xs-12 nopadding_lr">
+                <div class=" col-xs-8 nopadding_lr"> <span class="box" style="border-color:transparent;">
+                  <h2 class="pull-right">show</h2>
+                  </span> </div>
+                <div class="col-xs-4 nopadding_lr"> <span class="box arrow_down">
+                  <select id="per_page_select">
+                    <option value="1" <%= check_selected_page(params, 1) %>>1</option>
+                    <option value="2" <%= check_selected_page(params, 2) %>>2</option>
+                    <option value="3" <%= check_selected_page(params, 3) %>>3</option>
+                    <option value="4" <%= check_selected_page(params, 4) %>>4</option>
+                    <option value="5" <%= check_selected_page(params, 5) %>>5</option>
+                    <option value="6" <%= check_selected_page(params, 6) %>>6</option>
+                    <option value="7" <%= check_selected_page(params, 7) %>>7</option>
+                    <option value="8" <%= check_selected_page(params, 8) %>>8</option>
+                    <option value="9" <%= check_selected_page(params, 9) %>>9</option>
+                    <option value="10" <%= check_selected_page(params, 10) == "number" ? "selected" : "" %>>10</option>
+                  </select>
+                  </span> </div>
+              </li>
+            </div>
+          </ul>
+        </form>
+      </div>
+      <div id="per_page_data">
+        <%= render "per_page_data", :@users => @users %>
       </div>
     </div>
   </div>

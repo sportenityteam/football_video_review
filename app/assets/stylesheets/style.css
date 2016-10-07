@@ -95,7 +95,7 @@ header{
 	margin:0 auto;
 	list-style:none;
 	color:#fff;
-	font-size:20px;
+	font-size:22px;
 }
 
 .navigation ul li{
@@ -614,7 +614,7 @@ footer ul li a:hover{
 	color:#1c1c1c;
 	font-size:28px;
 	font-weight:300;
-	padding: 20px 10px;
+	padding: 20px 15px;
 }
 .review_btn {
 	background:#343d46;

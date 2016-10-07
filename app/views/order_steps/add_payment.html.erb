@@ -1,93 +1,91 @@
-<div class="container">
-  <div id="TabbedPanels1" class="TabbedPanels">
-    <ul class="TabbedPanelsTabGroup">
-      <li class="TabbedPanelsTab TabbedPanelsTabSelected" tabindex="0">1. Payment Details</li>
-      <li class="TabbedPanelsTab" tabindex="1">2. Upload Video</li>
-    </ul>
-    <div class="TabbedPanelsContentGroup">
-      <div class="TabbedPanelsContent">
-        <div class="tab_content col-xs-12">
-          <%= nested_form_for @payment, url: wizard_path, method: :put do |f| %>
-            <% if @errors.present? %>
-              <div id="error_explanation">
-                <ul>
-                  <li><%= @errors %></li>
-                </ul>
-              </div>
-            <% end %>
-            <ul class="col-xs-12">
-              <div class="col-xs-12 col-sm-1"></div>
-              <div class="col-xs-12 col-sm-10">
+<div id="TabbedPanels1" class="TabbedPanels">
+  <ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab TabbedPanelsTabSelected" tabindex="0">1. Payment Details</li>
+    <li class="TabbedPanelsTab" tabindex="1">2. Upload Video</li>
+  </ul>
+  <div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent">
+      <div class="tab_content col-xs-12">
+        <%= nested_form_for @payment, url: wizard_path, method: :put do |f| %>
+          <% if @errors.present? %>
+            <div id="error_explanation">
+              <ul>
+                <li><%= @errors %></li>
+              </ul>
+            </div>
+          <% end %>
+          <ul class="col-xs-12">
+            <div class="col-xs-12 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
 
-                <li class="col-xs-12 nopadding_lr">
-                  <h2 class="pull-left">Price : <%= @amount/100 %>$ (Notes : You have to pay this amount to place order)</h2>
-                </li>
+              <li class="col-xs-12 nopadding_lr">
+                <h2 class="pull-left">Price : <%= @amount/100 %>$ (Notes : You have to pay this amount to place order)</h2>
+              </li>
 
-                <li>
-                  <h2 class="pull-left">Name on Card</h2>
-                  <span class="box">
-                    <input type="text" name="name">
-                    <%= image_tag "icons/mail.png", :style => "opacity:0;" %>
-                  </span>
-                </li>
+              <li>
+                <h2 class="pull-left">Name on Card</h2>
+                <span class="box">
+                  <input type="text" name="name">
+                  <%= image_tag "icons/mail.png", :style => "opacity:0;" %>
+                </span>
+              </li>
 
-                <li>
-                  <h2 class="pull-left">Card Number</h2>
-                  <span class="box">
-                    <%= text_field_tag :card_number %>
-                    <%= image_tag "icons/mail.png", :style => "opacity:0;" %>
-                  </span>
-                </li>
+              <li>
+                <h2 class="pull-left">Card Number</h2>
+                <span class="box">
+                  <%= text_field_tag :card_number %>
+                  <%= image_tag "icons/mail.png", :style => "opacity:0;" %>
+                </span>
+              </li>
 
-                <li class="col-xs-12 col-sm-3 nopadding_lr">
-                  <h2 class="pull-left">Valid Till</h2>
-                  <span class="box arrow_down">
-                    <%= select_tag :expiration_month,options_for_select(expiration_month) %>
-                  </span>
-                </li>
+              <li class="col-xs-12 col-sm-3 nopadding_lr">
+                <h2 class="pull-left">Valid Till</h2>
+                <span class="box arrow_down">
+                  <%= select_tag :expiration_month,options_for_select(expiration_month) %>
+                </span>
+              </li>
 
-                <li class="col-xs-12 col-sm-1 nopadding_lr hidden-xs">
-                  <h2 style="opacity:0;">abc</h2>
-                  <span class="box" style="border:0; text-align:center;">
-                    <%= image_tag "icons/slash.png" %>
-                  </span>
-                </li>
+              <li class="col-xs-12 col-sm-1 nopadding_lr hidden-xs">
+                <h2 style="opacity:0;">abc</h2>
+                <span class="box" style="border:0; text-align:center;">
+                  <%= image_tag "icons/slash.png" %>
+                </span>
+              </li>
 
-                <li class="col-xs-12 col-sm-3 nopadding_lr">
-                  <h2 class="pull-left hidden-xs" style="visibility:hidden">Year</h2>
-                  <span class="box arrow_down">
-                    <%= select_tag :expiration_year, options_for_select(expiration_year) %>
-                  </span>
-                </li>
+              <li class="col-xs-12 col-sm-3 nopadding_lr">
+                <h2 class="pull-left hidden-xs" style="visibility:hidden">Year</h2>
+                <span class="box arrow_down">
+                  <%= select_tag :expiration_year, options_for_select(expiration_year) %>
+                </span>
+              </li>
 
-                <li class="col-xs-12 col-sm-2 nopadding_lr"></li>
+              <li class="col-xs-12 col-sm-2 nopadding_lr"></li>
 
-                <li class="col-xs-12 col-sm-3 nopadding_lr">
-                  <h2 class="pull-left">CVV / CVC</h2>
-                  <span class="box">
-                    <%= text_field_tag :cvv,'', :style => "height:30px;" %>
-                  </span>
-                </li>
+              <li class="col-xs-12 col-sm-3 nopadding_lr">
+                <h2 class="pull-left">CVV / CVC</h2>
+                <span class="box">
+                  <%= text_field_tag :cvv,'', :style => "height:30px;" %>
+                </span>
+              </li>
 
-                <div class="col-xs-12 nopadding_lr">
-                  <div class="col-xs-12 col-sm-3 nopadding_lr">
-                    <li>
-                      <%= link_to my_orders_path , :class=>"cancel_payment_btn" do %>
-                        <i class="fa fa-angle-left" aria-hidden="true"></i> Cancel
-                      <% end %>
-                    </li>
-                  </div>
+              <div class="col-xs-12 nopadding_lr">
+                <div class="col-xs-12 col-sm-3 nopadding_lr">
+                  <li>
+                    <%= link_to my_orders_path , :class=>"cancel_payment_btn" do %>
+                      <i class="fa fa-angle-left" aria-hidden="true"></i> Cancel
+                    <% end %>
+                  </li>
+                </div>
 
-                  <div class="col-sm-6 hidden-xs"></div>
+                <div class="col-sm-6 hidden-xs"></div>
 
-                  <div class="col-xs-12 col-sm-3 nopadding_lr">
-                    <li><button type="submit">Continue <i class="fa fa-angle-right" aria-hidden="true"></i> </button></li>
-                  </div>
+                <div class="col-xs-12 col-sm-3 nopadding_lr">
+                  <li><button type="submit">Continue <i class="fa fa-angle-right" aria-hidden="true"></i> </button></li>
                 </div>
               </div>
-            </ul>
-          <% end %>
-        </div>
+            </div>
+          </ul>
+        <% end %>
       </div>
     </div>
   </div>
