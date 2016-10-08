@@ -1,26 +1,244 @@
-<h3> Order Details </h3>
-<p> <%= @order.user.try(:fullname) %> Video </p>
-<p> Status : <%= Order::STATUS.key(@order.status) %></p>
-<p> Order Date : <%= @order.created_at.strftime("%B,%d %Y") %></p>
-<p> Name : <%= @order.title %></p>
-<p> Description : <%= @order.try(:description) %></p>
-<h3> Payment Details </h3>
-<p> Transaction : <%= @order.payment.try(:transcation_id) %></p>
-<p> Total Amount : <%= @order.payment.amount/100 %>$ </p>
-<p> Payment Date : <%= @order.payment.date_of_payment.strftime("%B,%d %Y %H:%M %p") %> </p>
-<p> Status : <%= @order.try(:payment).try(:status)%></p>
-<h3> Video Details </h3>
-<p> <%= @order.user.try(:fullname) %> Video </p>
-<% if @order.videos.present? %>
-  <% @order.videos.each do |video| %>
-    <%= video_tag video.video_url.url, controls: true, autobuffer: true, :class => "wdth100" %>
-  <% end %>
-<% end %>
-<% if @review.present? %>
-	<h4> Technical Notes </h4>
-	<p> <%= @review.try(:technical_notes)%></p>
-	<h4> Tactical Notes </h4>
-	<p> <%= @review.try(:tactical_notes)%></p>
-	<h4> Reviewed By </h4> <p> <%= @review.user.try(:fullname)%></p>
-	<h4> Reviewed On </h4> <p> <%= @review.created_at.strftime("%B,%d %Y")%></p>
-<% end %>
+<div id="TabbedPanels1" class="TabbedPanels">
+  <ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">Order Details</li>
+  </ul>
+  <div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
+			<div class="col-xs-12 text-left main_order_details">
+				<div class="table-responsive">	
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td>
+									<table class="table">
+										<thead>
+											<tr class="border_btm">
+												<th>Order Details</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="nopadding_lr">
+													<table class="table">
+														<tbody>
+															<tr>
+																<td style="width:33%;">Order #<%= @order.id%></td>
+																<td style="width:33%;"><%= @order.created_at.strftime("%b %d, %Y") %></td>
+																<td style="text-align:center;" class="approved_btn pull-right"><%= Order::STATUS.key(@order.status) %></td>
+															</tr>
+														</tbody>
+												 	</table>
+												</td>
+											</tr>
+										</tbody>
+						 			</table>
+					 			</td>
+							</tr>
+							<tr>
+								<td>
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tbody>
+											<tr>
+												<td>
+													<h3><%= @order.try(:title)%></h3>
+													<p><%= @order.try(:description)%></p>
+													<p></p>
+													<ul>
+														<li>
+															<%if @order.user.avatar.present? %>
+																<%= image_tag @order.user.avatar %>
+															<% else %>
+																<%= image_tag "order_user.png" %>
+															<% end %>
+														</li>
+														<li><%= @order.user.try(:fullname) %></li>
+													</ul>
+													<p></p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table class="table">
+										<thead>
+											<tr class="border_btm">
+												<th>Payment Details</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="nopadding_lr">
+													<table class="table">
+														<tbody>
+															<tr>
+																<td style="width:40%;">Transaction # <%= @order.payment.try(:transcation_id) %></td>
+																<td style="width:60%; text-align:right;">Payment Date - <%=  @order.payment.date_of_payment.strftime("%b %d, %Y")%></td>
+															</tr>
+															<tr>
+																<td style="width:60%;">Total Amount - $ <%= @order.payment.amount/100 %></td>
+																<td style="text-align:center;" class="approved_btn pull-right"><%= @order.try(:payment).try(:status)%></td>
+															</tr>
+														</tbody>
+											 		</table>
+											 	</td>
+											</tr>
+										</tbody>
+							 		</table>
+							 	</td>
+							</tr>
+							<tr>
+								<td>
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Video Details</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="nopadding_lr">
+													<% if @order.videos.count == 2 %>
+														<table class="table">
+															<thead>
+																<tr>
+																	<th class="no-border"> First Half </th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td style="width:17%;">
+																		<%if @order.videos.first.video_url.present? %>
+																			<%= image_tag @order.videos.first.video_url.url(:thumb1)%>
+																		<% else %>
+																			<%= image_tag "thumb_video.jpg" %>
+																		<% end %>
+																	</td>
+																	<td style="width:81%;">
+																		<h3><%= @order.try(:title) %></h3>
+																		<p><%= @order.try(:description) %></p>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														<table class="table">
+															<thead>
+																<tr>
+																	<th class="no-border"> Second Half </th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td style="width:17%;">
+																		<%if @order.videos.last.video_url.present? %>
+																			<%= image_tag @order.videos.last.video_url.url(:thumb1)%>
+																		<% else %>
+																			<%= image_tag "thumb_video.jpg" %>
+																		<% end %>
+																	</td>
+																	<td style="width:81%;">
+																		<h3><%= @order.try(:title) %></h3>
+																		<p><%= @order.try(:description) %></p>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													<% else %>
+														<table class="table">
+															<tbody>
+																<tr>
+																	<td style="width:17%;">
+																		<%if @order.videos.first.present? %>
+																			<%= image_tag @order.videos.first.video_url.url(:thumb1)%>
+																		<% else %>
+																			<%= image_tag "thumb_video.jpg" %>
+																		<% end %>
+																	</td>
+																	<td style="width:81%;">
+																		<h3><%= @order.try(:title) %></h3>
+																		<p><%= @order.try(:description) %></p>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													<% end %>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Technical Notes</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><%= @review.try(:technical_notes)%></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<% if @review.present? %>
+							<tr>
+								<td>
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Tactical Notes</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td> <%= @review.try(:tactical_notes)%></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Reviewed by - <span class="light_txt"><%= @review.user.try(:fullname)%></span></th>
+												<th></th>
+											</tr>
+										</thead>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table class="table">
+										<thead>
+											<tr>
+												<th style="border-bottom:none;">Reviewed on - <span class="light_txt"><%= @review.created_at.strftime("%b %d, %Y") %></span></th>
+											</tr>
+										</thead>
+									</table>
+								</td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="col-xs-12 col-sm-4"></div>
+				<div class="col-xs-12 col-sm-4 back_list_btn">
+						<button><%= link_to admin_list_of_orders_path do %><i class="fa fa-chevron-left"></i> Back to List<% end %></button>
+				</div>
+				<div class="col-xs-12 col-sm-4"></div>
+			</div>					
+    </div>
+  </div>
+</div>

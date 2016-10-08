@@ -53,7 +53,7 @@ class Admin::OrderController < Admin::BaseController
     if params[:per_page].present?
       page = params[:per_page]
     end
-    @orders = Order.joins(:user).all #.where("payment_status =?", "paid")
+    @orders = Order.joins(:user).where("payment_status =?", "paid")
     @orders = @orders.page(params[:page]).per(page)
     if params[:search].present?
       # @orders = @orders.search_items(params[:search])
@@ -62,7 +62,6 @@ class Admin::OrderController < Admin::BaseController
   end
 
   def order_details
-
     @review = Review.joins(:user).where("reviews.order_id =? and users.user_type = ?", @order.id, 2).last
     if !@review.present?
       @review = Review.joins(:user).where("reviews.order_id =? and users.user_type = ?", @order.id, 1).first
