@@ -5,6 +5,7 @@ class OrderStepsController < ApplicationController
   before_action :set_variables
 
   def show
+
     case step
       when :add_payment
         render_wizard
@@ -25,12 +26,14 @@ class OrderStepsController < ApplicationController
         response = place_order(@amount, params[:card_number], params[:expiration_month], params[:expiration_year], params[:cvv])
         if response != false
           if response.success?
+            $is_payment = true
             #creating record of payment for placed order
             $transactionId = response.params["pn_ref"]
             @payment.update_attributes(:amount => @amount,:date_of_payment => DateTime.now, :other_data => response.params ,:status => "success",:transcation_id => response.params["pn_ref"])
             #redirect_to my_orders_path
             render_wizard @payment
           else
+            @flag = 0
             @errors = response.message
             render_wizard
           end
@@ -39,28 +42,35 @@ class OrderStepsController < ApplicationController
           render_wizard
         end
       when :add_order
-        if @order.errors.present?
-          render_wizard
-        else
-          @order.update_attributes(:user_id => current_user.id)
-          @order.update_attributes(order_params)
-          if @order.videos.present?
-            @order.videos.each do |video|
-              video.generate_mp4(video.video_url)
-              @total_duration = @total_duration + video.duration.to_i
-            end
-          end
-          #@order.update_attributes(:total_video_duration => @total_duration,:user_id => current_user.id, :payment_status => "paid")
-          @order.update_attributes(:payment_status => "paid")
-          #$orderId = @order.id
-          payment = Payment.find_by_transcation_id($transactionId)
-          if payment.present?
-            payment.update_attributes(:order_id => @order.id)
+        if $is_payment == true
+          if @order.errors.present?
+            render_wizard
           else
-            order_id = current_user.orders.last.id
-            payment.update_attributes(:order_id => order_id)
+            @order.update_attributes(:user_id => current_user.id)
+            @order.update_attributes(order_params)
+            if @order.videos.present?
+              @order.videos.each do |video|
+                video.generate_mp4(video.video_url)
+                @total_duration = @total_duration + video.duration.to_i
+              end
+            end
+            #@order.update_attributes(:total_video_duration => @total_duration,:user_id => current_user.id, :payment_status => "paid")
+            @order.update_attributes(:payment_status => "paid")
+            #$orderId = @order.id
+            payment = Payment.find_by_transcation_id($transactionId)
+            if payment.present?
+              payment.update_attributes(:order_id => @order.id)
+            else
+              order_id = current_user.orders.last.id
+              payment.update_attributes(:order_id => order_id)
+            end
+            $is_payment = false
+            redirect_to my_orders_path
           end
-          redirect_to my_orders_path
+        else
+          $is_payment = false
+          redirect_to order_step_path(:add_payment)
+          flash[:alert] = "You need to do payment first for upload videos."
         end
     end
   end

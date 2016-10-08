@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>FootballVideoReview</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	<!-- <p class="notice"><%#= notice %></p>
-	<p class="alert"><%#= alert %></p> -->
-	
-<%= yield %>
-
-</body>
+  <head>
+    <title>FootballVideoReview</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <% if notice.present? %>
+      <div class="alert alert-danger fade in"><%= notice %></div>
+    <% end %>
+    <% if alert.present? %>
+      <div class="alert alert-success fade in"><%= alert %></div>
+    <% end %>
+    <%= yield %>
+  </body>
 </html>
