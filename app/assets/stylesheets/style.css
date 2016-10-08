@@ -1396,3 +1396,78 @@ Admin Side closed
  background: linear-gradient(to bottom, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%,  rgba(221,221,221,1) 100%);
  color:#1c1c1c;
 }
+
+/**My Reviews Details Start**/
+.reviewer_details {
+	margin-bottom:25px;
+}
+.reviewer_details ul {
+	list-style:none;
+	padding-left:0;
+}
+.reviewer_details li{
+	display:inline;
+	margin-right:15px;
+	font-size:24px;
+	color:#65737e;
+	line-height:60px;
+	vertical-align:middle;
+}
+.reviewer_details span {
+	font-size:22px;
+	color:#535353;
+	font-weight:400;
+}
+.reviewer_details p {
+	font-size:16px;
+	color:#535353;
+	font-weight:300;
+	text-align:justify;
+}
+.reviewer_details h3 {
+	font-size:20px;
+	color:#535353;
+	font-weight:400;
+	margin-top:0;
+}
+.border2px {
+	margin:0 auto;
+	border-top:2px solid #b2b2b2;
+}
+.order_details {
+	border-top:2px solid #b2b2b2;
+	padding:15px;
+}
+.order_details ul {
+	list-style:none;
+	padding-left:0;
+}
+.order_details li{
+	display:inline;
+	margin-right:15px;
+	font-size:20px;
+	font-weight:300;
+	color:#535353;
+	line-height:60px;
+	vertical-align:middle;
+}
+.order_details h2 {
+	font-size:20px;
+	color:#535353;
+	font-weight:400;
+	margin-top:0;
+	margin-bottom:0;
+}
+.order_details h3 {
+	font-size:20px;
+	color:#535353;
+	font-weight:300;
+	margin-top:0;
+}
+.order_details p {
+	font-size:16px;
+	color:#535353;
+	font-weight:300;
+	text-align:justify;
+}
+/**My Reviews Details Closed**/

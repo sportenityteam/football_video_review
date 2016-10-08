@@ -78,3 +78,8 @@
 .no-border{
   border:none!important;
 }
+
+.fix-height-width{
+  width:60px!important;
+  height: 60px!important;
+}

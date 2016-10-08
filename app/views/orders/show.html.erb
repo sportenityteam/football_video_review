@@ -10,9 +10,9 @@
           <div class="col-sm-6 col-xs-5 text-left">
             <ul>
               <% if @reviewer.user.avatar.present? %>
-                <li><%= image_tag @reviewer.user.avatar.url(:thumb) %></li>
+                <li><%= image_tag @reviewer.user.avatar.url(:thumb), :class=>"fix-height-width img-circle"%></li>
               <% else %>
-                <li><%= image_tag "icons/reviewer.png" %></li>
+                <li><%= image_tag "icons/reviewer.png" ,:class=>"list-image-height img-circle"%></li>
               <% end%>
               <li><%= @reviewer.user.fullname %></li>
             </ul>
@@ -60,7 +60,6 @@
         <h3><%= @order.try(:title) %></h3>
         <p><%= @order.try(:description) %></p>
       </div>
-
     </div>
   </div>
 </div>
