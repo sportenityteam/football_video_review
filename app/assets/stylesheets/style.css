@@ -2,6 +2,7 @@
 body{
 	font-family: 'Roboto Slab', serif;
 	background-color:#eeeeee;
+	padding-bottom: 70px;
 }
 
 .full-width{
@@ -265,6 +266,9 @@ footer{
 	margin-top:30px;
 	background-color:#fff;
 	padding:15px 0;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
 
 footer ul{

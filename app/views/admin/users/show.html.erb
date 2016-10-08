@@ -1,98 +1,95 @@
-<div class="container">
-  <div id="TabbedPanels1" class="TabbedPanels">
-  	<ul class="TabbedPanelsTabGroup">
-      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0"><%= @user.is_reviewer? ? "Reviewer Details" : "User Details" %></li>
-    </ul>
-    <div class="TabbedPanelsContentGroup">
-    	<div class="TabbedPanelsContent">
-    		<div class="tab_content col-xs-12">
-    			<form class="col-xs-12">
-            <ul class="col-xs-12">
-              <div class="col-xs-12 nopadding_lr">
-								<div class="col-xs-12 col-sm-3 view_profile_img">
-									<%= image_tag @user.avatar.url , alt:"image"%>
+<div id="TabbedPanels1" class="TabbedPanels">
+	<ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0"><%= @user.is_reviewer? ? "Reviewer Details" : "User Details" %></li>
+  </ul>
+  <div class="TabbedPanelsContentGroup">
+  	<div class="TabbedPanelsContent">
+  		<div class="tab_content col-xs-12">
+  			<form class="col-xs-12">
+          <ul class="col-xs-12">
+            <div class="col-xs-12 nopadding_lr">
+							<div class="col-xs-12 col-sm-3 view_profile_img">
+								<%= image_tag @user.avatar.url , alt:"image"%>
+							</div>
+							<div class="col-xs-12 col-sm-9 nopadding_lr">
+								<div class="col-xs-12 nopadding_lr view_profile_data margin_btm_20">
+									<div class="col-xs-12 col-sm-4">
+                    <%= image_tag "icons/name.png" %> <span><%= @user.try(:fullname) %></span>
+                  </div>
+									<div class="col-xs-12 col-sm-4">
+                    <%= image_tag "icons/dob.png" %> <span><%= @user.try(:date_of_birth).strftime("%b %d, %Y") %></span>
+                  </div>
+									<% if @user.is_reviewer? %>
+                    <% if @user.phone_number.present? %>
+											<div class="col-xs-12 col-sm-4">
+                        <%= image_tag "icons/phone.png" %> <span><%= @user.try(:phone_number) %></span>
+                      </div>
+                    <% end %>
+									<% else %>
+                    <% if @user.position.present? %>
+											<div class="col-xs-12 col-sm-4">
+                        <%= image_tag "icons/position.png" %> <span><%= @user.try(:position) %></span>
+                      </div>
+                    <% end %>
+									<% end %>
 								</div>
-								<div class="col-xs-12 col-sm-9 nopadding_lr">
-									<div class="col-xs-12 nopadding_lr view_profile_data margin_btm_20">
-										<div class="col-xs-12 col-sm-4">
-                      <%= image_tag "icons/name.png" %> <span><%= @user.try(:fullname) %></span>
-                    </div>
-										<div class="col-xs-12 col-sm-4">
-                      <%= image_tag "icons/dob.png" %> <span><%= @user.try(:date_of_birth).strftime("%b %d, %Y") %></span>
-                    </div>
-										<% if @user.is_reviewer? %>
-                      <% if @user.phone_number.present? %>
-  											<div class="col-xs-12 col-sm-4">
-                          <%= image_tag "icons/phone.png" %> <span><%= @user.try(:phone_number) %></span>
-                        </div>
+								<div class="col-xs-12 nopadding_lr view_profile_data margin_btm_20">
+									<% if @user.is_reviewer? %>
+                    <% if @user.address.present? %>
+											<div class="col-xs-12 col-sm-4">
+                        <span class="media-left nopadding_lr"><%= image_tag "icons/address.png" %></span>
+                        <span class="media-body"><%= @user.try(:address) %></span>
+                      </div>
+                    <% end %>
+									<% end %>
+                  <div class="col-xs-12 col-sm-6">
+                    <%= image_tag "icons/mail.png" %> <span><%= @user.try(:email) %></span>
+                  </div>
+									<div class="col-xs-12 col-sm-4">
+                    <% if @user.is_reviewer? %>
+                      <% if @user.current_club.present? %>
+                        <span class="media-left nopadding_lr"><%= image_tag "icons/club.png" %></span>
+                        <span class="media-body"><%= @user.current_club %></div>
                       <% end %>
-										<% else %>
-                      <% if @user.position.present? %>
-  											<div class="col-xs-12 col-sm-4">
-                          <%= image_tag "icons/position.png" %> <span><%= @user.try(:position) %></span>
-                        </div>
+                    <% elsif @user.is_user? %>
+                      <% if @user.soccer_club.present? %>
+                        <span class="media-left nopadding_lr"><%= image_tag "icons/club.png" %></span>
+                        <span class="media-body"><%= @user.soccer_club %></div>
                       <% end %>
-										<% end %>
-									</div>
-									<div class="col-xs-12 nopadding_lr view_profile_data margin_btm_20">
-										<% if @user.is_reviewer? %>
-                      <% if @user.address.present? %>
-  											<div class="col-xs-12 col-sm-4">
-                          <span class="media-left nopadding_lr"><%= image_tag "icons/address.png" %></span>
-                          <span class="media-body"><%= @user.try(:address) %></span>
-                        </div>
-                      <% end %>
-										<% end %>
-                    <div class="col-xs-12 col-sm-6">
-                      <%= image_tag "icons/mail.png" %> <span><%= @user.try(:email) %></span>
-                    </div>
-										<div class="col-xs-12 col-sm-4">
-                      <% if @user.is_reviewer? %>
-                        <% if @user.current_club.present? %>
-                          <span class="media-left nopadding_lr"><%= image_tag "icons/club.png" %></span>
-                          <span class="media-body"><%= @user.current_club %></div>
-                        <% end %>
-                      <% elsif @user.is_user? %>
-                        <% if @user.soccer_club.present? %>
-                          <span class="media-left nopadding_lr"><%= image_tag "icons/club.png" %></span>
-                          <span class="media-body"><%= @user.soccer_club %></div>
-                        <% end %>
-                      <% end %>
-                    </div>
+                    <% end %>
+                  </div>
 
-										<% if @user.is_user? %>
-                      <% if @user.soccer_goal.present? %>
-  											<div class="col-xs-12 col-sm-4">
-                          <%= image_tag "icons/goal.png" %> <span><%= @user.try(:soccer_goal) %></span>
-                        </div>
-                      <% end %>
-										<% end %>
-									</div>
+									<% if @user.is_user? %>
+                    <% if @user.soccer_goal.present? %>
+											<div class="col-xs-12 col-sm-4">
+                        <%= image_tag "icons/goal.png" %> <span><%= @user.try(:soccer_goal) %></span>
+                      </div>
+                    <% end %>
+									<% end %>
 								</div>
-								<% if @user.is_reviewer? %>
-                  <% if @user.description.present? %>
-  									<div class="col-xs-12 view_profile_data" style="margin-top: 15px;">
-  										<span class="media-left nopadding_lr"><%= image_tag "icons/description.png" %></span>
-  										<span class="media-body" style="vertical-align: middle;"><%= @user.try(:description) %></span>
-  									</div>
-                  <% end %>
-								<% end %>
-              </div>
-              <div class="col-xs-12 col-sm-3"></div>
-              <div class="col-xs-12 col-sm-6 margin_btm_30">
-                <%= link_to edit_admin_user_path(@user), :class=>"cancel_payment_btn" do %>
-                  <i class="" aria-hidden="true"></i> Edit
+							</div>
+							<% if @user.is_reviewer? %>
+                <% if @user.description.present? %>
+									<div class="col-xs-12 view_profile_data" style="margin-top: 15px;">
+										<span class="media-left nopadding_lr"><%= image_tag "icons/description.png" %></span>
+										<span class="media-body" style="vertical-align: middle;"><%= @user.try(:description) %></span>
+									</div>
                 <% end %>
-              </div>
-              <div class="col-xs-12 col-sm-3"></div>
-            </ul>
-          </form>
-    		</div>
-    	</div>
-    </div>
+							<% end %>
+            </div>
+            <div class="col-xs-12 col-sm-3"></div>
+            <div class="col-xs-12 col-sm-6 margin_btm_30">
+              <%= link_to edit_admin_user_path(@user), :class=>"cancel_payment_btn" do %>
+                <i class="" aria-hidden="true"></i> Edit
+              <% end %>
+            </div>
+            <div class="col-xs-12 col-sm-3"></div>
+          </ul>
+        </form>
+  		</div>
+  	</div>
   </div>
 </div>
-
 <!-- This is left to add for is_user? -->
 	<!-- <p>Position : <%#= current_user.try(:position) %></p> -->
 
