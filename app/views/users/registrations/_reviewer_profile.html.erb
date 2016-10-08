@@ -22,20 +22,23 @@
               <div class="col-xs-12 col-sm-4"></div>
 
               <div class="col-xs-12 col-sm-4">
-                <span class="profile_pic">
-                  <% if current_user.avatar.present? %>
-                    <%= image_tag current_user.avatar.url, :class => "remove_image" %>
-                  <% else %>
-                    <%= image_tag "reviewer_img.png", :class => "remove_image" %>
-                  <% end %>
-                  <a href="#" class="cancel_btn" title="Remove Photo" onclick="removeUserImage()"><i class="fa fa-close"></i></a>
-
-                  <div class="upload_photo">
-                    <p>Upload Photo</p>
-                  </div>
-
-                  <%= f.file_field :avatar %>
-                </span>
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                  <span class="profile_pic">
+                    <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
+                      <% if current_user.avatar.present? %>
+                        <%= image_tag current_user.avatar.url %>
+                      <% else %>
+                        <%= image_tag "reviewer_img.png" %>
+                      <% end %>
+                    </div>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 150px;"></div>
+                    <div>
+                      <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="user[avatar]"></span>
+                      <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                    </div>
+                  </span>
+                </div>
+                <%= f.file_field :avatar, :id => "user_avatar" %>
               </div>
 
               <div class="col-xs-12 col-sm-4"></div>
@@ -181,5 +184,6 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('.field_with_errors').contents().unwrap();
+    $('#user_avatar').hide();
   });
 </script>

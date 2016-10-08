@@ -33,14 +33,40 @@
                 <li>
                   <h2 class="pull-left">Videos</h2>
                   <span class="box">
-                    <%= image_tag "icons/video.png" %>
-                    <%= f.fields_for :videos do |video| %>
-                      <div class="field">
-                        <%= video.file_field :video_url, :id => "uploadFile", :placeholder => "Choose a Video to Upload" %>
-                      </div><br/>
-                      <%= video.link_to_remove "Remove this video" %>
-                    <% end %>
+                    <div class="media-body">
+                      <div class="media-left">
+                        <%= f.fields_for :videos do |video| %>
+                          <%= image_tag "icons/video.png" %>
+                          <div class="field" style="float: right;margin-right: 345px;">
+                            <%= video.file_field :video_url, :id => "uploadFile", :class => "upload", :placeholder => "Choose a Video to Upload" %>
+                          </div><br/>
+                          <%= video.link_to_remove "Remove this video" %>
+                        <% end %>
+                      </div>
+                    </div>
                     <%= f.link_to_add "Add a video", :videos %>
+                  </span>
+
+                  <span class="box">
+                    <%= image_tag "icons/video.png" %>
+
+                    <input id="uploadFile" placeholder="Choose a Video to Upload" disabled="disabled" />
+                    <div class="fileUpload btn btn-primary">
+                        <span>Upload</span>
+                        <input id="uploadFile" class="upload" placeholder="Choose a Video to Upload" type="file" name="order[videos_attributes][0][video_url]">
+                        <input type="hidden" value="false" name="order[videos_attributes][0][_destroy]" id="order_videos_attributes_0__destroy">
+                    </div>
+                  </span>
+                  <br/>
+                  <span class="box">
+                    <%= image_tag "icons/video.png" %>
+
+                    <input id="uploadFile" placeholder="Choose a Video to Upload" disabled="disabled" />
+                    <div class="fileUpload btn btn-primary">
+                        <span>Upload</span>
+                        <input id="uploadFile" class="upload" placeholder="Choose a Video to Upload" type="file" name="order[videos_attributes][1][video_url]">
+                        <input type="hidden" value="false" name="order[videos_attributes][1][_destroy]" id="order_videos_attributes_1__destroy">
+                    </div>
                   </span>
                 </li>
 

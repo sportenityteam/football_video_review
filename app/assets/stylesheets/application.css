@@ -13,6 +13,8 @@
  * require_tree .
  *= require bootstrap
  *= require bootstrap-datetimepicker
+ *= require jasny-bootstrap
+ *= require jasny-bootstrap.min
  *= require style
  *= require responsive
  *= require menu
