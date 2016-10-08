@@ -48,7 +48,6 @@ class Admin::ReviewsController < Admin::BaseController
 
   # convert review time into hours and minutes
   def second_to_hours(seconds)
-    puts "======seconds=======#{seconds}========="
     mm ,ss = seconds.divmod(60)
     hh, mm = mm.divmod(60)
     if hh > 0 && mm > 0 && ss > 0
