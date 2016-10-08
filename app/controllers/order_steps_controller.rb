@@ -38,7 +38,7 @@ class OrderStepsController < ApplicationController
             render_wizard
           end
         else
-          @errors = "Please fill the card details"
+          flash[:alert] = "Please fill the card details"
           render_wizard
         end
       when :add_order
