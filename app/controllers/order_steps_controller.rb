@@ -47,10 +47,7 @@ class OrderStepsController < ApplicationController
           if @order.errors.present?
             render_wizard
           else
-            logger.warn("=--=Order=-=-=-=-=-=-=-=-=-#{@order.inspect}")
-            logger.warn("=--==-=-=-=-=-=-=-=-=-in step 2=-==-=")
             @order.update_attributes(order_params)
-            logger.warn("=--==-=-=-=-=-=-=-=-=-in step 3=-=--=-=")
             @order.update_attributes(:user_id => current_user.id)
             logger.warn("=--=Order=-=-=-=-=-=-=-=-=-#{@order.inspect}=--=")
             if @order.videos.present?
@@ -63,7 +60,7 @@ class OrderStepsController < ApplicationController
             Order.send_admin_reviewer_mail(@order)
             payment = Payment.find_by_transcation_id($transactionId)
             if payment.present?
-              payment.update_attributes(:order_id => @order.id)
+              payment.update_attributes(:order_id => payment.order.id)
             else
               order_id = current_user.orders.last.id
               payment.update_attributes(:order_id => order_id)
