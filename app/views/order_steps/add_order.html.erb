@@ -34,12 +34,13 @@
                   <h2 class="pull-left">Videos</h2>
                   <span class="box">
                     <%= f.fields_for :videos do |video| %>
-                      <%=image_tag"icons/video.png"%>
+                      <%= image_tag"icons/video.png" %>
                       <input id="uploadFile1" placeholder="Please upload the full game or first half" disabled="disabled" />
                       <div class="fileUpload btn btn-primary">
                         <span>Upload</span>
                         <input id="uploadBtn" type="file" class="upload" />
                         <%= video.file_field :video_url, :id => "uploadBtn1", :data => {:value => "upload1"}, :class => "upload", :placeholder => "Please upload the full game or first half" %>
+                      </div>
                     <% end %>
                   </span>
                 </li>
@@ -48,7 +49,7 @@
                   <!-- <h2 class="pull-left">Videos</h2> -->
                   <span class="box">
                     <%= f.fields_for :videos do |video| %>
-                      <%=image_tag"icons/video.png"%>
+                      <%= image_tag"icons/video.png" %>
                       <input id="uploadFile2" placeholder="Please upload second half if applicable" disabled="disabled" />
                       <div class="fileUpload btn btn-primary">
                         <span>Upload</span>
@@ -58,7 +59,6 @@
                     <% end %>
                   </span>
                 </li>
-
 
                 <li>
                   <h2 class="pull-left">Description</h2>

@@ -59,9 +59,8 @@ class OrderStepsController < ApplicationController
                 @total_duration = @total_duration + video.duration.to_i
               end
             end
-            #@order.update_attributes(:total_video_duration => @total_duration,:user_id => current_user.id, :payment_status => "paid")
             @order.update_attributes(:payment_status => "paid")
-            #$orderId = @order.id
+            Order.send_admin_reviewer_mail(@order)
             payment = Payment.find_by_transcation_id($transactionId)
             if payment.present?
               payment.update_attributes(:order_id => @order.id)

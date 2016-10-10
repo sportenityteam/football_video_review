@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   #STATUS = { "New" => 1 , "Admin Approved/Waiting for review" => 2, "Admin rejected" => 3, "Reviewed" => 4, "Review approved" => 5, "Review rejected" => 6, "In review" => 7 }
   STATUS = { "Pending" => 1 , "Admin Approved" => 2, "Admin rejected" => 3, "Reviewed" => 4, "Review approved" => 5, "Review rejected" => 6, "In review" => 7 }
 
-  after_create :send_admin_reviewer_mail
+  #after_create :send_admin_reviewer_mail
 
   #associations
   belongs_to :user
@@ -22,8 +22,8 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :videos, allow_destroy: true
 
   #send mail to reviewer and admin for new video create
-  def send_admin_reviewer_mail
-    @order = self
+  def self.send_admin_reviewer_mail(order)
+    @order = order
     logger.warn("=-=-=-=-=-=-=-=-=-=--=-= #{@order.user.inspect}")
     @users = User.not_user
     @users.each do |user|
