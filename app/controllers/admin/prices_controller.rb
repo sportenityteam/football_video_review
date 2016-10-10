@@ -30,6 +30,7 @@ class Admin::PricesController < Admin::BaseController
   def change_price
     price = params[:price]
     @price = Price.find(params[:id])
+    #flash[:alert] = 'Price was successfully updated.'
     @price.update_attributes(:price => params[:price])
   end
 
