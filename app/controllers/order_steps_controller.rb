@@ -47,8 +47,12 @@ class OrderStepsController < ApplicationController
           if @order.errors.present?
             render_wizard
           else
-            @order.update_attributes(:user_id => current_user.id)
-            @order.update_attributes(order_params)
+            logger.warn("=--=Order=-=-=-=-=-=-=-=-=-#{@order.inspect}")
+            logger.warn("=--==-=-=-=-=-=-=-=-=-in step 2=-==-=")
+            @order.update_attributes!(order_params)
+            logger.warn("=--==-=-=-=-=-=-=-=-=-in step 3=-=--=-=")
+            @order.update_attributes!(:user_id => current_user.id)
+            logger.warn("=--=Order=-=-=-=-=-=-=-=-=-#{@order.inspect}=--=")
             if @order.videos.present?
               @order.videos.each do |video|
                 video.generate_mp4(video.video_url)
