@@ -22,10 +22,11 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.user_type = 2
-    @user.password = "12345678"
+    @password = SecureRandom.hex(8)
+    @user.password = @password
     respond_to do |format|
       if @user.save
-        @user.update_attributes(:password => "12345678")
+        UserMailer.send_new_user_password(@user,@password).deliver_now
         format.html { redirect_to admin_users_path(:type => "reviewer"), notice: 'Reviewer was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
