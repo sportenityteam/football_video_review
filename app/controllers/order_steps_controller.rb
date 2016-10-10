@@ -23,6 +23,7 @@ class OrderStepsController < ApplicationController
         # if params[:order_id].present?
         #   $orderId = params[:order_id]
         # end
+        @amount = User.calculate_amount_from_age(current_user.date_of_birth.strftime("%m/%d/%Y"))
         response = place_order(@amount, params[:card_number], params[:expiration_month], params[:expiration_year], params[:cvv])
         if response != false
           if response.success?
