@@ -105,10 +105,17 @@
                 <h2 class="pull-left">Gender</h2>
                 <span class="box">
                   <div class="radio">
-                    <%= f.radio_button :gender, 1 , :checked => f.object.gender == 1 ? true : false %>
-                    <label for="male">Male</label>
-                    <%= f.radio_button :gender, 2 ,:checked =>  f.object.gender == 2 ? true : false %>
-                    <label for="female">Female</label>
+                    <% if f.object.new_record? %>
+                      <%= f.radio_button :gender, 1 , :checked => true , class: "styled", :tabindex => "4" %>
+                      <label for="male">Male</label>
+                      <%= f.radio_button :gender, 2 , class: "styled" %>
+                      <label for="female">Female</label>
+                    <% else %>
+                      <%= f.radio_button :gender, 1 , :checked => f.object.gender == 1 ? true : false %>
+                      <label for="male">Male</label>
+                      <%= f.radio_button :gender, 2 ,:checked =>  f.object.gender == 2 ? true : false %>
+                      <label for="female">Female</label>
+                    <% end %>
                   </div>
                 </span>
               </li>
