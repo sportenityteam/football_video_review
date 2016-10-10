@@ -6,7 +6,6 @@ class OrderStepsController < ApplicationController
   before_action :set_variables
 
   def show
-
     case step
       when :add_payment
         render_wizard
