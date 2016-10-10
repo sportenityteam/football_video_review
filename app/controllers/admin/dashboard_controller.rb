@@ -1,4 +1,5 @@
 class Admin::DashboardController < Admin::BaseController
+  before_action :authenticate_user!
 	def index
     @user_count = User.where(:user_type => 3).count
     @reviewer_count = User.where(:user_type => 2).count

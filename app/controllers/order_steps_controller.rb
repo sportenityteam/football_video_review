@@ -2,6 +2,7 @@ class OrderStepsController < ApplicationController
 
   include Wicked::Wizard
   steps :add_payment, :add_order
+  before_action :authenticate_user!
   before_action :set_variables
 
   def show

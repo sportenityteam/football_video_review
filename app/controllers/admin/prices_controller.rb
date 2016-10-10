@@ -1,5 +1,5 @@
 class Admin::PricesController < Admin::BaseController
-
+  before_action :authenticate_user!
   #respond_to :html, :json
   before_action :set_price, :only => [:show,:destroy]
 
