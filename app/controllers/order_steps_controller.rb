@@ -60,7 +60,7 @@ class OrderStepsController < ApplicationController
             Order.send_admin_reviewer_mail(@order)
             payment = Payment.find_by_transcation_id($transactionId)
             if payment.present?
-              payment.update_attributes(:order_id => payment.order.id)
+              payment.update_attributes(:order_id => payment.order_id)
             else
               order_id = current_user.orders.last.id
               payment.update_attributes(:order_id => order_id)
