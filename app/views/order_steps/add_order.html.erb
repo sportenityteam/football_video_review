@@ -33,14 +33,29 @@
                 <li>
                   <h2 class="pull-left">Videos</h2>
                   <span class="box">
-                    <%= image_tag "icons/video.png" %>
                     <%= f.fields_for :videos do |video| %>
-                      <div class="field">
-                        <%= video.file_field :video_url, :id => "uploadFile", :placeholder => "Choose a Video to Upload" %>
-                      </div><br/>
-                      <%= video.link_to_remove "Remove this video" %>
+                      <%=image_tag"icons/video.png"%>
+                      <input id="uploadFile1" placeholder="Please upload the full game or first half" disabled="disabled" />
+                      <div class="fileUpload btn btn-primary">
+                        <span>Upload</span>
+                        <input id="uploadBtn" type="file" class="upload" />
+                        <%= video.file_field :video_url, :id => "uploadBtn1", :data => {:value => "upload1"}, :class => "upload", :placeholder => "Please upload the full game or first half" %>
                     <% end %>
-                    <%= f.link_to_add "Add a video", :videos %>
+                  </span>
+                </li>
+
+                <li>
+                  <!-- <h2 class="pull-left">Videos</h2> -->
+                  <span class="box">
+                    <%= f.fields_for :videos do |video| %>
+                      <%=image_tag"icons/video.png"%>
+                      <input id="uploadFile2" placeholder="Please upload second half if applicable" disabled="disabled" />
+                      <div class="fileUpload btn btn-primary">
+                        <span>Upload</span>
+                        <input id="uploadBtn" type="file" class="upload" />
+                        <%= video.file_field :video_url, :id => "uploadBtn2", :data => {:value => "upload2"}, :class => "upload", :placeholder => "Please upload second half if applicable" %>
+                      </div>
+                    <% end %>
                   </span>
                 </li>
 

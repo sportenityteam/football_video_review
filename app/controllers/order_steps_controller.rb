@@ -49,9 +49,9 @@ class OrderStepsController < ApplicationController
           else
             logger.warn("=--=Order=-=-=-=-=-=-=-=-=-#{@order.inspect}")
             logger.warn("=--==-=-=-=-=-=-=-=-=-in step 2=-==-=")
-            @order.update_attributes!(order_params)
+            @order.update_attributes(order_params)
             logger.warn("=--==-=-=-=-=-=-=-=-=-in step 3=-=--=-=")
-            @order.update_attributes!(:user_id => current_user.id)
+            @order.update_attributes(:user_id => current_user.id)
             logger.warn("=--=Order=-=-=-=-=-=-=-=-=-#{@order.inspect}=--=")
             if @order.videos.present?
               @order.videos.each do |video|
