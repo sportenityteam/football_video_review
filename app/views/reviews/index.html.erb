@@ -41,7 +41,7 @@
                 <% end %>
                 <span class="border-none">
                   <% if review.order.status == 1 or review.order.status == 4 %>
-                    <%= Order::STATUS.key(review.order.status) %>
+                    <%#= Order::STATUS.key(review.order.status) %>
                     Pending | Approval
                   <% elsif review.order.status == 5 %>
                     Approved
