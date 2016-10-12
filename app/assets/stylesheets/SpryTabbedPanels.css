@@ -18,7 +18,7 @@
 	position: relative;
 	top: 1px;
 	float: left;
-	padding: 20px 10px;
+	padding: 12px 10px;
 	list-style: none;
 	-moz-user-select: none;
 	-khtml-user-select: none;
@@ -32,7 +32,7 @@
 	background: linear-gradient(to bottom, rgba(210,210,210,1) 0%,rgba(210,210,210,1) 50%,rgba(189,189,189,1) 50%,rgba(221,221,221,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
 	color:#1c1c1c;
-	font-size:28px;
+	font-size:23px;
 	font-weight:300;
 }
 
@@ -63,7 +63,7 @@
 	overflow: hidden;
 	padding: 40px 4px 4px 4px;
 	text-align:center;
-	min-height:750px;
+	/*min-height:565px;*/
 	background-color:#fff;
 }
 
