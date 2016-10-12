@@ -100,7 +100,7 @@
               </div>
               <div class="col-xs-12 col-sm-6">
                 <li>
-                  <h2 class="pull-left">Soccer Goal</h2>
+                  <h2 class="pull-left">Soccer Goal<!-- <i class="fa fa-info-circle" aria-hidden="true" title="Play on a middle school team, Play on a high school team, Play professionally, etc."></i> --></h2>
                   <span class="box">
                     <%= image_tag "icons/goal.png" %>
                     <%= f.text_field :soccer_goal, :tabindex => "10" %>
@@ -113,7 +113,7 @@
                 <h2 class="pull-left">Position</h2>
                 <span class="box">
                   <%= image_tag "icons/position.png" %>
-                  <%= f.text_field :position, :placeholder => "Play on a Middle School team, Play on a High School team, Play professionally, etc.", :tabindex => "11" %>
+                  <%= f.text_field :position, :tabindex => "11" %>
                 </span>
               </li>
             </div>
@@ -144,7 +144,7 @@
 
     $('.field_with_errors').contents().unwrap();
     $('#dob').datetimepicker({
-      format: 'YYYY-MM-DD'
+      format: 'MM-DD-YYYY'
     });
 
   });

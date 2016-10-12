@@ -363,7 +363,7 @@ footer ul li a:hover{
 	display:inline-block;
 	color:#fff;
 	font-size:20px;
-	font-weight:lighter;
+	font-weight:inherit;
 }
 
 .navbar-nav > li > a> img{

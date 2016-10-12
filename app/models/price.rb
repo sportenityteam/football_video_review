@@ -6,9 +6,9 @@ class Price < ActiveRecord::Base
 	#calculating amount for placing order
 	def self.calculate_amount(age)
 		if age <= 12
-			amount = Price.find_by_name("12 and under").price
+			amount = Price.find_by_name("U12 and under").price
 		else
-			amount = Price.find_by_name("13 and up").price
+			amount = Price.find_by_name("U13 and over").price
 		end
 		return amount*100
 	end
