@@ -67,7 +67,7 @@
                 <h2 class="pull-left">Date of Birth</h2>
                 <span class="box">
                   <%= image_tag "icons/dob.png" %>
-                  <%= f.text_field :date_of_birth, autocomplete: "off" %>
+                  <%= f.text_field :date_of_birth, autocomplete: "off", :value => f.object.date_of_birth.present? ?  f.object.date_of_birth.strftime("%m-%d-%Y") : ''%>
                 </span>
               </li>
             </div>

@@ -1,7 +1,8 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, :only => [:edit, :update, :show, :destroy]
-
+  before_action :set_dob ,only: [:create,:update]
+  
   def index
     #@users = User.is_reviewer
     page = 10
@@ -77,11 +78,15 @@ class Admin::UsersController < ApplicationController
 
   private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :gender, :date_of_birth, :address, :zipcode, :phone_number, :user_type, :current_club, :avatar, :description,:position)
-    end
+  def user_params
+    params.require(:user).permit(:email, :first_name, :last_name, :gender, :date_of_birth, :address, :zipcode, :phone_number, :user_type, :current_club, :avatar, :description,:position)
+  end
+
+  def set_dob
+    params[:user][:date_of_birth] = DateTime.strptime(params[:user][:date_of_birth], "%m-%d-%Y") if params[:user][:date_of_birth].present?
+  end
 end
