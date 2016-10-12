@@ -66,7 +66,7 @@
                 <h2 class="pull-left">Date of Birth</h2>
                 <span class="box">
                   <%= image_tag "icons/dob.png" %>
-                  <%= f.text_field :date_of_birth, autocomplete: "off", :value => f.object.date_of_birth.present? ?  f.object.date_of_birth.strftime("%m-%d-%Y") : ''%>
+                  <%= f.text_field :date_of_birth, autocomplete: "off", :value => f.object.date_of_birth.present? ?  f.object.date_of_birth.strftime("%m-%d-%Y") : '' , :id => "dob" %>
                 </span>
               </li>
 
@@ -109,10 +109,10 @@
               </li>
 
               <li>
-                <h2 class="pull-left">Soccer Goal</h2>
+                <h2 class="pull-left icon-grey">Soccer Goal <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="Example: play on a middle school team, play on a high school team, play professionally, etc."></i></h2>
                 <span class="box">
                   <%= image_tag "icons/goal.png" %>
-                  <%= f.text_field :soccer_goal %>
+                  <%= f.text_field :soccer_goal, :tabindex => "10" %>
                 </span>
               </li>
             </div>
@@ -182,5 +182,9 @@
   $(document).ready(function() {
     $('.field_with_errors').contents().unwrap();
     $('#user_avatar').hide();
+     $('#dob').datetimepicker({
+      format: 'MM-DD-YYYY'
+    });
+    $('[data-toggle="tooltip"]').tooltip();
   });
 </script>

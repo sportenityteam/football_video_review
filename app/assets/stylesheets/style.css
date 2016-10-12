@@ -225,7 +225,7 @@ header{
 .tab_content form ul li button{
 	display:inline-block;
 	width:100%;
-	padding:15px 0;
+	padding:10px 0;
 	margin-top:20px;
 	color:#fff;
 	font-size:24px;
@@ -405,6 +405,9 @@ footer ul li a:hover{
 
 .dropdown-menu > li > a > i{
 	margin-right:10px;
+}
+.icon-grey i{
+ color:#c5c5c5; 
 }
 /**User profile closed**/
 
@@ -1354,7 +1357,7 @@ Admin Side closed
 .cancel_payment_btn{
 	display:inline-block;
 	width:100%;
-	padding:15px 0;
+	padding:10px 0;
 	margin-top:20px!important;
 	color:#fff!important;
 	font-size:24px;

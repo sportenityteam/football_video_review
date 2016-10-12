@@ -60,8 +60,9 @@
 									<% end %>
 									<% if current_user.is_user? %>
                     <% if current_user.soccer_goal.present? %>
-											<div class="col-xs-12 col-sm-4">
-                        <%= image_tag "icons/goal.png" %> <span><%= current_user.try(:soccer_goal) %></span>
+											<div class="col-xs-12 col-sm-4 view_profile_data">
+                        <span class="media-left nopadding_lr"><%= image_tag "icons/goal.png" %></span>
+                        <span class="media-body"><%= current_user.try(:soccer_goal) %></span>
                       </div>
                     <% end %>
 									<% end %>

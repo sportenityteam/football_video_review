@@ -100,7 +100,7 @@
               </div>
               <div class="col-xs-12 col-sm-6">
                 <li>
-                  <h2 class="pull-left">Soccer Goal<!-- <i class="fa fa-info-circle" aria-hidden="true" title="Play on a middle school team, Play on a high school team, Play professionally, etc."></i> --></h2>
+                  <h2 class="pull-left icon-grey">Soccer Goal <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="Example: play on a middle school team, play on a high school team, play professionally, etc."></i></h2>
                   <span class="box">
                     <%= image_tag "icons/goal.png" %>
                     <%= f.text_field :soccer_goal, :tabindex => "10" %>
@@ -141,11 +141,10 @@
 
 <script>
   $(document).ready(function(){
-
     $('.field_with_errors').contents().unwrap();
     $('#dob').datetimepicker({
       format: 'MM-DD-YYYY'
     });
-
+    $('[data-toggle="tooltip"]').tooltip();
   });
 </script>

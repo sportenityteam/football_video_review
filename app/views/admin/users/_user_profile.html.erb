@@ -110,10 +110,10 @@
               </li>
 
               <li>
-                <h2 class="pull-left">Soccer Goal</h2>
+                <h2 class="pull-left icon-grey">Soccer Goal <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="Example: play on a middle school team, play on a high school team, play professionally, etc."></i></h2>
                 <span class="box">
                   <%= image_tag "icons/goal.png" %>
-                  <%= f.text_field :soccer_goal %>
+                  <%= f.text_field :soccer_goal, :tabindex => "10" %>
                 </span>
               </li>
             </div>
@@ -157,14 +157,14 @@ $(function(){
       console.log($("#user_avatar").val())
       $(this).attr("src",$(this).val());
     });
-  });
-  
-  $(document).ready(function(){
+
     $('#user_date_of_birth').datetimepicker({
       format: 'MM-DD-YYYY'
     });
 
     $('.field_with_errors').contents().unwrap();
     $('#user_avatar').hide();
+    
+    $('[data-toggle="tooltip"]').tooltip();
   });
 </script>
