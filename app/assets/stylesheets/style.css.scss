@@ -91,7 +91,7 @@ header{
 
 .logo img{
 	margin:0 auto;
-	width:280px;
+	width:210px;
 }
 
 .navigation{
@@ -103,6 +103,7 @@ header{
 	list-style:none;
 	color:#fff;
 	font-size:18px;
+	text-align:center;
 }
 
 .navigation ul li{
@@ -364,8 +365,8 @@ footer ul li a:hover{
 }
 
 .navbar-nav > li > a{
-	margin-top:5px;
-	padding:5px 0 5px 10px;
+	/*margin-top:5px;*/
+	padding:0;
 	display:inline-block;
 	color:#fff;
 	font-size:20px;
@@ -374,7 +375,7 @@ footer ul li a:hover{
 
 .navbar-nav > li > a> img{
 	width:30px;
-	margin-top:-7px;
+	margin-top:0px;
 	margin-right:5px;
 }
 
@@ -1484,3 +1485,18 @@ Admin Side closed
 	text-align:justify;
 }
 /**My Reviews Details Closed**/
+
+.header_title h2{
+	color:#fff;
+	margin:0;
+	margin-top:4px;
+	font-size:22px;
+}
+
+nav #menu-toggle:checked ~ ul{
+	text-align:left;
+}
+
+.navbar-nav > li > .dropdown-menu{
+	margin-top: 5px;
+}
