@@ -22,11 +22,11 @@
               <div class="col-xs-12 col-sm-4"></div>
 
               <div class="col-xs-12 col-sm-4">
-                <div class="fileinput fileinput-new" data-provides="fileinput">
+                 <div class="fileinput fileinput-new" data-provides="fileinput">
                   <span class="profile_pic">
                     <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                      <% if current_user.avatar.present? %>
-                        <%= image_tag current_user.avatar.url %>
+                      <% if f.object.avatar.present? %>
+                        <%= image_tag f.object.avatar.url %>
                       <% else %>
                         <%= image_tag "reviewer_img.png" %>
                       <% end %>
@@ -141,7 +141,7 @@
   </div>
 </div>
 <script>
-  $(function(){
+$(function(){
     $("#upload_link").on('click', function(e){
       e.preventDefault();
       $("#upload:hidden").trigger('click');
@@ -158,6 +158,7 @@
       $(this).attr("src",$(this).val());
     });
   });
+  
   $(document).ready(function(){
     $('#user_date_of_birth').datetimepicker({
       format: 'YYYY-MM-DD'
