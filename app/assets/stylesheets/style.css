@@ -1,8 +1,14 @@
 /**General css**/
 body{
-	font-family: 'Roboto Slab', serif;
-	background-color:#eeeeee;
-	padding-bottom: 70px;
+ font-family: 'Roboto Slab', serif;
+ background-color:#eeeeee;
+ padding-bottom:80px;
+}
+
+.main_bg {
+ background:url("main_bg.jpg");
+ background-size:cover;
+ background-attachment:fixed;
 }
 
 .full-width{
@@ -55,7 +61,7 @@ body{
 }
 
 .padding_tb_20{
-	padding:20px 0;
+	padding:12px 0;
 }
 
 .container{
@@ -96,7 +102,7 @@ header{
 	margin:0 auto;
 	list-style:none;
 	color:#fff;
-	font-size:22px;
+	font-size:18px;
 }
 
 .navigation ul li{
@@ -263,9 +269,9 @@ header{
 
 /**Footer starts**/
 footer{
-	margin-top:30px;
+	/*margin-top:30px;*/
 	background-color:#fff;
-	padding:15px 0;
+	padding:12px 0;
 	position: fixed;
 	bottom: 0;
 	width: 100%;
@@ -407,7 +413,7 @@ footer ul li a:hover{
 	margin-right:10px;
 }
 .icon-grey i{
- color:#c5c5c5; 
+ color:#c5c5c5;
 }
 /**User profile closed**/
 
@@ -531,7 +537,7 @@ footer ul li a:hover{
 	color:#535353;
 }
 .table > thead > tr > th {
-	font-size:22px;
+	font-size:20px;
 	color:#535353;
 	font-weight:400;
 }
@@ -619,9 +625,9 @@ footer ul li a:hover{
 
 .user_name {
 	color:#1c1c1c;
-	font-size:28px;
+	font-size:23px;
 	font-weight:300;
-	padding: 20px 15px;
+	padding: 11px 15px;
 }
 .review_btn {
 	background:#343d46;
@@ -638,7 +644,7 @@ footer ul li a:hover{
 	color: #fff;
 	font-size: 24px;
 	font-weight: 300;
-	padding: 21px 10px;
+	padding: 9px 10px;
 }
 
 /**Admin Review Pending Approval Start**/
@@ -1223,7 +1229,7 @@ Admin Side closed
 	border:none !important;
 }
 .navbar-nav > li > .reviewer_menu {
-	margin-top:12px;
+	margin-top:-1px;
 	margin-right:-10px;
 }
 .reviewer_menu{

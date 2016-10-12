@@ -61,7 +61,7 @@
 
 .TabbedPanelsContent {
 	overflow: hidden;
-	padding: 40px 4px 4px 4px;
+	padding: 14px 4px 4px 4px;
 	text-align:center;
 	/*min-height:565px;*/
 	background-color:#fff;
