@@ -46,7 +46,7 @@
 													<ul>
 														<li>
 															<%if @order.user.avatar.present? %>
-																<%= image_tag @order.user.avatar %>
+																<%= image_tag @order.user.avatar(:thumb) , :class => "img-circle list-image-height" %>
 															<% else %>
 																<%= image_tag "order_user.png" %>
 															<% end %>
