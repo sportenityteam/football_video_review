@@ -18,128 +18,128 @@
 		text-align:center;
 		margin-bottom:10px;
 	}
-	
+
 	.logo img{
 		width:200px;
 	}
-	
-	
+
+
 	.TabbedPanelsTab{
 		padding:10px 5px !important;
 		font-size:20px !important;
 	}
-	
+
 	.tab_content form ul li h2{
 		font-size:20px;
 	}
-	
+
 	.tab_content form ul li a{
 		font-size:18px;
 	}
-	
+
 	.box img{
 		width:20px;
 		height:20px;
 	}
-	
+
 	.tab_content form ul li span input{
 		width:83%;
 	}
-	
+
 	.tab_content form ul li button{
 		font-size:20px;
 	}
-	
+
 	.radio label{
 		margin:0 5px !important;
 	}
-	
+
 	.radio, .checkbox{
 		margin:3px 0;
 	}
-	
+
 	footer ul{
 		width:100%;
 		text-align:center;
 		margin-bottom:10px;
 	}
-	
+
 	.copy-right{
 		width:100%;
 		text-align:center;
 	}
-	
+
 	footer ul li{
 		padding:0 5px !important;
 	}
-	
+
 	footer ul li a, .copy-right p{
 		font-size:15px;
 	}
-	
+
 	.tab_content form ul li span select{
 		padding: 0;
 	}
-	
+
 }
 
 @media only screen and (max-width:768px){
-	.nopadding_lr_res{		
-		padding-left:0;		
-		padding-right:0;		
+	.nopadding_lr_res{
+		padding-left:0;
+		padding-right:0;
 	}
-	
+
 	.container{
 		padding-left:0;
 		padding-right:0;
 	}
-	
+
 	.logo, .navigation{
 		width:100% !important;
 		text-align:center;
 		margin-bottom:10px;
 	}
-	
+
 	.logo img{
 		width:200px;
 	}
-	
+
 	.col-xs-2.text-left > img {
 		width:95%;
 	}
 	.reviewer_details h3 {
-		font-size:18px;	
+		font-size:18px;
 	}
 	.reviewer_details p {
-		font-size:15px;	
+		font-size:15px;
 	}
-	
+
 	.dropdown-menu li{
 		width:150px;
 		background-color:transparent;
 		border:0;
 	}
-	
+
 	.dropdown-menu li:hover{
 		background-color:transparent;
 	}
-	
+
 	.dropdown-menu li a{
 		padding-left:0;
 		display:inline-block;
 		color:#343d46 !important;
 	}
-	
+
 	.dropdown-menu li:hover > a{
 		color:#37bf75 !important;
 	}
-	
+
 	.page h4{
 		width:100%;
 		text-align:center;
 		margin-bottom:10px;
 	}
-	
+
 	.pagination{
 		margin:0 auto;
 		display:inline-block;
@@ -166,7 +166,7 @@
 	.reviewer_details li {
 		font-size:16px;
 		margin-right:7px;
-	}	
+	}
 	.saved_notes_btn {
 		padding-left:0 !important;
 	  padding-right:0 !important;
@@ -180,7 +180,7 @@
 @media only screen and (min-width:480px) and (max-width:567px){
 	.tech_note_txt {
 		font-size:21px !important;
-		color:#535353 !important;	
+		color:#535353 !important;
 	}
 	.tacti_note_txt {
 		font-size:21px !important;
@@ -191,7 +191,7 @@
 
 @media only screen and (min-width:480px) and (max-width:524px){
 	.col-sm-6.col-xs-5.text-left img {
-		width:32px;	
+		width:32px;
 	}
 	.reviewer_details li {
 		font-size:14px;
@@ -214,7 +214,7 @@
 	.tab_content form ul li h2{
 		font-size:18px;
 	}
-	
+
 	.TabbedPanelsTab{
 		font-size:14px !important;
 	}
@@ -223,13 +223,13 @@
 	  	font-size:15px;
 	}
 	.tab_content form ul li a {
-	  	font-size:15px; 
+	  	font-size:15px;
 	}
 }
 
 @media only screen and (min-width:320px) and (max-width:479px){
 	.col-sm-6.col-xs-5.text-left img {
-		width:32px;	
+		width:32px;
 	}
 	.reviewer_details li {
 		float:left;
@@ -239,17 +239,17 @@
 	}
 	.tech_note_txt {
 		font-size:18px !important;
-		color:#535353 !important;	
+		color:#535353 !important;
 	}
 	.tacti_note_txt {
 		font-size:18px !important;
 		color:#535353 !important;
 	}
 	.user_name {
-		font-size:18px;	
+		font-size:18px;
 	}
 	.reviewer_user_bg > .navbar-nav > li > a {
-		padding:0;	
+		padding:0;
 	}
 	.saved_notes_btn {
 		padding-left:0 !important;
@@ -277,7 +277,7 @@
 
 @media only screen and (min-width:260px) and (max-width:319px){
 	.col-sm-6.col-xs-5.text-left img {
-		width:32px;	
+		width:32px;
 	}
 	.reviewer_details li {
 		float:left;
