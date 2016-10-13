@@ -27,7 +27,13 @@
                     <%= order.try(:payment).try(:date_of_payment).strftime("%B,%d %Y") %>
                   <% end %>
                 </td>
-                <td style="width:15%;"><%= Order::STATUS.key(order.status) %></td>
+                <td style="width:15%;">
+                  <% if Order::STATUS.key(order.status) == "Review approved" %>
+                    Reviewed
+                  <% else %>
+                    <%= Order::STATUS.key(order.status) %>
+                  <% end %>
+                </td>
                 <!-- <td style="width:15%;">
                   <%# if order.payment.present? %>
                     <%#= order.try(:payment).try(:status) %>
