@@ -19,7 +19,20 @@
             <div class="col-xs-12 col-sm-10">
 
               <li class="col-xs-12 nopadding_lr">
-                <h2 class="pull-left">Price : <%= @amount/100 %>$ (Notes : You have to pay this amount to place order)</h2>
+                <!-- <h2 class="pull-left">Price : $<%#= @amount/100 %> (Notes : You have to pay this amount to place order)</h2> -->
+                <div class="clearfix">
+                  <h2 class="pull-left">Please Select Your Age Group</h2>
+                </div>
+                <div class="clearfix">
+                  <h2 class="pull-left">
+                    <%= radio_button_tag 'price', 150, true %> U12 and under - $150
+                  </h2>
+                </div>
+
+                <h2 class="pull-left">
+                  <%= radio_button_tag 'price', 200 %> U13 and over - $200
+                </h2>
+
               </li>
 
               <li>

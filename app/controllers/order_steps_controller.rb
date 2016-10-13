@@ -23,7 +23,8 @@ class OrderStepsController < ApplicationController
         # if params[:order_id].present?
         #   $orderId = params[:order_id]
         # end
-        @amount = User.calculate_amount_from_age(current_user.date_of_birth.strftime("%m/%d/%Y"))
+        #@amount = User.calculate_amount_from_age(current_user.date_of_birth.strftime("%m/%d/%Y"))
+        @amount = params[:price].to_i
         response = place_order(@amount, params[:card_number], params[:expiration_month], params[:expiration_year], params[:cvv])
         if response != false
           if response.success?
@@ -60,12 +61,13 @@ class OrderStepsController < ApplicationController
             Order.send_admin_reviewer_mail(@order)
             payment = Payment.find_by_transcation_id($transactionId)
             if payment.present?
-              payment.update_attributes(:order_id => payment.order_id)
+              payment.update_attributes(:order_id => @order.id)
             else
               order_id = current_user.orders.last.id
               payment.update_attributes(:order_id => order_id)
             end
             $is_payment = false
+            flash[:notice] = "Video is successfully uploaded"
             redirect_to my_orders_path
           end
         else
