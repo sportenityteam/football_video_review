@@ -12,6 +12,7 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
+  # clear all session variables while user logout
   def destroy
     reset_session
     super
