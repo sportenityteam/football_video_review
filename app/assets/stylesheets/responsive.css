@@ -109,6 +109,10 @@
 		font-size: 16px !important;
 	}
 
+	.table > tbody > tr > td{
+		font-size: 15px !important;
+	}
+
 	.video-title-txt h2{
 		font-size: 16px !important;
 	}
@@ -188,6 +192,23 @@
 		width: 100% !important;
 		margin-bottom: 10px !important;
 	}
+
+	.order_details h2{
+		font-size: 18px !important;
+	}
+
+	.order_details li{
+		font-size: 16px !important
+	}
+
+	.order_details h3{
+		font-size: 16px !important;
+	}
+
+	.order_details p{
+		font-size: 15px !important;
+	}
+
 }
 
 @media only screen and (min-width:768px) and (max-width:940px){
@@ -353,6 +374,18 @@
 
 	.modal-body form ul li button{
 		font-size: 15px !important;
+	}
+
+	.table > tbody > tr > td{
+		font-size: 15px !important;
+	}
+
+	.order_details h2{
+		font-size: 18px !important;
+	}
+
+	.order_details li{
+		font-size: 16px !important
 	}
 
 }
