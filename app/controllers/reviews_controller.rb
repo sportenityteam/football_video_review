@@ -62,11 +62,13 @@ class ReviewsController < ApplicationController
   def index
     @reviews = Review.where("user_id =?", current_user.id)
     #@reviews = Review.joins(:order).where("reviews.user_id =? and orders.status != ?", current_user.id, 7)
+    session[:link] = 2
   end
 
   def pending_reviews
     order_ids = Review.joins(:order).where("orders.status =? or orders.status =? or orders.status =? and reviews.user_id =? ",Order::STATUS["Pending"], Order::STATUS["Review rejected"], Order::STATUS["In review"], current_user.id).pluck(:order_id).uniq
     @orders = Order.where("id IN (?) or status =?", order_ids, Order::STATUS["Pending"])
+    session[:link] = 1
   end
 
   def destroy
