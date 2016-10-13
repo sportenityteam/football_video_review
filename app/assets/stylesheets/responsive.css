@@ -105,6 +105,34 @@
 		font-size: 16px!important;
 	}
 
+	table > thead > tr > th{
+		font-size: 16px !important;
+	}
+
+	.video-title-txt h2{
+		font-size: 16px !important;
+	}
+
+	.video-title-txt p{
+		font-size: 15px !important;
+	}
+
+	.video-title-txt span{
+		font-size: 15px !important;
+	}
+
+	.click_review_btn a{
+		font-size: 14px !important;
+	}
+
+	.modal-header .close{
+		margin-top: 2px !important;
+	}
+
+	.modal-body form ul li button{
+		font-size: 16px !important;
+	}
+
 }
 
 @media only screen and (max-width:768px){
@@ -255,7 +283,7 @@
 	}
 
 	.TabbedPanelsTab{
-		font-size:14px !important;
+		font-size:15px !important;
 	}
 
 	.tab_content form ul li h2{
@@ -271,20 +299,60 @@
 		font-size: 15px;
 	}
 	.our_reviewer_inc{
-		font-size: 15px!important;
+		font-size: 15px !important;
 	}
 	.reviewers_in h3{
-		font-size: 15px!important;
+		font-size: 15px !important;
 	}
 	.reviewers_in p{
-		font-size: 15px!important;
+		font-size: 15px !important;
 	}
 	.cancel_payment_btn{
 		font-size: 15px;
 	}
 
 	.tab_content form ul li span input{
-		font-size: 15px!important;
+		font-size: 15px !important;
+	}
+
+	.table > thead > tr > th{
+		font-size: 16px !important;
+	}
+
+	.video-title-txt h2{
+		font-size: 16px !important;
+	}
+
+	.video-title-txt p{
+		font-size: 15px !important;
+	}
+
+	.video-title-txt span{
+		font-size: 15px !important;
+	}
+
+	.click_review_btn a{
+		font-size: 14px !important;
+	}
+
+	.back_list_btn button{
+		font-size: 18px !important;
+	}
+
+	.saved_notes_btn button{
+		font-size: 18px !important;
+	}
+
+	.submit_notes_btn button{
+		font-size: 18px !important;
+	}
+
+	.modal-body form ul li h2{
+		font-size: 15px !important;
+	}
+
+	.modal-body form ul li button{
+		font-size: 15px !important;
 	}
 
 }
@@ -334,6 +402,15 @@
 	}
 	.rev_det_tab_namer {
 		font-size: 14px !important;
+	}
+	.back_list_btn button{
+		font-size: 18px !important;
+	}
+	.saved_notes_btn button{
+		font-size: 18px !important;
+	}
+	.submit_notes_btn button{
+		font-size: 18px !important;
 	}
 }
 

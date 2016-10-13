@@ -430,7 +430,7 @@ footer ul li a:hover{
 }
 
 .modal-header .close {
-  margin-top:10px;
+  margin-top:8px;
 	margin-right:10px;
 	opacity:1;
 }
@@ -860,8 +860,8 @@ footer ul li a:hover{
 }
 .rev_det_tab_namel {
 	color: #fff !important;
-  font-size: 20px !important;
-  font-weight: 400 !important;
+	font-size: 20px !important;
+	font-weight: 400 !important;
 }
 .rev_det_tab_namer {
 	color: #fff !important;
@@ -870,12 +870,12 @@ footer ul li a:hover{
 }
 .tech_note_txt {
  	color: #535353 !important;
-  font-size: 30px !important;
+  font-size: 23px !important;
   font-weight: 300;
 }
 .tacti_note_txt {
  	color: #535353 !important;
-  font-size: 30px !important;
+  font-size: 23px !important;
   font-weight: 300;
 }
 /**Reviewers Review Details Closed**/
@@ -1085,7 +1085,7 @@ Admin Side closed
 	margin-top:0;
 	/*text-align:center!important;*/
 	font-weight:300;
-	font-size:20px;
+	font-size:16px;
 	color:#535353;
 	display:inline-block;
 }
@@ -1104,7 +1104,7 @@ Admin Side closed
 	display:inline-block;
 	text-align:left;
 	border:2px solid #c5c5c5;
-	padding:10px;
+	padding:7px;
 }
 
 .modal-body form ul li span input{
@@ -1119,10 +1119,10 @@ Admin Side closed
 .modal-body form ul li button{
 	display:inline-block;
 	width:100%;
-	padding:15px 0;
+	padding:10px 0;
 	margin-top:20px;
 	color:#fff;
-	font-size:24px;
+	font-size:18px;
 	font-weight:300;
 	background: rgb(69,79,88); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(69,79,88,1) 0%, rgba(69,79,88,1) 50%, rgba(52,61,70,1) 50%, rgba(101,115,126,1) 100%); /* FF3.6-15 */
@@ -1261,14 +1261,14 @@ Admin Side closed
    border:none!important;
 }
 .back_list_btn button {
-	background: rgb(210,210,210); /* Old browsers */
-	background: -moz-linear-gradient(top, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%, rgba(221,221,221,1) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%, rgba(221,221,221,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(210,210,210,1) 0%, rgba(210,210,210,1) 50%, rgba(189,189,189,1) 50%,  rgba(221,221,221,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: rgb(69,79,88); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(69,79,88,1) 0%, rgba(69,79,88,1) 50%, rgba(52,61,70,1) 50%, rgba(101,115,126,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	border: 0 none;
-	color: #1c1c1c;
+	color: #fff;
 	display: inline-block;
-	font-size: 24px;
+	font-size: 23px;
 	font-weight: 300;
 	margin: 20px 0;
 	outline: 0 none;
@@ -1276,9 +1276,11 @@ Admin Side closed
 	width:100%;
 	height:100%;
 	float:left;
+	border-right: 2px solid #fff;
+	border-left: 2px solid #fff; 
 }
 .back_list_btn button a {
-	color: #1c1c1c;
+	color: #fff;
 }
 
 .saved_notes_btn button {
@@ -1289,7 +1291,7 @@ Admin Side closed
 	border: 0 none;
 	color: #fff;
 	display: inline-block;
-	font-size: 24px;
+	font-size: 23px;
 	font-weight: 300;
 	margin: 20px 0;
 	outline: 0 none;
@@ -1297,6 +1299,8 @@ Admin Side closed
 	width:100%;
 	height:100%;
 	float:right;
+	border-right: 2px solid #fff;
+	border-left: 2px solid #fff; 
 }
 .saved_notes_btn button a {
 	color: #fff;
@@ -1309,7 +1313,7 @@ Admin Side closed
 	border: 0 none;
 	color: #1c1c1c;
 	display: inline-block;
-	font-size: 24px;
+	font-size: 23px;
 	font-weight: 300;
 	margin: 20px 0;
 	outline: 0 none;
@@ -1317,29 +1321,13 @@ Admin Side closed
 	width:100%;
 	height:100%;
 	float:right;
+	border-right: 2px solid #fff;
+	border-left: 2px solid #fff; 
 }
 .submit_notes_btn button a{
 	color: #1c1c1c;
 }
-.back_list_btn button {
-	background: rgb(69,79,88); /* Old browsers */
-	background: -moz-linear-gradient(top, rgba(69,79,88,1) 0%, rgba(69,79,88,1) 50%, rgba(52,61,70,1) 50%, rgba(101,115,126,1) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	border: 0 none;
-	color: #fff;
-	display: inline-block;
-	font-size: 24px;
-	font-weight: 300;
-	margin: 20px 0;
-	outline: 0 none;
-	padding: 7px 0;
-	width:100%;
-	height:100%;
-}
-.back_list_btn button a {
-	color: #fff;
-}
+
 
 .rev_det_tab_img {
 	width:8%;
