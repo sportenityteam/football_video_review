@@ -1281,7 +1281,7 @@ Admin Side closed
 	height:100%;
 	float:left;
 	border-right: 2px solid #fff;
-	border-left: 2px solid #fff; 
+	border-left: 2px solid #fff;
 }
 .back_list_btn button a {
 	color: #fff;
@@ -1304,7 +1304,7 @@ Admin Side closed
 	height:100%;
 	float:right;
 	border-right: 2px solid #fff;
-	border-left: 2px solid #fff; 
+	border-left: 2px solid #fff;
 }
 .saved_notes_btn button a {
 	color: #fff;
@@ -1326,7 +1326,7 @@ Admin Side closed
 	height:100%;
 	float:right;
 	border-right: 2px solid #fff;
-	border-left: 2px solid #fff; 
+	border-left: 2px solid #fff;
 }
 .submit_notes_btn button a{
 	color: #1c1c1c;
@@ -1492,4 +1492,11 @@ nav #menu-toggle:checked ~ ul{
 
 .navbar-nav > li > .dropdown-menu{
 	margin-top: 5px;
+}
+
+.bar {
+  height: 18px;
+  background: rgba(86,220,147,1);
+  color: #1c1c1c;
+  font-weight: 300;
 }

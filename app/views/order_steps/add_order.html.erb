@@ -39,10 +39,13 @@
                       <div class="fileUpload btn btn-primary">
                         <span>Upload</span>
                         <input id="uploadBtn" type="file" class="upload" />
-                        <%= video.file_field :video_url, :id => "uploadBtn1", :data => {:value => "upload1"}, :class => "upload", :placeholder => "Please upload the full game or first half" %>
+                        <%= video.file_field :video_url, :id => "uploadBtn1", :data => {:value => "upload1"}, :class => "upload", :placeholder => "Please upload the full game or first half", :onclick => "change_file1();" %>
                       </div>
                     <% end %>
                   </span>
+                  <div id="progress1">
+                    <div class="bar" style="width: 0%;"></div>
+                  </div>
                 </li>
 
                 <li>
@@ -54,14 +57,17 @@
                       <div class="fileUpload btn btn-primary">
                         <span>Upload</span>
                         <input id="uploadBtn" type="file" class="upload" />
-                        <%= video.file_field :video_url, :id => "uploadBtn2", :data => {:value => "upload2"}, :class => "upload", :placeholder => "Please upload second half if applicable" %>
+                        <%= video.file_field :video_url, :id => "uploadBtn2", :data => {:value => "upload2"}, :class => "upload", :placeholder => "Please upload second half if applicable", :onclick => "change_file2();" %>
                       </div>
                     <% end %>
                   </span>
+                  <div id="progress2">
+                    <div class="bar" style="width: 0%;"></div>
+                  </div>
                 </li>
 
                 <li>
-                  <h2 class="pull-left">Please include your jersey color, jersey number, and any other relevant info that will help us recognize you on the pitch in the field below.</h2>
+                  <h2 class="pull-left">Description</h2>
                   <span class="box">
                     <%= image_tag "icons/description.png", :class => "pull-left" %>
                     <%= f.text_area :description %>
@@ -71,13 +77,11 @@
                 <div class="col-xs-12 col-sm-4"></div>
                 <div class="col-xs-12 col-sm-4">
                   <li>
-                    <button><i class="fa fa-check" aria-hidden="true"></i> Upload Video</button>
+                    <button id="upload"><i class="fa fa-check" aria-hidden="true"></i> Upload Video</button>
                   </li>
                 </div>
                 <div class="col-xs-12 col-sm-4"></div>
-
               </div>
-
               <div class="col-xs-12 col-sm-1"></div>
             </ul>
           <% end %>
@@ -127,13 +131,73 @@
     toggleRemoveLink();
 
     $('.field_with_errors').contents().unwrap();
+
   });
 
-  document.getElementById("uploadBtn1").onchange = function () {
-    document.getElementById("uploadFile1").value = this.value;
-  };
+  function change_file1(){
+    document.getElementById("uploadBtn1").onchange = function () {
+      document.getElementById("uploadFile1").value = this.value;
+    };
+  }
 
-  document.getElementById("uploadBtn2").onchange = function () {
-    document.getElementById("uploadFile2").value = this.value;
-  };
+  function change_file2(){
+    document.getElementById("uploadBtn2").onchange = function () {
+      document.getElementById("uploadFile2").value = this.value;
+    };
+  }
+
+  $("#upload").click(function(){
+    $(this).html("Uploading Please Wait....")
+    //$(this).attr('disabled',true);
+  });
+
+</script>
+
+<script type="text/javascript">
+  $("#upload").click(function() {
+    var bucket = new AWS.S3({params: {Bucket: 'football-video-review-dev'}});
+    var fileChooser1 = document.getElementById('uploadBtn1');
+    var file1 = fileChooser1.files[0];
+
+    var fileChooser2 = document.getElementById('uploadBtn2');
+    var file2 = fileChooser2.files[0];
+
+    var files = []
+    files.push(file1)
+    files.push(file2)
+
+    if (files) {
+      var params = {Key: files[0].name, ContentType: files[0].type, Body: files[0]};
+      var request = bucket.putObject(params);
+      request.on('httpUploadProgress', function (progress) {
+        console.log(progress.loaded + " of " + progress.total + " bytes");
+          $('#progress1 .bar').css(
+            'width',
+            parseInt(((progress.loaded+30)*100)/(progress.total+30)) + '%'
+          );
+          $('#progress1 .bar').html(
+            parseInt(((progress.loaded+30)*100)/(progress.total+30)) + '%'
+          );
+      });
+      request.send();
+
+      if(files[1]){
+        var params = {Key: files[1].name, ContentType: files[1].type, Body: files[1]};
+        var request = bucket.putObject(params);
+        request.on('httpUploadProgress', function (progress) {
+          console.log(progress.loaded + " of " + progress.total + " bytes");
+          $('#progress2 .bar').css(
+            'width',
+            parseInt(((progress.loaded+30)*100)/(progress.total+30)) + '%'
+          );
+          $('#progress2 .bar').html(
+            parseInt(((progress.loaded+30)*100)/(progress.total+30)) + '%'
+          );
+        });
+        request.send();
+      }
+
+    }
+    //return false;
+  });
 </script>
