@@ -241,6 +241,12 @@
 	}
 }
 
+@media only screen and (min-width:320px) and (max-width:940px){
+	body {
+	  padding-bottom:110px; 
+	}
+}
+
 @media only screen and (min-width:320px) and (max-width:767px){
 	.dropdown-menu li{
 	  float:right;
@@ -527,3 +533,4 @@
 		line-height:30px;
 	}
 }
+
