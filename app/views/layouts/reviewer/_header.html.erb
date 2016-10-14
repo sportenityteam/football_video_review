@@ -1,6 +1,6 @@
 <div class="container-fluid nopadding_lr margin_btm_30">
 
-  <header class="col-xs-12">
+  <header class="col-xs-12 nopadding_lr">
     <div class="col-xs-12 col-sm-4 header_title">
       <h2>Sportenity</h2>
     </div>
@@ -13,7 +13,7 @@
 
       <div class="profile pull-right">
         <ul class="nav navbar-nav hidden-xs">
-          <li class="dropdown">
+          <li class="dropdown paddingr15">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <% if current_user.avatar.present? %>
                 <%= image_tag current_user.avatar.url(:thumb) ,class: "img-circle profile-img" , alt:"image"%>

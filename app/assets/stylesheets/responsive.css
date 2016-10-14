@@ -137,6 +137,10 @@
 		font-size: 16px !important;
 	}
 
+	.revise_review_btn{
+		font-size: 14px !important;
+	}
+
 }
 
 @media only screen and (max-width:768px){
@@ -188,7 +192,6 @@
 	}
 
 	.header_title h2{
-		text-align: center !important;
 		width: 100% !important;
 		margin-bottom: 10px !important;
 	}
@@ -258,6 +261,9 @@
 	 
 	.dropdown-menu li:hover > a{
 	  color:#37bf75 !important;
+	}
+	.header_title h2{
+		text-align: center !important;
 	}
 }
 
@@ -410,6 +416,10 @@
 
 	.main_order_details li{
 		font-size: 16px !important;
+	}
+
+	.revise_review_btn{
+		font-size: 14px !important;
 	}
 }
 
