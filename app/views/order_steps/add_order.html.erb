@@ -171,13 +171,13 @@
       var request = bucket.putObject(params);
       request.on('httpUploadProgress', function (progress) {
         console.log(progress.loaded + " of " + progress.total + " bytes");
-          $('#progress1 .bar').css(
-            'width',
-            parseInt(((progress.loaded+30)*100)/(progress.total+30)) + '%'
-          );
-          $('#progress1 .bar').html(
-            parseInt(((progress.loaded+30)*100)/(progress.total+30)) + '%'
-          );
+        $('#progress1 .bar').css(
+          'width',
+          parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+        );
+        $('#progress1 .bar').html(
+          parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+        );
       });
       request.send();
 
@@ -188,10 +188,10 @@
           console.log(progress.loaded + " of " + progress.total + " bytes");
           $('#progress2 .bar').css(
             'width',
-            parseInt(((progress.loaded+30)*100)/(progress.total+30)) + '%'
+            parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
           );
           $('#progress2 .bar').html(
-            parseInt(((progress.loaded+30)*100)/(progress.total+30)) + '%'
+            parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
           );
         });
         request.send();
