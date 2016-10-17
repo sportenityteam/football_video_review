@@ -78,15 +78,13 @@
 			    </ul>
 			    <div class="tab-content">
 			      <div id="home" class="tab-pane fade active in">
-			        <div id="standalone-container" class="quillheight">
-			          <div id="toolbar-container" class="ql-toolbar ql-snow">
-			          </div>
+			        <div class="quillheight">
+                <%= text_area_tag :technical_notes, @review.try(:technical_notes), :id => "tech_notes", :ckeditor => {:toolbar => "mini" } %>
 			        </div>
 			      </div>
 			      <div id="menu1" class="tab-pane fade">
-			        <div id="standalone-container1" class="quillheight">
-			          <div id="toolbar-container1" class="ql-toolbar ql-snow">
-			          </div>
+			        <div class="quillheight">
+                <%= text_area_tag :tactical_notes, @review.try(:tactical_notes), :class => "tech_notes" %>
 			        </div>
 			      </div>
 			    </div>
@@ -117,35 +115,42 @@
 	</div>
 </div>
 <script type="text/javascript">
-  var toolbarOptions = [
-    [{ 'font': [] }],
-    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-    //['blockquote', 'code-block'],
 
-    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-    //[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-    //[{ 'direction': 'rtl' }],                         // text direction
-    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-
-    [{ 'align': [] }],
-
-    ['clean']                                         // remove formatting button
-  ];
-  var quill = new Quill('#standalone-container', {
-      modules: {
-      toolbar: toolbarOptions
-    },
-    theme: 'snow'
+  $(document).ready(function(){
+    CKEDITOR.replace(
+        'technical_notes',
+        {
+          toolbar: [
+            ["Undo","Redo","-","Find","Replace","-","SelectAll","RemoveFormat", "-" ,"Scayt"],
+            ["Bold","Italic","Underline","Strike","-"],
+            ["NumberedList","BulletedList","-","Outdent","Indent"],
+            ["JustifyLeft","JustifyCenter","JustifyRight","JustifyBlock"],
+            ["Link","Unlink"],
+            ["Image","Table","HorizontalRule"],
+            ["Styles","Format","Font","FontSize"],
+            ["TextColor","BGColor"]
+          ],
+        }
+        //{height: 550},{width:500}
+    );
+    CKEDITOR.replace(
+        'tactical_notes',
+        {
+          toolbar: [
+            ["Undo","Redo","-","Find","Replace","-","SelectAll","RemoveFormat", "-" ,"Scayt"],
+            ["Bold","Italic","Underline","Strike","-"],
+            ["NumberedList","BulletedList","-","Outdent","Indent"],
+            ["JustifyLeft","JustifyCenter","JustifyRight","JustifyBlock"],
+            ["Link","Unlink"],
+            ["Image","Table","HorizontalRule"],
+            ["Styles","Format","Font","FontSize"],
+            ["TextColor","BGColor"]
+          ],
+        }
+        //{height: 550},{width:500}
+    );
   });
-  var quill1 = new Quill('#standalone-container1', {
-      modules: {
-      toolbar: toolbarOptions
-    },
-    theme: 'snow'
-  });
+
 
   $(".tacti_note_txt").click(function(){
     $("#order_video_01").get(0).pause();
@@ -155,26 +160,6 @@
     $("#order_video_02").get(0).pause();
   })
 
-  $(document).ready(function(){
-    // quill.on('text-change', function() {
-    //   console.log('Text change!');
-    //   var text = quill.getText();
-    //   //console.log(text);
-    //   $("#technical_notes").val(text);
-    // });
-    // quill1.on('text-change', function() {
-    //   console.log('Text change!');
-    //   var inner_text1 = quill1.getText();
-    //   //console.log(text);
-    //   $("#tactical_notes").val(inner_text1);
-    // });
-    var technical_notes = '<%= @review.technical_notes.split("\r")[0] %>';
-    quill.setText(technical_notes);
-
-    var tactical_notes = '<%= @review.tactical_notes.split("\r")[0] %>';
-    quill1.setText(tactical_notes);
-
-  });
 </script>
 
 <!-- <h3> <%#= @review.try(:order).try(:user).try(:fullname) %> 's Video Review Details </h3>

@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
     end
     puts "=-=--=-=----=-=-==--==-=---"+session[:url].inspect
     @review_new = Review.where(:order_id => @order.id, :user_id => current_user.id).first
+    puts "=--=-=---=Reviews=---=-=--= #{@review_new.inspect}"
     @review = Review.new
     if @order.status == 7 and !@review_new.present?
       redirect_to pending_reviews_path, notice: "Video Already reviewed by other reviewer."
@@ -22,8 +23,8 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.find_or_initialize_by(:order_id => params[:review][:order_id], :user_id => params[:review][:user_id])
 
-    @review.technical_notes = params[:technical_notes]
-    @review.tactical_notes = params[:tactical_notes]
+    @review.technical_notes = params[:review][:technical_notes]
+    @review.tactical_notes = params[:review][:tactical_notes]
 
     @order = Order.find(params[:review][:order_id])
     if params[:is_reviewed] == "1"

@@ -21,15 +21,13 @@
     </ul>
     <div class="tab-content">
       <div id="home" class="tab-pane fade active in">
-        <div id="standalone-container" class="quillheight">
-          <div id="toolbar-container" class="ql-toolbar ql-snow">
-          </div>
+        <div class="quillheight">
+          <%= f.cktext_area :technical_notes, :value => @review_new.present? ? @review_new.technical_notes : "", :ckeditor => {:toolbar => "mini" } %>
         </div>
       </div>
       <div id="menu1" class="tab-pane fade">
-        <div id="standalone-container1" class="quillheight">
-          <div id="toolbar-container1" class="ql-toolbar ql-snow">
-          </div>
+        <div class="quillheight">
+          <%= f.cktext_area :tactical_notes, :value => @review_new.present? ? @review_new.tactical_notes : "", :ckeditor => {:toolbar => "mini" } %>
         </div>
       </div>
     </div>
@@ -72,7 +70,7 @@
       <%# end %>
     </div> -->
     <div class="col-xs-12 col-sm-4 saved_notes_btn">
-      <button type="submit"><i class="fa fa-save"></i> Save Notes</button>
+      <button type="submit" class="submit_form"><i class="fa fa-save"></i> Save Notes</button>
     </div>
     <div class="col-xs-12 col-sm-4 submit_notes_btn nopadding_lr">
       <button type="submit" class="submit_form" id="review_submit"><i class="fa fa-check"></i> Submit Notes</button>
@@ -83,52 +81,10 @@
   <%= f.hidden_field :review_time, :value => "", :id => "review_time" %>
   <%= hidden_field_tag :submit_time, "", :id => "submit_time" %>
   <%= hidden_field_tag :is_reviewed, "", :id => "is_reviewed" %>
-  <%= hidden_field_tag :technical_notes, "", :id => "technical_notes" %>
-  <%= hidden_field_tag :tactical_notes, "", :id => "tactical_notes" %>
+  <%#= hidden_field_tag :technical_notes, "", :id => "technical_notes" %>
+  <%#= hidden_field_tag :tactical_notes, "", :id => "tactical_notes" %>
+
 <% end %>
-
-<!-- <h3>Add Review</h3>
-<%#= form_for @review do |f| %>
-  <%# if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%#= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-      <ul>
-      <% #@review.errors.full_messages.each do |message| %>
-        <li><%#= message %></li>
-      <%# end %>
-      </ul>
-    </div>
-  <%# end %>
-
-  <%#= f.hidden_field :order_id, :value => "#{params[:id]}" %>
-  <%#= f.hidden_field :user_id, :value => "#{current_user.id}" %>
-  <%#= f.hidden_field :review_time, :value => "", :id => "review_time" %>
-  <%#= hidden_field_tag :submit_time, "", :id => "submit_time" %>
-  <%#= hidden_field_tag :is_reviewed, "", :id => "is_reviewed" %>
-
-  <div class="field">
-    <%#= f.label :technical_notes %><br />
-    <%#= f.text_area :technical_notes,:value => @review_new.present? ? @review_new.technical_notes : "" %>
-  </div>
-
-  <div class="field">
-    <%#= f.label :tactical_notes %><br />
-    <%#= f.text_area :tactical_notes , :value =>  @review_new.present? ? @review_new.tactical_notes : ""  %>
-  </div>
-
-  <div class="actions">
-
-    <%# if session[:url] == "pending_reviews" %>
-      <%#= link_to "Back to List", pending_reviews_path %>
-    <%# elsif session[:url] == "my_reviews" %>
-      <%#= link_to "Back to List", my_reviews_path %>
-    <%# else %>
-      <%#= link_to "Back to List", :back %>
-    <%# end %>
-    <%#= f.submit "Submit", :class => "submit_form",:id => "review_submit" %>
-    <%#= f.submit "Save Notes" %>
-  </div>
-<%# end %> -->
 
 <script>
   $("#review_submit").click(function(){
@@ -145,66 +101,11 @@
     $("#review_time").val(current_time);
   });
 
-  $(".tacti_note_txt").click(function(){
+  $(".tacti_note_txt2").click(function(){
     $("#order_video_01").get(0).pause();
   })
 
-  $(".tech_note_txt").click(function(){
+  $(".tech_note_txt1").click(function(){
     $("#order_video_02").get(0).pause();
   })
-
-  var toolbarOptions = [
-    [{ 'font': [] }],
-    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-    //['blockquote', 'code-block'],
-
-    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-    //[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-    //[{ 'direction': 'rtl' }],                         // text direction
-    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-
-    [{ 'align': [] }],
-
-    ['clean']                                         // remove formatting button
-  ];
-  var quill = new Quill('#standalone-container', {
-      modules: {
-      toolbar: toolbarOptions
-    },
-    theme: 'snow'
-  });
-  var quill1 = new Quill('#standalone-container1', {
-      modules: {
-      toolbar: toolbarOptions
-    },
-    theme: 'snow'
-  });
-  $(document).ready(function(){
-    $('.field_with_errors').contents().unwrap();
-
-    quill.on('text-change', function() {
-      console.log('Text change!');
-      var text = quill.getText();
-      //console.log(text);
-      $("#technical_notes").val(text);
-    });
-    quill1.on('text-change', function() {
-      console.log('Text change!');
-      var inner_text1 = quill1.getText();
-      //console.log(text);
-      $("#tactical_notes").val(inner_text1);
-    });
-    <% if @review_new.present? %>
-    {
-      var technical_notes = '<%= @review_new.technical_notes.split("\r")[0] if @review_new.technical_notes.present? %>';
-      quill.setText(technical_notes);
-
-      var tactical_notes = '<%= @review_new.tactical_notes.split("\r")[0] if @review_new.tactical_notes.present? %>';
-      quill1.setText(tactical_notes);
-    }
-    <% end %>
-  });
 </script>
