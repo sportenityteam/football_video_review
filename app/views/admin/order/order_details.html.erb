@@ -81,7 +81,7 @@
 																	</td>
 																</tr>
 																<tr>
-																	<td style="width:60%;">Total Amount - $ <%= @order.payment.amount/100 %></td>
+																	<td style="width:60%;">Total Amount - $ <%= @order.payment.amount %></td>
 																	<td style="text-align:center;" class="approved_btn pull-right"><%= @order.try(:payment).try(:status)%></td>
 																</tr>
 															<% end %>
