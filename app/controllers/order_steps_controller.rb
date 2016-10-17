@@ -104,5 +104,7 @@ class OrderStepsController < ApplicationController
       @order = Order.new
       @payment = Payment.new
       @amount = User.calculate_amount_from_age(current_user.date_of_birth.strftime("%m/%d/%Y"))
+      @amount_12 = Price.find_by_name("U12 and under").price
+      @amount_13 = Price.find_by_name("U13 and over").price
     end
 end

@@ -25,12 +25,12 @@
                 </div>
                 <div class="clearfix">
                   <h2 class="pull-left">
-                    <%= radio_button_tag 'price', 150, true %> U12 and under - $150
+                    <%= radio_button_tag 'price', @amount_12, true %> U12 and under - $<%= @amount_12 %>
                   </h2>
                 </div>
 
                 <h2 class="pull-left">
-                  <%= radio_button_tag 'price', 200 %> U13 and over - $200
+                  <%= radio_button_tag 'price', @amount_13 %> U13 and over - $<%= @amount_13 %>
                 </h2>
 
               </li>
