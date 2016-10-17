@@ -75,7 +75,11 @@
 														<tbody>
 															<tr>
 																<td style="width:40%;">Transaction # <%= @order.payment.try(:transcation_id) %></td>
-																<td style="width:60%; text-align:right;">Payment Date - <%=  @order.payment.date_of_payment.strftime("%b %d, %Y") if @order.payment.date_of_payment.present? %></td>
+																<td style="width:60%; text-align:right;">
+																	<% if @order.payment.date_of_payment.present? %>
+																		Payment Date - <%=  @order.payment.date_of_payment.strftime("%b %d, %Y") %>
+																	<% end %>
+																</td>
 															</tr>
 															<tr>
 																<td style="width:60%;">Total Amount - $ <%= @order.payment.amount/100 %></td>
