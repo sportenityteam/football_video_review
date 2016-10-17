@@ -18,7 +18,8 @@
 	          </thead>
 	          <tbody>
 	            <tr>
-	              <td style="width:33%;"><%= @review.try(:order).try(:title) %></td>
+                <%#= @review.try(:order).try(:title) %>
+	              <td style="width:33%;"><%= @review.try(:user).try(:fullname) %></td>
 	              <td style="width:33%;"><%= @review.created_at.strftime("%B %d, %Y") %></td>
 	              <td style="width:33%;">
 	              	<%= @review_time %>
