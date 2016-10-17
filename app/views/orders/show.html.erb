@@ -41,7 +41,7 @@
       <% if @reviewer.present? %>
         <div class="col-xs-12 text-left reviewer_details">
           <h3>Technical Notes</h3>
-          <p><%= @reviewer.technical_notes %></p>
+          <p><%= raw @reviewer.technical_notes %></p>
         </div>
       <% end %>
       <div class="col-xs-12 text-left order_details">
