@@ -141,10 +141,17 @@
 
 <script>
   $(document).ready(function(){
-    $('.field_with_errors').contents().unwrap();
+
     $('#dob').datetimepicker({
-      format: 'MM-DD-YYYY'
+      format: 'MM-DD-YYYY',
+      defaultDate: "08/01/2004",
+      pickTime: false
     });
+
+    $('.field_with_errors').contents().unwrap();
+    // $('#dob').datetimepicker({
+    //   format: 'MM-DD-YYYY'
+    // });
     $('[data-toggle="tooltip"]').tooltip();
   });
 </script>

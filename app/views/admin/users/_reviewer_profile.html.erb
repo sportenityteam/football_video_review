@@ -173,9 +173,15 @@
     });
   });
   $(document).ready(function(){
+    // $('#user_date_of_birth').datetimepicker({
+    //   format: 'MM-DD-YYYY'
+    // });
     $('#user_date_of_birth').datetimepicker({
-      format: 'MM-DD-YYYY'
+      format: 'MM-DD-YYYY',
+      defaultDate: "08/01/2004",
+      pickTime: false
     });
+
     $('.field_with_errors').contents().unwrap();
     $('#user_avatar').hide();
   });

@@ -20,10 +20,8 @@
 //= require bootstrap
 //= require jasny-bootstrap
 //= require moment.min
-//= require bootstrap-datetimepicker.min
+//= require bootstrap-datetimepicker
 //= require SpryTabbedPanels
-// require quill
-//= require quill.min
 // require turbolinks
 // require_tree .
 
