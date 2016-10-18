@@ -35,11 +35,11 @@
                   <span class="box">
                     <%= f.fields_for :videos do |video| %>
                       <%= image_tag"icons/video.png" %>
-                      <input id="uploadFile1" placeholder="Please upload the full game or first half" disabled="disabled" />
+                      <input id="uploadFile1" placeholder="Select the first half or entire game to upload" disabled="disabled" />
                       <div class="fileUpload btn btn-primary">
                         <span>Upload</span>
                         <input id="uploadBtn" type="file" class="upload" />
-                        <%= video.file_field :video_url, :id => "uploadBtn1", :data => {:value => "upload1"}, :class => "upload", :placeholder => "Please upload the full game or first half", :onclick => "change_file1();" %>
+                        <%= video.file_field :video_url, :id => "uploadBtn1", :data => {:value => "upload1"}, :class => "upload", :placeholder => "Select the first half or entire game to upload", :onclick => "change_file1();" %>
                       </div>
                     <% end %>
                   </span>
@@ -53,11 +53,11 @@
                   <span class="box">
                     <%= f.fields_for :videos do |video| %>
                       <%= image_tag"icons/video.png" %>
-                      <input id="uploadFile2" placeholder="Please upload second half if applicable" disabled="disabled" />
+                      <input id="uploadFile2" placeholder="Select the second half to upload (if applicable)" disabled="disabled" />
                       <div class="fileUpload btn btn-primary">
                         <span>Upload</span>
                         <input id="uploadBtn" type="file" class="upload" />
-                        <%= video.file_field :video_url, :id => "uploadBtn2", :data => {:value => "upload2"}, :class => "upload", :placeholder => "Please upload second half if applicable", :onclick => "change_file2();" %>
+                        <%= video.file_field :video_url, :id => "uploadBtn2", :data => {:value => "upload2"}, :class => "upload", :placeholder => "Select the second half to upload (if applicable)", :onclick => "change_file2();" %>
                       </div>
                     <% end %>
                   </span>
@@ -70,7 +70,7 @@
                   <h2 class="pull-left">Description</h2>
                   <span class="box">
                     <%= image_tag "icons/description.png", :class => "pull-left" %>
-                    <%= f.text_area :description %>
+                    <%= f.text_area :description, :placeholder => "Please include your jersey color,jersey number,and any other relevant information that will help us recognize you on the field." %>
                   </span>
                 </li>
 
