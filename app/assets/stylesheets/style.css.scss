@@ -243,6 +243,7 @@ header{
 	background: linear-gradient(to bottom, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	border:0;
 	outline:0;
+	border-radius: 5px;
 }
 
 .tab_content form ul li button:hover{
@@ -698,6 +699,7 @@ footer ul li a:hover{
 	float:left;
 	border-right: 2px solid #fff;
 	border-left: 2px solid #fff;
+	border-radius: 5px;
 }
 .reject_notes_btn button a{
 	color: #fff;
@@ -723,6 +725,7 @@ footer ul li a:hover{
 	float:right;
 	border-right: 2px solid #fff;
 	border-left: 2px solid #fff;
+	border-radius: 5px;
 }
 .approved_notes_btn button a{
 	color: #fff;
@@ -812,6 +815,7 @@ footer ul li a:hover{
 	width:100%;
 	height:100%;
 	float:right;
+	border-radius: 5px;
 }
 .saved_notes_btn button a {
 	color: #fff;
@@ -1282,6 +1286,7 @@ Admin Side closed
 	float:left;
 	border-right: 2px solid #fff;
 	border-left: 2px solid #fff;
+	border-radius: 5px;
 }
 .back_list_btn button a {
 	color: #fff;
@@ -1327,6 +1332,7 @@ Admin Side closed
 	float:right;
 	border-right: 2px solid #fff;
 	border-left: 2px solid #fff;
+	border-radius: 5px;
 }
 .submit_notes_btn button a{
 	color: #1c1c1c;
@@ -1370,6 +1376,7 @@ Admin Side closed
 	outline:0;
 	text-decoration: none!important;
 	text-align: center!important;
+	border-radius: 5px;
 }
 
 .cancel_payment_btn:hover{

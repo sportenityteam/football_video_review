@@ -88,7 +88,7 @@ Rails.application.configure do
     port: 587,
     enable_starttls_auto: true,
     format: :html,
-    from: 'hello@sportenity.com'
+    from: 'support@sportenity.com'
   }
 
   # config.action_mailer.smtp_settings = {
