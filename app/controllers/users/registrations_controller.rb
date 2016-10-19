@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :set_dob ,only: [:create,:update]
   # GET /resource/sign_up
   def new
-    @user = User.new
+    @user = User.new(:date_of_birth => "2004-08-01".to_date)
     super
   end
 
@@ -94,8 +94,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     #   resource.update_without_password(params)
     # end
   private
-  
+
   def set_dob
-    params[:user][:date_of_birth] = DateTime.strptime(params[:user][:date_of_birth], "%m-%d-%Y") if params[:user][:date_of_birth].present?
+    #params[:user][:date_of_birth] = DateTime.strptime(params[:user][:date_of_birth], "%m-%d-%Y") if params[:user][:date_of_birth].present?
+    params[:user][:date_of_birth] = Date.new(params[:user]["date_of_birth(1i)"].to_i,params[:user]["date_of_birth(2i)"].to_i,params[:user]["date_of_birth(3i)"].to_i)
   end
 end

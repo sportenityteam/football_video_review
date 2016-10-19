@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, :only => [:edit, :update, :show, :destroy]
   before_action :set_dob ,only: [:create,:update]
-  
+
   def index
     #@users = User.is_reviewer
     page = 10

@@ -47,9 +47,12 @@
               </li>
               <li>
                 <h2 class="pull-left">Date of Birth</h2>
+                <%#= f.date_select :date_of_birth, autocomplete: "off", :id => "1dob", :tabindex => "7" %>
                 <span class="box">
                   <%= image_tag "icons/dob.png" %>
-                  <%= f.text_field :date_of_birth, autocomplete: "off", :id => "dob", :tabindex => "7" %>
+                  <div class="dob">
+                    <%= f.date_select :date_of_birth, :start_year => 2001, :end_year => 2020, autocomplete: "off", :tabindex => "7" %>
+                  </div>
                 </span>
               </li>
 
@@ -142,11 +145,11 @@
 <script>
   $(document).ready(function(){
 
-    $('#dob').datetimepicker({
-      format: 'MM-DD-YYYY',
-      defaultDate: "08/01/2004",
-      pickTime: false
-    });
+    // $('#dob').datetimepicker({
+    //   format: 'MM-DD-YYYY',
+    //   defaultDate: "08/01/2004",
+    //   pickTime: false
+    // });
 
     $('.field_with_errors').contents().unwrap();
     // $('#dob').datetimepicker({

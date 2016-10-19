@@ -19,8 +19,8 @@
 //= require jquery_nested_form
 //= require bootstrap
 //= require jasny-bootstrap
-//= require moment.min
-//= require bootstrap-datetimepicker
+// require moment.min
+// require bootstrap-datetimepicker
 //= require SpryTabbedPanels
 // require turbolinks
 // require_tree .
