@@ -25,6 +25,12 @@ class ContactUsController < ApplicationController
     end
   end
 
+  def about
+  end
+
+  def faq
+  end
+
   private
     def contact_us_params
       params.require(:contact_u).permit(:subject, :email, :description)

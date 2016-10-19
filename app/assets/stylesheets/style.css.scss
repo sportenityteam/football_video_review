@@ -1507,3 +1507,53 @@ nav #menu-toggle:checked ~ ul{
   color: #1c1c1c;
   font-weight: 300;
 }
+
+.green{
+	color:#37bf75 !important;
+}
+
+.policy{
+	margin:0 auto;
+	text-align: left;
+	/*padding:40px 0;*/
+}
+
+.policy h1{
+	color:#37bf75;
+}
+
+.policy span{
+	color:#ccc;
+	font-size:16px;
+}
+
+.policy ul{
+	margin-top:30px;
+}
+
+.policy ul li{
+	margin-bottom:15px;
+}
+
+.policy ul h2{
+	margin-left:-20px;
+	color: #37bf75;
+  font-size: 24px;
+}
+
+.policy ul li p{
+	color:#454545;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.policy ul li ul{
+	margin-top:10px;
+	margin-bottom:30px;
+}
+
+.policy ul li ul li p{
+	color:#666666;
+	font-size:16px;
+	font-weight:400;
+}

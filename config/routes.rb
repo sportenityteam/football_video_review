@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   post "/contact_us" => "contact_us#contact_us_mail", as: :contact_us
   get "/contact_us" => "contact_us#new", as: :contact_us_mail
+  get "/about" => "contact_us#about", as: :about
+  get "/faq" => "contact_us#faq", as: :faq
 
   resources :reviews, :except => [:new,:index]
   get "/pending_reviews" => "reviews#pending_reviews" , as: :pending_reviews
