@@ -67,7 +67,7 @@ class OrderStepsController < ApplicationController
               payment.update_attributes(:order_id => order_id)
             end
             $is_payment = false
-            flash[:notice] = "Video is successfully uploaded"
+            flash[:notice] = "Thank you! Your upload is complete. You will be notified via email once the review is ready."
             redirect_to my_orders_path
           end
         else

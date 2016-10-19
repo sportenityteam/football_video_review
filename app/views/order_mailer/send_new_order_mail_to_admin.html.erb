@@ -4,11 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>Hello <%= @user.fullname %>,<br></p>
+    <p>Hello</p>
     <p></p>
-    <h4>Video reviewed by <%= @order.reviews.last.user.fullname %>.</h4>
 
-    <p> Feel free to contact us at from@example.com with any questions.</p>
+    <h4>New video was uploaded by <%= @order.try(:user).try(:first_name) %>. </h4>
+
     Thank You<br>
     Team Sportenity
   </body>

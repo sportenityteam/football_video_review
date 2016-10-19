@@ -5,7 +5,25 @@ class OrderMailer < ActionMailer::Base
   def send_new_order_message(order,user)
     @user = user
     @order = order
-    mail(:to => @user.email , :subject => "Soccer Video Review : New Video Added")
+    mail(:to => @user.email , :subject => "Soccer Video Review : New Video for Review")
+  end
+
+  def send_new_order_mail_to_admin(order,user)
+    @user = user
+    @order = order
+    mail(:to => @user.email , :subject => "Soccer Video Review : New Video")
+  end
+
+  def send_new_order_mail_to_user(order,user)
+    @user = user
+    @order = order
+    mail(:to => @user.email , :subject => "Soccer Video Review : New Video Uploaded")
+  end
+
+  def send_new_order_mail_to_reviewer(order,user)
+    @user = user
+    @order = order
+    mail(:to => @user.email , :subject => "Soccer Video Review : New Video for Review")
   end
 
   def admin_approved_order(order)

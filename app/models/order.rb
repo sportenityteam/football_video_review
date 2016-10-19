@@ -25,9 +25,25 @@ class Order < ActiveRecord::Base
   def self.send_admin_reviewer_mail(order)
     @order = order
     logger.warn("=-=-=-=-=-=-=-=-=-=--=-= #{@order.user.inspect}")
-    @users = User.not_user
-    @users.each do |user|
-      OrderMailer.send_new_order_message(@order,user).deliver_now
+    # @users = User.not_user
+    # @users.each do |user|
+    #   OrderMailer.send_new_order_message(@order,user).deliver_now
+    # end
+
+    @admin_users = User.is_admin
+    @admin_users.each do |user|
+      OrderMailer.send_new_order_mail_to_admin(@order,user).deliver_now
+    end
+
+    @reviewer_users = User.is_reviewer
+    @reviewer_users.each do |user|
+      OrderMailer.send_new_order_mail_to_reviewer(@order,user).deliver_now
+    end
+
+    currentUser = order.try(:user_id)
+    if currentUser.present?
+      @user = User.find(currentUser.to_i)
+      OrderMailer.send_new_order_mail_to_user(@order,@user).deliver_now
     end
   end
 

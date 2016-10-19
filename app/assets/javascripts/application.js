@@ -26,6 +26,6 @@
 // require_tree .
 
 $(document).ready(function(){
-  $(".alert-danger").fadeOut(3000);
-  $(".alert-success").fadeOut(3000);
+  $(".alert-danger").fadeOut(12000);
+  $(".alert-success").fadeOut(12000);
 });
