@@ -1570,3 +1570,14 @@ nav #menu-toggle:checked ~ ul{
 	padding: 0 !important;
 	margin-right:10px;
 }
+
+#wait{
+  /*background:url(asset-path("transparent_bg.png"));*/
+  display: block;
+  width: 132px;
+  height: 145px;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  padding: 3px;
+}

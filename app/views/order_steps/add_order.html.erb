@@ -5,6 +5,9 @@
     </ul>
     <div class="TabbedPanelsContentGroup">
       <div class="TabbedPanelsContent">
+        <div id="wait">
+          <%= image_tag 'demo_wait.gif', :width => "64%", :height => "64%" %><br>Uploading..
+        </div>
         <div class="tab_content col-xs-12">
           <%= nested_form_for @order, url: wizard_path, method: :put, :class => "col-xs-12" do |f| %>
             <% if @order.errors.any? %>
@@ -90,8 +93,12 @@
     </div>
   </ul>
 </div>
+
+
 <script type="text/javascript">
   $(document).ready(function() {
+    $("#wait").css("display", "none");
+
     var fieldsCount,
     maxFieldsCount = 1,
     $addLink = $('a.add_nested_fields');
@@ -155,54 +162,58 @@
 
 <script type="text/javascript">
   $("#upload").click(function() {
-    //development
-    //var bucket = new AWS.S3({params: {Bucket: 'football-video-review-dev'}});
+    var browser_name = Object.keys(jQuery.browser)[2]
+    console.log(browser_name);
+    if(browser_name != "safari"){
+      //development
+      //var bucket = new AWS.S3({params: {Bucket: 'football-video-review-dev'}});
 
-    //production
-    var bucket = new AWS.S3({params: {Bucket: 'football-video-review-production'}});
+      //production
+      var bucket = new AWS.S3({params: {Bucket: 'football-video-review-production'}});
 
-    var fileChooser1 = document.getElementById('uploadBtn1');
-    var file1 = fileChooser1.files[0];
+      var fileChooser1 = document.getElementById('uploadBtn1');
+      var file1 = fileChooser1.files[0];
 
-    var fileChooser2 = document.getElementById('uploadBtn2');
-    var file2 = fileChooser2.files[0];
+      var fileChooser2 = document.getElementById('uploadBtn2');
+      var file2 = fileChooser2.files[0];
 
-    var files = []
-    files.push(file1)
-    files.push(file2)
+      var files = []
+      files.push(file1)
+      files.push(file2)
 
-    if(files[0]){
-      var params = {Key: files[0].name, ContentType: files[0].type, Body: files[0]};
-      var request = bucket.putObject(params);
-      request.on('httpUploadProgress', function (progress) {
-        console.log(progress.loaded + " of " + progress.total + " bytes");
-        $('#progress1 .bar').css(
-          'width',
-          parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
-        );
-        $('#progress1 .bar').html(
-          parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
-        );
-      });
-      request.send();
+      if(files[0]){
+        var params = {Key: files[0].name, ContentType: files[0].type, Body: files[0]};
+        var request = bucket.putObject(params);
+        request.on('httpUploadProgress', function (progress) {
+          console.log(progress.loaded + " of " + progress.total + " bytes");
+          $('#progress1 .bar').css(
+            'width',
+            parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+          );
+          $('#progress1 .bar').html(
+            parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+          );
+        });
+        request.send();
+      }
+
+      if(files[1]){
+        var params = {Key: files[1].name, ContentType: files[1].type, Body: files[1]};
+        var request = bucket.putObject(params);
+        request.on('httpUploadProgress', function (progress) {
+          console.log(progress.loaded + " of " + progress.total + " bytes");
+          $('#progress2 .bar').css(
+            'width',
+            parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+          );
+          $('#progress2 .bar').html(
+            parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+          );
+        });
+        request.send();
+      }
+    }else{
+      $("#wait").css("display", "block");
     }
-
-
-    if(files[1]){
-      var params = {Key: files[1].name, ContentType: files[1].type, Body: files[1]};
-      var request = bucket.putObject(params);
-      request.on('httpUploadProgress', function (progress) {
-        console.log(progress.loaded + " of " + progress.total + " bytes");
-        $('#progress2 .bar').css(
-          'width',
-          parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
-        );
-        $('#progress2 .bar').html(
-          parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
-        );
-      });
-      request.send();
-    }
-
   });
 </script>

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require aws-sdk-2.6.10.min
 //= require ckeditor/init
 //= require ckeditor/config
 //= require ckeditor/lang/en
