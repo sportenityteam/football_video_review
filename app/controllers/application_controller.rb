@@ -47,7 +47,9 @@ class ApplicationController < ActionController::Base
         if current_user.is_admin?
           redirect_to admin_dashboard_path
         elsif current_user.is_reviewer?
-          redirect_to root_url
+          redirect_to pending_reviews_path
+        else
+          return root_url
         end
       end
     end

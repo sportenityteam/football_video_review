@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get "/contact_us" => "contact_us#new", as: :contact_us_mail
   get "/about" => "contact_us#about", as: :about
   get "/faq" => "contact_us#faq", as: :faq
-
+  get "/welcome_index" => 'welcome#index'
   resources :reviews, :except => [:new,:index]
   get "/pending_reviews" => "reviews#pending_reviews" , as: :pending_reviews
   get "/review_order/:id" => "reviews#new", as: :review_order
@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   get  'edit_change_password' => 'users#edit_change_password', :as => :user_change_password
   post  'change_password' => 'users#change_password', :as => :edit_change_password
   patch  'change_password' => 'users#change_password', :as => :change_password
+  get '*unmatched_route', to: "welcome#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

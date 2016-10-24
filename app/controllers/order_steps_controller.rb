@@ -4,6 +4,7 @@ class OrderStepsController < ApplicationController
   steps :add_payment, :add_order
   before_action :authenticate_user!
   before_action :set_variables
+  before_filter :restrict_user
 
   def show
     case step

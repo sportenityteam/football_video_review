@@ -60,6 +60,10 @@ body{
 	margin-bottom:20px;
 }
 
+.margin_top_50{
+  margin-top:200px;
+}
+
 .padding_tb_20{
 	padding:12px 0;
 }
@@ -81,7 +85,7 @@ body{
 
 header{
 	background-color:#343d46;
-	padding:15px 0;
+	padding:10px 0;
 }
 
 .logo{
@@ -89,9 +93,16 @@ header{
 	padding:0;
 }
 
+.logo a{
+	font-size:30px;
+	color:#3fbc78;
+	font-family:momondo !important;
+	text-decoration: none;
+}
+
 .logo img{
 	margin:0 auto;
-	width:210px;
+	width:220px;
 }
 
 .navigation{
@@ -153,7 +164,7 @@ header{
 	margin-top:0;
 	text-align:left;
 	font-weight:300;
-	font-size:17px;
+	font-size:24px;
 	color:#00366c;
 	margin:0;
 }
@@ -162,8 +173,9 @@ header{
 	width:100%;
 	display:inline-block;
 	text-align:left;
-	border:2px solid #c5c5c5;
-	padding:7px;
+	border:2px solid #535353;
+	padding:6px;
+	border-radius:20px;
 }
 
 .tab_content form ul li span input{
@@ -232,10 +244,10 @@ header{
 .tab_content form ul li button{
 	display:inline-block;
 	width:100%;
-	padding:10px 0;
+	padding:6px 0;
 	margin-top:20px;
 	color:#fff;
-	font-size:18px;
+	font-size:24px;
 	font-weight:300;
 	background: rgb(69,79,88); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(69,79,88,1) 0%, rgba(69,79,88,1) 50%, rgba(52,61,70,1) 50%, rgba(101,115,126,1) 100%); /* FF3.6-15 */
@@ -243,7 +255,7 @@ header{
 	background: linear-gradient(to bottom, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	border:0;
 	outline:0;
-	border-radius: 5px;
+	border-radius:20px;
 }
 
 .tab_content form ul li button:hover{
@@ -366,7 +378,7 @@ footer ul li a:hover{
 }
 
 .navbar-nav > li > a{
-	/*margin-top:5px;*/
+	margin-top:7px;
 	padding:0;
 	display:inline-block;
 	color:#fff;
@@ -417,6 +429,19 @@ footer ul li a:hover{
 .icon-grey i{
  color:#c5c5c5;
 }
+
+.signup_txt h3 {
+	color:#333;
+	font-size:19px;
+	font-weight:300;
+	margin-top:0;
+}
+.signup_txt p {
+	color:#333;
+	font-size:16px;
+	font-weight:300;
+}
+
 /**User profile closed**/
 
 /**Forgot Password**/
@@ -699,7 +724,7 @@ footer ul li a:hover{
 	float:left;
 	border-right: 2px solid #fff;
 	border-left: 2px solid #fff;
-	border-radius: 5px;
+	border-radius: 20px;
 }
 .reject_notes_btn button a{
 	color: #fff;
@@ -725,7 +750,7 @@ footer ul li a:hover{
 	float:right;
 	border-right: 2px solid #fff;
 	border-left: 2px solid #fff;
-	border-radius: 5px;
+	border-radius: 20px;
 }
 .approved_notes_btn button a{
 	color: #fff;
@@ -815,7 +840,7 @@ footer ul li a:hover{
 	width:100%;
 	height:100%;
 	float:right;
-	border-radius: 5px;
+	border-radius: 20px;
 }
 .saved_notes_btn button a {
 	color: #fff;
@@ -1138,6 +1163,7 @@ Admin Side closed
 	background: linear-gradient(to bottom, rgba(69,79,88,1) 0%,rgba(69,79,88,1) 50%,rgba(52,61,70,1) 50%,rgba(101,115,126,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	border:0;
 	outline:0;
+	border-radius: 20px;
 }
 
 .modal-body form ul li button:hover{
@@ -1286,7 +1312,7 @@ Admin Side closed
 	float:left;
 	border-right: 2px solid #fff;
 	border-left: 2px solid #fff;
-	border-radius: 5px;
+	border-radius: 20px;
 }
 .back_list_btn button a {
 	color: #fff;
@@ -1332,7 +1358,7 @@ Admin Side closed
 	float:right;
 	border-right: 2px solid #fff;
 	border-left: 2px solid #fff;
-	border-radius: 5px;
+	border-radius: 20px;
 }
 .submit_notes_btn button a{
 	color: #1c1c1c;
@@ -1362,11 +1388,11 @@ Admin Side closed
 .cancel_payment_btn{
 	display:inline-block;
 	width:100%;
-	padding:10px 0;
+	padding:6px 0;
 	margin-top:20px!important;
 	margin-bottom:20px!important;
 	color:#fff!important;
-	font-size:20px;
+	font-size:24px;
 	font-weight:300;
 	background: rgb(69,79,88); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(69,79,88,1) 0%, rgba(69,79,88,1) 50%, rgba(52,61,70,1) 50%, rgba(101,115,126,1) 100%); /* FF3.6-15 */
@@ -1376,7 +1402,7 @@ Admin Side closed
 	outline:0;
 	text-decoration: none!important;
 	text-align: center!important;
-	border-radius: 5px;
+	border-radius: 20px;
 }
 
 .cancel_payment_btn:hover{
@@ -1586,8 +1612,19 @@ nav #menu-toggle:checked ~ ul{
 .no-bg{
 	background: none !important;
 }
+
 .imgl-center{
 	margin:23% auto;
 	display:block;
 	width: 7%;
+}
+
+.border_tlr_20 {
+	border-radius:20px 20px 0 0;
+ 	overflow:hidden;
+}
+
+.border_blr_20 {
+ 	border-radius:20px;
+ 	overflow:hidden;
 }

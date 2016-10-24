@@ -1,11 +1,10 @@
 <div id="TabbedPanels1" class="TabbedPanels">
   <ul class="TabbedPanelsTabGroup">
-    <a href="<%= new_user_session_path %>"><li class="TabbedPanelsTab" tabindex="0">Sign in</li></a>
-    <li class="TabbedPanelsTab TabbedPanelsTabSelected" tabindex="1">Sign up</li>
+    <li class="TabbedPanelsTab TabbedPanelsTabSelected full-width" tabindex="0">GET STARTED WITH SPORTENITY</li>
   </ul>
 
   <div class="TabbedPanelsContentGroup">
-    <div class="TabbedPanelsContent" style="display: none;">
+    <div class="TabbedPanelsContent">
     </div>
     <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
       <div class="tab_content col-xs-12">
@@ -23,7 +22,7 @@
           <ul class="col-xs-12">
             <div class="col-xs-12 col-sm-6">
               <li>
-                <h2 class="pull-left">First Name</h2>
+                <h2 class="pull-left">First Name*</h2>
                 <span class="box">
                   <%= image_tag "icons/name.png"%>
                   <%= f.text_field :first_name, :tabindex => "1" %>
@@ -31,40 +30,24 @@
               </li>
 
               <li>
-                <h2 class="pull-left">E-Mail</h2>
-                <span class="box">
-                  <%= image_tag "icons/mail.png" %>
-                  <%= f.email_field :email, :tabindex => "3" %>
-                </span>
-              </li>
-
-              <li>
-                <h2 class="pull-left">Password</h2>
-                <span class="box">
-                  <%= image_tag "icons/password.png" %>
-                  <%= f.password_field :password, autocomplete: "off", :tabindex => "5" %>
-                </span>
-              </li>
-              <li>
-                <h2 class="pull-left">Date of Birth</h2>
-                <%#= f.date_select :date_of_birth, autocomplete: "off", :id => "1dob", :tabindex => "7" %>
-                <span class="box">
-                  <%= image_tag "icons/dob.png" %>
-                  <div class="dob">
-                    <%= f.date_select :date_of_birth, :start_year => 2001, :end_year => 2020, autocomplete: "off", :tabindex => "7" %>
-                  </div>
-                </span>
-              </li>
-
-            </div>
-            <div class="col-xs-12 col-sm-6">
-              <li>
-                <h2 class="pull-left">Last Name</h2>
+                <h2 class="pull-left">Last Name*</h2>
                 <span class="box">
                   <%= image_tag "icons/name.png"%>
                   <%= f.text_field :last_name, :tabindex => "2" %>
                 </span>
               </li>
+
+              <li>
+                <h2 class="pull-left">Date of Birth*</h2>
+                <%#= f.date_select :date_of_birth, autocomplete: "off", :id => "1dob", :tabindex => "7" %>
+                <span class="box">
+                  <%= image_tag "icons/dob.png" %>
+                  <div class="dob">
+                    <%= f.date_select :date_of_birth, :start_year => 2001, :end_year => 2020, autocomplete: "off", :tabindex => "3" %>
+                  </div>
+                </span>
+              </li>
+
               <li>
                 <h2 class="pull-left">Gender</h2>
                 <span class="box">
@@ -76,52 +59,55 @@
                   </div>
                 </span>
               </li>
+
               <li>
-                <h2 class="pull-left">Confirm Password</h2>
+                <h2 class="pull-left">Soccer Club*</h2>
                 <span class="box">
-                  <%= image_tag "icons/password.png" %>
-                  <%= f.password_field :password_confirmation, :tabindex => "6" %>
+                  <%= image_tag "icons/club.png" %>
+                  <%= f.text_field :soccer_club, :tabindex => "5" %>
                 </span>
               </li>
+
               <li>
-                <h2 class="pull-left">Zip Code</h2>
+                <h2 class="pull-left">Position</h2>
                 <span class="box">
-                  <%= image_tag "icons/zip.png" %>
-                  <%= f.text_field :zipcode, :tabindex => "8" %>
+                  <%= image_tag "icons/position.png" %>
+                  <%= f.text_field :position, :tabindex => "6" %>
                 </span>
               </li>
-            </div>
-            <div class="col-xs-12 nopadding_lr">
-              <div class="col-xs-12 col-sm-6">
-                <li>
-                  <h2 class="pull-left">Soccer Club</h2>
-                  <span class="box">
-                    <%= image_tag "icons/club.png" %>
-                    <%= f.text_field :soccer_club, :tabindex => "9" %>
-                  </span>
-                </li>
-              </div>
-              <div class="col-xs-12 col-sm-6">
-                <li>
-                  <h2 class="pull-left">Position</h2>
-                  <span class="box">
-                    <%= image_tag "icons/position.png" %>
-                    <%= f.text_field :position, :tabindex => "11" %>
-                  </span>
-                </li>
-              </div>
-            </div>
-            <div class="col-xs-12">
+
               <li>
-                <h2 class="pull-left icon-grey">Soccer Goal <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="Example: play on a middle school team, play on a high school team, play professionally, etc."></i></h2>
+                <h2 class="pull-left icon-grey">Soccer Goal* <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="Example: play on a middle school team, play on a high school team, play professionally, etc."></i></h2>
                 <span class="box">
                   <%= image_tag "icons/goal.png" %>
-                  <%= f.text_field :soccer_goal, :tabindex => "10" %>
+                  <%= f.text_field :soccer_goal, :tabindex => "7" %>
                 </span>
               </li>
-            </div>
-            <div class="col-xs-12 col-sm-3"></div>
-            <div class="col-xs-12 col-sm-6">
+
+              <li>
+                <h2 class="pull-left">E-Mail*</h2>
+                <span class="box">
+                  <%= image_tag "icons/mail.png" %>
+                  <%= f.email_field :email, :tabindex => "8" %>
+                </span>
+              </li>
+
+              <li>
+                <h2 class="pull-left">Password*</h2>
+                <span class="box">
+                  <%= image_tag "icons/password.png" %>
+                  <%= f.password_field :password, autocomplete: "off", :tabindex => "9" %>
+                </span>
+              </li>
+
+              <li>
+                <h2 class="pull-left">Confirm Password*</h2>
+                <span class="box">
+                  <%= image_tag "icons/password.png" %>
+                  <%= f.password_field :password_confirmation, :tabindex => "10" %>
+                </span>
+              </li>
+
               <li>
                 <button tabindex="12">Sign up</button>
               </li>
@@ -132,8 +118,36 @@
                   <%= link_to "Sign in here", new_session_path(resource_name) %><br />
                 <% end -%>
               </li>
+
+              <li>
+                <p class="text-left">*required field</p>
+              </li>
+
             </div>
-            <div class="col-xs-12 col-sm-3"></div>
+
+            <div class="col-xs-12 col-sm-1"></div>
+
+            <div class="col-xs-12 col-sm-4 signup_txt">
+              <li>
+                <h3>ACHIEVE YOUR GOAL</h3>
+                <p class="text-justify">Before they begin the review, our coaches will analyze your profile, including your age, your field  position and, most importantly, your soccer goal. These insights will give coaches enough information in order to provide you with the most relevant  feedback that will help you achieve your goal.</p>
+              </li>
+
+              <li>
+                <h3>PERSONALIZED FEEDBACK</h3>
+                <p class="text-justify">The focus of the feedback will be on your technical (receiving, passing, dribbling, and shooting) and tactical (understanding of the game, movement on and off the ball, decision-making) strengths and weaknesses.</p>
+              </li>
+
+              <li>
+                <h3>ELITE COACHES</h3>
+                <p class="text-justify">We only hire the best coaches from the best clubs in the world so rest assured that the feedback you receive is just as good as the feedback that players you watch on TV receive from their coaches.</p>
+              </li>
+
+              <li>
+                <p class="text-center margin_top_50">If you have any questions <br /> please email us: <br />support@sportenity.com</p>
+              </li>
+            </div>
+
           </ul>
           <%= f.hidden_field :user_type, :value => "#{User::USER_TYPES["user"]}" %>
         <% end %>
