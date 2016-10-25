@@ -54,10 +54,10 @@ class Admin::OrderController < Admin::BaseController
       page = params[:per_page]
     end
     @orders = Order.joins(:user).where("payment_status =?", "paid")
-    @orders = @orders.page(params[:page]).per(page)
+    @orders = @orders.page(params[:page]).per(page).order("orders.created_at ASC")
     if params[:search].present?
       # @orders = @orders.search_items(params[:search])
-      @orders = @orders.where('lower(users.first_name) like ? or lower(users.last_name) like ?', "%"+params[:search]+"%", "%"+params[:search]+"%")
+      @orders = @orders.where('lower(users.first_name) like ? or lower(users.last_name) like ?', "%"+params[:search]+"%", "%"+params[:search]+"%").order("orders.created_at ASC")
     end
   end
 
