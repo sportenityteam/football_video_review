@@ -104,69 +104,43 @@
 										<tbody>
 											<tr>
 												<td class="nopadding_lr">
-													<% if @order.videos.count == 2 %>
-														<table class="table">
-															<thead>
-																<tr>
-																	<th class="no-border"> First Half </th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<td style="width:17%;">
-																		<%if @order.videos.first.video_url.present? %>
-																			<%= image_tag @order.videos.first.video_url.url(:thumb1)%>
-																		<% else %>
-																			<%= image_tag "thumb_video.jpg" %>
-																		<% end %>
-																	</td>
-																	<td style="width:81%;">
-																		<h3><%= @order.try(:title) %></h3>
-																		<p><%= @order.try(:description) %></p>
-																	</td>
-																</tr>
-															</tbody>
-														</table>
-														<table class="table">
-															<thead>
-																<tr>
-																	<th class="no-border"> Second Half </th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<td style="width:17%;">
-																		<%if @order.videos.last.video_url.present? %>
-																			<%= image_tag @order.videos.last.video_url.url(:thumb1)%>
-																		<% else %>
-																			<%= image_tag "thumb_video.jpg" %>
-																		<% end %>
-																	</td>
-																	<td style="width:81%;">
-																		<h3><%= @order.try(:title) %></h3>
-																		<p><%= @order.try(:description) %></p>
-																	</td>
-																</tr>
-															</tbody>
-														</table>
+													<% if @order.videos.present? %>
+														<% if @order.videos.count == 2 %>
+															<table class="table">
+																<!-- <thead>
+																	<tr>
+																		<th class="no-border"> First Half </th>
+																	</tr>
+																</thead> -->
+																<tbody>
+																	<tr>
+																		<td style="width:17%;">
+																			<a href="#" data-toggle="modal" data-target="#myModal1" ><%= image_tag @order.videos.first.video_url(:thumb1), :size => "120x90", :class => "pad-btm" %></a>
+	              											<a href="#" data-toggle="modal" data-target="#myModal2" ><%= image_tag @order.videos.last.video_url(:thumb1), :size => "120x90" %></a>
+																		</td>
+																		<td style="width:81%;">
+																			<h3><%= @order.try(:title) %></h3>
+																			<p><%= @order.try(:description) %></p>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														<% else %>
+															<table class="table">
+																<tbody>
+																	<tr>
+																		<td style="width:17%;">
+																			<a href="#" data-toggle="modal" data-target="#myModal1" ><%= image_tag @order.videos.first.video_url(:thumb1), :size => "120x90", :class => "pad-btm" %></a>
+																		</td>
+																		<td style="width:81%;">
+																			<h3><%= @order.try(:title) %></h3>
+																			<p><%= @order.try(:description) %></p>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														<% end %>
 													<% else %>
-														<table class="table">
-															<tbody>
-																<tr>
-																	<td style="width:17%;">
-																		<%if @order.videos.first.present? %>
-																			<%= image_tag @order.videos.first.video_url.url(:thumb1)%>
-																		<% else %>
-																			<%= image_tag "thumb_video.jpg" %>
-																		<% end %>
-																	</td>
-																	<td style="width:81%;">
-																		<h3><%= @order.try(:title) %></h3>
-																		<p><%= @order.try(:description) %></p>
-																	</td>
-																</tr>
-															</tbody>
-														</table>
 													<% end %>
 												</td>
 											</tr>
@@ -244,5 +218,49 @@
 				<div class="col-xs-12 col-sm-4"></div>
 			</div>
     </div>
+  </div>
+</div>
+
+<!-- Modal for first video -->
+<div class="modal fade" id="myModal1" role="dialog">
+  <div class="modal-dialog border_blr_20" style="background-color:#fff;">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header no-border">
+          <ul class="TabbedPanelsTabGroup">
+            <li class="TabbedPanelsTab TabbedPanelsTabSelected full-width" tabindex="0">Play video
+            <%= image_tag "icons/close.png" ,:class=>"pull-right close" ,"data-dismiss": "modal"%></li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <div id="vid" class="tab-pane fade active in">
+        <%= video_tag @order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video_01", :class => "wdth100" %>
+      </div>
+    </div>
+    <div class="modal-footer no-border"></div>
+  </div>
+</div>
+
+<!-- Modal for second video -->
+<div class="modal fade" id="myModal2" role="dialog">
+  <div class="modal-dialog border_blr_20" style="background-color:#fff;">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header no-border">
+          <ul class="TabbedPanelsTabGroup">
+            <li class="TabbedPanelsTab TabbedPanelsTabSelected full-width" tabindex="0">Play video
+            <%= image_tag "icons/close.png" ,:class=>"pull-right close" ,"data-dismiss": "modal"%></li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <div id="vid" class="tab-pane fade active in">
+        <%= video_tag @order.videos.last.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video_01", :class => "wdth100" %>
+      </div>
+    </div>
+    <div class="modal-footer no-border"></div>
   </div>
 </div>
