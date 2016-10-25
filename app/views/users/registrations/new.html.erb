@@ -108,21 +108,6 @@
                 </span>
               </li>
 
-              <li>
-                <button tabindex="12">Sign up</button>
-              </li>
-
-              <li class="text-left nomargin">
-                <h2>Already a member?</h2> &nbsp;
-                <%- if controller_name != 'sessions' %>
-                  <%= link_to "Sign in here", new_session_path(resource_name) %><br />
-                <% end -%>
-              </li>
-
-              <li>
-                <p class="text-left">*required field</p>
-              </li>
-
             </div>
 
             <div class="col-xs-12 col-sm-1"></div>
@@ -143,10 +128,34 @@
                 <p class="text-justify">We only hire the best coaches from the best clubs in the world so rest assured that the feedback you receive is just as good as the feedback that players you watch on TV receive from their coaches.</p>
               </li>
 
-              <li>
-                <p class="text-center margin_top_50">If you have any questions <br /> please email us: <br />support@sportenity.com</p>
-              </li>
             </div>
+
+            <div class="col-xs-12 col-sm-12 nopadding_lr">
+
+  <div class="col-xs-12 col-sm-6">
+    <li>
+      <button>Sign up</button>
+    </li>
+
+    <li class="text-left nomargin">
+      <h2>Already a member?</h2> &nbsp;
+                <%- if controller_name != 'sessions' %>
+                  <%= link_to "Sign in here", new_session_path(resource_name) %><br />
+                <% end -%>
+    </li>
+
+    <li>
+      <p class="text-left">*required field</p>
+    </li>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 signup_txt">
+    <li>
+     <p class="text-center margin_top_50">If you have any questions <br /> please email us: <br />support@sportenity.com</p>
+    </li>
+  </div>
+
+</div>
 
           </ul>
           <%= f.hidden_field :user_type, :value => "#{User::USER_TYPES["user"]}" %>

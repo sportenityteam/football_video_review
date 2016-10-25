@@ -1,10 +1,10 @@
 <div class="container-fluid nopadding_lr margin_btm_30">
-  <header class="col-xs-12 nopadding_lr">
-    <div class="col-xs-12 col-sm-4">
+  <header class="col-xs-12">
+    <div class="container-fluid">
       <div class="logo pull-left">
         <a href="<%= new_user_registration_path %>">Sportenity</a>
       </div>
-    </div>
+
     <!-- <div class="container"> -->
       <!-- <div class="logo col-xs-12 col-sm-4">
         <a href="<%#= root_path %>">
@@ -14,16 +14,31 @@
 
       <div class="navigation pull-right">
         <ul>
-          <div class="col-xs-12 col-sm-4">
-            <div class="logo">
+            <li class="logo">
               <a href="<%= new_user_session_path %>">Login</a>
-            </div>
-          </div>
+            </li>
+
           <% if user_signed_in? %>
             <li><%= link_to "Log out", destroy_user_session_path , method: "delete" %></li>
           <% end %>
         </ul>
       </div>
-    <!-- </div> -->
+    </div>
   </header>
 </div>
+
+<!--
+<header class="col-xs-12">
+     <div class="container-fluid">
+            <div class="logo pull-left">
+                <a href="#">Sportenity</a>
+            </div>
+
+            <div class="navigation pull-right">
+                <ul>
+                    <li><a href="#">Sign in</a></li> |
+                    <li><a href="#">Sign up</a></li>
+                </ul>
+            </div>
+        </div>
+    </header> -->
