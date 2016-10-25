@@ -154,21 +154,18 @@
     };
   }
 
-  $("#upload").click(function(){
-    $(this).html("Uploading Please Wait....")
-    //$(this).attr('disabled',true);
-  });
-
 </script>
 
 <script type="text/javascript">
   $("#upload").click(function() {
+    $(this).html("Uploading Please Wait....")
     //var browser_name = Object.keys(jQuery.browser)[2]
     var browser_arr = jQuery.browser
     var browser_name = browser_arr
     console.log(browser_name);
     console.log(browser_name.safari);
     if(browser_name.safari){
+      console.log("in if part");
       $("#wait").css("display", "block");
     }else{
       //development
