@@ -12,10 +12,13 @@
         </a>
       </div> -->
 
-      <div class="navigation pull-right hidden">
+      <div class="navigation pull-right">
         <ul>
-          <li><a href="#">Sign in</a></li> |
-          <li><a href="#">Sign up</a></li>
+          <div class="col-xs-12 col-sm-4">
+            <div class="logo">
+              <a href="<%= new_user_session_path %>">Login</a>
+            </div>
+          </div>
           <% if user_signed_in? %>
             <li><%= link_to "Log out", destroy_user_session_path , method: "delete" %></li>
           <% end %>

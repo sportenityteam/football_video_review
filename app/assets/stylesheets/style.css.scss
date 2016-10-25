@@ -1,6 +1,13 @@
 /**General css**/
-body{
+/*body{
  font-family: 'Roboto Slab', serif;
+ background-color:#eeeeee;
+ padding-bottom:80px;
+}*/
+
+body{
+ font-family:"Sharp Sans No1 Book";
+ src:url(asset-path("Sharp.ttf")) format('truetype');
  background-color:#eeeeee;
  padding-bottom:80px;
 }
@@ -164,7 +171,7 @@ header{
 	margin-top:0;
 	text-align:left;
 	font-weight:300;
-	font-size:24px;
+	font-size:22px;
 	color:#00366c;
 	margin:0;
 }
@@ -1628,3 +1635,4 @@ nav #menu-toggle:checked ~ ul{
  	border-radius:20px;
  	overflow:hidden;
 }
+
