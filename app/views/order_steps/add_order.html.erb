@@ -163,9 +163,14 @@
 
 <script type="text/javascript">
   $("#upload").click(function() {
-    var browser_name = Object.keys(jQuery.browser)[2]
+    //var browser_name = Object.keys(jQuery.browser)[2]
+    var browser_arr = jQuery.browser
+    var browser_name = browser_arr
     console.log(browser_name);
-    if(browser_name != "safari"){
+    console.log(browser_name.safari);
+    if(browser_name.safari){
+      $("#wait").css("display", "block");
+    }else{
       //development
       //var bucket = new AWS.S3({params: {Bucket: 'football-video-review-dev'}});
 
@@ -213,8 +218,57 @@
         });
         request.send();
       }
-    }else{
-      $("#wait").css("display", "block");
     }
+    // if(browser_name != "safari"){
+    //   //development
+    //   //var bucket = new AWS.S3({params: {Bucket: 'football-video-review-dev'}});
+
+    //   //production
+    //   var bucket = new AWS.S3({params: {Bucket: 'football-video-review-production'}});
+
+    //   var fileChooser1 = document.getElementById('uploadBtn1');
+    //   var file1 = fileChooser1.files[0];
+
+    //   var fileChooser2 = document.getElementById('uploadBtn2');
+    //   var file2 = fileChooser2.files[0];
+
+    //   var files = []
+    //   files.push(file1)
+    //   files.push(file2)
+
+    //   if(files[0]){
+    //     var params = {Key: files[0].name, ContentType: files[0].type, Body: files[0]};
+    //     var request = bucket.putObject(params);
+    //     request.on('httpUploadProgress', function (progress) {
+    //       console.log(progress.loaded + " of " + progress.total + " bytes");
+    //       $('#progress1 .bar').css(
+    //         'width',
+    //         parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+    //       );
+    //       $('#progress1 .bar').html(
+    //         parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+    //       );
+    //     });
+    //     request.send();
+    //   }
+
+    //   if(files[1]){
+    //     var params = {Key: files[1].name, ContentType: files[1].type, Body: files[1]};
+    //     var request = bucket.putObject(params);
+    //     request.on('httpUploadProgress', function (progress) {
+    //       console.log(progress.loaded + " of " + progress.total + " bytes");
+    //       $('#progress2 .bar').css(
+    //         'width',
+    //         parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+    //       );
+    //       $('#progress2 .bar').html(
+    //         parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+    //       );
+    //     });
+    //     request.send();
+    //   }
+    // }else{
+    //   $("#wait").css("display", "block");
+    // }
   });
 </script>
