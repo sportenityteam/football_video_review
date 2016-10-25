@@ -16,6 +16,7 @@
  *= require jasny-bootstrap
  *= require jasny-bootstrap.min
  *= require style
+ *= require header
  *= require responsive
  *= require menu
  *= require font-awesome
