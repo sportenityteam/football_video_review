@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { sessions: 'users/sessions', :registrations => "users/registrations",:passwords => "users/passwords", :confirmations => "users/confirmations" }
 
-  root 'welcome#index'
+  #root 'welcome#index'
+  root 'landing_page#index'
   resources :orders
   resources :order_steps
 

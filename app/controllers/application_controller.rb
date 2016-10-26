@@ -19,7 +19,18 @@ class ApplicationController < ActionController::Base
           "reviewer"
         end
       else
-        "devise"
+        logger.warn("=-=-=-=-=-=-=-=-=-=-=--=")
+        logger.warn(request.original_fullpath.inspect)
+        path = request.original_fullpath
+        if path.present?
+          if path == '/users/sign_in' || path == '/users/sign_up'
+            "devise"
+          else
+            "landing_page"
+          end
+        else
+          "landing_page"
+        end
       end
     end
 
@@ -31,7 +42,7 @@ class ApplicationController < ActionController::Base
         return pending_reviews_path
       else
         #return my_orders_path
-        return root_url
+        return welcome_index_path
       end
     end
 
