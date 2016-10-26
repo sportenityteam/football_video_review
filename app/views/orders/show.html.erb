@@ -57,12 +57,12 @@
             <div class="tab-content">
               <div id="home" class="tab-pane fade active in">
                 <div class="quillheight">
-                  <%= text_area_tag 'technical_notes', @reviewer.present? ? Nokogiri::HTML(@reviewer.technical_notes).text : "", disabled: true, rows: 14, cols: 124 %>
+                  <%= text_area_tag 'technical_notes', @reviewer.present? ? Nokogiri::HTML(@reviewer.technical_notes).text : "", disabled: true, rows: 14, cols: 124, :class => "resize_off" %>
                 </div>
               </div>
               <div id="menu1" class="tab-pane fade">
                 <div class="quillheight">
-                  <%= text_area_tag "tactical_notes", @reviewer.present? ? Nokogiri::HTML(@reviewer.tactical_notes).text : "", disabled: true, rows: 14, cols: 124 %>
+                  <%= text_area_tag "tactical_notes", @reviewer.present? ? Nokogiri::HTML(@reviewer.tactical_notes).text : "", disabled: true, rows: 14, cols: 124, :class => "resize_off" %>
                 </div>
               </div>
             </div>
