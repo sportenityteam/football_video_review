@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :set_dob ,only: [:create,:update]
   # GET /resource/sign_up
   def new
-    @user = User.new(:date_of_birth => "2004-08-01".to_date)
+    @user = User.new
     super
   end
 

@@ -30,9 +30,12 @@ class User < ActiveRecord::Base
   #validations
   validates_attachment_content_type :avatar, content_type: ['image/png', 'image/jpg','image/gif','image/jpeg']
   validates :first_name, :presence => true
+  validates :last_name, :presence => true
   validates :date_of_birth, :presence => true
   validates_numericality_of :zipcode, :greater_than_or_equal_to => 0 , message: " must have only digits from 0 to 9"
   validates_length_of :zipcode , :minimum => 5 , :message => "must be 5 characters long"
+  validates :soccer_club, :presence => true, :if => Proc.new { self.user_type == 3 }
+  validates :soccer_goal, :presence => true, :if => Proc.new { self.user_type == 3 }
 
   #scope
   scope :is_admin, -> {where("user_type =? ", 1)}
