@@ -5,41 +5,82 @@
 
   <div class="TabbedPanelsContentGroup">
     <div class="TabbedPanelsContent">
-      <div class="col-xs-12 reviewer_details nopadding_lr">
-        <div class="col-xs-2 text-left">
+
+      <div class="tab_content col-xs-12">
+        <div>
           <% if @order.videos.present? %>
-            <% if @order.videos.count == 2 %>
-              <a href="#" data-toggle="modal" data-target="#myModal1" ><%= image_tag @order.videos.first.video_url(:thumb1), :size => "120x90", :class => "pad-btm" %></a>
-              <a href="#" data-toggle="modal" data-target="#myModal2" ><%= image_tag @order.videos.last.video_url(:thumb1), :size => "120x90" %></a>
-            <% elsif @order.videos.count == 1 %>
-              <a href="#" data-toggle="modal" data-target="#myModal1" ><%= image_tag @order.videos.first.video_url(:thumb1), :size => "120x90", :class => "pad-btm" %></a>
+            <%if @order.videos.count == 2 %>
+              <div>
+                <div class="video_notes">
+                  <ul class="nav nav-pills">
+                    <li class="col-xs-6 nopadding_lr active">
+                      <a data-toggle="pill" href="#vid" class="tech_note_txt1 padding_top_0">First Half</a>
+                    </li>
+                    <li class="col-xs-6 nopadding_lr ">
+                      <a data-toggle="pill" href="#vid1" class="tacti_note_txt2 padding_top_0">Second Half</a>
+                    </li>
+                  </ul>
+                  <% if @order.videos.present? %>
+                    <div class="tab-content">
+                      <div id="vid" class="tab-pane fade active in">
+                        <!-- <iframe class="videowidth" width="100%" height="315" src="<%#= @order.videos.first.video_url.url(:medium)%>%>" frameborder="0" allowfullscreen=""></iframe> -->
+                        <%= video_tag @order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video_01", :class => "wdth100" %>
+                      </div>
+                      <div id="vid1" class="tab-pane fade">
+                        <!-- <iframe class="videowidth" width="100%" height="315" src="<%#= @order.videos.last.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe> -->
+                        <%= video_tag @order.videos.last.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video_02", :class => "wdth100" %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% else%>
+              <% if @order.videos.present? %>
+                <!-- <iframe width="100%" height="315" src="<%#= @order.videos.first.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe> -->
+                <%= video_tag @order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video_01", :class => "wdth100" %>
+              <% end %>
             <% end %>
-          <% else %>
-            <a href="#" data-toggle="modal" data-target="#myModal" ><%= image_tag "thumb_video.jpg" %></a>
           <% end %>
         </div>
-        <div class="col-xs-10 text-left">
-          <h3><%= @order.try(:title) %></h3>
-          <p><%= @order.try(:description) %></p>
-        </div>
+        <% if @reviewer.present? %>
+          <div class="video_notes">
+            <ul class="nav nav-pills">
+              <li class="col-xs-6 nopadding_lr padding_top_0 active" style="margin-bottom: 0px !important;">
+                 <a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a>
+                <!-- <a data-toggle="pill" href="#home" class="tech_note_txt">Technical Notes</a> -->
+              </li>
+              <li class="col-xs-6 nopadding_lr padding_top_0" style="margin-bottom: 0px !important;">
+                <a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a>
+                <!-- <a data-toggle="pill" href="#menu1" class="tacti_note_txt">Tactical Notes</a> -->
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div id="home" class="tab-pane fade active in">
+                <div class="quillheight">
+                  <%= text_area_tag 'technical_notes', @reviewer.present? ? @reviewer.technical_notes.to_s : "", disabled: true, rows: 14, cols: 124 %>
+                </div>
+              </div>
+              <div id="menu1" class="tab-pane fade">
+                <div class="quillheight">
+                  <%= text_area_tag "tactical_notes", @reviewer.present? ? @reviewer.tactical_notes.to_s : "", disabled: true, rows: 14, cols: 124 %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <% if @reviewer.present? %>
-        <div class="col-xs-12 text-left reviewer_details">
-          <h3>Technical Notes</h3>
-          <p><%= raw @reviewer.technical_notes %></p>
-        </div>
-        <div class="col-xs-12 text-left reviewer_details">
-          <h3>Tactical Notes</h3>
-          <p><%= raw @reviewer.tactical_notes %></p>
-        </div>
-      <% end %>
+
       <div class="col-xs-12 text-left order_details">
         <h2>Order Details</h2>
         <ul>
           <% if @order.payment.present? %>
-            <li class="text-left">Order #<%= @order.try(:payment).try(:transcation_id) %></li>
+            <!-- <li class="text-left">Order #<%#= @order.try(:payment).try(:transcation_id) %></li> -->
+            <li class="text-left">Order #<%= @order.id %></li>
+          <% end %>
+          <div class="clearfix"></div>
+          <% if @order.payment.present? %>
             <% if @order.payment.date_of_payment.present? %>
-              <li class="pull-right"><%= @order.payment.date_of_payment.strftime("%B %d, %Y") %></li>
+              <li class="text-left"><%= @order.payment.date_of_payment.strftime("%B %d, %Y") %></li>
             <% end %>
           <% end %>
         </ul>
