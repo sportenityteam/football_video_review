@@ -45,9 +45,11 @@
 
               <li>
                 <h2 class="pull-left">Card Number</h2>
-                <span class="box">
-                  <%= text_field_tag :card_number %>
+                <span class="box" style="posotion:relative;">
+                  <%= text_field_tag :card_number, "",:onChange => "SetTypeText(this.value)" %>
                   <%= image_tag "icons/mail.png", :style => "opacity:0;" %>
+                  <div id="master" class="card"><%= image_tag "mastercard.png", :class=>"img-responsive" %></div>
+                  <div id="visa" class="card"><%= image_tag "visa.png", :class=>"img-responsive" %></div>
                 </span>
               </li>
 
@@ -103,3 +105,52 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    $("#master").hide();
+    $("#visa").hide();
+  });
+
+  function SetTypeText(number)
+  {
+    //var typeField = document.getElementById("cardType");
+    var card_type = GetCardType(number);
+    //typeField.innerHTML = GetCardType(number);
+    if(card_type == "Visa"){
+      $("#master").hide();
+      $("#visa").show();
+    }else if(card_type == "MasterCard"){
+      $("#master").show();
+      $("#visa").hide();
+    }else if(card_type == "American Express"){
+
+    }else if(card_type == "Discover"){
+
+    }else{
+
+    }
+  }
+
+  function GetCardType(number)
+  {
+    var re = new RegExp("^4");
+    if (number.match(re) != null)
+      return "Visa";
+
+    re = new RegExp("^(34|37)");
+    if (number.match(re) != null)
+      return "American Express";
+
+    re = new RegExp("^5[1-5]");
+    if (number.match(re) != null)
+      return "MasterCard";
+
+    re = new RegExp("^6011");
+    if (number.match(re) != null)
+      return "Discover";
+
+    return "";
+    }
+</script>
