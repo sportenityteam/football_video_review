@@ -22,6 +22,12 @@ body{
   background-attachment:fixed;
 }
 
+.home_main_bg {
+  /*background:url(asset-path("main_bg.jpg")) bottom center;*/
+  background-size:cover;
+  background-attachment:fixed;
+}
+
 .full-width{
 	width:100% !important;
 }

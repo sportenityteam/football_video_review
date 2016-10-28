@@ -13,19 +13,38 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body class="main_bg nopadding">
-  <%= render 'layouts/landing_page/header' %>
+  <% path = request.original_fullpath %>
+  <% if path == "/" %>
+    <body class="nopadding">
+      <%= render 'layouts/landing_page/header' %>
 
-  <div class="container">
-    <% if notice.present? %>
-      <div class="alert alert-success fade in"><%= notice %></div>
-    <% end %>
-    <% if alert.present? %>
-      <div class="alert alert-danger fade in"><%= alert %></div>
-    <% end %>
-  </div>
-  <%= yield %>
+      <div class="container">
+        <% if notice.present? %>
+          <div class="alert alert-success fade in"><%= notice %></div>
+        <% end %>
+        <% if alert.present? %>
+          <div class="alert alert-danger fade in"><%= alert %></div>
+        <% end %>
+      </div>
+      <%= yield %>
 
-  <%= render 'layouts/landing_page/footer' %>
-</body>
+      <%= render 'layouts/landing_page/footer' %>
+    </body>
+  <% else %>
+    <body class="main_bg nopadding">
+      <%= render 'layouts/landing_page/header' %>
+
+      <div class="container">
+        <% if notice.present? %>
+          <div class="alert alert-success fade in"><%= notice %></div>
+        <% end %>
+        <% if alert.present? %>
+          <div class="alert alert-danger fade in"><%= alert %></div>
+        <% end %>
+      </div>
+      <%= yield %>
+
+      <%= render 'layouts/landing_page/footer' %>
+    </body>
+  <% end %>
 </html>
