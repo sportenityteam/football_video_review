@@ -67,6 +67,15 @@ body{
 	margin-bottom:30px;
 }
 
+.margin_btm_80{
+	margin-bottom:80px;
+}
+
+.margin_top_30{
+	margin-top:30px;
+}
+
+
 .margin_btm_20{
 	margin-bottom:20px;
 }
@@ -1758,11 +1767,11 @@ nav #menu-toggle:checked ~ ul{
 }
 
 .home_footer a:hover{
-	color:#5ac88c;
+	color:#3FBC78;
 }
 
 .home_footer i{
-	color:#5ac88c;
+	color:#3FBC78;
 	border-width: 3px;
 	border-style: solid;
 	text-align:center;
@@ -1770,14 +1779,14 @@ nav #menu-toggle:checked ~ ul{
 	width:45px;
 	height:45px;
 	padding:6px;
-	border:3px solid #5ac88c;
+	border:3px solid #3FBC78;
 	transition:0.2s;
 	border-radius: 10px;
 }
 
 .home_footer i:hover{
 	color:#fff;
-	background-color:#5ac88c;
+	background-color:#3FBC78;
 }
 
 .home_container{
@@ -1801,4 +1810,8 @@ nav #menu-toggle:checked ~ ul{
 	position:relative;
 	top:50%;
 	transform:translateY(-50%);
+}
+
+.static_container{
+	width: 960px !important;
 }

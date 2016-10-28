@@ -1,19 +1,45 @@
-<div id="TabbedPanels1" class="TabbedPanels">
-  <ul class="TabbedPanelsTabGroup">
-    <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">About</li>
-  </ul>
-  <div class="TabbedPanelsContentGroup">
-    <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
-      <div class="tab_content col-xs-12 policy">
-        <!-- description -->
-        <ul>
-          <h2>WE ARE HERE FOR YOU</h2>
-          <li>
-            <p>Our diverse team is passionate about giving each player an equal opportunity to achieve his or her goals regardless of where the player lives. Besides connecting our team, which incudes professionals from three different continents, Internet has given us the tools to connect you with the best coaches so you can learn from them.</p>
-          </li>
-        </ul>
-        <!-- description ends-->
+<% if current_user.present? %>
+  <div id="TabbedPanels1" class="TabbedPanels">
+    <ul class="TabbedPanelsTabGroup">
+      <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">About</li>
+    </ul>
+    <div class="TabbedPanelsContentGroup">
+      <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
+        <div class="tab_content col-xs-12 policy">
+          <!-- description -->
+          <ul>
+            <h2>WE ARE HERE FOR YOU</h2>
+            <li>
+              <p>Our diverse team is passionate about giving each player an equal opportunity to achieve his or her goals regardless of where the player lives. Besides connecting our team, which incudes professionals from three different continents, Internet has given us the tools to connect you with the best coaches so you can learn from them.</p>
+            </li>
+          </ul>
+          <!-- description ends-->
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="main_bg">
+    <div class="container margin_top_30 margin_btm_80">
+      <div id="TabbedPanels1" class="TabbedPanels">
+        <ul class="TabbedPanelsTabGroup">
+          <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">About</li>
+        </ul>
+        <div class="TabbedPanelsContentGroup">
+          <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
+            <div class="tab_content col-xs-12 policy">
+              <!-- description -->
+              <ul>
+                <h2>WE ARE HERE FOR YOU</h2>
+                <li>
+                  <p>Our diverse team is passionate about giving each player an equal opportunity to achieve his or her goals regardless of where the player lives. Besides connecting our team, which incudes professionals from three different continents, Internet has given us the tools to connect you with the best coaches so you can learn from them.</p>
+                </li>
+              </ul>
+              <!-- description ends-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
