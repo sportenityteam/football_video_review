@@ -1577,6 +1577,16 @@ nav #menu-toggle:checked ~ ul{
 
 .policy ul{
 	margin-top:30px;
+	list-style-type:decimal;
+	color: #37bf75;
+}
+
+.list_style_none{
+	list-style-type:none !important;
+}
+
+.list_style_none li{
+	margin-left: -20px !important;
 }
 
 .policy ul li{
