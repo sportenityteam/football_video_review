@@ -19,21 +19,21 @@
       <%= render 'layouts/landing_page/header' %>
 
 
-      <!-- <div class="container"> -->
+      <div class="container">
         <%# if notice.present? %>
           <!-- <div class="alert alert-success fade in"><%#= notice %></div> -->
         <%# end %>
         <%# if alert.present? %>
           <!-- <div class="alert alert-danger fade in"><%#= alert %></div> -->
         <%# end %>
-      <!-- </div> -->
+      </div>
 
       <%= yield %>
 
       <%= render 'layouts/landing_page/footer' %>
     </body>
   <% else %>
-    <body class="main_bg nopadding">
+    <body class="main_bg">
       <%= render 'layouts/landing_page/header' %>
 
       <div class="container">
