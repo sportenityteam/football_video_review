@@ -14,6 +14,7 @@ body{
  font-family:"Sharp Sans No1 Book";
  background-color:#eeeeee;
  padding-bottom:80px;
+ padding-top:63px;
 }
 
 .main_bg {
@@ -112,6 +113,9 @@ body{
 header{
 	background-color:#343d46;
 	padding:10px 0;
+	position:fixed !important;
+	top:0px;
+	z-index:999;
 }
 
 .logo{
