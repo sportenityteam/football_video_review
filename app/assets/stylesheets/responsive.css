@@ -282,6 +282,15 @@
 
 }
 
+@media only screen and (min-width:768px) and (max-width:1023px){
+	.logo a {
+		float: left;
+	}
+	.logo ul {
+		float: right;
+	}
+}
+
 @media only screen and (min-width:768px) and (max-width:940px){
 	.reviewer_details li {
 		font-size:19px;
