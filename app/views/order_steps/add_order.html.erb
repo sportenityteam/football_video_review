@@ -6,8 +6,9 @@
 
     <div class="TabbedPanelsContentGroup">
       <div class="TabbedPanelsContent">
-        <div id="wait">
+        <div id="wait" class="txt-grn">
           <%= image_tag 'loader-new.gif', :class => "imgl-center" %>
+          Please wait your video is uploading.
         </div>
         <div class="tab_content col-xs-12">
           <%= nested_form_for @order, url: wizard_path, method: :put, :class => "col-xs-12" do |f| %>

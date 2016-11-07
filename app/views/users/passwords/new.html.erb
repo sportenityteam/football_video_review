@@ -1,47 +1,50 @@
-<div id="TabbedPanels1" class="TabbedPanels">
-  <ul class="TabbedPanelsTabGroup">
-    <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">Forgot your password?</li>
-   </ul>
+<div class="main_bg">
+  <div class="container margin_top_30 margin_btm_80">
+    <div id="TabbedPanels1" class="TabbedPanels">
+      <ul class="TabbedPanelsTabGroup">
+        <li class="TabbedPanelsTab full-width TabbedPanelsTabSelected" tabindex="0">Forgot your password?</li>
+       </ul>
 
-  <div class="TabbedPanelsContentGroup">
-    <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
-      <div class="tab_content col-xs-12">
-        <ul class="col-xs-12">
-          <div class="col-xs-12 col-sm-3 nopadding_lr"></div>
-          <div class="col-xs-12 col-sm-6 nopadding_lr">
-            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-              <%#= devise_error_messages! %>
-              <% if resource.errors.any? %>
-                <div id="error_explanation">
+      <div class="TabbedPanelsContentGroup">
+        <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block;">
+          <div class="tab_content col-xs-12">
+            <ul class="col-xs-12">
+              <div class="col-xs-12 col-sm-3 nopadding_lr"></div>
+              <div class="col-xs-12 col-sm-6 nopadding_lr">
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                  <%#= devise_error_messages! %>
+                  <% if resource.errors.any? %>
+                    <div id="error_explanation">
+                      <ul>
+                        <% resource.errors.full_messages.each do |message| %>
+                          <li class="error_div"><%= message %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
                   <ul>
-                    <% resource.errors.full_messages.each do |message| %>
-                      <li class="error_div"><%= message %></li>
-                    <% end %>
+                    <li>
+                      <h2 class="pull-left">E-Mail</h2>
+                      <span class="box">
+                        <%= image_tag "icons/mail.png" %>
+                        <%= f.email_field :email, autofocus: true %>
+                      </span>
+                    </li>
+                    <li>
+                      <button type="submit">Send me reset password instructions</button>
+                    </li>
                   </ul>
-                </div>
-              <% end %>
-              <ul>
-                <li>
-                  <h2 class="pull-left">E-Mail</h2>
-                  <span class="box">
-                    <%= image_tag "icons/mail.png" %>
-                    <%= f.email_field :email, autofocus: true %>
-                  </span>
-                </li>
-                <li>
-                  <button type="submit">Send me reset password instructions</button>
-                </li>
-              </ul>
-            <% end %>
+                <% end %>
+              </div>
+              <div class="col-xs-12 col-sm-3"></div>
+            </ul>
+            <%= render "users/shared/links" %>
           </div>
-          <div class="col-xs-12 col-sm-3"></div>
-        </ul>
-        <%= render "users/shared/links" %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 <!-- <h2>Forgot your password?</h2>
 
 <%#= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>

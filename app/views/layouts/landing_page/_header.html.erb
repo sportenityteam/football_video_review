@@ -1,9 +1,14 @@
 <div class="container-fluid nopadding_lr">
   <header class="col-xs-12">
     <div class="container-fluid">
-      <div class="logo pull-left">
-        <a href="<%= root_url %>">Sportenity</a>
+      <div class="col-xs-12 col-sm-4 logo">
+        <a href="#">Get Started</a>
       </div>
+
+      <div class="col-xs-12 col-sm-4 logo text-center">
+        <a href="<%= root_url %>"><%= image_tag "logo_new.png" %></a>
+      </div>
+
 
     <!-- <div class="container"> -->
       <!-- <div class="logo col-xs-12 col-sm-4">
@@ -12,8 +17,8 @@
         </a>
       </div> -->
 
-      <div class="navigation pull-right">
-        <ul>
+      <div class="col-xs-12 col-sm-4 logo text-right">
+        <ul class="list_style_none">
             <li class="logo">
               <a href="<%= new_user_session_path %>">Login</a>
             </li>
