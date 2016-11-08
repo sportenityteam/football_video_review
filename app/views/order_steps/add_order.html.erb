@@ -193,10 +193,10 @@
       $("#wait").css("display", "block");
     }else{
       //development
-      var bucket = new AWS.S3({params: {Bucket: 'football-video-review-dev'}});
+      //var bucket = new AWS.S3({params: {Bucket: 'football-video-review-dev'}});
 
       //production
-      //var bucket = new AWS.S3({params: {Bucket: 'football-video-review-production'}});
+      var bucket = new AWS.S3({params: {Bucket: 'football-video-review-production'}});
 
       var fileChooser1 = document.getElementById('uploadBtn1');
       var file1 = fileChooser1.files[0];
