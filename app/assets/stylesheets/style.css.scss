@@ -123,7 +123,7 @@ header{
 }
 
 .logo a{
-	font-size:30px;
+	font-size:35px;
 	color:#3fbc78 !important;
 	font-family:momondo !important;
 	text-decoration: none;
@@ -1507,23 +1507,23 @@ Admin Side closed
 	padding-left:0;
 }
 .order_details li{
-	display:inline;
+	/*display:inline;*/
 	margin-right:15px;
-	font-size:20px;
+	font-size:17px;
 	font-weight:300;
 	color:#535353;
-	line-height:60px;
+	line-height:45px;
 	vertical-align:middle;
 }
 .order_details h2 {
-	font-size:20px;
+	font-size:17px;
 	color:#535353;
 	font-weight:400;
 	margin-top:0;
 	margin-bottom:0;
 }
 .order_details h3 {
-	font-size:20px;
+	font-size:17px;
 	color:#535353;
 	font-weight:300;
 	margin-top:0;
@@ -1701,7 +1701,7 @@ nav #menu-toggle:checked ~ ul{
 }
 
 .banner1{
-	background:url(asset-path("banner1.jpg")) no-repeat;
+	background:url(asset-path("banner2.jpg")) no-repeat;
 	background-position:center center;
 	width:100%;
 	padding:200px 0;
@@ -1761,7 +1761,7 @@ nav #menu-toggle:checked ~ ul{
 
 /*banner 2 section*/
 .banner2{
-	background:url(asset-path("banner2.jpg")) no-repeat;
+	background:url(asset-path("banner1.jpg")) no-repeat;
 	background-position:center center;
 	width:100%;
 	padding:250px 0;
@@ -1779,6 +1779,7 @@ nav #menu-toggle:checked ~ ul{
 	color:#1d9554;
 	margin-bottom:30px;
 	font-weight:400;
+	margin-right:15px;
 }
 
 .home_footer a{
@@ -1839,4 +1840,13 @@ nav #menu-toggle:checked ~ ul{
 
 .static_container{
 	width: 960px !important;
+}
+
+.font_17{
+	font-size: 17px !important;
+}
+
+.border-top-margin{
+	border-top:1px solid #ddd;
+	margin-top:10px;
 }

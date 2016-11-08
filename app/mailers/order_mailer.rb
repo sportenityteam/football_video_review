@@ -42,8 +42,9 @@ class OrderMailer < ActionMailer::Base
     mail(:to => @user.email , :subject => "Soccer Video Review : Video Reviewed")
   end
 
-  def admin_review_approved(order)
+  def admin_review_approved(order,reviewer)
     @order = order
+    @reviewer = reviewer
     mail(:to => @order.user.email , :subject => "Soccer Video Review : Video Review Approved")
   end
 

@@ -4,12 +4,14 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>Hello, <%= @order.user.fullname %>,<br></p>
+    <p>Hello <%= @order.user.first_name %>,<br></p>
     <p></p>
-    <h4>You uploaded <%= @order.title %> video reviews approved by admin.</h4>
+    <p>Your uploaded <%= @order.title %> video was reviewed by <%= @reviewer.first_name if @reviewer.present? %>.</p>
 
-    <p> Feel free to contact us at from@example.com with any questions.</p>
-    Thank You<br>
+    <p> Feel free to contact us at support@sportenity.com if any questions.</p>
+
+    Thank you,<br>
     Team Sportenity
+
   </body>
 </html>

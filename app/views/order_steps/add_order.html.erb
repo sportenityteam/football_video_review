@@ -145,13 +145,13 @@
 
   function change_file1(){
     document.getElementById("uploadBtn1").onchange = function () {
-      document.getElementById("uploadFile1").value = this.value;
+      document.getElementById("uploadFile1").value = this.value.replace(/^C:\\fakepath\\/i, '');
     };
   }
 
   function change_file2(){
     document.getElementById("uploadBtn2").onchange = function () {
-      document.getElementById("uploadFile2").value = this.value;
+      document.getElementById("uploadFile2").value = this.value.replace(/^C:\\fakepath\\/i, '');
     };
   }
 
@@ -170,10 +170,10 @@
       $("#wait").css("display", "block");
     }else{
       //development
-      //var bucket = new AWS.S3({params: {Bucket: 'football-video-review-dev'}});
+      var bucket = new AWS.S3({params: {Bucket: 'football-video-review-dev'}});
 
       //production
-      var bucket = new AWS.S3({params: {Bucket: 'football-video-review-production'}});
+      //var bucket = new AWS.S3({params: {Bucket: 'football-video-review-production'}});
 
       var fileChooser1 = document.getElementById('uploadBtn1');
       var file1 = fileChooser1.files[0];

@@ -34,7 +34,8 @@ class Admin::OrderController < Admin::BaseController
     @order.update_attributes!(:status => status)
     @order_email = Order.find(params[:id])
     if status == "5"
-      OrderMailer.admin_review_approved(@order_email).deliver_now
+      @reviewer = @order.reviews.last.user
+      OrderMailer.admin_review_approved(@order_email, @reviewer).deliver_now
     elsif status == "6"
       @reviewer = @order.reviews.last.user
       OrderMailer.admin_review_rejected(@order_email,@reviewer).deliver_now

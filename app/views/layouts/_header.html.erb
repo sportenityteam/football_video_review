@@ -15,7 +15,8 @@
       <div class="navigation pull-right">
         <ul>
             <li class="logo">
-              <a href="<%= new_user_session_path %>">Login</a>
+              <!-- <a href="<%#= new_user_session_path %>">Login</a> -->
+              <a href="<%= new_user_session_path %>"><%= image_tag "login.png", :width => 87, :height => 40 %></a>
             </li>
 
           <% if user_signed_in? %>
