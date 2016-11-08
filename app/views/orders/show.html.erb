@@ -83,7 +83,7 @@
               <li class="text-left">Title: <%= @order.try(:title) %></li>
               <% if @reviewer.present? %>
                 <li class="text-left">Reviewed by <span class="light_txt"><%= @reviewer.user.try(:fullname)%></span></li>
-                <li class="font_17">Reviewed on <span class="light_txt"><%= @reviewer.created_at.strftime("%b %d, %Y") %></span></li>
+                <li class="font_17">Reviewed on <span class="light_txt"><%= @reviewer.created_at..strftime("%B %d, %Y") %></span></li>
               <% end %>
             </ul>
             <% end %>
