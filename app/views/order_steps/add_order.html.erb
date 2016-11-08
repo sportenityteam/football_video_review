@@ -148,11 +148,12 @@
     $('.field_with_errors').contents().unwrap();
 
   });
-
+  var video1_ext;
+  var video2_ext;
   function change_file1(){
     document.getElementById("uploadBtn1").onchange = function () {
       document.getElementById("uploadFile1").value = this.value.replace(/^C:\\fakepath\\/i, '');
-      var video1_ext = this.value.replace(/^C:\\fakepath\\/i, '');
+      video1_ext = this.value.replace(/^C:\\fakepath\\/i, '');
       if (video1_ext.split(".")[1] == "bmp" || video1_ext.split(".")[1] == "gif" || video1_ext.split(".")[1] == "jpg" || video1_ext.split(".")[1] == "png") {
         $("#error_msg1").show();
         $("#upload").attr("disabled", true);
@@ -160,13 +161,14 @@
         $("#error_msg1").hide();
         $("#upload").attr("disabled", false);
       }
+      enable_btn();
     };
   }
 
   function change_file2(){
     document.getElementById("uploadBtn2").onchange = function () {
       document.getElementById("uploadFile2").value = this.value.replace(/^C:\\fakepath\\/i, '');
-      var video2_ext = this.value.replace(/^C:\\fakepath\\/i, '');
+      video2_ext = this.value.replace(/^C:\\fakepath\\/i, '');
       if (video2_ext.split(".")[1] == "bmp" || video2_ext.split(".")[1] == "gif" || video2_ext.split(".")[1] == "jpg" || video2_ext.split(".")[1] == "png") {
         $("#error_msg2").show();
         $("#upload").attr("disabled", true);
@@ -174,8 +176,16 @@
         $("#error_msg2").hide();
         $("#upload").attr("disabled", false);
       }
+      enable_btn();
     };
+  }
 
+  function enable_btn(){
+    if(video1_ext != "" && video2_ext != "") {
+      if (video1_ext.split(".")[1] == "bmp" || video1_ext.split(".")[1] == "gif" || video1_ext.split(".")[1] == "jpg" || video1_ext.split(".")[1] == "png" || video2_ext.split(".")[1] == "bmp" || video2_ext.split(".")[1] == "gif" || video2_ext.split(".")[1] == "jpg" || video2_ext.split(".")[1] == "png") {
+        $("#upload").attr("disabled", true);
+      }
+    }
   }
 
 </script>
