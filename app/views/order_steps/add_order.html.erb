@@ -48,6 +48,7 @@
                       </div>
                     <% end %>
                   </span>
+                  <div id="error_msg1" class="error_msg">Invalid file type, please upload only video file.</div>
                   <div id="progress1">
                     <div class="bar" style="width: 0%;"></div>
                   </div>
@@ -66,6 +67,7 @@
                       </div>
                     <% end %>
                   </span>
+                  <div id="error_msg2" class="error_msg">Invalid file type, please upload only video file.</div>
                   <div id="progress2">
                     <div class="bar" style="width: 0%;"></div>
                   </div>
@@ -99,45 +101,49 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
+    $("#error_msg1").hide();
+    $("#error_msg2").hide();
     $("#wait").css("display", "none");
-
-    var fieldsCount,
-    maxFieldsCount = 1,
-    $addLink = $('a.add_nested_fields');
-
-    var mfieldsCount,
-    minFieldsCount = 0, // placed at 0 because first object is auto built from controller
-    $removeLink = $('a.remove_nested_fields');
-
-    function toggleAddLink() {
-      $addLink.toggle(fieldsCount <= maxFieldsCount)
+    if ($("#uploadBtn1").val() == "" || $("#uploadBtn2").val() == ""){
+      $("#upload").attr("disabled", true);
     }
+    // var fieldsCount,
+    // maxFieldsCount = 1,
+    // $addLink = $('a.add_nested_fields');
 
-    function toggleRemoveLink() {
-      $removeLink.toggle(mfieldsCount <= minFieldsCount)
-    }
+    // var mfieldsCount,
+    // minFieldsCount = 0, // placed at 0 because first object is auto built from controller
+    // $removeLink = $('a.remove_nested_fields');
 
-    $(document).on('nested:fieldAdded', function() {
-      fieldsCount += 1;
-      toggleAddLink();
-    });
+    // function toggleAddLink() {
+    //   $addLink.toggle(fieldsCount <= maxFieldsCount)
+    // }
 
-    $(document).on('nested:fieldRemoved', function() {
-      fieldsCount -= 1;
-      toggleAddLink();
-    });
+    // function toggleRemoveLink() {
+    //   $removeLink.toggle(mfieldsCount <= minFieldsCount)
+    // }
 
-    $(document).on('nested:fieldRemoved', function() {
-      mfieldsCount -= 0;
-      toggleRemoveLink();
-    });
+    // $(document).on('nested:fieldAdded', function() {
+    //   fieldsCount += 1;
+    //   toggleAddLink();
+    // });
 
-    // count existing nested fields after page was loaded
-    fieldsCount = $('form .fields').length;
-    toggleAddLink();
+    // $(document).on('nested:fieldRemoved', function() {
+    //   fieldsCount -= 1;
+    //   toggleAddLink();
+    // });
 
-    mfieldsCount = $('form .fields').length;
-    toggleRemoveLink();
+    // $(document).on('nested:fieldRemoved', function() {
+    //   mfieldsCount -= 0;
+    //   toggleRemoveLink();
+    // });
+
+    // // count existing nested fields after page was loaded
+    // fieldsCount = $('form .fields').length;
+    // toggleAddLink();
+
+    // mfieldsCount = $('form .fields').length;
+    // toggleRemoveLink();
 
     $('.field_with_errors').contents().unwrap();
 
@@ -146,13 +152,30 @@
   function change_file1(){
     document.getElementById("uploadBtn1").onchange = function () {
       document.getElementById("uploadFile1").value = this.value.replace(/^C:\\fakepath\\/i, '');
+      var video1_ext = this.value.replace(/^C:\\fakepath\\/i, '');
+      if (video1_ext.split(".")[1] == "bmp" || video1_ext.split(".")[1] == "gif" || video1_ext.split(".")[1] == "jpg" || video1_ext.split(".")[1] == "png") {
+        $("#error_msg1").show();
+        $("#upload").attr("disabled", true);
+      }else{
+        $("#error_msg1").hide();
+        $("#upload").attr("disabled", false);
+      }
     };
   }
 
   function change_file2(){
     document.getElementById("uploadBtn2").onchange = function () {
       document.getElementById("uploadFile2").value = this.value.replace(/^C:\\fakepath\\/i, '');
+      var video2_ext = this.value.replace(/^C:\\fakepath\\/i, '');
+      if (video2_ext.split(".")[1] == "bmp" || video2_ext.split(".")[1] == "gif" || video2_ext.split(".")[1] == "jpg" || video2_ext.split(".")[1] == "png") {
+        $("#error_msg2").show();
+        $("#upload").attr("disabled", true);
+      }else{
+        $("#error_msg2").hide();
+        $("#upload").attr("disabled", false);
+      }
     };
+
   }
 
 </script>
@@ -170,10 +193,10 @@
       $("#wait").css("display", "block");
     }else{
       //development
-      //var bucket = new AWS.S3({params: {Bucket: 'football-video-review-dev'}});
+      var bucket = new AWS.S3({params: {Bucket: 'football-video-review-dev'}});
 
       //production
-      var bucket = new AWS.S3({params: {Bucket: 'football-video-review-production'}});
+      //var bucket = new AWS.S3({params: {Bucket: 'football-video-review-production'}});
 
       var fileChooser1 = document.getElementById('uploadBtn1');
       var file1 = fileChooser1.files[0];
