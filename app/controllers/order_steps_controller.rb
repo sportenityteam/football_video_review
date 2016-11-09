@@ -33,7 +33,6 @@ class OrderStepsController < ApplicationController
             #creating record of payment for placed order
             $transactionId = response.params["pn_ref"]
             @payment.update_attributes(:amount => @amount,:date_of_payment => DateTime.now, :other_data => response.params ,:status => "success",:transcation_id => response.params["pn_ref"])
-            @order.update_attributes(:title => response.params["pn_ref"])
             #redirect_to my_orders_path
             render_wizard @payment
           else
@@ -46,28 +45,10 @@ class OrderStepsController < ApplicationController
           render_wizard
         end
       when :add_order
-
-        logger.warn("=-=-=--=-==-----------------00")
-        logger.warn(@order.inspect)
-        logger.warn("=-=-=--=-==-----------------")
-        if $transactionId.present?
-          logger.warn("=-=-=--=-==-----------------11")
-          logger.warn(@order.inspect)
-          logger.warn("=-=-=--=-==-----------------")
-          $is_payment == true
-        elsif !current_user.orders.last.videos.present?
-          logger.warn("=-=-=--=-==-----------------0022")
-          logger.warn(@order.inspect)
-          logger.warn("=-=-=--=-==-----------------")
-          $is_payment == true
-        else
-          $is_payment = false
-        end
-
         if $is_payment == true
-          logger.warn("=-=-=--=-==-----------------")
+          puts "=-=-=--=-==-----------------"
           logger.warn(@order.errors.inspect)
-          logger.warn("=-=-=--=-==-----------------")
+          puts "=-=-=--=-==-----------------"
           if @order.errors.present?
             render_wizard
           else
