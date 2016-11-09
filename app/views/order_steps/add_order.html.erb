@@ -148,8 +148,9 @@
     $('.field_with_errors').contents().unwrap();
 
   });
-  var video1_ext;
-  var video2_ext;
+
+  var video1_ext = '';
+  var video2_ext = '';
   function change_file1(){
     document.getElementById("uploadBtn1").onchange = function () {
       document.getElementById("uploadFile1").value = this.value.replace(/^C:\\fakepath\\/i, '');
@@ -157,7 +158,10 @@
       if (video1_ext.split(".")[1] == "bmp" || video1_ext.split(".")[1] == "gif" || video1_ext.split(".")[1] == "jpg" || video1_ext.split(".")[1] == "png") {
         $("#error_msg1").show();
         $("#upload").attr("disabled", true);
-      }else{
+      } else if(video1_ext == ''){
+        $("#error_msg1").hide();
+        $("#upload").attr("disabled", true);
+      } else{
         $("#error_msg1").hide();
         $("#upload").attr("disabled", false);
       }
@@ -172,7 +176,10 @@
       if (video2_ext.split(".")[1] == "bmp" || video2_ext.split(".")[1] == "gif" || video2_ext.split(".")[1] == "jpg" || video2_ext.split(".")[1] == "png") {
         $("#error_msg2").show();
         $("#upload").attr("disabled", true);
-      }else{
+      } else if(video2_ext == ''){
+        $("#error_msg2").hide();
+        $("#upload").attr("disabled", true);
+      } else{
         $("#error_msg2").hide();
         $("#upload").attr("disabled", false);
       }
@@ -185,6 +192,9 @@
       if (video1_ext.split(".")[1] == "bmp" || video1_ext.split(".")[1] == "gif" || video1_ext.split(".")[1] == "jpg" || video1_ext.split(".")[1] == "png" || video2_ext.split(".")[1] == "bmp" || video2_ext.split(".")[1] == "gif" || video2_ext.split(".")[1] == "jpg" || video2_ext.split(".")[1] == "png") {
         $("#upload").attr("disabled", true);
       }
+    }
+    if(video1_ext == "" && video2_ext == ""){
+      $("#upload").attr("disabled", true);
     }
   }
 
