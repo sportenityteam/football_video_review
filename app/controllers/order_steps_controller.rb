@@ -47,27 +47,27 @@ class OrderStepsController < ApplicationController
         end
       when :add_order
 
-        puts "=-=-=--=-==-----------------00"
-          logger.warn(@order.inspect)
-          puts "=-=-=--=-==-----------------"
+        logger.warn("=-=-=--=-==-----------------00")
+        logger.warn(@order.inspect)
+        logger.warn("=-=-=--=-==-----------------")
         if $transactionId.present?
-          puts "=-=-=--=-==-----------------11"
+          logger.warn("=-=-=--=-==-----------------11")
           logger.warn(@order.inspect)
-          puts "=-=-=--=-==-----------------"
+          logger.warn("=-=-=--=-==-----------------")
           $is_payment == true
         elsif !current_user.orders.last.videos.present?
-          puts "=-=-=--=-==-----------------0022"
+          logger.warn("=-=-=--=-==-----------------0022")
           logger.warn(@order.inspect)
-          puts "=-=-=--=-==-----------------"
+          logger.warn("=-=-=--=-==-----------------")
           $is_payment == true
         else
           $is_payment = false
         end
 
         if $is_payment == true
-          puts "=-=-=--=-==-----------------"
+          logger.warn("=-=-=--=-==-----------------")
           logger.warn(@order.errors.inspect)
-          puts "=-=-=--=-==-----------------"
+          logger.warn("=-=-=--=-==-----------------")
           if @order.errors.present?
             render_wizard
           else
