@@ -1,6 +1,7 @@
 class Payment < ActiveRecord::Base
   #associations
   belongs_to :order
+  belongs_to :user
 
   # Validating the card automatically detects the card type
   def self.validate_credit_card(first_name,last_name,number,month,year,verification_value)

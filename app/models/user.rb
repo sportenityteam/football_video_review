@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   #associations
   has_many :orders
   has_many :reviews ,dependent: :destroy
+  has_many :payments
 
   #paperclip
   has_attached_file :avatar,

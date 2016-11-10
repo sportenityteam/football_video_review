@@ -32,7 +32,7 @@ class OrderStepsController < ApplicationController
             $is_payment = true
             #creating record of payment for placed order
             $transactionId = response.params["pn_ref"]
-            @payment.update_attributes(:amount => @amount,:date_of_payment => DateTime.now, :other_data => response.params ,:status => "success",:transcation_id => response.params["pn_ref"])
+            @payment.update_attributes(:amount => @amount,:date_of_payment => DateTime.now, :other_data => response.params ,:status => "success",:transcation_id => response.params["pn_ref"], :user_id => current_user.id)
             #redirect_to my_orders_path
             render_wizard @payment
           else
@@ -46,15 +46,15 @@ class OrderStepsController < ApplicationController
         end
       when :add_order
         if $is_payment == true
-          puts "=-=-=--=-==-----------------"
+          logger.warn("=-=-=--=-==-----------------in if")
           logger.warn(@order.errors.inspect)
-          puts "=-=-=--=-==-----------------"
+          logger.warn("=-=-=--=-==-----------------")
           if @order.errors.present?
             render_wizard
           else
+
             if @order.update_attributes(order_params)
               @order.update_attributes(:user_id => current_user.id)
-
               logger.warn("=--=Order=-=-=-=-=-=-=-=-=-#{@order.inspect}=--=")
               if @order.videos.present?
                 @order.videos.each do |video|
@@ -66,10 +66,10 @@ class OrderStepsController < ApplicationController
               Order.send_admin_reviewer_mail(@order)
               payment = Payment.find_by_transcation_id($transactionId)
               if payment.present?
-                payment.update_attributes(:order_id => @order.id)
+                payment.update_attributes(:order_id => @order.id, :order_status => "completed")
               else
                 order_id = current_user.orders.last.id
-                payment.update_attributes(:order_id => order_id)
+                payment.update_attributes(:order_id => order_id, :order_status => "completed")
               end
               $is_payment = false
               flash[:notice] = "Thank you! Your upload is complete. You will be notified via email once the review is ready."
@@ -77,6 +77,32 @@ class OrderStepsController < ApplicationController
             else
               render_wizard
             end
+          end
+        elsif current_user.payments.last.order_status == nil
+          logger.warn("=--=Payment=-=-=-=-=-=-=-=-=-#{current_user.payments.last.inspect}=--=")
+          if @order.update_attributes(order_params)
+            @order.update_attributes(:user_id => current_user.id)
+            logger.warn("=--=Order=-=-=-=-=-=-=-=-=-#{@order.inspect}=--=")
+            if @order.videos.present?
+              @order.videos.each do |video|
+                video.generate_mp4(video.video_url)
+                @total_duration = @total_duration + video.duration.to_i
+              end
+            end
+            @order.update_attributes(:payment_status => "paid")
+            Order.send_admin_reviewer_mail(@order)
+            payment = Payment.find_by_transcation_id($transactionId)
+            if payment.present?
+              payment.update_attributes(:order_id => @order.id, :order_status => "completed")
+            else
+              order_id = current_user.orders.last.id
+              payment.update_attributes(:order_id => order_id, :order_status => "completed")
+            end
+            $is_payment = false
+            flash[:notice] = "Thank you! Your upload is complete. You will be notified via email once the review is ready."
+            redirect_to my_orders_path
+          else
+            render_wizard
           end
         else
           $is_payment = false
