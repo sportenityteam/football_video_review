@@ -101,20 +101,10 @@ Rails.application.configure do
   #   :enable_starttls_auto => true
   # }
 
-  # ActiveMerchant::Billing::Base.mode = :test
-  # ::GATEWAY = ActiveMerchant::Billing::PayflowGateway.new(
-  #   :login => "FootballVideo",
-  #   :password => "mittal123",
-  #   :partner => "PayPal"
-  # )
-
-  config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :test
-    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
-      login: "mittal8991-facilitator_api1.gmail.com",
-      password: "DUZEAMCJ7SPMJR8S",
-      signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31A1.KPdIRzOfckwQwyMo0TOmHHGrK"
-    )
-  end
-
+  ActiveMerchant::Billing::Base.mode = :test
+  ::GATEWAY = ActiveMerchant::Billing::PayflowGateway.new(
+    :login => "FootballVideo",
+    :password => "mittal123",
+    :partner => "PayPal"
+  )
 end
