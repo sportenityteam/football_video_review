@@ -116,7 +116,11 @@ class OrderStepsController < ApplicationController
   def place_order(amount, card_number, expiration_month, expiration_year, cvv)
     if card_number.present? && expiration_month.present? && expiration_year.present? && cvv.present?
       @credit_card = Payment.validate_credit_card(current_user.try(:first_name),current_user.try(:last_name),card_number,expiration_month,expiration_year,cvv)
-      response = GATEWAY.purchase(amount, @credit_card)
+      #updated code
+      @user = current_user
+      requested_ip = request.remote_ip
+      #add one extra parameter
+      response = GATEWAY.purchase(amount, @credit_card,Payment.purchase_options(@user,requested_ip))
       return response
     else
       return false
