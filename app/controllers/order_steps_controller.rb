@@ -26,7 +26,11 @@ class OrderStepsController < ApplicationController
         # end
         #@amount = User.calculate_amount_from_age(current_user.date_of_birth.strftime("%m/%d/%Y"))
         @amount = params[:price].to_i
-        response = place_order(@amount, params[:card_number], params[:expiration_month], params[:expiration_year], params[:cvv])
+        @payment = Payment.new
+        @user = current_user
+        response = @payment.purchase(@amount, params[:card_number], params[:expiration_month], params[:expiration_year], params[:cvv],current_user.try(:first_name),current_user.try(:last_name),request.remote_ip,@user)
+        logger.warn("============response===========#{response.inspect}")
+        #response = place_order(@amount, params[:card_number], params[:expiration_month], params[:expiration_year], params[:cvv])
         if response != false
           if response.success?
             $is_payment = true
