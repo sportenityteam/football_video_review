@@ -37,7 +37,7 @@ class OrderStepsController < ApplicationController
             #creating record of payment for placed order
             #$transactionId = response.params["pn_ref"]
             $transactionId = response.params["TransactionID"]
-            @payment.update_attributes(:amount => @amount,:date_of_payment => DateTime.now, :other_data => response.params ,:status => "success",:transcation_id => response.params["pn_ref"], :user_id => current_user.id)
+            @payment.update_attributes(:amount => @amount,:date_of_payment => DateTime.now, :other_data => response.params ,:status => "success",:transcation_id => response.params["TransactionID"], :user_id => current_user.id)
             #redirect_to my_orders_path
             render_wizard @payment
           else
@@ -77,8 +77,6 @@ class OrderStepsController < ApplicationController
               else
                 order_id = current_user.orders.last.id
                 #payment.update_attributes(:order_id => order_id, :order_status => "completed")
-                logger.warn("=====IN else====payment=======#{current_user.orders.last.payment.inspect}")
-                current_user.orders.last.payment.update_attributes(:order_id => order_id, :order_status => "completed")
               end
               $is_payment = false
               flash[:notice] = "Thank you! Your upload is complete. You will be notified via email once the review is ready."
