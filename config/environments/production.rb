@@ -128,11 +128,11 @@ Rails.application.configure do
 
 
   config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :test  # :production when you will use a real Pro Account
+    ActiveMerchant::Billing::Base.mode = :test
     ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
-      login: "priya_api1.complitech.net",
-      password: "1402313861",
-      signature: "An5ns1Kso7MWUdW4ErQKJJJ4qi4-ApLqeErPOlIA6-kKLGz9Eka0.1J3"
+      login: "mittal8991-facilitator_api1.gmail.com",
+      password: "DUZEAMCJ7SPMJR8S",
+      signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31A1.KPdIRzOfckwQwyMo0TOmHHGrK"
     )
   end
 
