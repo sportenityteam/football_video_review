@@ -20,10 +20,6 @@ class Payment < ActiveRecord::Base
             ip: requested_ip,
             billing_address: {
                 name:      user.fullname,
-                address1:  "",
-                city:      "",
-                state:     "",
-                country:   "SE",
                 zip:       user.zipcode
             }
         }
