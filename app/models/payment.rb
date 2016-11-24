@@ -23,7 +23,7 @@ class Payment < ActiveRecord::Base
                 address1:  "",
                 city:      "",
                 state:     "",
-                country:   "SE",
+                country:   "US",
                 zip:       user.zipcode
             }
         }
