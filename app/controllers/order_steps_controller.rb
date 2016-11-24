@@ -70,11 +70,15 @@ class OrderStepsController < ApplicationController
               @order.update_attributes(:payment_status => "paid")
               Order.send_admin_reviewer_mail(@order)
               payment = Payment.find_by_transcation_id($transactionId)
+              logger.warn("=========payment=======#{payment.inspect}")
               if payment.present?
+                logger.warn("=====IN IF====payment=======#{payment.inspect}")
                 payment.update_attributes(:order_id => @order.id, :order_status => "completed")
               else
                 order_id = current_user.orders.last.id
-                payment.update_attributes(:order_id => order_id, :order_status => "completed")
+                #payment.update_attributes(:order_id => order_id, :order_status => "completed")
+                logger.warn("=====IN else====payment=======#{current_user.orders.last.payment.inspect}")
+                current_user.orders.last.payment.update_attributes(:order_id => order_id, :order_status => "completed")
               end
               $is_payment = false
               flash[:notice] = "Thank you! Your upload is complete. You will be notified via email once the review is ready."
