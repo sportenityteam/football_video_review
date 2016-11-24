@@ -75,8 +75,8 @@ class OrderStepsController < ApplicationController
                 logger.warn("=====IN IF====payment=======#{payment.inspect}")
                 payment.update_attributes(:order_id => @order.id, :order_status => "completed")
               else
-                order_id = current_user.orders.last.id
-                #payment.update_attributes(:order_id => order_id, :order_status => "completed")
+                order_id = current_user.orders.order(:created_at).last.id
+                current_user.payments.order(:created_at).last.update_attributes(:order_id => order_id, :order_status => "completed")
               end
               $is_payment = false
               flash[:notice] = "Thank you! Your upload is complete. You will be notified via email once the review is ready."
@@ -102,8 +102,8 @@ class OrderStepsController < ApplicationController
             if payment.present?
               payment.update_attributes(:order_id => @order.id, :order_status => "completed")
             else
-              order_id = current_user.orders.last.id
-              #current_user.payments.last.update_attributes(:order_id => order_id, :order_status => "completed")
+              order_id = current_user.orders.order(:created_at).last.id
+              current_user.payments.order(:created_at).last.update_attributes(:order_id => order_id, :order_status => "completed")
             end
             $is_payment = false
             flash[:notice] = "Thank you! Your upload is complete. You will be notified via email once the review is ready."
