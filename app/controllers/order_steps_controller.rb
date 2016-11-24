@@ -29,13 +29,14 @@ class OrderStepsController < ApplicationController
         @payment = Payment.new
         @user = current_user
         response = @payment.purchase(@amount, params[:card_number], params[:expiration_month], params[:expiration_year], params[:cvv],current_user.try(:first_name),current_user.try(:last_name),request.remote_ip,@user)
-        logger.warn("============response===========#{response.inspect}")
+        logger.warn("============response===========#{response.inspect}===#{response.params["TransactionID"]}")
         #response = place_order(@amount, params[:card_number], params[:expiration_month], params[:expiration_year], params[:cvv])
         if response != false
           if response.success?
             $is_payment = true
             #creating record of payment for placed order
-            $transactionId = response.params["pn_ref"]
+            #$transactionId = response.params["pn_ref"]
+            $transactionId = response.params["TransactionID"]
             @payment.update_attributes(:amount => @amount,:date_of_payment => DateTime.now, :other_data => response.params ,:status => "success",:transcation_id => response.params["pn_ref"], :user_id => current_user.id)
             #redirect_to my_orders_path
             render_wizard @payment
