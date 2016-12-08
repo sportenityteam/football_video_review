@@ -20,7 +20,9 @@ class Video < ActiveRecord::Base
   scope :video_without_duration, -> {where(duration: nil)}
 
   def generate_mp4(video_url)
-    if self.video_url.present? && self.video_url_file_name.split('.').last != "mp4"
+    puts "=================inside generate_mp4 method==================="
+    if video_url.present? && video_url_file_name.split('.').last != "mp4"
+      puts "=================Not mp4 video==================="
       filename = "media1#{Time.now.to_i}"
       if File.exists?"#{video_url.path}"
         movie = FFMPEG::Movie.new("#{video_url.path}")
@@ -40,6 +42,7 @@ class Video < ActiveRecord::Base
         self.save
       end
     end
+    return
   end
   handle_asynchronously :generate_mp4
 

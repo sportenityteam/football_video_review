@@ -61,12 +61,12 @@ class OrderStepsController < ApplicationController
             if @order.update_attributes(order_params)
               @order.update_attributes(:user_id => current_user.id)
               logger.warn("=--=Order=-=-=-=-=-=-=-=-=-#{@order.inspect}=--=")
-              if @order.videos.present?
-                @order.videos.each do |video|
-                  video.generate_mp4(video.video_url)
-                  @total_duration = @total_duration + video.duration.to_i
-                end
-              end
+              # if @order.videos.present?
+              #   @order.videos.each do |video|
+              #     video.generate_mp4(video.video_url).delay
+              #     @total_duration = @total_duration + video.duration.to_i
+              #   end
+              # end
               @order.update_attributes(:payment_status => "paid")
               Order.send_admin_reviewer_mail(@order)
               payment = Payment.find_by_transcation_id($transactionId)
@@ -90,12 +90,12 @@ class OrderStepsController < ApplicationController
           if @order.update_attributes(order_params)
             @order.update_attributes(:user_id => current_user.id)
             logger.warn("=--=Order=-=-=-=-=-=-=-=-=-#{@order.inspect}=--=")
-            if @order.videos.present?
-              @order.videos.each do |video|
-                video.generate_mp4(video.video_url)
-                @total_duration = @total_duration + video.duration.to_i
-              end
-            end
+            # if @order.videos.present?
+            #   @order.videos.each do |video|
+            #     video.generate_mp4(video.video_url).delay
+            #     @total_duration = @total_duration + video.duration.to_i
+            #   end
+            # end
             @order.update_attributes(:payment_status => "paid")
             Order.send_admin_reviewer_mail(@order)
             payment = Payment.find_by_transcation_id($transactionId)
