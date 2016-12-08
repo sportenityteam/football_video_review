@@ -1,6 +1,11 @@
 namespace :football_review do
   desc "Update Duration"
 	task update_video_duration: :environment do
+		if Rails.env == "production"
+			`bin/delayed_job start RAILS_ENV=production`
+		else
+			`bin/delayed_job start`
+		end
 		@video = Video.video_without_duration
 		@video.each do |video|
 			video.generate_mp4(video.video_url)
