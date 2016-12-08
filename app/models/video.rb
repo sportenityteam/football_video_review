@@ -12,6 +12,8 @@ class Video < ActiveRecord::Base
                                 :thumb => { :geometry => "512x512#", :format => 'jpg', :time => 1 }
                                }, :processors => [:transcoder]
 
+  process_in_background :video_url
+
   #validations
   validates_attachment_content_type :video_url, :content_type => /\Avideo\/.*\Z/
   validates :video_url, :presence => true
