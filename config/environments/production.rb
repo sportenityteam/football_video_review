@@ -108,14 +108,14 @@ Rails.application.configure do
   #   :partner => "PayPal"
   # )
 
-  config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :production  # :production when you will use a real Pro Account
-    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
-      login: "sasa_api1.creatify.se",
-      password: "XGUSMH3AJFN85RYH",
-      signature: "An5ns1Kso7MWUdW4ErQKJJJ4qi4-A5lyYrApgWy2sac3m-jHOQSVK9AH"
-    )
-  end
+  # config.after_initialize do
+  #   ActiveMerchant::Billing::Base.mode = :production  # :production when you will use a real Pro Account
+  #   ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+  #     login: "sasa_api1.creatify.se",
+  #     password: "XGUSMH3AJFN85RYH",
+  #     signature: "An5ns1Kso7MWUdW4ErQKJJJ4qi4-A5lyYrApgWy2sac3m-jHOQSVK9AH"
+  #   )
+  # end
 
   # config.after_initialize do
   #   ActiveMerchant::Billing::Base.mode = :test  # :production when you will use a real Pro Account
