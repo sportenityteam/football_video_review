@@ -63,6 +63,7 @@ gem 'bootstrap'
 #gem 'best_in_place'
 gem 'wicked'
 gem 'paperclip-av-transcoder'
+gem "delayed_paperclip"
 gem 'kaminari'
 gem 'daemons'
 gem 'delayed_job_active_record'
