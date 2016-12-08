@@ -6,7 +6,7 @@ scheduler = Rufus::Scheduler.new
 
 if Rails.env.downcase == "production"
   #Run rake jobs for ppaperclip style and transcoder
-  scheduler.every "1m" do
+  scheduler.every "12h" do
     Rails.logger.warn "---------------------Production Mode-------------"
     `rake jobs:workoff RAILS_ENV=production`
     `rake jobs:work RAILS_ENV=production`
