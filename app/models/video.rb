@@ -8,7 +8,8 @@ class Video < ActiveRecord::Base
                     :url => "/system/:attachment/:id/:style/:filename",
                     :styles => {
                                 :medium => { :geometry => "800x400<", :format => 'mp4' },
-                                :thumb => { :geometry => "512x512#", :format => 'jpg', :time => 5 }
+                                :thumb1 => { :geometry => "120x120#", :format => 'jpg', :time => 1 },
+                                :thumb => { :geometry => "512x512#", :format => 'jpg', :time => 1 }
                                }, :processors => [:transcoder]
 
   #process_in_background :video_url
