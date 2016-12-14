@@ -24,11 +24,11 @@
                     <div class="tab-content">
                       <div id="vid" class="tab-pane fade active in">
                         <!-- <iframe class="videowidth" width="100%" height="315" src="<%#= @order.videos.first.video_url.url(:medium)%>%>" frameborder="0" allowfullscreen=""></iframe> -->
-                        <%= video_tag @order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video_01", :class => "wdth100" %>
+                        <%= video_tag @order.videos.first.video_url.url, controls: true, autobuffer: true, :id => "order_video_01", :class => "wdth100" %>
                       </div>
                       <div id="vid1" class="tab-pane fade">
                         <!-- <iframe class="videowidth" width="100%" height="315" src="<%#= @order.videos.last.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe> -->
-                        <%= video_tag @order.videos.last.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video_02", :class => "wdth100" %>
+                        <%= video_tag @order.videos.last.video_url.url, controls: true, autobuffer: true, :id => "order_video_02", :class => "wdth100" %>
                       </div>
                     </div>
                   <% end %>
@@ -37,7 +37,7 @@
             <% else%>
               <% if @order.videos.present? %>
                 <!-- <iframe width="100%" height="315" src="<%#= @order.videos.first.video_url.url(:medium)%>" frameborder="0" allowfullscreen=""></iframe> -->
-                <%= video_tag @order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video_01", :class => "wdth100" %>
+                <%= video_tag @order.videos.first.video_url.url, controls: true, autobuffer: true, :id => "order_video_01", :class => "wdth100" %>
               <% end %>
             <% end %>
           <% end %>
@@ -132,7 +132,7 @@
 
     <div class="modal-body">
       <div id="vid" class="tab-pane fade active in">
-        <%= video_tag @order.videos.first.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video_01", :class => "wdth100" %>
+        <%= video_tag @order.videos.first.video_url.url, controls: true, autobuffer: true, :id => "order_video_01", :class => "wdth100" %>
       </div>
     </div>
     <div class="modal-footer no-border"></div>
@@ -154,7 +154,7 @@
 
     <div class="modal-body">
       <div id="vid" class="tab-pane fade active in">
-        <%= video_tag @order.videos.last.video_url.url(:medium), controls: true, autobuffer: true, :id => "order_video_01", :class => "wdth100" %>
+        <%= video_tag @order.videos.last.video_url.url, controls: true, autobuffer: true, :id => "order_video_01", :class => "wdth100" %>
       </div>
     </div>
     <div class="modal-footer no-border"></div>

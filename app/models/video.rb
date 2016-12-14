@@ -7,7 +7,7 @@ class Video < ActiveRecord::Base
                     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
                     :url => "/system/:attachment/:id/:style/:filename",
                     :styles => {
-                                :medium => { :geometry => "800x400<", :format => 'mp4' },
+                                # :medium => { :geometry => "800x400<", :format => 'mp4' },
                                 :thumb1 => { :geometry => "120x120#", :format => 'jpg', :time => 1 },
                                 :thumb => { :geometry => "512x512#", :format => 'jpg', :time => 1 }
                                }, :processors => [:transcoder]
@@ -23,12 +23,14 @@ class Video < ActiveRecord::Base
 
   def generate_mp4(video_url)
     puts "=================inside generate_mp4 method==================="
-    if video_url.present? && video_url_file_name.split('.').last != "mp4"
+    options = {resolution: "800x400"}
+
+    if video_url.present? #&& video_url_file_name.split('.').last != "mp4"
       puts "=================Not mp4 video==================="
       filename = "media1#{Time.now.to_i}"
       if File.exists?"#{video_url.path}"
         movie = FFMPEG::Movie.new("#{video_url.path}")
-        movie.transcode("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
+        movie.transcode("#{Rails.root.to_s}/public/tmp/#{filename}.mp4",options)
         f = File.open("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
         self.duration = movie.duration
         self.video_url = f
@@ -38,11 +40,11 @@ class Video < ActiveRecord::Base
         File.delete("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
       end
     else
-      if File.exists?"#{video_url.path}"
-        movie = FFMPEG::Movie.new("#{video_url.path}")
-        self.duration = movie.duration
-        self.save
-      end
+      # if File.exists?"#{video_url.path}"
+      #   movie = FFMPEG::Movie.new("#{video_url.path}")
+      #   self.duration = movie.duration
+      #   self.save
+      # end
     end
     return
   end
