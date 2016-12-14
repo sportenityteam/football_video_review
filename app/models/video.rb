@@ -22,11 +22,11 @@ class Video < ActiveRecord::Base
   scope :video_without_duration, -> {where(duration: nil)}
 
   def generate_mp4(video_url)
-    puts "=================inside generate_mp4 method==================="
+    logger.warn("=================inside generate_mp4 method===================")
     options = {resolution: "800x400",custom: %w(-vf crop=60:60:10:10 -map 0:0 -map 0:1 -strict -2)}
 
     if video_url.present? #&& video_url_file_name.split('.').last != "mp4"
-      puts "=================Not mp4 video==================="
+      logger.warn("=================Not mp4 video===================")
       filename = "media1#{Time.now.to_i}"
       #if File.exists?"#{video_url.path}"
         movie = FFMPEG::Movie.new("#{video_url.url}")
