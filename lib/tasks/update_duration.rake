@@ -6,7 +6,8 @@ namespace :football_review do
 			@videos.each do |video|
 				#video.generate_mp4(video.video_url)
 				puts("=================inside video loop method===================")
-    		options = {resolution: "800x400",custom: %w(-vf crop=60:60:10:10 -map 0:0 -map 0:1 -strict -2)}
+    		#options = {resolution: "800x400",custom: %w(-vf crop=60:60:10:10 -map 0:0 -map 0:1 -strict -2)}
+    		options = {resolution: "800x400"}
     		if video.video_url.present?
 					movie = FFMPEG::Movie.new("#{video.video_url.url}")
 
