@@ -48,6 +48,6 @@ class Video < ActiveRecord::Base
     end
     return
   end
-  handle_asynchronously :generate_mp4
+  #handle_asynchronously :generate_mp4
 
 end
