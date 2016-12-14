@@ -14,20 +14,20 @@ namespace :football_review do
 					if movie.present?
 						puts("=================inside movie ===================")
 						video_url = video.video_url
-		      	filename = "media1#{Time.now.to_i}"
-		        movie.transcode("#{Rails.root.to_s}/public/tmp/#{filename}.mp4",options)
-		        f = File.open("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
+		      	# filename = "media1#{Time.now.to_i}"
+		       #  movie.transcode("#{Rails.root.to_s}/public/tmp/#{filename}.mp4",options)
+		       #  f = File.open("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
 
-		        video.video_url = f
+		       #  video.video_url = f
 						video.duration = movie.duration
 						video.order.total_video_duration = 0 if video.order.total_video_duration.nil?
 						video.order.total_video_duration += movie.duration.to_i
 		    		video.order.save
 						video.save
 						puts("==============-=---=video==========#{video.inspect}=========")
-		        f.close
-		        movie1 = FFMPEG::Movie.new("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
-		        File.delete("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
+		        # f.close
+		        # movie1 = FFMPEG::Movie.new("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
+		        # File.delete("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
 
 					end
 				end
