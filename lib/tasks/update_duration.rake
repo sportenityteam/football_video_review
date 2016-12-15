@@ -33,7 +33,7 @@ namespace :football_review do
 		        video.video_url = f
 		        video.save
 		        f.close
-		        movie1 = FFMPEG::Movie.new("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
+		        #movie1 = FFMPEG::Movie.new("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
 		        File.delete("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
 
 					end
