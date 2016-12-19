@@ -19,7 +19,7 @@ namespace :football_review do
 						video.order.total_video_duration += movie.duration.to_i
 		    		video.order.save
 						video.save
-						if !video.video_url_content_type == "video/mp4"
+						if !(video.video_url_content_type == "video/mp4")
 							puts("==============-=---=video==========#{video.inspect}=========")
 							video_url = video.video_url
 			      	filename = "media1#{Time.now.to_i}"
