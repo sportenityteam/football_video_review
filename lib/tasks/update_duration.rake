@@ -19,23 +19,24 @@ namespace :football_review do
 						video.order.total_video_duration += movie.duration.to_i
 		    		video.order.save
 						video.save
-						puts("==============-=---=video==========#{video.inspect}=========")
-						video_url = video.video_url
-		      	filename = "media1#{Time.now.to_i}"
-		        #movie.transcode("#{Rails.root.to_s}/public/tmp/#{filename}.mp4",options)
-		        #`ffmpeg -i "#{video.video_url.url}" -c:a copy "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"`
-		        if video.video_url_content_type == "video/x-flv"
-		        	'ffmpeg -i "#{video.video_url.url}" "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"'
-		        else
-		        	`ffmpeg -i "#{video.video_url.url}" -c:v copy -c:a copy "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"`
-		        end
-		        f = File.open("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
-		        video.video_url = f
-		        video.save
-		        f.close
-		        #movie1 = FFMPEG::Movie.new("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
-		        File.delete("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
-
+						if !video.video_url_content_type == "video/mp4"
+							puts("==============-=---=video==========#{video.inspect}=========")
+							video_url = video.video_url
+			      	filename = "media1#{Time.now.to_i}"
+			        #movie.transcode("#{Rails.root.to_s}/public/tmp/#{filename}.mp4",options)
+			        #`ffmpeg -i "#{video.video_url.url}" -c:a copy "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"`
+			        if video.video_url_content_type == "video/x-flv"
+			        	'ffmpeg -i "#{video.video_url.url}" "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"'
+			        else
+			        	`ffmpeg -i "#{video.video_url.url}" -c:v copy -c:a copy "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"`
+			        end
+			        f = File.open("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
+			        video.video_url = f
+			        video.save
+			        f.close
+			        #movie1 = FFMPEG::Movie.new("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
+			        File.delete("#{Rails.root.to_s}/public/tmp/#{filename}.mp4")
+			      end
 					end
 				end
 			end
