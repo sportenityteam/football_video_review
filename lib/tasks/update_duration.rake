@@ -27,8 +27,8 @@ namespace :football_review do
 			        #`ffmpeg -i "#{video.video_url.url}" -c:a copy "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"`
 			        if video.video_url_content_type == "video/x-flv"
 			        	`ffmpeg -i "#{video.video_url.url}" "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"`
-			        elsif video.video_url_content_type == "video/x-msvideo"
-			        	`ffmpeg -i "#{video.video_url.url}" -ar 22050 -ab 32 "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"`
+			        # elsif video.video_url_content_type == "video/x-msvideo"
+			        # 	`ffmpeg -i "#{video.video_url.url}" -ar 22050 -ab 32 "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"`
 			        else
 			        	`ffmpeg -i "#{video.video_url.url}" -c:v copy -c:a copy "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"`
 			        end
