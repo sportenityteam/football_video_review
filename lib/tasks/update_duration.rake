@@ -25,7 +25,7 @@ namespace :football_review do
 			      	filename = "media1#{Time.now.to_i}"
 			        #movie.transcode("#{Rails.root.to_s}/public/tmp/#{filename}.mp4",options)
 			        #`ffmpeg -i "#{video.video_url.url}" -c:a copy "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"`
-			        if video.video_url_content_type == "video/x-flv" || video.video_url == "video/x-msvideo"
+			        if video.video_url_content_type == "video/x-flv"
 			        	'ffmpeg -i "#{video.video_url.url}" "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"'
 			        else
 			        	`ffmpeg -i "#{video.video_url.url}" -c:v copy -c:a copy "#{Rails.root.to_s}/public/tmp/#{filename}.mp4"`
