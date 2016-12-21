@@ -235,10 +235,10 @@
           console.log(progress.loaded + " of " + progress.total + " bytes");
           $('#progress1 .bar').css(
             'width',
-            parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+            parseInt((progress.loaded/progress.total)*100) + '%'
           );
           $('#progress1 .bar').html(
-            parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+            parseInt((progress.loaded/progress.total)*100) + '%'
           );
         });
         request.send();
@@ -251,10 +251,10 @@
           console.log(progress.loaded + " of " + progress.total + " bytes");
           $('#progress2 .bar').css(
             'width',
-            parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+            parseInt((progress.loaded/progress.total)*100) + '%'
           );
           $('#progress2 .bar').html(
-            parseInt(((progress.loaded+150)*100)/(progress.total+150)) + '%'
+            parseInt((progress.loaded/progress.total)*100) + '%'
           );
         });
         request.send();
