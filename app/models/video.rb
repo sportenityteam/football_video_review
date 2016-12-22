@@ -7,12 +7,12 @@ class Video < ActiveRecord::Base
                     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
                     :url => "/system/:attachment/:id/:style/:filename",
                     :styles => {
-                                :medium => { :geometry => "800x400<", :format => 'mp4' },
+                                #:medium => { :geometry => "800x400<", :format => 'mp4' },
                                 :thumb1 => { :geometry => "120x120#", :format => 'jpg', :time => 1 },
                                 :thumb => { :geometry => "512x512#", :format => 'jpg', :time => 1 }
                                }, :processors => [:transcoder]
 
-  process_in_background :video_url
+  #process_in_background :video_url
 
   #validations
   validates_attachment_content_type :video_url, :content_type => /\Avideo\/.*\Z/
