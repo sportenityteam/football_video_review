@@ -69,7 +69,7 @@
                   </span>
                   <div id="error_msg2" class="error_msg">Invalid file type, please upload only video file.</div>
                   <div id="progress2">
-                    <div class="bar" style="width: 0%;"></div>
+                    <div class="bar1" style="width: 0%;"></div>
                   </div>
                 </li>
 
@@ -229,35 +229,37 @@
       files.push(file2)
 
       if(files[0]){
-        var params = {Key: files[0].name, ContentType: files[0].type, Body: files[0]};
-        var request = bucket.putObject(params);
-        request.on('httpUploadProgress', function (progress) {
-          console.log(progress.loaded + " of " + progress.total + " bytes");
+        var params1 = {Key: files[0].name, ContentType: files[0].type, Body: files[0]};
+        var request1 = bucket.putObject(params1);
+        request1.on('httpUploadProgress', function (progress1) {
+          console.log(progress1.loaded + " of " + progress1.total + " bytes");
           $('#progress1 .bar').css(
             'width',
-            parseInt((progress.loaded/progress.total)*100) + '%'
+            Math.round(progress1.loaded / progress1.total * 100) + '%'
+            //parseInt((progress.loaded/progress.total)*100) + '%'
           );
           $('#progress1 .bar').html(
-            parseInt((progress.loaded/progress.total)*100) + '%'
+            Math.round(progress1.loaded / progress1.total * 100) + '%'
+            //parseInt((progress.loaded/progress.total)*100) + '%'
           );
         });
-        request.send();
+        request1.send();
       }
 
       if(files[1]){
-        var params = {Key: files[1].name, ContentType: files[1].type, Body: files[1]};
-        var request = bucket.putObject(params);
-        request.on('httpUploadProgress', function (progress) {
-          console.log(progress.loaded + " of " + progress.total + " bytes");
-          $('#progress2 .bar').css(
+        var params2 = {Key: files[1].name, ContentType: files[1].type, Body: files[1]};
+        var request2 = bucket.putObject(params2);
+        request2.on('httpUploadProgress', function (progress2) {
+          console.log(progress2.loaded + " of " + progress2.total + " bytes");
+          $('#progress2 .bar1').css(
             'width',
-            parseInt((progress.loaded/progress.total)*100) + '%'
+            Math.round(progress2.loaded / progress2.total * 100) + '%'
           );
-          $('#progress2 .bar').html(
-            parseInt((progress.loaded/progress.total)*100) + '%'
+          $('#progress2 .bar1').html(
+            Math.round(progress2.loaded / progress2.total * 100) + '%'
           );
         });
-        request.send();
+        request2.send();
       }
     }
     // if(browser_name != "safari"){
