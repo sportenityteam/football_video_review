@@ -232,7 +232,9 @@
         var params1 = {Key: files[0].name, ContentType: files[0].type, Body: files[0]};
         bucket.upload(params1).on('httpUploadProgress', function(evt) {
           var progress;
-          progress = Math.floor(evt.loaded * 100 / evt.total);
+          console.log(evt.loaded + " of " + evt.total + " bytes_1");
+          progress = Math.round(evt.loaded / evt.total * 100)
+          console.log(progress)
           updateProgress1(progress);
         }).send();
       }
@@ -251,7 +253,8 @@
         var params2 = {Key: files[1].name, ContentType: files[1].type, Body: files[1]};
         bucket.upload(params2).on('httpUploadProgress', function(evt) {
           var progress;
-          progress = Math.floor(evt.loaded * 100 / evt.total);
+          console.log(evt.loaded + " of " + evt.total + " bytes_2");
+          progress = Math.round(evt.loaded / evt.total * 100)
           updateProgress2(progress);
         }).send();
       }
