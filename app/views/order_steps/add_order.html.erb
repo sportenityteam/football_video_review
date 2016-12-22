@@ -230,37 +230,42 @@
 
       if(files[0]){
         var params1 = {Key: files[0].name, ContentType: files[0].type, Body: files[0]};
-        var request1 = bucket.putObject(params1);
-        request1.on('httpUploadProgress', function (progress1) {
-          console.log(progress1.loaded + " of " + progress1.total + " bytes");
-          $('#progress1 .bar').css(
-            'width',
-            Math.round(progress1.loaded / progress1.total * 100) + '%'
-            //parseInt((progress.loaded/progress.total)*100) + '%'
-          );
-          $('#progress1 .bar').html(
-            Math.round(progress1.loaded / progress1.total * 100) + '%'
-            //parseInt((progress.loaded/progress.total)*100) + '%'
-          );
-        });
-        request1.send();
+        bucket.upload(params1).on('httpUploadProgress', function(evt) {
+          var progress;
+          progress = Math.floor(evt.loaded * 100 / evt.total);
+          updateProgress1(progress);
+        }).send();
+      }
+
+      function updateProgress1(percent) {
+        $('#progress1 .bar').css(
+          'width', percent + '%'
+        );
+        $('#progress1 .bar').html(
+          percent + '%'
+          //parseInt((progress.loaded/progress.total)*100) + '%'
+        );
       }
 
       if(files[1]){
         var params2 = {Key: files[1].name, ContentType: files[1].type, Body: files[1]};
-        var request2 = bucket.putObject(params2);
-        request2.on('httpUploadProgress', function (progress2) {
-          console.log(progress2.loaded + " of " + progress2.total + " bytes");
-          $('#progress2 .bar1').css(
-            'width',
-            Math.round(progress2.loaded / progress2.total * 100) + '%'
-          );
-          $('#progress2 .bar1').html(
-            Math.round(progress2.loaded / progress2.total * 100) + '%'
-          );
-        });
-        request2.send();
+        bucket.upload(params2).on('httpUploadProgress', function(evt) {
+          var progress;
+          progress = Math.floor(evt.loaded * 100 / evt.total);
+          updateProgress2(progress);
+        }).send();
       }
+
+      function updateProgress2(percent) {
+        $('#progress2 .bar1').css(
+          'width', percent + '%'
+        );
+        $('#progress2 .bar1').html(
+          percent + '%'
+          //parseInt((progress.loaded/progress.total)*100) + '%'
+        );
+      }
+
     }
     // if(browser_name != "safari"){
     //   //development
