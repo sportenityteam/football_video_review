@@ -38,15 +38,15 @@
                 <li>
                   <h2 class="pull-left">Videos</h2>
                   <span class="box">
-                    <%= f.fields_for :videos do |video| %>
+                    <%#= f.fields_for :videos do |video| %>
                       <%= image_tag"icons/video.png" %>
                       <input id="uploadFile1" placeholder="Select the first half or entire game to upload" disabled="disabled" />
                       <div class="fileUpload btn btn-primary">
                         <span>Upload</span>
                         <input id="uploadBtn" type="file" class="upload" />
-                        <%= video.file_field :video_url, :id => "uploadBtn1", :data => {:value => "upload1"}, :class => "upload", :placeholder => "Select the first half or entire game to upload", :onclick => "change_file1();" %>
+                        <%= f.file_field :video_url, :id => "uploadBtn1", :data => {:value => "upload1"}, :class => "upload", :name => "order[videos_attributes][0][video_url]" , :placeholder => "Select the first half or entire game to upload", :onclick => "change_file1();" %>
                       </div>
-                    <% end %>
+                    <%# end %>
                   </span>
                   <div id="error_msg1" class="error_msg">Invalid file type, please upload only video file.</div>
                   <div id="progress1">
@@ -57,15 +57,15 @@
                 <li>
                   <!-- <h2 class="pull-left">Videos</h2> -->
                   <span class="box">
-                    <%= f.fields_for :videos do |video| %>
+                    <%#= f.fields_for :videos, :id => "second_video" do |video| %>
                       <%= image_tag"icons/video.png" %>
                       <input id="uploadFile2" placeholder="Select the second half to upload (if applicable)" disabled="disabled" />
                       <div class="fileUpload btn btn-primary">
                         <span>Upload</span>
                         <input id="uploadBtn" type="file" class="upload" />
-                        <%= video.file_field :video_url, :id => "uploadBtn2", :data => {:value => "upload2"}, :class => "upload", :placeholder => "Select the second half to upload (if applicable)", :onclick => "change_file2();" %>
+                        <%= f.file_field :video_url, :id => "uploadBtn2", :data => {:value => "upload2"}, :class => "upload", :name => "order[videos_attributes][1][video_url]", :placeholder => "Select the second half to upload (if applicable)", :onclick => "change_file2();" %>
                       </div>
-                    <% end %>
+                    <%# end %>
                   </span>
                   <div id="error_msg2" class="error_msg">Invalid file type, please upload only video file.</div>
                   <div id="progress2">
@@ -155,15 +155,17 @@
     document.getElementById("uploadBtn1").onchange = function () {
       document.getElementById("uploadFile1").value = this.value.replace(/^C:\\fakepath\\/i, '');
       video1_ext = this.value.replace(/^C:\\fakepath\\/i, '');
-      if (video1_ext.split(".")[1] == "bmp" || video1_ext.split(".")[1] == "gif" || video1_ext.split(".")[1] == "jpg" || video1_ext.split(".")[1] == "png") {
+      extentions = video1_ext.split(".")
+
+      if (extentions[extentions.length-1] != "webm" && extentions[extentions.length-1] != "mkv" && extentions[extentions.length-1] != "flv" && extentions[extentions.length-1] != "vob" && extentions[extentions.length-1] != "ogv" && extentions[extentions.length-1] != "ogg" && extentions[extentions.length-1] != "drc" && extentions[extentions.length-1] != "gif" && extentions[extentions.length-1] != "gifv" && extentions[extentions.length-1] != "mng" && extentions[extentions.length-1] != "avi" && extentions[extentions.length-1] != "mov" && extentions[extentions.length-1] != "qt" && extentions[extentions.length-1] != "wmv" && extentions[extentions.length-1] != "yuv" && extentions[extentions.length-1] != "rm" && extentions[extentions.length-1] != "rmvb" && extentions[extentions.length-1] != "asf" && extentions[extentions.length-1] != "amv" && extentions[extentions.length-1] != "mp4" && extentions[extentions.length-1] != "m4p" && extentions[extentions.length-1] != "m4v" && extentions[extentions.length-1] != "mpg" && extentions[extentions.length-1] != "mp2" && extentions[extentions.length-1] != "mpeg" && extentions[extentions.length-1] != "mpe" && extentions[extentions.length-1] != "mpv" && extentions[extentions.length-1] != "mpg" && extentions[extentions.length-1] != "mpeg" && extentions[extentions.length-1] != "m2v" && extentions[extentions.length-1] != "svi" && extentions[extentions.length-1] != "3gp" && extentions[extentions.length-1] != "3g2" && extentions[extentions.length-1] != "mxf" && extentions[extentions.length-1] != "roq" && extentions[extentions.length-1] != "nsv" && extentions[extentions.length-1] != "f4v" && extentions[extentions.length-1] != "f4p" && extentions[extentions.length-1] != "f4a" && extentions[extentions.length-1] != "f4b") {
         $("#error_msg1").show();
-        $("#upload").attr("disabled", true);
+        //$("#upload").attr("disabled", true);
       } else if(video1_ext == ''){
         $("#error_msg1").hide();
-        $("#upload").attr("disabled", true);
+        //$("#upload").attr("disabled", true);
       } else{
         $("#error_msg1").hide();
-        $("#upload").attr("disabled", false);
+        //$("#upload").attr("disabled", false);
       }
       enable_btn();
     };
@@ -173,15 +175,17 @@
     document.getElementById("uploadBtn2").onchange = function () {
       document.getElementById("uploadFile2").value = this.value.replace(/^C:\\fakepath\\/i, '');
       video2_ext = this.value.replace(/^C:\\fakepath\\/i, '');
-      if (video2_ext.split(".")[1] == "bmp" || video2_ext.split(".")[1] == "gif" || video2_ext.split(".")[1] == "jpg" || video2_ext.split(".")[1] == "png") {
+      extentions = video2_ext.split(".")
+
+      if (extentions[extentions.length-1] != "webm" && extentions[extentions.length-1] != "mkv" && extentions[extentions.length-1] != "flv" && extentions[extentions.length-1] != "vob" && extentions[extentions.length-1] != "ogv" && extentions[extentions.length-1] != "ogg" && extentions[extentions.length-1] != "drc" && extentions[extentions.length-1] != "gif" && extentions[extentions.length-1] != "gifv" && extentions[extentions.length-1] != "mng" && extentions[extentions.length-1] != "avi" && extentions[extentions.length-1].toLowerCase() != "mov" && extentions[extentions.length-1] != "qt" && extentions[extentions.length-1] != "wmv" && extentions[extentions.length-1] != "yuv" && extentions[extentions.length-1] != "rm" && extentions[extentions.length-1] != "rmvb" && extentions[extentions.length-1] != "asf" && extentions[extentions.length-1] != "amv" && extentions[extentions.length-1] != "mp4" && extentions[extentions.length-1] != "m4p" && extentions[extentions.length-1] != "m4v" && extentions[extentions.length-1] != "mpg" && extentions[extentions.length-1] != "mp2" && extentions[extentions.length-1] != "mpeg" && extentions[extentions.length-1] != "mpe" && extentions[extentions.length-1] != "mpv" && extentions[extentions.length-1] != "mpg" && extentions[extentions.length-1] != "mpeg" && extentions[extentions.length-1] != "m2v" && extentions[extentions.length-1] != "svi" && extentions[extentions.length-1] != "3gp" && extentions[extentions.length-1] != "3g2" && extentions[extentions.length-1] != "mxf" && extentions[extentions.length-1] != "roq" && extentions[extentions.length-1] != "nsv" && extentions[extentions.length-1] != "f4v" && extentions[extentions.length-1] != "f4p" && extentions[extentions.length-1] != "f4a" && extentions[extentions.length-1] != "f4b") {
         $("#error_msg2").show();
-        $("#upload").attr("disabled", true);
+        //$("#upload").attr("disabled", true);
       } else if(video2_ext == ''){
         $("#error_msg2").hide();
-        $("#upload").attr("disabled", true);
+        //$("#upload").attr("disabled", true);
       } else{
         $("#error_msg2").hide();
-        $("#upload").attr("disabled", false);
+        //$("#upload").attr("disabled", false);
       }
       enable_btn();
     };
@@ -189,7 +193,12 @@
 
   function enable_btn(){
     if(video1_ext != "" && video2_ext != "") {
-      if (video1_ext.split(".")[1] == "bmp" || video1_ext.split(".")[1] == "gif" || video1_ext.split(".")[1] == "jpg" || video1_ext.split(".")[1] == "png" || video2_ext.split(".")[1] == "bmp" || video2_ext.split(".")[1] == "gif" || video2_ext.split(".")[1] == "jpg" || video2_ext.split(".")[1] == "png") {
+      extention1 = video1_ext.split(".")
+      extention2 = video2_ext.split(".")
+
+      if ((extention1[extention1.length-1] == "webm" || extention1[extention1.length-1] == "mkv" || extention1[extention1.length-1] == "flv" || extention1[extention1.length-1] == "vob" || extention1[extention1.length-1] == "ogv" || extention1[extention1.length-1] == "ogg" || extention1[extention1.length-1] == "drc" || extention1[extention1.length-1] == "gif" || extention1[extention1.length-1] == "gifv" || extention1[extention1.length-1] == "mng" || extention1[extention1.length-1] == "avi" || extention1[extention1.length-1] == "mov" || extention1[extention1.length-1] == "qt" || extention1[extention1.length-1] == "wmv" || extention1[extention1.length-1] == "yuv" || extention1[extention1.length-1] == "rm" || extention1[extention1.length-1] == "rmvb" || extention1[extention1.length-1] == "asf" || extention1[extention1.length-1] == "amv" || extention1[extention1.length-1] == "mp4" || extention1[extention1.length-1] == "m4p" || extention1[extention1.length-1] == "m4v" || extention1[extention1.length-1] == "mpg" || extention1[extention1.length-1] == "mp2" || extention1[extention1.length-1] == "mpeg" || extention1[extention1.length-1] == "mpe" || extention1[extention1.length-1] == "mpv" || extention1[extention1.length-1] == "mpg" || extention1[extention1.length-1] == "mpeg" || extention1[extention1.length-1] == "m2v" || extention1[extention1.length-1] == "svi" || extention1[extention1.length-1] == "3gp" || extention1[extention1.length-1] == "3g2" || extention1[extention1.length-1] == "mxf" || extention1[extention1.length-1] == "roq" || extention1[extention1.length-1] == "nsv" || extention1[extention1.length-1] == "f4v" || extention1[extention1.length-1] == "f4p" || extention1[extention1.length-1] == "f4a" || extention1[extention1.length-1] == "f4b") && (extention2[extention2.length-1] == "webm" || extention2[extention2.length-1] == "mkv" || extention2[extention2.length-1] == "flv" || extention2[extention2.length-1] == "vob" || extention2[extention2.length-1] == "ogv" || extention2[extention2.length-1] == "ogg" || extention2[extention2.length-1] == "drc" || extention2[extention2.length-1] == "gif" || extention2[extention2.length-1] == "gifv" || extention2[extention2.length-1] == "mng" || extention2[extention2.length-1] == "avi" || extention2[extention2.length-1] == "mov" || extention2[extention2.length-1] == "qt" || extention2[extention2.length-1] == "wmv" || extention2[extention2.length-1] == "yuv" || extention2[extention2.length-1] == "rm" || extention2[extention2.length-1] == "rmvb" || extention2[extention2.length-1] == "asf" || extention2[extention2.length-1] == "amv" || extention2[extention2.length-1] == "mp4" || extention2[extention2.length-1] == "m4p" || extention2[extention2.length-1] == "m4v" || extention2[extention2.length-1] == "mpg" || extention2[extention2.length-1] == "mp2" || extention2[extention2.length-1] == "mpeg" || extention2[extention2.length-1] == "mpe" || extention2[extention2.length-1] == "mpv" || extention2[extention2.length-1] == "mpg" || extention2[extention2.length-1] == "mpeg" || extention2[extention2.length-1] == "m2v" || extention2[extention2.length-1] == "svi" || extention2[extention2.length-1] == "3gp" || extention2[extention2.length-1] == "3g2" || extention2[extention2.length-1] == "mxf" || extention2[extention2.length-1] == "roq" || extention2[extention2.length-1] == "nsv" || extention2[extention2.length-1] == "f4v" || extention2[extention2.length-1] == "f4p" || extention2[extention2.length-1] == "f4a" || extention2[extention2.length-1] == "f4b")) {
+        $("#upload").attr("disabled", false);
+      } else {
         $("#upload").attr("disabled", true);
       }
     }

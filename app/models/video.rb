@@ -15,7 +15,8 @@ class Video < ActiveRecord::Base
   #process_in_background :video_url
 
   #validations
-  validates_attachment_content_type :video_url, :content_type => /\Avideo\/.*\Z/
+  validates_attachment_content_type :video_url, :content_type => ['video/avi', 'video/example', 'video/mpeg', 'video/mp4', 'video/ogg', 'video/quicktime', 'video/webm', 'video/x-matroska', 'video/x-ms-wmv', 'video/x-flv', 'video/x-msvideo']
+  #/\Avideo\/.*\Z/
   validates :video_url, :presence => true
 
   #scope
