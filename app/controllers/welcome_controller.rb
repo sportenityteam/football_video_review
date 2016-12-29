@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
 	before_filter :restrict_user
   def index
     if current_user.present?
