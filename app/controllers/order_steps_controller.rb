@@ -85,7 +85,7 @@ class OrderStepsController < ApplicationController
               render_wizard
             end
           end
-        elsif current_user.payments.last.order_status == nil
+        elsif current_user.payments.order(:created_at).last.order_status == nil
           logger.warn("=--=Payment=-=-=-=-=-=-=-=-=-#{current_user.payments.last.inspect}=--=")
           if @order.update_attributes(order_params)
             @order.update_attributes(:user_id => current_user.id)

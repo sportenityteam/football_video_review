@@ -27,7 +27,6 @@
           <!-- <div class="alert alert-danger fade in"><%#= alert %></div> -->
         <%# end %>
       </div>
-
       <%= yield %>
 
       <%= render 'layouts/landing_page/footer' %>
@@ -43,8 +42,8 @@
         <% if alert.present? %>
           <div class="alert alert-danger fade in"><%= alert %></div>
         <% end %>
+        <%= yield %>
       </div>
-      <%= yield %>
 
       <%= render 'layouts/landing_page/footer' %>
     </body>
