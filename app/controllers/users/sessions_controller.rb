@@ -1,7 +1,8 @@
 class Users::SessionsController < Devise::SessionsController
-# before_action :configure_sign_in_params, only: [:create]
+  #before_action :configure_sign_in_params, only: [:create]
   #skip_before_filter :require_no_authentication, only: [:destroy]
-  prepend_before_filter :require_no_authentication, only: [:cancel ]
+
+  prepend_before_filter :force_reset_session, only: :destroy
 
   # GET /resource/sign_in
   # def new
@@ -15,10 +16,14 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   # clear all session variables while user logout
-  def destroy
+  # def destroy
+  #   reset_session
+  #   sign_out current_user
+  #   super
+  # end
+
+  def force_reset_session
     reset_session
-    sign_out current_user
-    super
   end
 
   # protected
