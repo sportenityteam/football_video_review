@@ -1,5 +1,6 @@
 class ContactUsController < ApplicationController
   skip_before_filter :authenticate_user!
+  skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
 
   def new
     @contact_us = ContactU.new
