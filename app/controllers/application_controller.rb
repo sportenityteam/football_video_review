@@ -40,13 +40,13 @@ class ApplicationController < ActionController::Base
         return admin_dashboard_path
       elsif resource.is_reviewer?
         return pending_reviews_path
-      elsif resource.is_user?
-        return welcome_index_path
       else
         #return my_orders_path
-        return new_user_registration_path
+        return welcome_index_path
       end
     end
+
+
 
   protected
     # configuring registration parameters
