@@ -1,6 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
 # before_action :configure_sign_in_params, only: [:create]
-  skip_before_filter :require_no_authentication, only: [:destroy]
+  #skip_before_filter :require_no_authentication, only: [:destroy]
+  prepend_before_filter :require_no_authentication, only: [:cancel ]
 
   # GET /resource/sign_in
   # def new
