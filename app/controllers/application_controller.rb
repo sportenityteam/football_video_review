@@ -11,8 +11,9 @@ class ApplicationController < ActionController::Base
   #Setting different layout for different user
   private
 
-    def set_cache_headers
-      response.headers["Cache-Control"] = "no-cache, no-store"
+    def set_no_cache
+      # to check request comes from mail
+      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
       response.headers["Pragma"] = "no-cache"
       response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
     end
