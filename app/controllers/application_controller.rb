@@ -1,23 +1,24 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
-  protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
   # For APIs, you may want to use :null_session instead.
+  #protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
+
+  layout :set_layout
+
   protect_from_forgery with: :exception
+  before_action :set_no_cache
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  layout :set_layout
-  before_action :set_no_cache
 
-  #Setting different layout for different user
+  def set_no_cache
+    # to check request comes from mail
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
+
   private
-
-    def set_no_cache
-      # to check request comes from mail
-      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-      response.headers["Pragma"] = "no-cache"
-      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-    end
-
+    #Setting different layout for different user
     def set_layout
       if user_signed_in?
         if current_user.is_admin?
@@ -54,8 +55,6 @@ class ApplicationController < ActionController::Base
         return welcome_index_path
       end
     end
-
-
 
   protected
     # configuring registration parameters
