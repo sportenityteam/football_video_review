@@ -104,3 +104,15 @@ sudo apt-get install postgresql-common
 sudo apt-get install postgresql-9.5 libpq-dev
 ```
 
+## The HACK!
+
+I am not sure why but from time to time the system will just stop working. The usual rails commands "rake, rails, bundler..." will just not work. I tried several versions online of what the problem might be without any success.
+
+Solution: run the command bellow everytime you open the terminal
+```sh
+source ~/.rvm/scripts/rvm
+```
+Otherwise Google the hell out of the problem :) 
+
+Good Luck! 
+
