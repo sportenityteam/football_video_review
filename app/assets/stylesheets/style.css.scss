@@ -1765,6 +1765,34 @@ nav #menu-toggle:checked ~ ul{
 	background-color:#3fbc78;
 	color:#fff;
 }
+
+/* Includes session */
+.includes {
+	padding:50px 0;
+	margin:0 auto;
+  	background-color: grey;
+}
+
+.includes-service h2{
+	font-size:30px;
+	color:#3fbc78;
+	margin-bottom:30px;
+	font-weight:400;
+}
+
+.includes ul li {
+	font-size:20px;
+	color: #535353;
+	text-align: left;
+}
+
+.includes ul li i {
+	color:#3fbc78;
+}
+
+.centered {
+	margin: 0 auto;	
+}
 /*Process section closed*/
 
 /*banner 2 section*/
